@@ -1455,7 +1455,7 @@ mentionedJid:[user],
 "renderLargerThumbnail": true,
 "thumbnail": apii.data, 
 "title": `${action === 'add' ? '乂 BIENVENIDO 乂' : '乂 HASTA LUEGO 乂'}`,
-"body": packname,
+"body": global.botname,
 "containsAutoReply": true,
 "mediaType": 1, 
 sourceUrl: channel }}}, { quoted: fkontak })
@@ -1509,7 +1509,7 @@ export async function callUpdate(callUpdate) {
         const callmsg = await mconn.conn.reply(nk.from, `Hola *@${nk.from.split('@')[0]}*, las ${nk.isVideo ? 'videollamadas' : 'llamadas'} no están permitidas, serás bloqueado.`, false, {mentions: [nk.from]});
         // let data = global.owner.filter(([id, isCreator]) => id && isCreator)
         // await this.sendContact(nk.from, data.map(([id, name]) => [id, name]), false, { quoted: callmsg })
-        const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;Creador 👑;;;\nFN:Creador 👑\nORG:Creador 👑\nTITLE:\nitem1.TEL;waid=595983799436:+595n983 799 436\nitem1.X-ABLabel:Creador 👑Creador 👑\nX-WA-BIZ-DESCRIPTION:Solo cosas referentes al Bot\nX-WA-BIZ-NAME:Creador 👑\nEND:VCARD`;
+        const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;Creador 👑;;;\nFN:Creador 👑\nORG:Creador 👑\nTITLE:\nitem1.TEL;waid=595983799436:+595 983 799 436\nitem1.X-ABLabel:Creador 👑Creador 👑\nX-WA-BIZ-DESCRIPTION:Solo cosas referentes al Bot\nX-WA-BIZ-NAME:Creador 👑\nEND:VCARD`;
         await mconn.conn.sendMessage(nk.from, {contacts: {displayName: 'RemCham-MD', contacts: [{vcard}]}}, {quoted: callmsg});
         await mconn.conn.updateBlockStatus(nk.from, 'block');
       }
