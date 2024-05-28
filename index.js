@@ -22,7 +22,7 @@ colors: ['blue', 'magenta']
 say(`Multi Divice`, {
 font: 'chrome',
 align: 'center',
-gradient: ['light_blue', 'magenta']
+gradient: ['green', 'magenta']
 })
 say(`Creditos a: @Diego-YL-177\nEditor y Propietario: @DanixlJs`, {
 font: 'console',
