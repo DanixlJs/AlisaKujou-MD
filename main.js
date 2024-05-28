@@ -283,7 +283,7 @@ if (opcion == '1' || methodCodeQR) {
         console.log(chalk.yellow('Escanea el código para conectarte a RemCham-MD'));
  }}
    if (connection == 'open') {
-await conn.groupAcceptInvite('Eaa9JFA53ps7WHMv2VHbO9')
+await conn.groupAcceptInvite('Kbj38zCqOvqH9KM5bRH1Hb')
 console.log(chalk.bold.cyan('Conección Exitosa al WhatsApp'))
    }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
