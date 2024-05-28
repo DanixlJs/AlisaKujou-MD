@@ -48,7 +48,7 @@ global.pdoc = ['application/vnd.openxmlformats-officedocument.presentationml.pre
 global.botdate = `${moment.tz('America/Asuncion').format('DD/MM/YY')}`;
 global.bottime = `${moment.tz('America/Asuncion').format('HH:mm:ss')}`;
 
-global.multiplier = 100;
+global.multiplier = 500;
 
 global.flaaa = [
   'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text=',
