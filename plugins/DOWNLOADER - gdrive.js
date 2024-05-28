@@ -3,7 +3,7 @@ import {sizeFormatter} from 'human-readable';
 const formatSize = sizeFormatter({
   std: 'JEDEC', decimalPlaces: 2, keepTrailingZeroes: false, render: (literal, symbol) => `${literal} ${symbol}B`});
 const handler = async (m, {conn, args, usedPrefix}) => {
-  if (!global.db.data.uers[m.sender].premium) throw `Este comando es solo para usuarios Premiums, use el comando *${usedPrefix}premium* para más info.`;
+  if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios Premiums, use el comando *${usedPrefix}premium* para más info.`;
   if (!args[0]) throw 'Ocurrió un error inesperado, compruebe que el Link sea válido.';
   try {
     GDriveDl(args[0]).then(async (res) => {
