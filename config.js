@@ -19,7 +19,7 @@ global.prems = []
 global.mods = []
 
 global.packname = 'Sticker by';
-global.botname = 'TheRemCham-MD'
+global.botname = 'TheRemCham-MD';
 global.author = 'Rem Cham-MD';
 global.wm = 'Rem Cham-MD';
 global.dev = 'Developer by DanixlJs';
