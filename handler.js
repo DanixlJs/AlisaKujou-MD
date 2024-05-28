@@ -1455,7 +1455,7 @@ mentionedJid:[user],
 "renderLargerThumbnail": true,
 "thumbnail": apii.data, 
 "title": `${action === 'add' ? '乂 BIENVENIDO 乂' : '乂 HASTA LUEGO 乂'}`,
-"body": global.botname,
+"body": global.wm,
 "containsAutoReply": true,
 "mediaType": 1, 
 sourceUrl: channel }}}, { quoted: fkontak })
