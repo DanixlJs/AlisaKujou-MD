@@ -32,6 +32,12 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? t
 
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
+var l1 = 'https://youtube.com/';
+var l2 = 'https://whatsapp.com/';
+var l3 = 'https://tiktok.com/';
+var l4 = 'https://instagram.com/';
+global.fakeLink = [l1, l2, l3, l4].getRandom()
+
 var img1 = fs.readFileSync('./media/image1.jpg');
 var img2 = fs.readFileSync('./media/image2.jpg');
 var img3 = fs.readFileSync('./media/image3.jpg');
@@ -45,11 +51,7 @@ var vid2 = fs.readFileSync('./media/vid2.mp4');
 var vid3 = fs.readFileSync('./media/vid3.mp4');
 global.vid = [vid1, vid2, vid3].getRandom()
 
-global.etl = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 999999, status: 1, surface : 1, message: global.packname, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
-
-global.etl2 = { contextInfo: { mentionedJid: conn.parseMention(wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363302120826314@newsletter', serverMessageId: '', newsletterName: '💙RemChamMD - Anuncios💙' }, externalAdReply: { title: global.wm, body: `Hola ` + nombre, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: global.icons, thumbnail: global.icons, sourceUrl: global.fakeLink }}}, { quoted: m }
-
-global.estilo = [etl, etl2].getRandom()
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 999999, status: 1, surface : 1, message: global.packname, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
 
 const moji = (await axios.get(`https://raw.githubusercontent.com/DanixlJs/RemCham-MD/master/src/emojis.json`)).data
 const emoji = await moji[Math.floor(moji.length * Math.random())]
@@ -61,7 +63,7 @@ global.nombre = conn.getName(m.sender)
 global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 
 
-global.fake = { contextInfo: { mentionedJid: conn.parseMention(wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363302120826314@newsletter', serverMessageId: '', newsletterName: '💙RemChamMD - Anuncios💙' }, externalAdReply: { title: global.wm, body: `Hola ` + nombre, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: global.icons, thumbnail: global.icons, sourceUrl: global.fakeLink }}}, { quoted: m }
+global.fake = { contextInfo: { mentionedJid: conn.parseMention(global.wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363302120826314@newsletter', serverMessageId: '', newsletterName: '💙RemChamMD - Anuncios💙' }, externalAdReply: { title: global.wm, body: `Hola ` + nombre, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: global.icons, thumbnail: global.icons, sourceUrl: global.fakeLink }}}, { quoted: m }
 }
 
 export default handler
