@@ -26,6 +26,8 @@ global.dev = 'Developer by DanixlJs';
 global.team = 'Developer by RemCham-MD';
 global.vs = '1.0.7';
 
+global.img = fs.readFileSync('./Menu.jpg');
+
 global.gp = 'https://chat.whatsapp.com/'
 global.channel = ''
 
