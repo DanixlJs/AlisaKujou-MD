@@ -1507,10 +1507,8 @@ export async function callUpdate(callUpdate) {
     if (nk.isGroup == false) {
       if (nk.status == 'offer') {
         const callmsg = await mconn.conn.reply(nk.from, `Hola *@${nk.from.split('@')[0]}*, las ${nk.isVideo ? 'videollamadas' : 'llamadas'} no están permitidas, serás bloqueado.`, false, {mentions: [nk.from]});
-        // let data = global.owner.filter(([id, isCreator]) => id && isCreator)
-        // await this.sendContact(nk.from, data.map(([id, name]) => [id, name]), false, { quoted: callmsg })
         const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;Creador 👑;;;\nFN:Creador 👑\nORG:Creador 👑\nTITLE:\nitem1.TEL;waid=595983799436:+595 983 799 436\nitem1.X-ABLabel:Creador 👑Creador 👑\nX-WA-BIZ-DESCRIPTION:Solo cosas referentes al Bot\nX-WA-BIZ-NAME:Creador 👑\nEND:VCARD`;
-        await mconn.conn.sendMessage(nk.from, {contacts: {displayName: 'RemCham-MD', contacts: [{vcard}]}}, {quoted: callmsg});
+        await mconn.conn.sendMessage(nk.from, {contacts: {displayName: wm, contacts: [{vcard}]}}, {quoted: callmsg});
         await mconn.conn.updateBlockStatus(nk.from, 'block');
       }
     }
@@ -1551,7 +1549,7 @@ global.dfail = (type, m, conn) => {
     restrict: '*!Esta Función fué deshabilitado por mi Desarrollador*',
     }[type];
   const aa = {quoted: m, userJid: conn.user.jid};
-  const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: msg, contextInfo: {externalAdReply: {title: packname, body: 'Hola ' + nombre, thumbnail: imagen1, sourceUrl: channel}}}}, aa);
+  const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: msg, contextInfo: {externalAdReply: {title: wm, body: 'Hola ' + nombre, thumbnail: img, sourceUrl: channel }}}}, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, {messageId: prep.key.id});
 };
 
