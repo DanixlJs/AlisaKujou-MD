@@ -4,7 +4,7 @@ import cheerio from 'cheerio';
 import {mediafiredl} from '@bochilteam/scraper';
 
 const handler = async (m, {conn, args, usedPrefix, command}) => {
-  if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios Premiums, use el comando ${usedPrefix}premium* para más info.`;
+  if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios Premiums, use el comando *${usedPrefix}premium* para más info.`;
   if (!args[0]) throw `Ingrese el Link del Archivo de Mediafire, Ejemplo: *${usedPrefix + command} <link>*`;
   try {
     const resEX = await mediafiredl(args[0]);
