@@ -129,7 +129,7 @@ do {
 opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
 
 if (!/^[1-2]$/.test(opcion)) {
-console.log('☄️ Por favor, seleccione solo 1 o 2.\n')
+console.log('Por favor, seleccione solo 1 o 2.\n')
 }} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${authFile}/creds.json`))
 }
 
@@ -185,7 +185,7 @@ rl.close()
         setTimeout(async () => {
             let codigo = await conn.requestPairingCode(numeroTelefono)
             codigo = codigo?.match(/.{1,4}/g)?.join("-") || codigo
-            console.log(chalk.black(chalk.bgGreen(`Código de Vinculación:`)), chalk.black(chalk.white(codigo)))
+            console.log(chalk.black(chalk.bgGreen(`Código de Vinculación: `)), chalk.black(chalk.white(codigo)))
         }, 3000)
 }}
 }
@@ -284,7 +284,7 @@ if (opcion == '1' || methodCodeQR) {
  }}
    if (connection == 'open') {
 await conn.groupAcceptInvite('Eaa9JFA53ps7WHMv2VHbO9')
-console.log(chalk.bold.cyan('\n╭┈ ┈ ┈ ┈ ┈ • RemCham-MD• ┈ ┈ ┈ ┈ ┈ ┈╮\n┊ CONECTADO CORRECTAMENTE  🟢\n╰┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈ ┈╯\n'))
+console.log(chalk.bold.cyan('Conección Exitosa al WhatsApp'))
    }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 if (reason == 405) {
@@ -346,14 +346,14 @@ global.reloadHandler = async function(restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate);
   }
 
-conn.welcome = lenguajeRem['smsWelcome']() 
-conn.bye = lenguajeRem['smsBye']() 
-conn.spromote = lenguajeRem['smsSpromote']() 
-conn.sdemote = lenguajeRem['smsSdemote']() 
-conn.sDesc = lenguajeRem['smsSdesc']() 
-conn.sSubject = lenguajeRem['smsSsubject']() 
-conn.sIcon = lenguajeRem['smsSicon']() 
-conn.sRevoke = lenguajeRem['smsSrevoke']() 
+conn.welcome = '- *BIENVENIDO*\n> Hola @user, bienvenido a:\n- @subject\n\n> Nota: Lee la descripción para evitar incovenientes.' 
+conn.bye = '- *DESPEDIDA*\n> @user no fue digno de estar aqui.\n\n- *Rem Cham-MD*'
+conn.spromote = '> *ALERTA:* @user ahora es Administrador.'
+conn.sdemote = '> *ALERTA:* @user ya no es Administrador.'
+conn.sDesc = 'Se ha modificado la descripción del grupo, Nueva Descripción:\n\n@desc'
+conn.sSubject = 'Se ha modificado el nombre del grupo, Nuevo Nombre:\n- @subject'
+conn.sIcon = 'Se cambió la imagen del grupo.'
+conn.sRevoke = 'Se actualizó el Link del grupo, Nuevo Link:\n- [@revoke]'
 
   conn.handler = handler.handler.bind(global.conn);
   conn.participantsUpdate = handler.participantsUpdate.bind(global.conn);
@@ -403,23 +403,23 @@ global.reload = async (_ev, filename) => {
   if (pluginFilter(filename)) {
     const dir = global.__filename(join(pluginFolder, filename), true);
     if (filename in global.plugins) {
-      if (existsSync(dir)) conn.logger.info(` updated plugin - '${filename}'`);
+      if (existsSync(dir)) conn.logger.info(`Updated plugin - '${filename}'`);
       else {
-        conn.logger.warn(`deleted plugin - '${filename}'`);
+        conn.logger.warn(`Deleted plugin - '${filename}'`);
         return delete global.plugins[filename];
       }
-    } else conn.logger.info(`new plugin - '${filename}'`);
+    } else conn.logger.info(`New plugin - '${filename}'`);
     const err = syntaxerror(readFileSync(dir), filename, {
       sourceType: 'module',
       allowAwaitOutsideFunction: true,
     });
-    if (err) conn.logger.error(`syntax error while loading '${filename}'\n${format(err)}`);
+    if (err) conn.logger.error(`Syntax error while loading '${filename}'\n${format(err)}`);
     else {
       try {
         const module = (await import(`${global.__filename(dir)}?update=${Date.now()}`));
         global.plugins[filename] = module.default || module;
       } catch (e) {
-        conn.logger.error(`error require plugin '${filename}\n${format(e)}'`);
+        conn.logger.error(`Error require plugin '${filename}\n${format(e)}'`);
       } finally {
         global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)));
       }
@@ -456,22 +456,22 @@ async function _quickTest() {
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   const a = await clearTmp();
-console.log(chalk.greenBright(`\n╭─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╮\n│✅ Archivo no necesario eliminado.\n╰─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╯\n`));
+console.log(chalk.greenBright(`\nArchivo no necesario eliminado.\n`));
 }, 180000);
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   await purgeSession();
-console.log(chalk.greenBright(`\n╭─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╮\n│✅ Archivo no necesario eliminado.\n╰─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╯\n`));
+console.log(chalk.greenBright(`\nArchivo no necesario eliminado.`));
 }, 1000 * 60 * 60);
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   await purgeSessionSB();
-console.log(chalk.greenBright(`\n╭─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╮\n│✅ Archivo no necesario eliminado.\n╰─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╯\n`));
+console.log(chalk.greenBright(`\nArchivo no necesario eliminado.`));
 }, 1000 * 60 * 60);
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   await purgeOldFiles();
-console.log(chalk.greenBright(`\n╭─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╮\n│✅ Archivo no necesario eliminado.\n╰─━━━━━━⊱ ARCHIVO ⊰━━━━━━─╯\n`));
+console.log(chalk.greenBright(`\nArchivo no necesario eliminado.`));
 }, 180000)
 _quickTest()
 .then()
