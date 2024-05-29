@@ -398,9 +398,7 @@ await conn.reply(m.chat, `- *REM CHAN-MD*
 - *Tipo*: ${type}
 - *Estado:* ${isEnable ? 'Activado' : 'Desactivado'}
 - *Para:* ${isAll ? `${global.botname}` : isUser ? '' : 'Este Chat'}`, fkontak, {
-contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, 
-title: global.wm,
-body: `Hola ` + nombre, previewType: 0, thumbnail: global.icons, sourceUrl: global.fakeLink}}})} 
+contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: global.wm, body: `Hola ` + nombre, previewType: 0, thumbnail: global.icons, sourceUrl: global.fakeLink}}})} 
 
 handler.help = ['enable <opcion>', 'disable <opcion>'];
 handler.tags = ['gropos', 'owner'];
