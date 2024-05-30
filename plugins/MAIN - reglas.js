@@ -14,7 +14,7 @@ await conn.sendFile(m.chat, global.icons, 'img.jpg', reglas, m, fake, )
 
 handler.command = ['botrules']
 handler.help = ['botrules']
-handler.tags = ['info']
+handler.tags ['info']
 handler.register = true
 
 export default handler

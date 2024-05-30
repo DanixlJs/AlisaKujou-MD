@@ -9,7 +9,7 @@ ${Object.entries(global.db.data.sticker).map(([key, value], index) => `*${index 
 
 handler.command = ['listcmd', 'cmdlist'];
 handler.tags = ['owner'];
-handler.help = ['listcmd'];
+handler.help = ['listcmd']
 handler.rowner = true;
 
 export default handler;
