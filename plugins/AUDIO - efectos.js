@@ -25,22 +25,23 @@ const handler = async (m, {conn, args, __dirname, usedPrefix, command}) => {
       const media = await q.download(true);
       exec(`ffmpeg -i ${media} ${set} ${filename}`, async (err, stderr, stdout) => {
         await unlinkSync(media);
-        if (err) throw `> *Error*`;
+        if (err) throw `⧼✦⧽ 𝔼𝕣𝕣𝕠𝕣.`;
         const buff = await readFileSync(filename);
         conn.sendFile(m.chat, buff, ran, null, m, true, {
           type: 'audioMessage',
           ptt: true,
         });
       });
-    } else throw `Responda a un Audio con *${usedPrefix + command}*`;
+    } else throw `⧼✦⧽ ℝ𝕖𝕤𝕡𝕠𝕟𝕕𝕒 𝕒 𝕦𝕟 𝔸𝕦𝕕𝕚𝕠 𝕔𝕠𝕟 *${usedPrefix + command}*`;
   } catch (e) {
     throw e;
   }
 };
 handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
 handler.tags = ['audio'];
-handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk)$/i;
+handler.command = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
 handler.register = true;
+
 export default handler;
 
 const getRandom = (ext) => {

@@ -2,19 +2,19 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 import cheerio from 'cheerio';
 const handler = async (m, {conn, args, command, usedPrefix, text}) => {
-  if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios premiums, use *${prefix}premium* para más info.`;
-  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `Los comandos NSFW están desactivados.\n\n> Un Administrador puede activarlo con *${prefix}nsfw on*`;
-  if (!args[0]) throw `Ingresa el link de un video de xvideos.`;
+  if (!global.db.data.users[m.sender].premium) throw `⧼✦⧽ 𝔼𝕤𝕥𝕖 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 𝕖𝕤 𝕤𝕠𝕝𝕠 𝕡𝕒𝕣𝕒 𝕌𝕤𝕦𝕒𝕣𝕚𝕠𝕤 ℙ𝕣𝕖𝕞𝕚𝕦𝕞𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}premium* 𝕡𝕒𝕣𝕒 𝕞𝕒́𝕤 𝕚𝕟𝕗𝕠.`;
+  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `⧼✦⧽ 𝕃𝕠𝕤 𝕔𝕠𝕞𝕒𝕟𝕕𝕠𝕤 ℕ𝕊𝔽𝕎 𝕖𝕤𝕥𝕒𝕟 𝕕𝕖𝕤𝕒𝕔𝕥𝕚𝕧𝕒𝕕𝕠𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}enable modohorny* 𝕡𝕒𝕣𝕒 𝕒𝕔𝕥𝕚𝕧𝕒𝕣𝕝𝕠𝕤.`;
+  if (!args[0]) throw `⧼✦⧽ 𝕀𝕟𝕘𝕣𝕖𝕤𝕖 𝕦𝕟 𝕝𝕚𝕟𝕜 𝕕𝕖 𝕩𝕧𝕚𝕕𝕖𝕠𝕤 𝕡𝕒𝕣𝕒 𝕕𝕖𝕤𝕔𝕒𝕣𝕘𝕒𝕣.\n◈ 𝔼𝕛𝕖𝕞𝕡𝕝𝕠:\n→ *${usedPrefix + command} <link>*`;
   try {
-    conn.reply(m.chat, 'Descargando video, espere un momento...', m);
+    conn.reply(m.chat, '⧼✿⧽ ℙ𝕣𝕠𝕔𝕖𝕤𝕒𝕟𝕕𝕠, 𝕖𝕤𝕡𝕖𝕣𝕖 𝕦𝕟 𝕞𝕠𝕞𝕖𝕟𝕥𝕠', m);
     const res = await xvideosdl(args[0]);
     conn.sendMessage(m.chat, {document: {url: res.result.url}, mimetype: 'video/mp4', fileName: res.result.title}, {quoted: m});
   } catch (e) {
-   throw 'Hubo un error, intentelo de nuevo....';
+   throw '⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.';
   }
 };
 handler.help = ['xvideosdl <link>']:
-handler.command = /^(xvideosdl)$/i;
+handler.command = ['xvideosdl'];
 handler.tags = ['nsfw', 'downloader', 'premium'];
 handler.register = true;
 export default handler;

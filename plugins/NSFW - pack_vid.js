@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 const handler = async (m, {conn, command, usedPrefix}) => {
-  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `Los comandos NSFW están desactivados.\n\n> Un Administrador puede activarlo con *${prefix}nsfw on*`;
+  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw ⧼✦⧽ 𝕃𝕠𝕤 𝕔𝕠𝕞𝕒𝕟𝕕𝕠𝕤 ℕ𝕊𝔽𝕎 𝕖𝕤𝕥𝕒𝕟 𝕕𝕖𝕤𝕒𝕔𝕥𝕚𝕧𝕒𝕕𝕠𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}enable modohorny* 𝕡𝕒𝕣𝕒 𝕒𝕔𝕥𝕚𝕧𝕒𝕣𝕝𝕠𝕤.`;
   switch (command) {
     case 'pack':
       const url = await pack[Math.floor(Math.random() * pack.length)];
@@ -24,10 +24,12 @@ const handler = async (m, {conn, command, usedPrefix}) => {
       break;
   }
 };
+
 handler.help = ['pack', 'pack2', 'pack3', 'videoxxx', 'vídeoxxx', 'videoxxxlesbi', 'vídeoxxxlesbi'];
-handler.command = /^(pack|pack2|pack3|videoxxx|vídeoxxx|videoxxxlesbi|vídeoxxxlesbi)$/i;
+handler.command = ['pack', 'pack2', 'pack3', 'videoxxx', 'vídeoxxx', 'videoxxxlesbi', 'vídeoxxxlesbi'];
 handler.tags = ['nsfw'];
 handler.register = true;
+
 export default handler;
 
 global.pack = [

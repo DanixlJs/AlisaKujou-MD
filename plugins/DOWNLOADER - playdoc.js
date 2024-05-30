@@ -3,8 +3,10 @@ import yts from 'yt-search';
 import ytdl from 'ytdl-core';
 import axios from 'axios';
 import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
+
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
-  if (!text) throw `Escriba un texto para realizar la busqueda, Ejemplo:\n *${usedPrefix + command} Huellas - Maiye Torrex* `;
+
+  if (!text) throw `⧼✦⧽ 𝕌𝕤𝕠 ℂ𝕠𝕣𝕣𝕖𝕔𝕥𝕠:\n→ *{usedPrefix + command} Huellas - Maiye Torrex* `;
   try {
     const yt_play = await search(args.join(' '));
     let additionalText = '';
@@ -14,18 +16,18 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
       additionalText = 'video';
     }
     m.react('🕒') 
-    const texto1 = `- *BUSQUEDA*
-- *Titulo:* ${yt_play[0].title}
-- *Publicado:* ${yt_play[0].ago}
-- *Duracion:* ${secondString(yt_play[0].duration.seconds)}
-- *Vistas:* ${`${MilesNumber(yt_play[0].views)}`}
-- *Autor:* ${yt_play[0].author.name}
-- *Canal:* ${yt_play[0].author.url}
-- *ID:* ${yt_play[0].videoId}
-- *Tipo:* ${yt_play[0].type}
-- *Link:* ${yt_play[0].url}\n
+    const texto1 = `✰ *ℝ𝕖𝕤𝕦𝕝𝕥𝕒𝕕𝕠𝕤*
+◈ 𝕋𝕚𝕥𝕦𝕝𝕠: ${yt_play[0].title}
+◈ ℙ𝕦𝕓𝕝𝕚𝕔𝕒𝕕𝕠: ${yt_play[0].ago}
+◈ 𝔻𝕦𝕣𝕒𝕔𝕚𝕠𝕟: ${secondString(yt_play[0].duration.seconds)}
+◈ 𝕍𝕚𝕤𝕥𝕒𝕤: ${`${MilesNumber(yt_play[0].views)}`}
+◈ 𝔸𝕦𝕥𝕠𝕣: ${yt_play[0].author.name}
+◈ ℂ𝕒𝕟𝕒𝕝: ${yt_play[0].author.url}
+◈ 𝕀𝔻: ${yt_play[0].videoId}
+◈ 𝕋𝕚𝕡𝕠: ${yt_play[0].type}
+◈ 𝕃𝕚𝕟𝕜: ${yt_play[0].url}
 
-> Enviando ${additionalText}, aguarde un momento.`.trim();
+→ 𝔼𝕟𝕧𝕚𝕒𝕟𝕕𝕠 ${additionalText}, 𝕒𝕘𝕦𝕒𝕣𝕕𝕖 𝕦𝕟 𝕞𝕠𝕞𝕖𝕟𝕥𝕠.`.trim();
     conn.sendMessage(m.chat, {image: {url: yt_play[0].thumbnail}, caption: texto1}, {quoted: m});
     if (command == 'play3' || command == 'playdoc') {
       try {
@@ -50,7 +52,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
             const ress = await ytdl.chooseFormat(infoo.formats, {filter: 'audioonly'});
             conn.sendMessage(m.chat, {audio: {url: ress.url}, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4'}, {quoted: m});
           } catch {
-            await conn.reply(m.chat, 'Error no se pudo enviar el Audio*', m);
+            await conn.reply(m.chat, '⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.', m);
           }
         }
       }
@@ -64,7 +66,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
         const dl_url = await yt.video[q].download();
         const ttl = await yt.title;
         const size = await yt.video[q].fileSizeH;
-        await await conn.sendMessage(m.chat, {document: {url: dl_url}, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `- *Titulo:* ${ttl}\n- *Peso:* ${size}`, thumbnail: await fetch(yt.thumbnail)}, {quoted: m});
+        await await conn.sendMessage(m.chat, {document: {url: dl_url}, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `◈ 𝕋𝕚𝕥𝕦𝕝𝕠: ${ttl}\n- ◈ ℙ𝕖𝕤𝕠: ${size}`, thumbnail: await fetch(yt.thumbnail)}, {quoted: m});
       } catch {
         try {
           const mediaa = await ytMp4(yt_play[0].url);
@@ -77,21 +79,23 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
             const n2 = lolh.result.link;
             const n3 = lolh.result.size;
             const n4 = lolh.result.thumbnail;
-            await conn.sendMessage(m.chat, {document: {url: n2}, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `- *Titulo:* ${n}\n- *Peso:* ${n3}`, thumbnail: await fetch(n4)}, {quoted: m});
+            await conn.sendMessage(m.chat, {document: {url: n2}, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `◈ 𝕋𝕚𝕥𝕦𝕝𝕠: ${n}\n◈ ℙ𝕖𝕤𝕠: ${n3}`, thumbnail: await fetch(n4)}, {quoted: m});
           } catch {
-            await conn.reply(m.chat, 'No fue posible enviar el Video.', m);
+            await conn.reply(m.chat, '⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.', m);
           }
         }
       }
     }
   } catch {
-    throw 'Error intentelo mas tarde.';
+    throw '⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.';
   }
 };
-handler.help = ['play3 <texto>', 'play4 <texto>'];
+
+handler.help = ['playdoc <texto>', 'playdoc2 <texto>', 'play3 <texto>', 'play4 <texto>'];
 handler.tags = ['downloader'];
-handler.command = /^(playdoc|playdoc2|play3|play4)$/i;
+handler.command = ['playdoc', 'playdoc2', 'play3', 'play4'];
 handler.register = true
+
 export default handler;
 
 async function search(query, options = {}) {

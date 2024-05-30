@@ -1,5 +1,3 @@
-/*Créditos a https://github.com/AzamiJs*/
-
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 import fetch from 'node-fetch'
@@ -11,23 +9,20 @@ let pp = await conn.profilePictureUrl(who, 'image').catch(_ => './src/avatar_con
 let name = await conn.getName(who)
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || ''
-if (!mime) throw 'Responda a una imagen o un video...'
+if (!mime) throw '⧼✦⧽ ℝ𝕖𝕤𝕡𝕠𝕟𝕕𝕒 𝕒 𝕦𝕟𝕒 𝕀𝕞𝕒𝕘𝕖𝕟 𝕠 𝕍𝕚𝕕𝕖𝕠.'
 m.react('✏️') 
 let media = await q.download()
 let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
 let link = await (isTele ? uploadImage : uploadFile)(media)
-let info = ` - *Enlace:*\n> [${link}]\n
-- *Tamaño:* ${media.length} bytes\n
-- *Expiración:* ${isTele ? 'No Expira' : 'Desconocido'}\n
-- *Acortado:*\n> [${await shortUrl(link)}]`
+let info = `✰ 𝔼𝕟𝕝𝕒𝕔𝕖:\n[${link}]\n◈ 𝕋𝕒𝕞𝕒𝕟̃𝕠: ${media.length} Bytes\n◈ 𝔼𝕩𝕡𝕚𝕣𝕒𝕔𝕚𝕠́𝕟: ${isTele ? 'No Expira' : 'Desconocido'}\n◈ 𝔸𝕔𝕠𝕣𝕥𝕒𝕕𝕠:\n[${await shortUrl(link)}]`
 
 conn.reply(m.chat, info, m, { contextInfo: { externalAdReply :{ mediaUrl: global.fakeLink, mediaType: 2, title: global.wm, body: global.dev, thumbnail: await(await fetch(link)).buffer(), sourceUrl: link}}})
 
 }
 handler.help = ['tourl']
-handler.tags = ['transformador', 'tools']
+handler.tags = ['tools']
 handler.register = true
-handler.command = /^(tourl)$/i
+handler.command = ['tourl']
 handler.limit = true
 
 export default handler

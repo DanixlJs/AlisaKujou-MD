@@ -8,7 +8,7 @@ export async function all(m) {
         user.premium = false;
         const JID = Object.keys(global.db.data.users).find((key) => global.db.data.users[key] === user);
         const usuarioJid = JID.split`@`[0];
-        const textoo = `Se agotó tu tiempo premium.`;
+        const textoo = `⧼✦⧽ 𝕊𝕖 𝕒𝕘𝕠𝕥𝕠 𝕥𝕦 𝕋𝕚𝕖𝕞𝕡𝕠 ℙ𝕣𝕖𝕞𝕚𝕦𝕞.`;
         await this.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''});
       }
     }

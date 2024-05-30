@@ -4,38 +4,40 @@ import cheerio from 'cheerio';
 import {mediafiredl} from '@bochilteam/scraper';
 
 const handler = async (m, {conn, args, usedPrefix, command}) => {
-  if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios Premiums, use el comando *${usedPrefix}premium* para más info.`;
-  if (!args[0]) throw `Ingrese el Link del Archivo de Mediafire, Ejemplo: *${usedPrefix + command} <link>*`;
+  if (!global.db.data.users[m.sender].premium) throw `⧼✦⧽ 𝔼𝕤𝕥𝕖 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 𝕖𝕤 𝕤𝕠𝕝𝕠 𝕡𝕒𝕣𝕒 𝕌𝕤𝕦𝕒𝕣𝕚𝕠𝕤 ℙ𝕣𝕖𝕞𝕚𝕦𝕞𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}premium* 𝕡𝕒𝕣𝕒 𝕞𝕒́𝕤 𝕚𝕟𝕗𝕠.`;
+  if (!args[0]) throw `⧼✦⧽ 𝕌𝕤𝕠 ℂ𝕠𝕣𝕣𝕖𝕔𝕥𝕠:\n→ *${usedPrefix + command} <link>*`;
   try {
     const resEX = await mediafiredl(args[0]);
-    const captionES = `- *MEDIAFIRE-DL*
-- *Nombre:* ${resEX.filename}
-- *Peso:* ${resEX.filesizeH}
-- *Tipo:* ${resEX.ext}
+    const captionES = `✰ *𝕄𝕖𝕕𝕚𝕒𝕗𝕚𝕣𝕖 𝔻𝕝*
+◈ ℕ𝕠𝕞𝕓𝕣𝕖: ${resEX.filename}
+◈ ℙ𝕖𝕤𝕠: ${resEX.filesizeH}
+◈ 𝕋𝕚𝕡𝕠: ${resEX.ext}
 
-> Descargando su archivo.`.trim();
+→ 𝔻𝕖𝕤𝕔𝕒𝕣𝕘𝕒𝕟𝕕𝕠 𝕤𝕦 𝕒𝕣𝕔𝕙𝕚𝕧𝕠.`.trim();
     m.reply(captionES);
     await conn.sendFile(m.chat, resEX.url, resEX.filename, '', m, null, {mimetype: resEX.ext, asDocument: true});
   } catch {
     try {
       const res = await mediafireDl(args[0]);
       const {name, size, date, mime, link} = res;
-      const caption = `- *MEDIAFIRE-DL*
-- *Nombre:* ${resEX.filename}
-- *Peso:* ${resEX.filesizeH}
-- *Tipo:* ${resEX.ext}
+      const caption = `✰ *𝕄𝕖𝕕𝕚𝕒𝕗𝕚𝕣𝕖 𝔻𝕝*
+◈ ℕ𝕠𝕞𝕓𝕣𝕖: ${resEX.filename}
+◈ ℙ𝕖𝕤𝕠: ${resEX.filesizeH}
+◈ 𝕋𝕚𝕡𝕠: ${resEX.ext}
 
-> Descargando su archivo.`.trim();
+→ 𝔻𝕖𝕤𝕔𝕒𝕣𝕘𝕒𝕟𝕕𝕠 𝕤𝕦 𝕒𝕣𝕔𝕙𝕚𝕧𝕠.`.trim();
       await m.reply(caption);
       await conn.sendFile(m.chat, link, name, '', m, null, {mimetype: mime, asDocument: true});
     } catch {
-      await m.reply('Ocurrió un error inesperado, comprueba que el link sea válido y vuelva a intentarlo.');
+      await m.reply('⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.');
     }
   }
 };
+
 handler.help = ['mediafire <url>'];
 handler.tags = ['downloader', 'premium'];
-handler.command = /^(mediafire|mediafiredl|mf)$/i;
+handler.command = ['mediafire', 'mediafiredl', 'mf'];
+
 export default handler;
 
 async function mediafireDl(url) {

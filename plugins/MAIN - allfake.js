@@ -46,6 +46,7 @@ var img5 = fs.readFileSync('./media/image5.jpg');
 var img6 = fs.readFileSync('./media/image6.jpg');
 var img7 = fs.readFileSync('./media/image7.jpg');
 global.icons = [img1, img2, img3, img4, img5, img6, img7].getRandom()
+
 var vid1 = fs.readFileSync('./media/vid1.mp4');
 var vid2 = fs.readFileSync('./media/vid2.mp4');
 var vid3 = fs.readFileSync('./media/vid3.mp4');

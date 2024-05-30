@@ -16,7 +16,7 @@ handler.all = async function(m) {
       if (!img) return;
       stiker = await sticker(img, false, packname, author);
     } else if (/video/g.test(mime)) {
-      if (/video/g.test(mime)) if ((q.msg || q).seconds > 8) return await m.reply(`El video no puede durar más de 7 seg.`);
+      if (/video/g.test(mime)) if ((q.msg || q).seconds > 8) return await m.reply(`⧼✦⧽ 𝔼𝕝 𝕧𝕚𝕕𝕖𝕠 𝕖𝕤 𝕕𝕖𝕞𝕒𝕤𝕚𝕒𝕕𝕠 𝕝𝕒𝕣𝕘𝕠, 𝕞𝕒𝕩𝕚𝕞𝕠 𝟟 𝕤𝕖𝕘.`);
       const img = await q.download();
       if (!img) return;
       stiker = await sticker(img, false, packname, author);

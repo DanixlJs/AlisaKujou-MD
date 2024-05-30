@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 import PDFDocument from 'pdfkit';
 import {extractImageThumb} from '@whiskeysockets/baileys';
 const handler = async (m, {conn, text, usedPrefix, command, args}) => {
-  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `Los comandos NSFW están desactivados.\n\n> Un Administrador puede activarlo con *${prefix}nsfw on*`;
-  if (!text) throw `Ingrese un texto, Ejemplo *${usedPrefix + command} miku*`;
+  if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `⧼✦⧽ 𝕃𝕠𝕤 𝕔𝕠𝕞𝕒𝕟𝕕𝕠𝕤 ℕ𝕊𝔽𝕎 𝕖𝕤𝕥𝕒𝕟 𝕕𝕖𝕤𝕒𝕔𝕥𝕚𝕧𝕒𝕕𝕠𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}enable modohorny* 𝕡𝕒𝕣𝕒 𝕒𝕔𝕥𝕚𝕧𝕒𝕣𝕝𝕠𝕤.`;
+  if (!text) throw `⧼✦⧽ 𝕌𝕤𝕠 ℂ𝕠𝕣𝕣𝕖𝕔𝕥𝕠:\n→ *${usedPrefix + command} <Rem>*`;
   try {
     m.reply(global.wait);
     const res = await fetch(`https://api.lolhuman.xyz/api/nhentaisearch?apikey=${lolkeysapi}&query=${text}`);
@@ -21,13 +21,15 @@ const handler = async (m, {conn, text, usedPrefix, command, args}) => {
     const imagepdf = await toPDF(pages);
     await conn.sendMessage(m.chat, {document: imagepdf, jpegThumbnail, fileName: data.title.english + '.pdf', mimetype: 'application/pdf'}, {quoted: m});
   } catch {
-    throw `No hubo resultados en la busqueda...;`
+    throw `⧼✦⧽ ℕ𝕠 𝕙𝕦𝕓𝕠 𝕣𝕖𝕤𝕦𝕝𝕥𝕒𝕕𝕠𝕤 𝕖𝕟 𝕝𝕒 𝕓𝕦𝕤𝕢𝕦𝕖𝕕𝕒.`;
   }
 };
+
 handler.help = ['hentaipdf <texto>'];
-handler.command = /^(hentaipdf)$/i;
+handler.command = ['hentaipdf '];
 handler.tags = ['nsfw'];
 handler.register = true;
+
 export default handler;
 
 async function nhentaiScraper(id) {

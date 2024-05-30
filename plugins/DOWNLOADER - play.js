@@ -11,7 +11,7 @@ let limit2 = 400;
 let limit_a1 = 50;
 let limit_a2 = 400;
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
- if (!text) return conn.reply(m.chat, `Ingrese el nombre de un video de YouTube, Ejemplo, *${usedPrefix * command} Huellas - Maiye Torrex*`,  m, fake, )
+ if (!text) return conn.reply(m.chat, `⧼✦⧽ 𝕀𝕟𝕘𝕣𝕖𝕤𝕖 𝕦𝕟 𝕥𝕖𝕩𝕥𝕠 𝕡𝕒𝕣𝕒 𝕣𝕖𝕒𝕝𝕚𝕫𝕒𝕣 𝕝𝕒 𝕓𝕦𝕤𝕢𝕦𝕖𝕕𝕒.\n◈ 𝔼𝕛𝕖𝕞𝕡𝕝𝕠:\n→ *${usedPrefix + command} Huellas - Maiye Torrex*`,  m, fake, )
   try {
     const yt_play = await search(args.join(' '));
     let additionalText = '';
@@ -21,16 +21,14 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
       additionalText = 'video';
     }
     m.react('🕒') 
-    const texto1 = `- *RESULTADOS*
-- *Titulo:* ${yt_play[0].title}
-- *Publicado en:* ${yt_play[0].ago}
-- *Enlace:* ${yt_play[0].url}
-- *Autor:* ${yt_play[0].author.name}
-- *Canal:* ${yt_play[0].author.url}
-- *Duración:* ${secondString(yt_play[0].duration.seconds)}
+    const texto1 = `✰ *ℝ𝕖𝕤𝕦𝕝𝕥𝕒𝕕𝕠𝕤 𝕕𝕖: ${text}*
+◈ 𝕋𝕚𝕥𝕦𝕝𝕠: ${yt_play[0].title}
+◈ 𝔻𝕦𝕣𝕒𝕔𝕚𝕠𝕟: ${secondString(yt_play[0].duration.seconds)}
+◈ ℂ𝕒𝕟𝕒𝕝: ${yt_play[0].author.url}
+◈ 𝔼𝕟𝕝𝕒𝕔𝕖: ${yt_play[0].url}
 
-> Enviando ${additionalText}, aguarde un momento...`.trim();
-await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: { title: yt_play[0].title, body: global.dev, thumbnailUrl: yt_play[0].thumbnail, mediaType: 1, showAdAttribution: true, renderLargerThumbnail: true }}} , { quoted: fkontak })
+→ 𝔼𝕟𝕧𝕚𝕒𝕟𝕕𝕠 ${additionalText}, 𝕒𝕘𝕦𝕒𝕣𝕕𝕖 𝕦𝕟 𝕞𝕠𝕞𝕖𝕟𝕥𝕠.`.trim();
+await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: { title: yt_play[0].title, body: global.wm, thumbnailUrl: yt_play[0].thumbnail, mediaType: 1, showAdAttribution: true, renderLargerThumbnail: true }}} , { quoted: fkontak })
   if (command == 'play') {
     try {    
     const q = '128kbps';
@@ -46,7 +44,7 @@ await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: {
     const fileSizeInMB = fileSizeInKB / 1024;
     const size = fileSizeInMB.toFixed(2);    
     if (size >= limit_a2) {  
-    await conn.sendMessage(m.chat, {text: `Descargue su audio en ${dl_url}`}, {quoted: m});
+    await conn.sendMessage(m.chat, {text: `⧼✦⧽ 𝔻𝕖𝕤𝕔𝕒𝕣𝕘𝕦𝕖 𝕤𝕦 𝕒𝕦𝕕𝕚𝕠 𝕖𝕟 ${dl_url}`}, {quoted: m});
     return;    
     }     
     if (size >= limit_a1 && size <= limit_a2) {  
@@ -88,7 +86,7 @@ await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: {
     const fileSizeInMB = fileSizeInKB / 1024;
     const size = fileSizeInMB.toFixed(2);    
     if (size >= limit2) {  
-    await conn.sendMessage(m.chat, {text: `Descargue su video en ${dl_url}`}, {quoted: fkontak});
+    await conn.sendMessage(m.chat, {text: `⧼✦⧽ 𝔻𝕖𝕤𝕔𝕒𝕣𝕘𝕦𝕖 𝕤𝕦 𝕒𝕦𝕕𝕚𝕠 𝕖𝕟 ${dl_url}`}, {quoted: fkontak});
     return;    
     }     
     if (size >= limit1 && size <= limit2) {  
@@ -110,12 +108,13 @@ await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: {
   }
 } catch (error) {
     console.log(error)
-    throw 'Error, por favor vuelva a intentarlo.';
+    throw '⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.';
   }
 };
+
 handler.help = ['play <texto>', 'play2 <texto>'];
 handler.tags = ['downloader'];
-handler.command = /^(play|play2)$/i;
+handler.command = ['play', 'play2'];
 handler.register = true
 
 

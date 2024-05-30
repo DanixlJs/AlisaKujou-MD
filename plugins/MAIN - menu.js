@@ -4,52 +4,53 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 
   let tags = {
-  'info': '- *MENU-INFO*',
-  'dadibot': '- *MENU-SERBOT*',
-  'search': 'MENU-BUSQUEDAS',
-  'downloader': '- *MENU-DESCARGAS*',
-  'internet': '- *MENU-INTERNET*',
-  'audio': '- *MENU-AUDIOS*',
-  'rpg': '- *MENU-RPG*',
-  'fun': '- *MENU-DIVERSIÓN*',
-  'premium': '- *MENU-PREMIUM*',
-  'tools': '- *MENU-HERRAMIENTAS*',
-  'sticker': '- *MENU-STICKER*',
-  'transformador': '- *MENU-TRANSFORMADOR*',
-  'ai': '- *MENU-AI*',
-  'anime': '- *MENU-ANIME*',
-  'nsfw': '- *MENU-NSFW*'
-  
+  'info': '*INFO*',
+  'dadibot': '*SERBOT*',
+  'search': '*BUSQUEDAS*',
+  'downloader': '*DESCARGAS*',
+  'internet': '*INTERNET*',
+  'audio': '*AUDIOS*',
+  'rpg': '*RPG*',
+  'fun': '*DIVERSIÓN*',
+  'premium': '*PREMIUM*',
+  'tools': '*HERRAMIENTAS*',
+  'sticker': '*STICKER*',
+  'transformador': '*TRANSFORMADOR*',
+  'ai': '*AI*',
+  'anime': '*ANIME*',
+  'nsfw': '*NSFW*',
+  'owner': '*OWNER*'
   }
 
-const defaultMenu = { before: `- *REM CHAM-MD*
-- *Hola %taguser*, %greeting
-- Bienvenido al Menu.
-
-- *INFO-USER*
-- *Nombre:* %name
-- *Exp:* %totalexp
-- *Diamantes:* %limit
-- *Level:* %level
-
-- *INFO-BOT*
-- *Developer:* %author
-- *Tipo:* %sbot
-- *Entorno:* Nodejs
-- *Baileys:* MultiDivice ^6.7.2
-- *Activo:* %muptime
-- *Registrados:* %totalexp
-
-- *CREDITOS*
-- *Nombre:* Diego-YL-117
-- *GitHub:* github.com/Diego-YL-117
-
-- *LISTA DE COMANDOS*
-`.trimStart(),
-  header: '- 〔  %category  〕',
-  body: '- *%cmd*\n',
-  footer: '',
-  after: '',
+const defaultMenu = { before: `
+╔════⟬ ${global.wm} ⟭
+║≫ ℍ𝕠𝕝𝕒 %taguser, %greeting
+║➮ 𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠/𝕒 𝕒𝕝 𝕄𝕖𝕟𝕦
+║
+╠════⟬ 𝕀ℕ𝔽𝕆 𝕌𝕊𝔼ℝ ⟭
+║≫ ℕ𝕠𝕞𝕓𝕣𝕖: %name
+║➮ 𝔼𝕩𝕡: %totalexp
+║➮ 𝔻𝕚𝕒𝕞𝕒𝕟𝕥𝕖𝕤: %limit
+║➮ 𝕃𝕖𝕧𝕖𝕝: %level
+║
+╠════⟬ 𝕀ℕ𝔽𝕆 𝔹𝕆𝕋 ⟭
+║≫ 𝔻𝕖𝕧𝕖𝕝𝕠𝕡𝕖𝕣: %author
+║➮ 𝕋𝕚𝕡𝕠: %sbot
+║➮ 𝔼𝕟𝕥𝕠𝕣𝕟𝕠: NodeJs
+║➮ 𝔹𝕒𝕚𝕝𝕖𝕪𝕤: MultiDivice ^6.7.2
+║➮ 𝔸𝕔𝕥𝕚𝕧𝕠: %muptime
+║➮ ℝ𝕖𝕘𝕚𝕤𝕥𝕣𝕒𝕕𝕠𝕤: %totalreg
+║
+╠════⟬ ℂℝ𝔼𝔻𝕀𝕋𝕆𝕊 ⟭
+║≫ ℕ𝕠𝕞𝕓𝕣𝕖: Diego-YL-117
+║➮ 𝔾𝕚𝕥ℍ𝕦𝕓: github.com/Diego-YL-177
+║
+╠════⟬ ℂ𝕆𝕄𝔸ℕ𝔻𝕆𝕊 ⟭
+║`.trimStart(),
+  header: '╠════⟬ %category ⟭',
+  body: '║✰ *%cmd*\n',
+  footer: '║',
+  after: `╚═════⟬ ${global.wm} ⟭`,
 }
 
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
@@ -153,18 +154,12 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
 
 const fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
-const who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-
-const pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/327f6ad853cb4f405aa80.jpg')
-
-await m.reply('> Cargando menu...')
-
-m.react('🌸') 
-
+await conn.sendFile(m.chat, global.icons, 'img.jpg', '⧼✿⧽ ℂ𝕒𝕣𝕘𝕒𝕟𝕕𝕠 𝕞𝕖𝕟𝕦́\n> ◈ 𝔼𝕤𝕡𝕖𝕣𝕖 𝕦𝕟 𝕞𝕠𝕞𝕖𝕟𝕥𝕠.', fkontak)
+m.react('💙') 
 conn.sendMessage(m.chat, { video: global.vid, caption: text.trim(), mentions: [m.sender] }, { quoted: estilo })
 
   } catch (e) {
-    conn.reply(m.chat, 'Ocurrió un error...', m)
+    conn.reply(m.chat, '> Ocurrió un error.', m)
     throw e
   }
 }

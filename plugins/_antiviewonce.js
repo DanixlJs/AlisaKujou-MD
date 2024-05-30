@@ -12,7 +12,7 @@ export async function before(m, {isAdmin, isBotAdmin}) {
     for await (const chunk of media) {
       buffer = Buffer.concat([buffer, chunk]);
     }
-    const cap = 'Que ocultas ahí? toca reenviarlo.'
+    const cap = '⧼✦⧽ 𝔼𝕟 𝕖𝕤𝕥𝕖 𝕘𝕣𝕦𝕡𝕠 𝕟𝕠 𝕤𝕖 𝕠𝕔𝕦𝕝𝕥𝕒 𝕟𝕒𝕕𝕒.'
     if (/video/.test(type)) {
       return mconn.conn.sendFile(m.chat, buffer, 'error.mp4', `${msg[type].caption ? msg[type].caption + '\n\n' + cap : cap}`, m);
     } else if (/image/.test(type)) {

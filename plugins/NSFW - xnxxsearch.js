@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 const handler = async (m, {text, usedPrefix, command}) => {
-if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios premiums, use *${prefix}premium* para más info.`;
-if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `Los comandos NSFW están desactivados.\n\n> Un Administrador puede activarlo con *${prefix}nsfw on*`;
-  if (!text) throw `Ingrese un texto para realizar la busqueda, Ejemplo: *${usedPrefix + command} Con mi Prima*`;
+if (!global.db.data.users[m.sender].premium) throw `⧼✦⧽ 𝔼𝕤𝕥𝕖 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 𝕖𝕤 𝕤𝕠𝕝𝕠 𝕡𝕒𝕣𝕒 𝕌𝕤𝕦𝕒𝕣𝕚𝕠𝕤 ℙ𝕣𝕖𝕞𝕚𝕦𝕞𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}premium* 𝕡𝕒𝕣𝕒 𝕞𝕒́𝕤 𝕚𝕟𝕗𝕠.`;
+if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `⧼✦⧽ 𝕃𝕠𝕤 𝕔𝕠𝕞𝕒𝕟𝕕𝕠𝕤 ℕ𝕊𝔽𝕎 𝕖𝕤𝕥𝕒𝕟 𝕕𝕖𝕤𝕒𝕔𝕥𝕚𝕧𝕒𝕕𝕠𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}enable modohorny* 𝕡𝕒𝕣𝕒 𝕒𝕔𝕥𝕚𝕧𝕒𝕣𝕝𝕠𝕤.`;
+  if (!text) throw `⧼✦⧽ 𝕀𝕟𝕘𝕣𝕖𝕤𝕖 𝕦𝕟 𝕥𝕖𝕩𝕥𝕠 𝕡𝕒𝕣𝕒 𝕣𝕖𝕒𝕝𝕚𝕫𝕒𝕣 𝕝𝕒 𝕓𝕦𝕤𝕢𝕦𝕖𝕕𝕒.\n◈ 𝔼𝕛𝕖𝕞𝕡𝕝𝕠:\n→ *${usedPrefix + command} Con mi Prima*`;
   try {
     const vids_ = {
       from: m.sender,
@@ -16,12 +16,12 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `Los comandos NSFW est�
     }
     const res = await xnxxsearch(text);
     const json = res.result;
-    let cap = `> *Resultados de:* ${text.toUpperCase()}\n\n`;
+    let cap = `✰ *ℝ𝕖𝕤𝕦𝕝𝕥𝕒𝕕𝕠𝕤 𝕕𝕖:* ${text.toUpperCase()}\n`;
     let count = 1;
     for (const v of json) {
       const linkXXX = v.link;
       vids_.urls.push(linkXXX);
-      cap += `> *[${count}]*\n- *Titulo:* ${v.title}\n- *Link:* ${v.link}\n- *Info:* ${v.info}\n\n`;
+      cap += `◈ 𝕋𝕚𝕥𝕦𝕝𝕠:  ${v.title}\n◈ 𝕃𝕚𝕟𝕜: ${v.link}\n◈ 𝕀𝕟𝕗𝕠: ${v.info}\n\n`;
       count++;
     }
     m.reply(cap);
@@ -30,10 +30,12 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `Los comandos NSFW est�
     throw e;
   }
 };
+
 handler.help = ['xnxxsearch <texto>'];
 handler.tags = ['downloader', 'premium', 'nsfw'];
-handler.command = /^(xnxxsearch)$/i;
+handler.command = ['xnxxsearch'];
 handler.register = true;
+
 export default handler;
 
 async function xnxxsearch(query) {

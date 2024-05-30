@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 import {sizeFormatter} from 'human-readable';
 const formatSize = sizeFormatter({
   std: 'JEDEC', decimalPlaces: 2, keepTrailingZeroes: false, render: (literal, symbol) => `${literal} ${symbol}B`});
-const handler = async (m, {conn, args, usedPrefix}) => {
-  if (!global.db.data.users[m.sender].premium) throw `Este comando es solo para usuarios Premiums, use el comando *${usedPrefix}premium* para más info.`;
+const handler = async (m, {conn, args, usedPrefix, isPrems}) => {
+  if (!isPrems) throw `⧼✦⧽ 𝔼𝕤𝕥𝕖 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 𝕖𝕤 𝕤𝕠𝕝𝕠 𝕡𝕒𝕣𝕒 𝕌𝕤𝕦𝕒𝕣𝕚𝕠𝕤 ℙ𝕣𝕖𝕞𝕚𝕦𝕞𝕤, 𝕌𝕤𝕖 𝕖𝕝 𝕔𝕠𝕞𝕒𝕟𝕕𝕠 *${usedPrefix}premium* 𝕡𝕒𝕣𝕒 𝕞𝕒́𝕤 𝕚𝕟𝕗𝕠.`;
   if (!args[0]) throw 'Ocurrió un error inesperado, compruebe que el Link sea válido.';
   try {
     GDriveDl(args[0]).then(async (res) => {

@@ -16,8 +16,8 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
   } catch (e) {
     m.reply(e + '');
     text = args.join(' ');
-    if (!text) throw `Te Faltó un Texto, Ejemplo:\n- ${usedPrefix}tts Hola Rem`;
-    res = await tts(text, defaultLang);
+    if (!text) throw `⧼✦⧽ 𝕌𝕤𝕠 ℂ𝕠𝕣𝕣𝕖𝕔𝕥𝕠:\n→ *{usedPrefix + command} Hola Rem*`;
+      res = await tts(text, defaultLang);
   } finally {
     if (res) conn.sendFile(m.chat, res, 'tts.opus', null, m, true);
   }
@@ -25,7 +25,8 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
 handler.help = ['tts <idioma> <texto>'];
 handler.tags = ['tools'];
 handler.register = true;
-handler.command = /^g?tts$/i;
+handler.command = ['tts'];
+
 export default handler;
 
 function tts(text, lang = 'es') {

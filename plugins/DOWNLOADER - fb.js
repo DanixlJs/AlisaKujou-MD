@@ -7,34 +7,33 @@ let vid
 const isCommand7 = /^(facebook|fb|facebookdl|fbdl)$/i.test(command)
 
 async function reportError(e) {
-await conn.reply(m.chat, `Ocurrió un error...`, m, fake, )
-console.log(`- *Error:* ${usedPrefix + command}\n`)
+await conn.reply(m.chat, `⧼✦⧽ 𝕆𝕔𝕦𝕣𝕣𝕚𝕠́ 𝕦𝕟 𝕖𝕣𝕣𝕠𝕣 𝕚𝕟𝕖𝕤𝕡𝕖𝕣𝕒𝕕𝕠.`, m, fake, )
 console.log(e)
 }
 
 switch (true) {   
 case isCommand7:
-if (!text) return conn.reply(m.chat, `Ingrese un enlace de Facebook, Ejemplo: *${usedPrefix}fb <link>`, m, fake, )
+if (!text) return conn.reply(m.chat, `⧼✦⧽ 𝕌𝕤𝕠 ℂ𝕠𝕣𝕣𝕖𝕔𝕥𝕠:\n→ *{usedPrefix}fb <link>*`, m, fake, )
 if (!args[0].match(/www.facebook.com|fb.watch|web.facebook.com|business.facebook.com|video.fb.com/g)) return conn.reply(m.chat, 'Link inválido...', m, fake, )
-await conn.reply(m.chat, 'Procesando, espere un momento...', m, fake, )
+await conn.reply(m.chat, '⧼✿⧽ ℙ𝕣𝕠𝕔𝕖𝕤𝕒𝕟𝕕𝕠, 𝕖𝕤𝕡𝕖𝕣𝕖 𝕦𝕟 𝕞𝕠𝕞𝕖𝕟𝕥𝕠.', m, fake, )
 m.react('🕒')
 let messageType = checkMessageType(args[0])
 let message = ''
 switch (messageType) {
 case 'groups':
-message = '> Video de Grupo de Facebook.'
+message = '⧼✿⧽ 𝕍𝕚𝕕𝕖𝕠 𝕕𝕖 𝔾𝕣𝕦𝕡𝕠 𝕕𝕖 𝔽𝕒𝕔𝕖𝕓𝕠𝕠𝕜.'
 break
 case 'reel':
-message = '> Video de Reels de Facebook.'
+message = '⧼✿⧽ 𝕍𝕚𝕕𝕖𝕠 𝕕𝕖 ℝ𝕖𝕖𝕝𝕤 𝕕𝕖 𝔽𝕒𝕔𝕖𝕓𝕠𝕠𝕜.'
 break
 case 'stories':
-message = '> Vide de Historias de Facebook.'
+message = '⧼✿⧽ 𝕍𝕚𝕕𝕖𝕠 𝕕𝕖 ℍ𝕚𝕤𝕥𝕠𝕣𝕚𝕒𝕤 𝕕𝕖 𝔽𝕒𝕔𝕖𝕓𝕠𝕠𝕜.'
 break
 case 'posts':
-message = '> Video de una publicación de FAcebook.'
+message = '⧼✿⧽ 𝕍𝕚𝕕𝕖𝕠 𝕕𝕖 𝕦𝕟𝕒 𝕡𝕦𝕓𝕝𝕚𝕔𝕒𝕔𝕚ó𝕟 𝕕𝕖 𝔽𝕒𝕔𝕖𝕓𝕠𝕠𝕜.'
 break
 default:
-message = '> Aquí tienes tu video.'
+message = '⧼✿⧽ 𝔸𝕢𝕦í 𝕥𝕚𝕖𝕟𝕖𝕤 𝕥𝕦 𝕧𝕚𝕕𝕖𝕠.'
 break
 }
 try {
@@ -62,8 +61,8 @@ reportError(e)}
 
 }
 handler.help = ['fb <link>']
-handler.tags = ['dowloader']
-handler.command = /^(facebook|fb|facebookdl|fbdl)$/i
+handler.tags = ['downloader']
+handler.command = ['faceboook', 'fb']
 handler.register = true
 handler.limit = true
 
