@@ -27,6 +27,7 @@ global.team = '👑Developer by 🧑‍💻DanixlJs';
 global.vs = '1.0.0-(beta)';
 
 global.img = fs.readFileSync('./Menu.jpg');
+global.img2 = fs.readFileSync('./AhoraQue.png');
 
 global.gp = 'https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb'
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y'
