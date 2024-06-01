@@ -1,4 +1,4 @@
-console.log('Iniciando RemCham')
+console.log('Iniciando...')
 import { join, dirname } from 'path'
 import { createRequire } from 'module'
 import { fileURLToPath } from 'url'
@@ -14,20 +14,15 @@ const { name, author } = require(join(__dirname, './package.json'))
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 
-say('Alisa\nKujou MD', {
+say('Alisa\nKujou-MD', {
 font: 'block',
 align: 'center',
 colors: ['white']
 })
-say(`Multi Divice`, {
-font: 'chrome',
-align: 'center',
-colors: ['pink']
-})
-say(`Creditos a: @Diego-YL-177\nEditor y Propietario: @DanixlJs`, {
+say(`Developed by @DanixlJs`, {
 font: 'console',
 align: 'center',
-colors: 'yellow']
+gradient: ['blue', 'magenta']
 })
 
 var isRunning = false
@@ -39,7 +34,7 @@ let args = [join(__dirname, file), ...process.argv.slice(2)]
 say([process.argv[0], ...args].join(' '), {
 font: 'console',
 align: 'center',
-colors: ['green']
+gradient: ['green', 'magenta']
 })
 setupMaster({
 exec: args[0],
@@ -60,7 +55,7 @@ break
 })
 p.on('exit', (_, code) => {
 isRunning = false
-console.error('Ocurrió un error:', code)
+console.error('Ocurrió un error inesperado:', code)
 process.exit();
 if (code === 0) return
 watchFile(args[0], () => {
