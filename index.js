@@ -14,20 +14,20 @@ const { name, author } = require(join(__dirname, './package.json'))
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 
-say('Rem\nCham MD', {
+say('Alisa\nKujou MD', {
 font: 'block',
 align: 'center',
-colors: ['blue', 'magenta']
+colors: ['white']
 })
 say(`Multi Divice`, {
 font: 'chrome',
 align: 'center',
-gradient: ['green', 'magenta']
+colors: ['pink']
 })
 say(`Creditos a: @Diego-YL-177\nEditor y Propietario: @DanixlJs`, {
 font: 'console',
 align: 'center',
-gradient: ['white', 'magenta']
+colors: 'yellow']
 })
 
 var isRunning = false
@@ -39,7 +39,7 @@ let args = [join(__dirname, file), ...process.argv.slice(2)]
 say([process.argv[0], ...args].join(' '), {
 font: 'console',
 align: 'center',
-gradient: ['blue', 'magenta']
+colors: ['green']
 })
 setupMaster({
 exec: args[0],

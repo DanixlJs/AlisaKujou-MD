@@ -10,26 +10,27 @@ import moment from 'moment-timezone';
 global.botnumber = ""
 global.confirmCode = ""
 
-global.owner = [['595983799436', '👑 Owner', true]]
+global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true]]
 
-global.contactos = [["595983799436", 'DanixlJs', 1]]
+global.contactos = [["595983799436", 👑 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫', 1]]
 
 global.suittag = ['595973755967']
 global.prems = []
 global.mods = []
 
-global.packname = 'Sticker by';
-global.botname = 'TheRemCham-MD';
-global.author = 'Rem Cham-MD';
-global.wm = '💙Rem Cham-MD💙';
-global.dev = '👑Developer by 🧑‍💻DanixlJs';
-global.team = '👑Developer by 🧑‍💻DanixlJs';
+global.packname = '𝑺𝒕𝒊𝒄𝒌𝒆𝒓 𝑩𝒚';
+global.botname = '🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂-𝗠𝗗​᭄';
+global.author = `${global.botname}`;
+global.wm = 'ೄྀɑׁׅᥣׁׅ֪ꪱׁׁׁׅׅׅׅ꯱ɑׁׅ ƙׁׅυׁׅյׁׅᨵׁׅׅυׁׅ​᭄';
+global.dev = '👑𝐷𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑑 𝑏𝑦 • 🧑‍💻DanixlJs';
+global.team = '👑𝐷𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑑 𝑏𝑦 • 🧑‍💻DanixlJs';
 global.vs = '1.0.0-(beta)';
 
 global.img = fs.readFileSync('./Menu.jpg');
 global.img2 = fs.readFileSync('./AhoraQue.png');
 
 global.gp = 'https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb'
+global.patreon = 'https://www.patreon.com/'
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y'
 
 var ase = new Date(); var hour = ase.getHours(); switch(hour){ case 0: hour = 'Linda Noche 🌃'; break; case 1: hour = 'Linda Noche 🌃'; break; case 2: hour = 'Linda Noche 🌃'; break; case 3: hour = 'Linda Mañana 🌄'; break; case 4: hour = 'Linda Mañana 🌄'; break; case 5: hour = 'Linda Mañana 🌄'; break; case 6: hour = 'Linda Mañana 🌄'; break; case 7: hour = 'Linda Mañana 🌅'; break; case 8: hour = 'Linda Mañana 🌄'; break; case 9: hour = 'Linda Mañana 🌄'; break; case 10: hour = 'Linda Día 🌤'; break; case 11: hour = 'Linda Día 🌤'; break; case 12: hour = 'Linda Día 🌤'; break; case 13: hour = 'Linda Día 🌤'; break; case 14: hour = 'Linda Tarde 🌆'; break; case 15: hour = 'Linda Tarde 🌆'; break; case 16: hour = 'Linda Tarde 🌆'; break; case 17: hour = 'Linda Tarde 🌆'; break; case 18: hour = 'Linda Noche 🌃'; break; case 19: hour = 'Linda Noche 🌃'; break; case 20: hour = 'Linda Noche 🌃'; break; case 21: hour = 'Linda Noche 🌃'; break; case 22: hour = 'Linda Noche 🌃'; break; case 23: hour = 'Linda Noche 🌃'; break;}

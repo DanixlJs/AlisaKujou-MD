@@ -104,7 +104,7 @@ global.loadChatgptDB = async function loadChatgptDB() {
 };
 loadChatgptDB();
 
-global.authFile = `RemSession`;
+global.authFile = `AlisaSession`;
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile);
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
@@ -137,7 +137,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['RemCham-MD', 'Safari', '2.0.0'] : methodCodeQR ? ['RemCham-MD', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '110.0.5585.95'],
+browser: opcion == '1' ? ['AlisaKujou-MD', 'Safari', '2.0.0'] : methodCodeQR ? ['AlisaKujou-MD', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '110.0.5585.95'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -192,7 +192,7 @@ rl.close()
 
 conn.isInit = false;
 conn.well = false;
-conn.logger.info(`Cargando RemCham-MD...\n`);
+conn.logger.info(`Cargando...\n`);
 
 if (!opts['test']) {
   if (global.db) {
@@ -211,20 +211,20 @@ function clearTmp() {
   tmp.forEach((dirname) => readdirSync(dirname).forEach((file) => filename.push(join(dirname, file))));
   return filename.map((file) => {
     const stats = statSync(file);
-    if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) return unlinkSync(file); // 3 minutes
+    if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) return unlinkSync(file); 
     return false;
   });
 }
 
 function purgeSession() {
 let prekey = []
-let directorio = readdirSync("./RemSession")
+let directorio = readdirSync("./AlisaSession")
 let filesFolderPreKeys = directorio.filter(file => {
-return file.startsWith('pre-key-') /*|| file.startsWith('session-') || file.startsWith('sender-') || file.startsWith('app-') */
+return file.startsWith('pre-key-') 
 })
 prekey = [...prekey, ...filesFolderPreKeys]
 filesFolderPreKeys.forEach(files => {
-unlinkSync(`./RemSession/${files}`)
+unlinkSync(`./AlisaSession/${files}`)
 })
 } 
 
@@ -235,7 +235,7 @@ let SBprekey = []
 listaDirectorios.forEach(directorio => {
 if (statSync(`./JadiBotSessions/${directorio}`).isDirectory()) {
 let DSBPreKeys = readdirSync(`./JadiBotSessions/${directorio}`).filter(fileInDir => {
-return fileInDir.startsWith('pre-key-') /*|| fileInDir.startsWith('app-') || fileInDir.startsWith('session-')*/
+return fileInDir.startsWith('pre-key-') 
 })
 SBprekey = [...SBprekey, ...DSBPreKeys]
 DSBPreKeys.forEach(fileInDir => {
@@ -243,13 +243,13 @@ unlinkSync(`./JadiBotSessions/${directorio}/${fileInDir}`)
 })
 }
 })
-if (SBprekey.length === 0) return; //console.log(chalk.cyanBright(`=> No hay archivos por eliminar.`))
+if (SBprekey.length === 0) return; 
 } catch (err) {
 console.log(chalk.bold.red(`Algo salio mal durante la eliminación, archivos no eliminados`))
 }}
 
 function purgeOldFiles() {
-const directories = ['./RemSession/', './JadiBotSessions/']
+const directories = ['./AlisaSession/', './JadiBotSessions/']
 const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
@@ -288,7 +288,7 @@ console.log(chalk.bold.cyan('Conección Exitosa al WhatsApp'))
    }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 if (reason == 405) {
-await fs.unlinkSync("./RemSession/" + "creds.json")
+await fs.unlinkSync("./AlisaSession/" + "creds.json")
 console.log(chalk.bold.redBright(`Conexión reemplazada, por favor espere un momento me voy a reiniciar...\nSi aparece error vuelve a iniciar con: npm start`)) 
 process.send('reset')}
 if (connection === 'close') {
@@ -346,14 +346,21 @@ global.reloadHandler = async function(restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate);
   }
 
-conn.welcome = '- *BIENVENIDO*\n> Hola @user, bienvenido a:\n- @subject\n\n> Nota: Lee la descripción para evitar incovenientes.' 
-conn.bye = '- *DESPEDIDA*\n> @user no fue digno de estar aqui.\n\n- *Rem Cham-MD*'
-conn.spromote = '> *ALERTA:* @user ahora es Administrador.'
-conn.sdemote = '> *ALERTA:* @user ya no es Administrador.'
-conn.sDesc = 'Se ha modificado la descripción del grupo, Nueva Descripción:\n\n@desc'
-conn.sSubject = 'Se ha modificado el nombre del grupo, Nuevo Nombre:\n- @subject'
-conn.sIcon = 'Se cambió la imagen del grupo.'
-conn.sRevoke = 'Se actualizó el Link del grupo, Nuevo Link:\n- [@revoke]'
+conn.welcome = '◥@user◤\n❦ 𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 𝗮\n> @subject\n\n➤ 𝗡𝗼𝘁𝗮: Lee la descripción del grupo para evitar inconvenientes.' 
+
+conn.bye = '✧ 𝗦𝗲 𝗻𝗼𝘀 𝗳𝘂𝗲 𝘂𝗻 𝗨𝘀𝘂𝗮𝗿𝗶𝗼\n◥@user◤ ya no forma parte del grupo.\n\n➤ Esperemos que vuelva pronto.'
+
+conn.spromote = '❀ @user 𝗮𝗵𝗼𝗿𝗮 𝗲𝘀 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿.'
+
+conn.sdemote = '❀ @user 𝘆𝗮 𝗻𝗼 𝗲𝘀 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿.'
+
+conn.sDesc = '❀ 𝗔𝘁𝗲𝗻𝗰𝗶𝗼𝗻 𝗹𝗲𝗮𝗻 𝗹𝗮 𝗻𝘂𝗲𝘃𝗮 𝗱𝗲𝘀𝗰𝗿𝗶𝗽𝗰𝗶𝗼𝗻 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼.\n\n@desc'
+
+conn.sSubject = ❀ 𝗦𝗲 𝗮𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗼 𝗲𝗹 𝗻𝗼𝗺𝗯𝗿𝗲 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼 𝗮\n✰ @subject'
+
+conn.sIcon = '❀ 𝗦𝗲 𝗮𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗼 𝗹𝗮 𝗜𝗺𝗮𝗴𝗲𝗻 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼.'
+
+conn.sRevoke = '❀ 𝗦𝗲 𝗮𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗼 𝗲𝗹 𝗲𝗻𝗹𝗮𝗰𝗲 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼 𝗮\n> → [@revoke]'
 
   conn.handler = handler.handler.bind(global.conn);
   conn.participantsUpdate = handler.participantsUpdate.bind(global.conn);
