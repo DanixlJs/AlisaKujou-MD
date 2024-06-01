@@ -38,13 +38,13 @@ var l3 = 'https://tiktok.com/';
 var l4 = 'https://instagram.com/';
 global.fakeLink = [l1, l2, l3, l4].getRandom()
 
-var img1 = fs.readFileSync('./media/image1.jpg');
-var img2 = fs.readFileSync('./media/image2.jpg');
-var img3 = fs.readFileSync('./media/image3.jpg');
-var img4 = fs.readFileSync('./media/image4.jpg');
-var img5 = fs.readFileSync('./media/image5.jpg');
-var img6 = fs.readFileSync('./media/image6.jpg');
-var img7 = fs.readFileSync('./media/image7.jpg');
+var img1 = fs.readFileSync('./media/imagen1.jpg');
+var img2 = fs.readFileSync('./media/imagen2.jpg');
+var img3 = fs.readFileSync('./media/imagen3.jpg');
+var img4 = fs.readFileSync('./media/imagen4.jpg');
+var img5 = fs.readFileSync('./media/imagen5.jpg');
+var img6 = fs.readFileSync('./media/imagen6.jpg');
+var img7 = fs.readFileSync('./media/imagen7.jpg');
 global.icons = [img1, img2, img3, img4, img5, img6, img7].getRandom()
 
 var vid1 = fs.readFileSync('./media/vid1.mp4');
