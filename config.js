@@ -12,7 +12,7 @@ global.confirmCode = ""
 
 global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true]]
 
-global.contactos = [["595983799436", 👑 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫', 1]]
+global.contactos = [["595983799436", '👑 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫', 1]]
 
 global.suittag = ['595973755967']
 global.prems = []
