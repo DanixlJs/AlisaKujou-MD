@@ -13,7 +13,6 @@ const require = createRequire(__dirname)
 const { name, author } = require(join(__dirname, './package.json')) 
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
-
 say('Alisa\nKujou-MD', {
 font: 'block',
 align: 'center',
@@ -24,9 +23,7 @@ font: 'console',
 align: 'center',
 gradient: ['blue', 'magenta']
 })
-
 var isRunning = false
-
 function start(file) {
 if (isRunning) return
 isRunning = true
