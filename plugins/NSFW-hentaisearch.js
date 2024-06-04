@@ -21,6 +21,7 @@ const handler = async (m, {conn, text, __dirname, usedPrefix, command}) => {
 handler.help = ['hentaisearch <texto>', 'searchhentai <texto>'];
 handler.command = ['hentaisearch', 'searchhentai'];
 handler.tags = ['nsfw'];
+handler.registrado = true;
 
 export default handler;
 

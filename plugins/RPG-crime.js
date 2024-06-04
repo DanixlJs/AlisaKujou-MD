@@ -2,9 +2,9 @@ let crime = 500
 let diamante = 10
 
 const handler = async (m, {conn, usedPrefix, command, groupMetadata, participants, isPrems}) => {
-const date = global.db.data.users[m.sender].crime + 600000; //600000 = 10 m
+const date = global.db.data.users[m.sender].crimetime + 600000; //600000 = 10 m
 
-if (new Date - global.db.data.users[m.sender].crime < 3600000) return m.reply(`✧ Espera *${msToTime(date - new Date())}* para realizar otro crimen.`)
+if (new Date - global.db.data.users[m.sender].crimetime < 3600000) return m.reply(`✧ Espera *${msToTime(date - new Date())}* para realizar otro crimen.`)
 let randow
 if (m.isGroup) randow = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
 else randow = m.chat
@@ -12,31 +12,31 @@ try {
 let ps = groupMetadata.participants.map(v => v.id)
 let randow = ps.getRandom()
 let users = global.db.data.users[randow]
-const exp = Math.floor(Math.random() * 9000)
-const diamond = Math.floor(Math.random() * 150)
-const money = Math.floor(Math.random() * 9000)
+const experiencia = Math.floor(Math.random() * 9000)
+const diamantes = Math.floor(Math.random() * 150)
+const alisacoins = Math.floor(Math.random() * 9000)
 
 let or = ['text', 'text2', 'text3', 'text4', 'text5']; 
 
 let media = or[Math.floor(Math.random() * 4)]
-global.db.data.users[m.sender].crime = new Date * 1;
+global.db.data.users[m.sender].crimetime = new Date * 1;
 
-if (media === 'text') return m.reply(`❀ ${pickRandom(global.robar)} *${exp}* experiencia.`).catch(global.db.data.users[m.sender].exp += exp) 
+if (media === 'text') return m.reply(`❀ ${pickRandom(global.robar)} *${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia += experiencia) 
 
-if (media === 'text2') return m.reply(`✧ ${pickRandom(global.robmal)} *${exp}* experiencia.`).catch(global.db.data.users[m.sender].exp -= crime) 
+if (media === 'text2') return m.reply(`✧ ${pickRandom(global.robmal)} *${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia -= crime) 
 
-if (media === 'text3') return m.reply(`❀ ${pickRandom(global.robar)} *${diamond}* Diamantes y *${money} AlisaCoins.`).catch(global.db.data.users[m.sender].limit += diamond).catch(global.db.data.users[m.sender].money += money)
+if (media === 'text3') return m.reply(`❀ ${pickRandom(global.robar)} *${diamantes}* Diamantes y *${alisacoins} AlisaCoins.`).catch(global.db.data.users[m.sender].diamantes += diamantes).catch(global.db.data.users[m.sender].alisacoins += alisacoins)
 
-if (media === 'text4') return m.reply(`✧ ${pickRandom(global.robmal)} *${diamond}* Diamante y *${money}* AlisaCoins.`).catch(global.db.data.users[m.sender].limit -= diamante).catch(global.db.data.users[m.sender].money -= crime)
+if (media === 'text4') return m.reply(`✧ ${pickRandom(global.robmal)} *${diamantes}* Diamante y *${alisacoins}* AlisaCoins.`).catch(global.db.data.users[m.sender].diamantes -= diamantes).catch(global.db.data.users[m.sender].alisacoins -= crime)
 
-if (media === 'text5') return conn.reply(m.chat, `❀ Le robaste a @${randow.split`@`[0]} una cantidad de *${exp}* experiencia.`, m, {contextInfo: {mentionedJid: [randow]}}).catch(global.db.data.users[m.sender].exp += exp).catch(global.db.data.users[randow].exp -= crime) 
+if (media === 'text5') return conn.reply(m.chat, `❀ Le robaste a @${randow.split`@`[0]} una cantidad de *${experiencia}* experiencia.`, m, {contextInfo: {mentionedJid: [randow]}}).catch(global.db.data.users[m.sender].experiencia += experiencia).catch(global.db.data.users[randow].experiencia -= crime) 
 } catch (e) {
 console.log(e)}}
 
 handler.help = ['crime'];
 handler.tags = ['rpg'];
 handler.command = ['crime'];
-handler.register = true
+handler.registrado = true
 handler.group = true
 
 export default handler;
