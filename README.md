@@ -1,4 +1,4 @@
-# ![Alisa Kujou - MD](https://telegra.ph/file/7bac962446d59b42ac4b8.jpg)
+# ![Alisa Kujou - MD](https://telegra.ph/file/d32a14c734274bdac0b54.mp4)
 
 Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍
 
@@ -43,8 +43,8 @@ Actualmente Alisa no está lista para instalarla, una vez que se termine de desa
 ---
 
 ## AGRADECIMIENTO
-- @Diego-YL-117
-- [![GitHub](https://img.shields.io/badge/GitHub-Diego--YL--117-blue?logo=github)](https://github.com/Diego-YL-117)
+- @Diego-YL-177
+- [![GitHub](https://img.shields.io/badge/GitHub-Diego--YL--177-blue?logo=github)](https://github.com/Diego-YL-177)
 
 ---
 
