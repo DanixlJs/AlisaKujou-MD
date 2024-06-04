@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash 
 # Interpretación determinada para la ejecución     
-COMANDOS = "pkg install git -y\npkg install nodejs -y\npkg install ffmpeg -y\npkg install imagemagick -y\npkg install -y yarn\ngit clone https://github.com/DanixlJs/RemCham-MD\ncd RemCham-MD\nyarn install\nnpm install\nnpm start"
+COMANDOS = "pkg install git -y\npkg install nodejs -y\npkg install ffmpeg -y\npkg install imagemagick -y\npkg install -y yarn\ngit clone https://github.com/DanixlJs/AlisaKujou-MD\ncd AlisaKujou-MD\nyarn install\nnpm install\nnpm start"
 
 echo -e "\033[01;93mPreparando instalación...\n\033[0m"
 echo -e "\033[01;32m\033[01mInstalando dependencias!!\n\033[0m" 
@@ -147,7 +147,7 @@ fi
 
 clear
 echo -e "\e[36m
-    ⪻ REM CHAM-MD ⪼
+    ⪻ ALISA KUJOU - MD ⪼
 ❥ Editor/Dueño: DanixlJs
 ❥ GitHub: http://github.com/DanixlJS
 ❥ Número: +595 983799 436
@@ -159,5 +159,5 @@ echo -e "\e[36m
 > Gracias por elegirnos, tenga un lindo día.\n\e[0m"
 
 
-echo -e "\033[01;32m\033[01mIniciando RemCham-MD\n\033[0m"
+echo -e "\033[01;32m\033[01mIniciando AlisaKujou-MD\n\033[0m"
 npm start

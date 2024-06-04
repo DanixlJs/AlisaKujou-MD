@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash 
-BOT_DIR="RemCham-MD"  
+BOT_DIR="AlisaKujou-MD"  
 BOT_REPO="https://github.com/DanixlJs/$BOT_DIR"
 DB_FILE="database.json"
 

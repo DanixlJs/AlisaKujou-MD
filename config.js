@@ -10,18 +10,16 @@ import moment from 'moment-timezone';
 global.botnumber = ""
 global.confirmCode = ""
 
-global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true]]
-
+global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true], ['5492964650915', 'WilsonOFC', true]]
 global.contactos = [["595983799436", '👑 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫', 1]]
-
 global.suittag = ['595973755967']
 global.prems = []
-global.mods = []
+global.mods = ['51986707393']
 
 global.packname = '𝑺𝒕𝒊𝒄𝒌𝒆𝒓 𝑩𝒚';
 global.botname = '🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂-𝗠𝗗​᭄';
 global.author = `${global.botname}`;
-global.wm = 'ೄྀɑׁׅᥣׁׅ֪ꪱׁׁׁׅׅׅׅ꯱ɑׁׅ ƙׁׅυׁׅյׁׅᨵׁׅׅυׁׅ​᭄';
+global.wm = '☙𝘼𝙡𝙞𝙨𝙖 𝙆𝙪𝙟𝙤𝙪​᭄';
 global.dev = '👑𝐷𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑑 𝑏𝑦 • 🧑‍💻DanixlJs';
 global.team = '👑𝐷𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑑 𝑏𝑦 • 🧑‍💻DanixlJs';
 global.vs = '1.0.0-(beta)';
@@ -29,6 +27,7 @@ global.vs = '1.0.0-(beta)';
 global.img = fs.readFileSync('./Menu.jpg');
 global.img2 = fs.readFileSync('./AhoraQue.png');
 
+global.md = 'https://github.com/DanixlJs/AlisaKujou-MD'
 global.gp = 'https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb'
 global.patreon = 'https://www.patreon.com/'
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y'
