@@ -33,7 +33,7 @@ const handler = async (m, {conn, args, usedPrefix, command }) => {
   }
 };
 
-handler.register = true;
+handler.registrado = true;
 handler.premium = true;
 handler.help = ['mediafire <url>'];
 handler.tags = ['downloader', 'premium'];

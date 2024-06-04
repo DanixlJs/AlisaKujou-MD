@@ -10,6 +10,6 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
 handler.help = ['pinterest <texto>', 'pin <texto>'];
 handler.tags = ['search'];
 handler.command = ['pin', 'pinterest']
-handler.register = true;
+handler.registrado = true;
 
 export default handler;

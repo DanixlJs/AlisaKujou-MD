@@ -19,7 +19,7 @@ let name = await conn.getName(who)
 handler.help = ["creador","owner"]
 handler.tags = ["info"]
 handler.command = ['creador', 'owner']
-handler.register = true
+handler.registrado = true
 
 export default handler
 
@@ -30,7 +30,6 @@ async function sendContactArray(conn, jid, data, quoted, options) {
             number = number.replace(/[^0-9]/g, '')
             let njid = number + '@s.whatsapp.net'
             let biz = await conn.getBusinessProfile(njid).catch(_ => null) || {}
-            // N:;${name.replace(/\n/g, '\\n').split(' ').reverse().join(';')};;;
             let vcard = `
 BEGIN:VCARD
 VERSION:3.0

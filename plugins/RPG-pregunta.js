@@ -18,7 +18,7 @@ conn.reply(m.chat, `❀ *PREGUNTAS*
 handler.help = ['pregunta']
 handler.tags = ['rpg']
 handler.command = ['pregunta']
-handler.register = true
+handler.registrado = true
 
 export default handler
 

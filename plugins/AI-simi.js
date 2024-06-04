@@ -31,6 +31,6 @@ handler.help = ['simi <texto>', 'bot <texto>']
 handler.tags = ['ai']
 handler.command = ['bot', 'simi']
 handler.group = true
-handler.register = true
+handler.registrado = true
 
 export default handler

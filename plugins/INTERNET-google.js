@@ -15,7 +15,10 @@ const ss = `https://image.thum.io/get/fullpage/${url}`
 conn.sendFile(m.chat, ss, 'error.png', teks, m)
 })
 } 
+
 handler.help = ['google <texto>'];
 handler.tags = ['internet'];
+handler.registrado = true;
 handler.command = ['google'];
+
 export default handler;

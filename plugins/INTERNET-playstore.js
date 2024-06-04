@@ -29,6 +29,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['playstore <aplicacion>'];
 handler.tags = ['internet', 'search'];
 handler.command = ['playstore'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;

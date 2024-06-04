@@ -110,8 +110,8 @@ loading()
 handler.help = ['doxear <@tag>'];
 handler.tags = ['rpg'];
 handler.command = ['doxxear'];
-handler.register = true;
-handler.limit = 5;
+handler.registrado = true;
+handler.diamantes = 5;
 
 export default handler;
 

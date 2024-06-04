@@ -13,7 +13,7 @@ const handler = async (m, _2, msg, pickRandom, isOwner ) => {
   const name = conn.getName(m.sender);
   let _syntax = '';
   const _text = (/^=/.test(usedPrefix) ? 'return ' : '') + noPrefix;
-  const old = m.exp * 1;
+  const old = m.experiencia * 1;
   try {
     let i = 15;
     const f = {exports: {}};
@@ -29,7 +29,7 @@ const handler = async (m, _2, msg, pickRandom, isOwner ) => {
     _return = e;
   } finally {
     conn.reply(m.chat, _syntax + format(_return), m);
-    m.exp = old;
+    m.experiencia = old;
   }
 };
 

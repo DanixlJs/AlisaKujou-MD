@@ -1,9 +1,9 @@
 const ro = 3000;
 const handler = async (m, {conn, usedPrefix, command}) => {
 
-  const time = global.db.data.users[m.sender].lastrob + 7200000;
+  const time = global.db.data.users[m.sender].robtime + 7200000;
 
-  if (new Date - global.db.data.users[m.sender].lastrob < 7200000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a robar..`;
+  if (new Date - global.db.data.users[m.sender].robtime < 7200000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a robar..`;
 
   let who;
   if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
@@ -19,17 +19,17 @@ const handler = async (m, {conn, usedPrefix, command}) => {
 
   if (users.exp < rob) return m.reply(`✧ @${who.split`@`[0]} tiene menos de *${ro}* de experiencia.`, null, {mentions: [who]});
 
-  global.db.data.users[m.sender].exp += rob;
+  global.db.data.users[m.sender].experiencia += rob;
 
-  global.db.data.users[who].exp -= rob;
+  global.db.data.users[who].experiencia -= rob;
 
   m.reply(`✧ Robaste *${rob}* de experiencia a @${who.split`@`[0]}`, null, {mentions: [who]});
 
-  global.db.data.users[m.sender].lastrob = new Date * 1;
+  global.db.data.users[m.sender].robtime = new Date * 1;
 };
 
 handler.help = ['rob <@tag>'];
-handler.register = true;
+handler.registrado = true;
 handler.group = true;
 handler.tags = ['rpg'];
 handler.command = ['robar', 'rob'];

@@ -17,7 +17,7 @@ const handler = async (m, {conn, args, usedPrefix }) => {
 };
 
 handler.command = ['gdrive'];
-handler.register = true;
+handler.registrado = true;
 handler.premium = true;
 handler.tags = ['downloader', 'premium'];
 handler.help = ['gdrive <link>'];

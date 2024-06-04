@@ -3,33 +3,33 @@ const prem = 15
 
 var handler = async (m, {conn, isPrems }) => {
 
-let money = `${pickRandom([5, 6, 7, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 99, 100, 110, 120, 130, 600, 1000, 1500])}` * 1
-let exp = `${pickRandom([500, 600, 700, 800, 900, 999, 1000, 1300, 1500, 1800])}` * 1
+let alisacoins = `${pickRandom([5, 6, 7, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 99, 100, 110, 120, 130, 600, 1000, 1500])}` * 1
+let experiencia = `${pickRandom([500, 600, 700, 800, 900, 999, 1000, 1300, 1500, 1800])}` * 1
 
 let exppremium = `${pickRandom([1000, 1500, 1800, 2100, 2500, 2900, 3300, 3600, 4000, 4500])}` * 1
 
 let d = Math.floor(Math.random() * 30)
 
-global.db.data.users[m.sender].diamond += d
+global.db.data.users[m.sender].diamantes += d
 
-global.db.data.users[m.sender].money += d
+global.db.data.users[m.sender].alisacoins += alisacoins
 
-let time = global.db.data.users[m.sender].lastclaim + 86400000 //12 Horas
+let time = global.db.data.users[m.sender].claimtime + 86400000 //12 Horas
 
-if (new Date - global.db.data.users[m.sender].lastclaim < 7200000) return conn.reply(m.chat, `✧ Espera *${msToTime(time - new Date())}* para  volver a reclamarlo.`, m, )
+if (new Date - global.db.data.users[m.sender].claimtime < 7200000) return conn.reply(m.chat, `✧ Espera *${msToTime(time - new Date())}* para  volver a reclamarlo.`, m, )
 
-global.db.data.users[m.sender].exp += exppremium ? prem : exp
+global.db.data.users[m.sender].experiencia += exppremium ? prem : experiencia
 
-conn.reply(m.chat, `❀ *CLAIM DIARIO*\n✰ Reclamaste tu recompensa diaria y obtuviste los siguientes recursos:\n◈ *Experiencia ⪼* *+${isPrems ? exppremium : exp}*\n◈ *Diamantes ⪼* *+${d}*\n◈ *AlisaCoins ⪼* *+${money}*`, m, fake, )
+conn.reply(m.chat, `❀ *CLAIM DIARIO*\n✰ Reclamaste tu recompensa diaria y obtuviste los siguientes recursos:\n◈ *Experiencia ⪼* *+${isPrems ? exppremium : experiencia}*\n◈ *Diamantes ⪼* *+${d}*\n◈ *AlisaCoins ⪼* *+${alisacoins}*`, m, fake, )
 
-global.db.data.users[m.sender].lastclaim = new Date * 1
+global.db.data.users[m.sender].claimtime = new Date * 1
 
 }
 
 handler.help = ['daily', 'claim']
 handler.tags = ['rpg']
 handler.command = ['daily', 'claim']
-handler.register = true
+handler.registrado = true
 
 export default handler
 

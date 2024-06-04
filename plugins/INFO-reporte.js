@@ -21,6 +21,6 @@ handler.help = ['report <texto>', 'reportar <texto>'];
 handler.tags = ['info'];
 handler.command = ['report', 'reportar'];
 handler.group = true,
-handler.register = true;
+handler.registrado = true;
 
 export default handler;

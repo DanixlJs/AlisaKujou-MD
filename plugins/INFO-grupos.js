@@ -14,7 +14,7 @@ await conn.reply(m.chat, str, m, fake, )}
 handler.command = ['grupos']
 handler.help = ['grupos']
 handler.tags = ['info']
-handler.register = true
+handler.registrado = true
 handler.exp = 33
 
 export default handler

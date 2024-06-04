@@ -28,8 +28,8 @@ await m.reply(res.data)
 }}}
 handler.help = ['chatgpt <texto>', 'ia <texto>']
 handler.tags = ['ai']
-handler.register = true
-handler.limit = 2
+handler.registrado = true
+handler.diamantes = 2
 handler.command = ['ia', 'chatgpt']
 
 export default handler;

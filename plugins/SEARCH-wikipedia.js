@@ -38,7 +38,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
 };
 
 handler.help = ['wikipedia <texto>'];
-handler.register = true;
+handler.registrado = true;
 handler.tags = ['internet', 'search'];
 handler.command = ['wiki', 'wikipedia'];
 

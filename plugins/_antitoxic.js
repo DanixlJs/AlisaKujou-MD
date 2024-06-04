@@ -20,7 +20,7 @@ export async function before(m, {isAdmin, isBotAdmin, isOwner}) {
   if (user.warn >= 3) {
     user.warn = 0;
     await m.reply(`✧ @${m.sender.split`@`[0]}, superaste las 3 advertencias por lo que seras eliminado por tu comportamiento inadecuado.`, false, {mentions: [m.sender]});
-    user.banned = true;
+    user.baneado = true;
     await mconn.conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
   }
   return !1;

@@ -6,12 +6,12 @@ const handler = async (m, {conn}) => {
 
   const name = conn.getName(who);
 
-  conn.sendFile(m.chat, pp, 'pp.jpg', `❀ *BALANCE*\n✰ *Usuario ⪼* ${name}\n◈ *Diamantes ⪼* ${global.db.data.users[who].diamond}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].money}\n◈ *Experiencia ⪼* ${global.db.data.users[who].exp}\n◈ *Rango ⪼* ${global.db.data.users[who].role}`, m)
+  conn.sendFile(m.chat, pp, 'pp.jpg', `❀ *BALANCE*\n✰ *Usuario ⪼* ${name}\n◈ *Diamantes ⪼* ${global.db.data.users[who].diamantes}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].alisacoins}\n◈ *Experiencia ⪼* ${global.db.data.users[who].experiencia}\n◈ *Rango ⪼* ${global.db.data.users[who].rango}`, m)
 };
 
 handler.help = ['bal <@tag>'];
 handler.tags = ['rpg'];
-handler.register = true,
+handler.registrado = true,
 handler.command = ['bal', 'balance'];
 
 export default handler;

@@ -63,7 +63,7 @@ reportError(e)}
 handler.help = ['fb <link>']
 handler.tags = ['downloader']
 handler.command = ['faceboook', 'fb']
-handler.register = true
+handler.registrado = true
 handler.limit = true
 
 export default handler

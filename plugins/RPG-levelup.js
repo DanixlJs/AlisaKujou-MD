@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix, command, args, usedPrefix: _p, __dir
 
 const { levelling } = '../lib/levelling.js'
 
-let { exp, limit, level, role } = global.db.data.users[m.sender]
+let { experiencia, diamantes, level, rango } = global.db.data.users[m.sender]
 let { min, xp, max } = xpRange(level, global.multiplier)
 
 let d = new Date(new Date + 3600000)
@@ -39,22 +39,22 @@ process.once('message', resolve)
 setTimeout(resolve, 1000)
 }) * 1000
 }
-let { money } = global.db.data.users[m.sender]
+let { alisacoins } = global.db.data.users[m.sender]
 let muptime = clockString(_muptime)
 let uptime = clockString(_uptime)
 let totalreg = Object.keys(global.db.data.users).length
-let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+let rtotalreg = Object.values(global.db.data.users).filter(user => user.registrado == true).length
 let replace = {
 '%': '%',
 p: _p, uptime, muptime,
 me: conn.getName(conn.user.jid),
 
-exp: exp - min,
+experiencia: experiencia - min,
 maxexp: xp,
-totalexp: exp,
-xp4levelup: max - exp,
+totalexp: experiencia,
+xp4levelup: max - experiencia,
 
-level, limit, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+level, diamantes, weton, week, date, dateIslamic, time, totalreg, rtotalreg, rango,
 readmore: readMore
 }
 text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
@@ -65,17 +65,17 @@ let username = conn.getName(who)
 let name = conn.getName(m.sender)
 let user = global.db.data.users[m.sender]
 
-if (!canLevelUp(user.level, user.exp, global.multiplier)) {
+if (!canLevelUp(user.level, user.experiencia, global.multiplier)) {
 let { min, xp, max } = xpRange(user.level, global.multiplier)
 throw `❀ *TU NIVEL ACTUAL*
 ✰ *Usuario ⪼* ${name}
 ◈ *Nivel ⪼* ${user.level}
-◈ *Rango ⪼* ${user.role}
-◈ *Experiencia ⪼* ${user.exp - min}/${xp}
-> → Te falta *${max - user.exp}* de experiencia para subir de nivel.`.trim()}
+◈ *Rango ⪼* ${user.rango}
+◈ *Experiencia ⪼* ${user.experiencia - min}/${xp}
+> → Te falta *${max - user.experiencia}* de experiencia para subir de nivel.`.trim()}
 
 let before = user.level * 1
-while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++
+while (canLevelUp(user.level, user.experiencia, global.multiplier)) user.level++
 if (before !== user.level) {
 
 let teks = `❀ Bien hecho *${conn.getName(m.sender)}*, subiste al nivel *${user.level}*`
@@ -84,8 +84,8 @@ let str = `❀ *SUBISTE DE NIVEL*
 ✧ *Usuario ⪼* ${name}
 ◈ *Nivel Anterior ⪼* ${before}
 ◈ *Nuevo Nivel ⪼* ${user.level}
-◈ *Rango ⪼* ${user.role}
-◈ *Fecha ⪼* {new Date().toLocaleString('id-ID')}
+◈ *Rango ⪼* ${user.rango}
+◈ *Fecha ⪼* ${new Date().toLocaleString('id-ID')}
 > → Cuando más interactues conmigo mayor será tu nivel.`.trim()
 
 try {
@@ -99,7 +99,7 @@ m.reply(str)
 handler.help = ['levelup', 'level']
 handler.tags = ['rpg']
 handler.command = ['levelup', 'level'] 
-handler.register = true
+handler.registrado = true
 
 export default handler
 

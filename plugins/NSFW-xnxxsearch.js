@@ -33,7 +33,7 @@ const handler = async (m, {text, usedPrefix, command}) => {
 handler.help = ['xnxxsearch <texto>'];
 handler.tags = ['downloader', 'premium', 'nsfw'];
 handler.command = ['xnxxsearch'];
-handler.register = true;
+handler.registrado = true;
 handler.premium = true;
 
 export default handler;

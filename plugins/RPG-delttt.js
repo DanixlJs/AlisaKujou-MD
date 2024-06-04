@@ -11,7 +11,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
 handler.command = ['delttt'];
 handler.help = ['delttt'];
 handler.group = true;
-handler.register = true;
+handler.registrado = true;
 handler.fail = null;
 
 export default handler;

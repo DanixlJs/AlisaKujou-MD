@@ -6,7 +6,7 @@ conn.sendFile(m.chat, global.icons, 'img.jpg', text, m )
 }
 
 handler.tags = ['anime']
-handler.register = true
+handler.registrado = true
 handler.rowner = true
 handler.help = ['roll', 'randomwaifu']
 handler.command = ['roll', 'randomwaifu']

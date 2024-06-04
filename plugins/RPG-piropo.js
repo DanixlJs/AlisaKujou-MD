@@ -1,12 +1,10 @@
-/* By https://github.com/DIEGO-OFC/DORRAT-BOT-MD */
-
 const handler = async (m, {conn, text}) => {
   conn.reply(m.chat, `❀ *PIROPOS*\n> ✰ *${pickRandom(global.piropo)}*`,m ,fake, );
 };
 
 handler.tags = ['rpg'];
 handler.command = ['piropo'];
-handler.register = true;
+handler.registrado = true;
 handler.help = ['piropo'];
 
 export default handler;

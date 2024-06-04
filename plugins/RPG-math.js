@@ -28,7 +28,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
 handler.help = ['math <mode>'];
 handler.tags = ['rpg'];
 handler.command = ['math', 'mates'];
-handler.register = true;
+handler.registrado = true;
 handler.rowner = true;
 
 export default handler;

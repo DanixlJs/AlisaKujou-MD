@@ -2,7 +2,7 @@ let handler = m => m
 
 handler.before = function (m) {
     let user = global.db.data.users[m.sender]
-    let role = (user.level <= 3) ? 'Guerrero V'
+    let rango = (user.level <= 3) ? 'Guerrero V'
       : ((user.level >= 3) && (user.level <= 6)) ? 'Guerrero IV'
       : ((user.level >= 6) && (user.level <= 9)) ? 'Guerrero III'
       : ((user.level >= 9) && (user.level <= 12)) ? 'Guerrero II'
@@ -48,7 +48,7 @@ handler.before = function (m) {
       : ((user.level >= 700) && (user.level <= 1000)) ? 'Titan I'
       : 'Dragón rey estrella'
 
-    user.role = role
+    user.rango = rango
     return true
 }
 

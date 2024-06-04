@@ -3,7 +3,7 @@ if (!text) throw `✧ Ingresa un texto.`;
     conn.reply(m.chat, text)}
 
 handler.command = ['say'];
-handler.register = true;
+handler.registrado = true;
 handler.tags = ['rpg'];
 handler.help = ['say <texto>'];
 

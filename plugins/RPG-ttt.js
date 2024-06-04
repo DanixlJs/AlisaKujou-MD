@@ -58,7 +58,7 @@ const handler = async (m, {conn, usedPrefix, command, text}) => {
 
 handler.command = ['ttt', 'tictactoe']
 handler.help = ['ttt <nombre>']
-handler.register = true
+handler.registrado = true
 handler.group = true 
 
 export default handler;

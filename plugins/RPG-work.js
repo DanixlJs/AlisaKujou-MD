@@ -3,15 +3,15 @@ const handler = async (m, {conn, isPrems}) => {
   if (enviando) return
   enviando = true
   const hasil = Math.floor(Math.random() * 5000);
-  const time = global.db.data.users[m.sender].lastwork + 60000;
-  if (new Date - global.db.data.users[m.sender].lastwork < 60000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`;
+  const time = global.db.data.users[m.sender].worktime + 60000;
+  if (new Date - global.db.data.users[m.sender].worktime < 60000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`;
 
    let worktext = `❀ Te embarcas en una emocionante aventura:\n> ✰ *${pickRandom(global.work)}*\n◈ Gracias a la aventura obtienes *${hasil}* de experiencia.`;
 
    conn.reply(m.chat, worktext, m, fake,);
 
-  global.db.data.users[m.sender].exp += hasil;
-  global.db.data.users[m.sender].lastwork = new Date() * 1;
+  global.db.data.users[m.sender].experiencia += hasil;
+  global.db.data.users[m.sender].worktime = new Date() * 1;
   enviando = false
 };
 
@@ -19,7 +19,7 @@ handler.help = ['work', 'w'];
 handler.tags = ['rpg'];
 handler.command = ['work', 'w', 'chambear'];
 handler.fail = null;
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

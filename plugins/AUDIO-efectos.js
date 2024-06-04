@@ -40,7 +40,7 @@ const handler = async (m, {conn, args, __dirname, usedPrefix, command}) => {
 handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
 handler.tags = ['audio'];
 handler.command = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

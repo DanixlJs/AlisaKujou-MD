@@ -14,7 +14,7 @@ conn.sendButton(m.chat, `❀ Random Waifu 😻`, '> *Nota ⪼* No genere Spam co
 handler.help = ['waifu', 'rw'];
 handler.tags = ['anime'];
 handler.command = ['waifu', 'rw'];
-handler.register = true;
+handler.registrado = true;
 handler.group = true;
 
 

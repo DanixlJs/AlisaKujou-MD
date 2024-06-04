@@ -11,6 +11,6 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
 handler.help = ['wallpaper'];
 handler.tags = ['downloader', 'search'];
 handler.command = ['wallpaper'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;

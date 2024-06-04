@@ -6,7 +6,7 @@ conn.reply(m.chat, `${global.botname} Ha sido activado de nuevo en el Chat.`, m,
 }
 
 handler.help = ['unbanchat']
-handler.register = true
+handler.registrado = true
 handler.tags = ['mods']
 handler.command = ['unbanchat']
 handler.mods = true 

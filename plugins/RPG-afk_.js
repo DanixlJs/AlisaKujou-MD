@@ -1,9 +1,9 @@
 export function before(m) {
   const user = global.db.data.users[m.sender];
   if (user.afk > -1) {
-    m.reply(`❀ *DEJASTE DE ESTAR AFK* ${user.afkReason ? '\n◈ *Razón ⪼* ' + user.afkReason : ''}\n◈ *Tiempo ⪼* ${(new Date - user.afk).toTimeString()}`.trim());
+    m.reply(`❀ *DEJASTE DE ESTAR AFK* ${user.afkRazon ? '\n◈ *Razón ⪼* ' + user.afkRazon : ''}\n◈ *Tiempo ⪼* ${(new Date - user.afk).toTimeString()}`.trim());
     user.afk = -1;
-    user.afkReason = '';
+    user.afkRazon = '';
   }
   const jids = [...new Set([...(m.mentionedJid || []), ...(m.quoted ? [m.quoted.sender] : [])])];
   for (const jid of jids) {
@@ -15,7 +15,7 @@ export function before(m) {
     if (!afkTime || afkTime < 0) {
       continue;
     }
-    const reason = user.afkReason || '';
+    const reason = user.afkRazon || '';
     m.reply(`✧ Esté usuario está *AFK*, no lo etiquetes.`.trim());
   }
   return true;

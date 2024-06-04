@@ -50,7 +50,7 @@ m.react('🕒')
   }
 };
 handler.command = ['tt', 'tiktok'];
-handler.register = true;
+handler.registrado = true;
 handler.help = ['tt <link', 'tiktok <link>'];
 handler.group = true;
 handler.tags = ['downloader'];

@@ -18,7 +18,7 @@ conn.reply(m.chat, personalidad, m, fake, { mentions: conn.parseMention(personal
 }
 handler.help = ['personalidad <nombre>']
 handler.tags = ['rpg']
-handler.register = true
+handler.registrado = true
 handler.command = ['personalidad']
 handler.group = true
 

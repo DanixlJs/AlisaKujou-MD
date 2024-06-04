@@ -31,7 +31,7 @@ m.react('🥏')
 
 handler.help = ['colaboradores', 'team']
 handler.command = ['colaboradores', 'team']
-handler.register = true
+handler.registrado = true
 handler.tags = ['info']
 handler.exp = 50
 

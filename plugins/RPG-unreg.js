@@ -5,14 +5,14 @@ const handler = async function(m, {args, conn, usedPrefix}) {
   const user = global.db.data.users[m.sender];
   const sn = createHash('md5').update(m.sender).digest('hex');
   if (args[0] !== sn) throw `✧ Verifique que sea correcto, Use:\n> → *${usedPrefix}myns* para saber su número de serie.`;
-  user.registered = false;
+  user.registrado = false;
   conn.reply(m.chat, `❀ Registro eliminado.`, m, fake, );
 };
 
 handler.help = ['unreg <serie>'];
 handler.tags = ['rpg'];
 handler.command = ['unreg'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

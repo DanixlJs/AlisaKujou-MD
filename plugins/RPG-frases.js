@@ -16,7 +16,7 @@ const handler = async (m, {conn, command}) => {
 };
 
 handler.tags = ['rpg'];
-handler.register = true;
+handler.registrado = true;
 handler.command = ['consejo', 'fraseromantica'];
 handler.help = ['consejo', 'fraseromantica'];
 

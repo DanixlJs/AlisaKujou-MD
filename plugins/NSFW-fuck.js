@@ -16,6 +16,6 @@ handler.tags = ['nsfw']
 handler.help = ['fuck <@tag>']
 handler.group = true
 handler.fail = null
-handler.register = true
+handler.registrado = true
 
 export default handler

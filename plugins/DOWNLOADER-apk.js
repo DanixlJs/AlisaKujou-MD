@@ -23,6 +23,6 @@ return conn.reply(m.chat, '✧ Ocurrió un error inesperado..', m, )
 handler.tags = ['downloader']
 handler.help = ['apkmod <texto>']
 handler.command = ['apkmod']
-handler.register = true
+handler.registrado = true
 
 export default handler

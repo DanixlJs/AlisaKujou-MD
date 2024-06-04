@@ -5,7 +5,7 @@ const handler = async (m, {conn}) => {
 handler.help = ['verdad'];
 handler.tags = ['rpg'];
 handler.command = ['verdad'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

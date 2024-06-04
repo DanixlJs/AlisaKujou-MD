@@ -77,10 +77,10 @@ ${isWin ? `❀ @${(isSurrender ? room.game.currentTurn : room.game.winner).split
     }
     await this.sendMessage(room.o, {text: str, mentions: this.parseMention(str)}, {quoted: m});
     if (isTie || isWin) {
-      users[room.game.playerX].exp += playScore;
-      users[room.game.playerO].exp += playScore;
+      users[room.game.playerX].experiencia += playScore;
+      users[room.game.playerO].experiencia += playScore;
       if (isWin) {
-        users[winner].exp += winScore - playScore;
+        users[winner].experiencia += winScore - playScore;
       }
       if (debugMode) {
         m.reply('[DEBUG]\n' + format(room));

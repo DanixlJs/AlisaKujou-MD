@@ -47,7 +47,7 @@ const defaultMenu = { before: `
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { exp, limit, level } = global.db.data.users[m.sender]
+    let { experiencia, diamantes, level } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
@@ -81,13 +81,13 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.db.data.users).length
-    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registrado == true).length
     let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
       return {
         help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
         prefix: 'customPrefix' in plugin,
-        limit: plugin.limit,
+        diamantes: plugin.diamantes,
         premium: plugin.premium,
         enabled: !plugin.disabled,
       }
@@ -109,7 +109,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%islimit/g, menu.limit ? '' : '')
+                .replace(/%isdiamantes/g, menu.diamantes ? '' : '')
                 .replace(/%isPremium/g, menu.premium ? '' : '')
                 .trim()
             }).join('\n')
@@ -133,12 +133,12 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       npmmain: _package.main,
       author: _package.author.name,
       license: _package.license,
-      exp: exp - min,
+      experiencia: experiencia - min,
       maxexp: xp,
-      totalexp: exp,
-      xp4levelup: max - exp,
+      totalexp: experiencia,
+      xp4levelup: max - experiencia,
       github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
-      greeting, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
+      greeting, level, diamantes, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
@@ -157,6 +157,7 @@ conn.sendMessage(m.chat, { video: global.vid, caption: text.trim(), mentions: [m
 handler.help = ['menu']
 handler.tags = ['info']
 handler.command = ['menú', 'menu', 'help'] 
+handler.registrado = true
 
 export default handler
 

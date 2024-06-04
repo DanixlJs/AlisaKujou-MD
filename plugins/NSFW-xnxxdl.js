@@ -39,7 +39,7 @@ handler.help = ['xnxxdl <numero>'];
 handler.command = ['xnxxdl'];
 handler.tags = ['downloader', 'premium', 'nsfw'];
 handler.premium = true;
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

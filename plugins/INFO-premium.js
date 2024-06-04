@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, usedPrefix, command, isPrems}) => {
      if (!isPrems) throw `${noPrem}`;
 }
 
-handler.register = true;
+handler.registrado = true;
 handler.help = ['premium'];
 handler.command = ['premium'];
 handler.tags = ['info'];

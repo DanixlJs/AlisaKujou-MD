@@ -16,6 +16,6 @@ handler.help = ['gitclone <url>'];
 handler.tags = ['downloader'];
 handler.command = ['gitclone'];
 
-handler.register = true;
+handler.registrado = true;
 
 export default handler;

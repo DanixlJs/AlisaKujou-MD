@@ -19,6 +19,6 @@ handler.help = ['formarpareja'];
 handler.tags = ['rpg'];
 handler.command = ['formarpareja', 'formarparejas'];
 handler.group = true;
-handler.register = true;
+handler.registrado = true;
 
 export default handler;

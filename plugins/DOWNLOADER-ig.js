@@ -58,6 +58,6 @@ handler.help = ['ig <link>']
 handler.tags = ['downloader']
 handler.command = ['instagram', 'ig']
 
-handler.register = true
+handler.registrado = true
 
 export default handler

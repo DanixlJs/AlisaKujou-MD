@@ -1,6 +1,6 @@
 const handler = async (m, {isPrems, conn}) => {
-  const time = global.db.data.users[m.sender].lastcofre + 86400000; // 36000000 10 Horas //86400000 24 Horas
-  if (new Date - global.db.data.users[m.sender].lastcofre < 86400000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a reclamarlo`;
+  const time = global.db.data.users[m.sender].cofretime + 86400000; // 36000000 10 Horas //86400000 24 Horas
+  if (new Date - global.db.data.users[m.sender].cofretime < 86400000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a reclamarlo`;
 
   const img = 'https://telegra.ph/file/62ba6688963b0ad407edd.png';
   const dia = Math.floor(Math.random() * 50);
@@ -8,25 +8,23 @@ const handler = async (m, {isPrems, conn}) => {
   const alisacoins = Math.floor(Math.random() * 10000);
   const expp = Math.floor(Math.random() * 10000);
 
-  global.db.data.users[m.sender].limit += dia;
-  global.db.data.users[m.sender].money += alisacoins;
-  global.db.data.users[m.sender].joincount += tok;
-  global.db.data.users[m.sender].exp += expp;
+  global.db.data.users[m.sender].diamantes += dia;
+  global.db.data.users[m.sender].alisacoins += alisacoins;
+  global.db.data.users[m.sender].experiencia += expp;
 
   const texto = `❀ *COFRE DIARIO*
 ✰ Abriste tu cofre diario y obtuviste los siguientes recursos:
 > → Diamantes ⪼ *${dia}* 
-> → Tokens ⪼ *${tok}*
 > → AlisaCoins ⪼ *${alisacoins}*
 > → Experiencia ⪼ *${expp}*`;
 
   await conn.reply(m.chat, texto,m ,fake, );
-  global.db.data.users[m.sender].lastcofre = new Date * 1;
+  global.db.data.users[m.sender].cofretime = new Date * 1;
 };
 
 handler.help = ['cofre'];
 handler.tags = ['rpg'];
-handler.register = true;
+handler.registrado = true;
 handler.command = ['cofre'];
 handler.level = 5;
 

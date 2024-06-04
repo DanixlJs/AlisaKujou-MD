@@ -6,7 +6,7 @@ conn.reply(m.chat, `❀ ${global.botname} ha sido desactivado en el Grupo.`, m, 
 }
 
 handler.help = ['banchat']
-handler.register = true
+handler.registrado = true
 handler.tags = ['mods']
 handler.command = ['banchat']
 handler.mods = true 

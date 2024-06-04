@@ -89,7 +89,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 handler.help = ['playdoc <texto>', 'playdoc2 <texto>', 'play3 <texto>', 'play4 <texto>'];
 handler.tags = ['downloader'];
 handler.command = ['playdoc', 'playdoc2', 'play3', 'play4'];
-handler.register = true
+handler.registrado = true
 
 export default handler;
 

@@ -24,7 +24,7 @@ conn.sendMessage(m.chat, { text: str.trim() }, { quoted: m })
 handler.help = ['githubsearch <usuario>', 'gitsearch <usuario>'];
 handler.tags = ['search'];
 handler.command = ['githubsearch', 'gitsearch'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

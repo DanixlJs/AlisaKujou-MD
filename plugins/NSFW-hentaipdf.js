@@ -28,7 +28,7 @@ const handler = async (m, {conn, text, usedPrefix, command, args}) => {
 handler.help = ['hentaipdf <texto>'];
 handler.command = ['hentaipdf'];
 handler.tags = ['nsfw'];
-handler.register = true;
+handler.registrado = true;
 
 export default handler;
 

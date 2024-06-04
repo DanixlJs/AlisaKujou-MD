@@ -34,7 +34,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
 
 handler.command = ['animeinfo'];
 handler.tags = ['search', 'internet']
-handler.register = true;
+handler.registrado = true;
 handler.help = ['animeinfo <texto>'];
 
 export default handler;
