@@ -62,10 +62,12 @@ export async function handler(chatUpdate) {
 		if ((!'genero' in user)) user.genero = 'Indefinido';
 		if (isNumber(user.regtime)) user.regtime = -1;
 	}
+	    if (!isNumber(user.muto)) user.muto = false;
 		if (!isNumber(user.premiumTime)) user.premiumTime = -1;
 		if (!isNumber(user.afk)) user.afk = -1;
 		if (!('afkRazon' in user)) user.afkRazon = '';
 		if (!('rango' in user)) user.rango = 'Guerrero V';
+        if (!isNumber(user.level)) user.level = 0;
 		if (!isNumber(user.claimtime)) user.claimtime = -1;
 		if (!isNumber(user.cofretime)) user.cofretime = -1;
 		if (!isNumber(user.crimetime)) user.crimetime = -1;
@@ -76,7 +78,7 @@ export async function handler(chatUpdate) {
 		if (!('baneado' in user)) user.baneado = false;
 		if (!('banRazon' in user)) user.banRazon = '';
 		if (!isNumber(user.warn)) user.warn = 0;
-		if (!('warnRazon' in user)) user.warnRazon = '',
+		if (!('warnRazon' in user)) user.warnRazon = '';
 	} else {
       global.db.data.users[m.sender] = {
 		premium: false,
@@ -88,10 +90,12 @@ export async function handler(chatUpdate) {
 		edad: -1,
 		genero: '',
 		regtime: -1,
+		muto: false,
 		premiumTime: -1,
 		afk: -1,
 		afkRazon: '',
 		rango: 'Guerrero V',
+        level: 0,
 		claimtime: -1,
 		cofretime: -1,
 		crimetime: -1,
@@ -135,7 +139,7 @@ export async function handler(chatUpdate) {
         if (!('autolevelup' in chat))  chat.autolevelup = true;
         if (!('modoadmin' in chat)) chat.modoadmin = false;
         if (!('simi' in chat)) chat.simi = false;
-        if (!isNumber(chat.expired)) chat.expired = 0;
+        if (!isNumber(chat.experienciaired)) chat.experienciaired = 0;
       } else {
         global.db.data.chats[m.chat] = {
           isBanned: false,
@@ -163,7 +167,7 @@ export async function handler(chatUpdate) {
           simi: false,
           game: false,
           autolevelup: true,
-          expired: 0,
+          experienciaired: 0,
         };
       }
       const settings = global.db.data.settings[this.user.jid];
@@ -232,7 +236,7 @@ export async function handler(chatUpdate) {
     if (m.isBaileys) {
       return;
     }
-    m.exp += Math.ceil(Math.random() * 10);
+    m.experiencia += Math.ceil(Math.random() * 10);
 
     let usedPrefix;
     const _user = global.db.data && global.db.data.users && global.db.data.users[m.sender];
@@ -347,7 +351,7 @@ export async function handler(chatUpdate) {
           if (!['MODS-unbanchat.js', 'INFO-contacto.js'].includes(name) && chat && chat?.isBanned && !isROwner &&!isMods) return; 
           if (name != 'MODS-unbanchat.js' && name != 'OWNER-exec.js' && name != 'OWNER-exec2.js' && chat?.isBanned && !isROwner && !isMods) return; 
 
-          if (m.text && user.banned && !isROwner) {
+          if (m.text && user.baneado && !isROwner) {
             if (typeof user.bannedMessageCount === 'undefined') {
               user.bannedMessageCount = 0;
             }
@@ -355,7 +359,7 @@ export async function handler(chatUpdate) {
             if (user.bannedMessageCount < 3) {
               const messageNumber = user.bannedMessageCount + 1;
 const messageText = `✧ El usuario ha sido Baneado.
-◈ *Aviso* ⪼ ${messageNumber}/3 ${user.bannedReason ? `\n◈ *Motivo* ⪼ ${user.bannedReason}` : '\n◈ *Motivo* ⪼ Sin Especificar'}
+◈ *Aviso* ⪼ ${messageNumber}/3 ${user.banRazon ? `\n◈ *Motivo* ⪼ ${user.banRazon}` : '\n◈ *Motivo* ⪼ Sin Especificar'}
 
 > ➤ *Puedes apelar el Baneo con mi Creador.
 → wa.me/595983799436`.trim();
@@ -425,19 +429,19 @@ const messageText = `✧ El usuario ha sido Baneado.
           fail('private', m, this);
           continue;
         }
-        if (plugin.register == true && _user.registered == false) { 
+        if (plugin.registrado == true && _user.registrado == false) { 
           fail('unreg', m, this);
           continue;
         }
         m.isCommand = true;
-        const xp = 'exp' in plugin ? parseInt(plugin.exp) : 9; 
+        const xp = 'experiencia' in plugin ? parseInt(plugin.experiencia) : 9; 
         if (xp > 200) {
           m.reply('Ngecit -_-');
         }
         else {
-          m.exp += xp;
+          m.experiencia += xp;
         }
-        if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
+        if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
           mconn.conn.reply(m.chat, `✧ Te quedaste sin Diamantes, usa uno de los siguientes comandos para comprar mas.\n→ *${usedPrefix}buy <cantidad>*\n→ *${usedPrefix}buyall*`, m);
           continue; 
         }
@@ -471,7 +475,7 @@ const messageText = `✧ El usuario ha sido Baneado.
                 try {
           await plugin.call(this, m, extra);
           if (!isPrems) {
-            m.limit = m.limit || plugin.limit || false;
+            m.diamantes = m.diamantes || plugin.diamantes || false;
           }
         } catch (e) {
           m.error = e;
@@ -503,8 +507,8 @@ const messageText = `✧ El usuario ha sido Baneado.
               console.error(e);
             }
           }
-          if (m.limit) {
-            m.reply('✧ Usaste *' + +m.limit + '* Diamante(s)');
+          if (m.diamantes) {
+            m.reply('✧ Usaste *' + +m.diamantes + '* Diamante(s)');
           }
         }
         break;
@@ -531,8 +535,8 @@ remoteJid: m.chat, fromMe: false, id: bang, participant: cancellazzione
 }})
 }
       if (m.sender && (user = global.db.data.users[m.sender])) {
-        user.exp += m.exp;
-        user.limit -= m.limit * 1;
+        user.experiencia += m.experiencia;
+        user.diamantes -= m.diamantes * 1;
       }
 
       let stat;
@@ -708,12 +712,12 @@ global.dfail = (type, m, conn) => {
     rowner: '✧ Este comando solo lo puede usar mi Creador.',
     owner: '✧ Este comando solo lo puede usar mi Desarrollador.',
     mods: '✧ Solo los Moderadores del Bot pueden usar este comando.',
-    premium: `✧ Solo los Usuarios Premiums pueden usar este comando.\n> → */premium* para mas info.`,
+    premium: '✧ Solo los Usuarios Premiums pueden usar este comando.\n> → */premium* para mas info.',
     group: '✧ Este comando solo se puede ejecutar en Grupos.',
     private: '✧ Este comando solo se puede ejecutar en mi Privado.',
     admin: '✧ Este comando solo lo pueden usar los Administradores.',
-    botAdmin: `✧ *${global.botname}* necesita ser Administrador para ejecutar esa funcion.`,
-    unreg: `✧ Necesitas estar registrado para usar este comando.\n→ */reg <nombre.edad>*`,
+    botAdmin: '✧ Alisa necesita ser Administrador para ejecutar esa funcion.',
+    unreg: '✧ Necesitas estar registrado para usar este comando.\n→ */reg <nombre.edad>*',
     restrict: '✧ Este comando fue desactivado por mi Creador.',
     }[type];
   const aa = {quoted: m, userJid: conn.user.jid};
