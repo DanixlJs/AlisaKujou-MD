@@ -2,47 +2,48 @@
 
 Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍
 
-El propósito de Alisa es traer diversión a tu grupo y también herramientas para administrar tus grupos.
+---
+
+## CARACTERÍSTICAS DEL PROYECTO
+
+- **Entorno ⪼** NodeJs
+- **Baileys ⪼** MultiDivide ^6.7.2
+- **Comandos de administración ⪼** Alisa cuenta con comandos para administrar tus grupos de manera más fácil, los más usados son:
+◈ /kick
+◈ /promote
+◈ /demote
+
+- **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
+
+- **Versión Actual ⪼** 1.0.0-(beta)
+- **Estado ⪼** Face de Desarrollo y Pruebas
 
 ---
 
-## Características del Proyecto
+## COLABORACIÓN
 
-- **Basado en NodeJs**.
-- **Comandos de administración**: Alisa cuenta con comandos para administrar tus grupos de manera más fácil.
-- **Comandos de diversión**: También cuenta con comandos para que la diversión nunca falte en tu grupo.
-- **Versión**: 1.0.0-(beta)
-- **Estado**: En Desarrollo.
-
----
-
-## Colaboración
-
-Si quieres colaborar conmigo, puedes contactarme a mi WhatsApp.
+Si quieres colaborar conmigo, puedes hablarme a mi WhatsApp.
 
 [![👨‍💻danixljs](https://img.shields.io/badge/👨‍💻danixljs-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/595983799436)
 
 ---
 
-## Licencia
+## LICENCIA
 
-Este repositorio está bajo la licencia Apache 2.0
+Este repositorio está bajo la licencia Apache 2.0, asegúrate de leerla para saber lo que puedes y no puedes hacer con el código fuente.
 
-[![Licencia Apache](https://img.shields.io/badge/Licencia-GPLv3-blue?style=for-the-badge)](LICENSE)
+[![Licencia Apache 2.0](https://img.shields.io/badge/Licencia-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 ---
 
-### Diseño RGB
+## INSTALACIÓN
 
-```html
-<!-- HTML code for RGB lines -->
-<svg width="100%" height="10">
-  <defs>
-    <linearGradient id="grad1">
-      <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
-      <stop offset="50%" style="stop-color:rgb(0,255,0);stop-opacity:1" />
-      <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#grad1)" />
-</svg>
+Actualmente Alisa no está lista para instalarla, una vez que se termine de desarrollar y pasar las pruebas correspondientes pondré los pasos para una instalación exitosa.
+
+---
+
+## AGRADECIMIENTO
+- @Diego-YL-117
+- [![GitHub].(https://github.com/Diego-YL-117)]
+
+*Muchas gracias por Preferirnos 🤍*
