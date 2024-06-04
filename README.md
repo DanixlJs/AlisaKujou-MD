@@ -1,4 +1,4 @@
-# ![Alisa Kujou - MD](https://telegra.ph/file/d32a14c734274bdac0b54.mp4)
+# ![🤍 Alisa Kujou - MD](https://telegra.ph/file/7bac962446d59b42ac4b8.jpg)
 
 Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍
 
