@@ -10,11 +10,11 @@ import moment from 'moment-timezone';
 global.botnumber = ""
 global.confirmCode = ""
 
-global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true], ['5492964650915', 'WilsonOFC', true]]
-global.contactos = [["595983799436", '👑 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫', 1]]
+global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true]]
+global.contactos = [["595983799436", '👑𝗢𝘄𝗻𝗲𝗿', 1]]
 global.suittag = ['595973755967']
 global.prems = []
-global.mods = ['51986707393']
+global.mods = [['51986707393'], ['5492964650915']]
 
 global.packname = '𝑺𝒕𝒊𝒄𝒌𝒆𝒓 𝑩𝒚';
 global.botname = '🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂-𝗠𝗗​᭄';
