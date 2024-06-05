@@ -72,7 +72,7 @@ global.vid = [vid1, vid2, vid3, vid4].getRandom()
 
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 2024, status: 1, surface : 1, message: global.wm, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
 
-const moji = (await axios.get(`https://raw.githubusercontent.com/GataNina-Li/YartexBot-MD/main/storage/juegos/emojis.json`)).data
+const moji = (await axios.get(`https://raw.githubusercontent.com/DanixlJs/AlisaKujou-MD/master/src/JSON/emogis.json`)).data
 const emoji = await moji[Math.floor(moji.length * Math.random())]
 
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'
