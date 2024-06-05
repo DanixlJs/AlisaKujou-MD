@@ -60,7 +60,8 @@ export async function handler(chatUpdate) {
 		if (!('name' in user)) user.name = '';
 		if (!isNumber(user.edad)) user.edad = -1;
 		if ((!'genero' in user)) user.genero = 'Indefinido';
-		if (isNumber(user.regtime)) user.regtime = -1;
+		if (!isNumber(user.regtime)) user.regtime = -1;
+		if (!('desc' in user)) user.desc = '';
 	}
 	    if (!isNumber(user.muto)) user.muto = false;
 		if (!isNumber(user.premiumTime)) user.premiumTime = -1;
@@ -73,6 +74,8 @@ export async function handler(chatUpdate) {
 		if (!isNumber(user.crimetime)) user.crimetime = -1;
 		if (!isNumber(user.robtime)) user.robtime = -1;
 		if (!isNumber(user.minetime)) user.minetime = -1;
+	        if (!isNumber(user.minetime2)) user.minetime2 = -1;
+	        if (!isNumber(user.minetime3)) user.minetime3 = -1;
 		if (!isNumber(user.sluttime)) user.sluttime = -1;
 		if (!isNumber(user.worktime)) user.worktime = -1;
 		if (!('baneado' in user)) user.baneado = false;
@@ -90,6 +93,7 @@ export async function handler(chatUpdate) {
 		edad: -1,
 		genero: '',
 		regtime: -1,
+	        desc: '',
 		muto: false,
 		premiumTime: -1,
 		afk: -1,
@@ -101,6 +105,8 @@ export async function handler(chatUpdate) {
 		crimetime: -1,
 		robtime: -1,
 		minetime: -1,
+	        minetime2: -1,
+	        minetime3: -1,
 		sluttime: -1,
 		worktime: -1,
 		baneado: false,
