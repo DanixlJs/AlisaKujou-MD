@@ -2,12 +2,11 @@ const handler = async (m, {conn}) => {
     const _uptime = process.uptime() * 1000;
     const uptime = clockString(_uptime);
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+    const sbot = (conn.user.jid == global.conn.user.jid ? 'Main-Bot' : 'Sub-Bot');
 m.react('⚙️') 
-    const str = `❀ *ESTADO DE:*
-✰ *${global.botname}*
-
-◈ *Hola ⪼* ${taguser}
-◈ *Activa ⪼* ${uptime}
+    const str = `❀ *ESTADO DE:* ${global.botname}
+✰ *Activa ⪼* ${uptime}
+◈ *Tipo ⪼* ${sbot}
 ◈ *Bot Uso ⪼* Publico
 ◈ *Owner ⪼* 🧑‍💻danixljs`;
       conn.reply(m.chat, str, m, fake, )
