@@ -4,8 +4,6 @@
 
 Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍
 
-*_Se recomienda no Instalar todavía ya que esté repositorio no está actualizado al Bot OFC_*
-
 ---
 
 ## CARACTERÍSTICAS DEL PROYECTO
