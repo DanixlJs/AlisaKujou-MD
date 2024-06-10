@@ -22,6 +22,12 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 ---
 
+## GRUPOS OFICIALES
+
+[![GRUPO OFC](https://img.shields.io/badge/GRUPO OFC-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb)
+
+---
+
 ## COLABORACIÓN
 
 Si quieres colaborar conmigo, puedes hablarme a mi WhatsApp.
