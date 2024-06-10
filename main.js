@@ -284,34 +284,34 @@ if (opcion == '1' || methodCodeQR) {
  }}
    if (connection == 'open') {
 await conn.groupAcceptInvite('Kbj38zCqOvqH9KM5bRH1Hb')
-console.log(chalk.bold.cyan('Conección Exitosa al WhatsApp'))
+console.log(chalk.bold.cyan('╭───────────────────╼\n│❀ Conección Exitosa al WhatsApp.\n╰───────────────────╼'))
    }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 if (reason == 405) {
 await fs.unlinkSync("./AlisaSession/" + "creds.json")
-console.log(chalk.bold.redBright(`Conexión reemplazada, por favor espere un momento me voy a reiniciar...\nSi aparece error vuelve a iniciar con: npm start`)) 
+console.log(chalk.bold.redBright(`✧ Conexión reemplazada, por favor espere un momento me voy a reiniciar...\n◈Si aparece error vuelve a iniciar con: npm start`)) 
 process.send('reset')}
 if (connection === 'close') {
     if (reason === DisconnectReason.badSession) {
-        conn.logger.error(`Sesión incorrecta, por favor elimina la carpeta ${global.authFile} y escanea nuevamente.`);
+        conn.logger.error(`✧ Sesión incorrecta, por favor elimina la carpeta ${global.authFile} y escanea nuevamente.`);
     } else if (reason === DisconnectReason.connectionClosed) {
-        conn.logger.warn(`Conexión cerrada, reconectando...`);
+        conn.logger.warn(`✧ Conexión cerrada, reconectando...`);
         await global.reloadHandler(true).catch(console.error);
     } else if (reason === DisconnectReason.connectionLost) {
-        conn.logger.warn(`Conexión perdida con el servidor, reconectando...`);
+        conn.logger.warn(`✧ Conexión perdida con el servidor, reconectando...`);
         await global.reloadHandler(true).catch(console.error);
     } else if (reason === DisconnectReason.connectionReplaced) {
-        conn.logger.error(`Conexión reemplazada, se ha abierto otra nueva sesión, por favor, cierra la sesión actual primero.`);
+        conn.logger.error(`✧ Conexión reemplazada, se ha abierto otra nueva sesión, por favor, cierra la sesión actual primero.`);
     } else if (reason === DisconnectReason.loggedOut) {
-        conn.logger.error(`Conexion cerrada, por favor elimina la carpeta ${global.authFile} y escanea nuevamente.`);
+        conn.logger.error(`✧ Conexion cerrada, por favor elimina la carpeta ${global.authFile} y escanea nuevamente.`);
     } else if (reason === DisconnectReason.restartRequired) {
-        conn.logger.info(`Reinicio necesario, reinicie el servidor si presenta algún problema.`);
+        conn.logger.info(`✧ Reinicio necesario, reinicie el servidor si presenta algún problema.`);
         await global.reloadHandler(true).catch(console.error);
     } else if (reason === DisconnectReason.timedOut) {
-        conn.logger.warn(`Tiempo de conexión agotado, reconectando...`);
+        conn.logger.warn(`✧ Tiempo de conexión agotado, reconectando...`);
         await global.reloadHandler(true).catch(console.error);
     } else {
-        conn.logger.warn(`Razón de desconexión desconocida. ${reason || ''}: ${connection || ''}`);
+        conn.logger.warn(`✧ Razón de desconexión desconocida. ${reason || ''}: ${connection || ''}`);
         await global.reloadHandler(true).catch(console.error);
     }
 }}
@@ -346,7 +346,7 @@ global.reloadHandler = async function(restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate);
   }
 
-conn.welcome = '◥@user◤\n❦ 𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 𝗮\n> @subject\n\n➤ 𝗡𝗼𝘁𝗮: Lee la descripción del grupo para evitar inconvenientes.' 
+conn.welcome = '◥@user◤\n❦ 𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 𝗮\n> @subject\n\n✰ Usa */menu* para ver mis comandos.\n\n➤ 𝗡𝗼𝘁𝗮: Lee la descripción del grupo para evitar inconvenientes.' 
 conn.bye = '✧ 𝗦𝗲 𝗻𝗼𝘀 𝗳𝘂𝗲 𝘂𝗻 𝗨𝘀𝘂𝗮𝗿𝗶𝗼\n◥@user◤ ya no forma parte del grupo.\n\n➤ Esperemos que vuelva pronto.'
 conn.spromote = '❀ @user 𝗮𝗵𝗼𝗿𝗮 𝗲𝘀 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿.'
 conn.sdemote = '❀ @user 𝘆𝗮 𝗻𝗼 𝗲𝘀 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿.'
@@ -403,23 +403,23 @@ global.reload = async (_ev, filename) => {
   if (pluginFilter(filename)) {
     const dir = global.__filename(join(pluginFolder, filename), true);
     if (filename in global.plugins) {
-      if (existsSync(dir)) conn.logger.info(`Updated plugin - '${filename}'`);
+      if (existsSync(dir)) conn.logger.info(`❀ Plugin Actualizado ⪼ '${filename}'`);
       else {
-        conn.logger.warn(`Deleted plugin - '${filename}'`);
+        conn.logger.warn(`✧ Plugin Eliminado ⪼ '${filename}'`);
         return delete global.plugins[filename];
       }
-    } else conn.logger.info(`New plugin - '${filename}'`);
+    } else conn.logger.info(`✧ Nuevo Plugin ⪼ '${filename}'`);
     const err = syntaxerror(readFileSync(dir), filename, {
       sourceType: 'module',
       allowAwaitOutsideFunction: true,
     });
-    if (err) conn.logger.error(`Syntax error while loading '${filename}'\n${format(err)}`);
+    if (err) conn.logger.error(`✧ Error de Syntaxis  en ⪼ '${filename}'\n${format(err)}`);
     else {
       try {
         const module = (await import(`${global.__filename(dir)}?update=${Date.now()}`));
         global.plugins[filename] = module.default || module;
       } catch (e) {
-        conn.logger.error(`Error require plugin '${filename}\n${format(e)}'`);
+        conn.logger.error(`✧ Error en el Plugin '${filename}\n${format(e)}'`);
       } finally {
         global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)));
       }
@@ -456,22 +456,22 @@ async function _quickTest() {
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   const a = await clearTmp();
-console.log(chalk.greenBright(`\nArchivo no necesario eliminado.\n`));
+console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 180000);
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   await purgeSession();
-console.log(chalk.greenBright(`\nArchivo no necesario eliminado.`));
+console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 1000 * 60 * 60);
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   await purgeSessionSB();
-console.log(chalk.greenBright(`\nArchivo no necesario eliminado.`));
+console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 1000 * 60 * 60);
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   await purgeOldFiles();
-console.log(chalk.greenBright(`\nArchivo no necesario eliminado.`));
+console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 180000)
 _quickTest()
 .then()

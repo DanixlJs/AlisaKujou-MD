@@ -24,7 +24,7 @@ font: 'chrome',
 align: 'center',
 colors: ['red']
 })
-say(`Creditos a: @Diego-YL-177\nEditor y Propietario: @DanixlJs`, {
+say(`Developed by DanixlJs`, {
 font: 'console',
 align: 'center',
 colors: ['yellow']

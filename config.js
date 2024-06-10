@@ -14,7 +14,7 @@ global.owner = [['595983799436', '👑𝗢𝘄𝗻𝗲𝗿', true]]
 global.contactos = [["595983799436", '👑𝗢𝘄𝗻𝗲𝗿', 1]]
 global.suittag = ['595973755967']
 global.prems = []
-global.mods = ['51986707393', '5492964650915']
+global.mods = ['51986707393', '5492964650915', '595985665263', '51979946825']
 
 global.packname = '𝑺𝒕𝒊𝒄𝒌𝒆𝒓 𝑩𝒚';
 global.botname = '🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂-𝗠𝗗​᭄';
@@ -29,7 +29,7 @@ global.img2 = fs.readFileSync('./AhoraQue.png');
 
 global.md = 'https://github.com/DanixlJs/AlisaKujou-MD'
 global.gp = 'https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb'
-global.patreon = 'https://www.patreon.com/'
+global.patreon = 'https://patreon.com/DanixlJs'
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y'
 
 var ase = new Date(); var hour = ase.getHours(); switch(hour){ case 0: hour = 'Linda Noche 🌃'; break; case 1: hour = 'Linda Noche 🌃'; break; case 2: hour = 'Linda Noche 🌃'; break; case 3: hour = 'Linda Mañana 🌄'; break; case 4: hour = 'Linda Mañana 🌄'; break; case 5: hour = 'Linda Mañana 🌄'; break; case 6: hour = 'Linda Mañana 🌄'; break; case 7: hour = 'Linda Mañana 🌅'; break; case 8: hour = 'Linda Mañana 🌄'; break; case 9: hour = 'Linda Mañana 🌄'; break; case 10: hour = 'Linda Día 🌤'; break; case 11: hour = 'Linda Día 🌤'; break; case 12: hour = 'Linda Día 🌤'; break; case 13: hour = 'Linda Día 🌤'; break; case 14: hour = 'Linda Tarde 🌆'; break; case 15: hour = 'Linda Tarde 🌆'; break; case 16: hour = 'Linda Tarde 🌆'; break; case 17: hour = 'Linda Tarde 🌆'; break; case 18: hour = 'Linda Noche 🌃'; break; case 19: hour = 'Linda Noche 🌃'; break; case 20: hour = 'Linda Noche 🌃'; break; case 21: hour = 'Linda Noche 🌃'; break; case 22: hour = 'Linda Noche 🌃'; break; case 23: hour = 'Linda Noche 🌃'; break;}
