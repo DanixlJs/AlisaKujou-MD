@@ -32,11 +32,11 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? t
 
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
-var l1 = 'https://youtube.com/';
-var l2 = 'https://whatsapp.com/';
-var l3 = 'https://tiktok.com/';
-var l4 = 'https://instagram.com/';
-global.fakeLink = [l1, l2, l3, l4].getRandom()
+var rede1 = 'https://youtube.com/';
+var rede2 = 'https://whatsapp.com/';
+var rede3 = 'https://tiktok.com/';
+var rede4 = 'https://instagram.com/';
+global.fakeLink = [rede1, rede2, rede3, rede4].getRandom()
 
 var img1 = fs.readFileSync('./media/imagen1.jpg');
 var img2 = fs.readFileSync('./media/imagen2.jpg');
@@ -72,7 +72,7 @@ global.vid = [vid1, vid2, vid3, vid4].getRandom()
 
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 2024, status: 1, surface : 1, message: global.wm, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
 
-const moji = (await axios.get(`https://raw.githubusercontent.com/DanixlJs/AlisaKujou-MD/master/src/JSON/emogis.json`)).data
+const moji = (await axios.get(`https://raw.githubusercontent.com/GataNina-Li/YartexBot-MD/main/storage/juegos/emojis.json`)).data
 const emoji = await moji[Math.floor(moji.length * Math.random())]
 
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'
