@@ -36,8 +36,11 @@ let regbot = `❀ *REGISTRO COMPLETO*
 ◈ 10 Diamantes
 ◈ 600 AlisaCoins
 ◈ 245 Experiencia
-> → *Nota ⪼* Use *${usedPrefix}myns* para saber su número de serie.`
+
+> ⬇️ *Su número de Serie* ⬇️
+`
 await conn.reply(m.chat, regbot, m, fake, )
+conn.reply(m.chat, sn, m, fake, )
 
 }
 

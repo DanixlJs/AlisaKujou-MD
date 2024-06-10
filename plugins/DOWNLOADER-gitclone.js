@@ -15,7 +15,7 @@ const handler = async (m, {args, usedPrefix, command}) => {
 handler.help = ['gitclone <url>'];
 handler.tags = ['downloader'];
 handler.command = ['gitclone'];
-
+handler.diamantes = 50;
 handler.registrado = true;
 
 export default handler;

@@ -24,5 +24,6 @@ handler.tags = ['downloader']
 handler.help = ['apkmod <texto>']
 handler.command = ['apkmod']
 handler.registrado = true
+handler.diamantes = 10
 
 export default handler

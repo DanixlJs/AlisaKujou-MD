@@ -115,7 +115,8 @@ await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: {
 handler.help = ['play <texto>', 'play2 <texto>'];
 handler.tags = ['downloader'];
 handler.command = ['play', 'play2'];
-handler.registrado = true
+handler.registrado = true;
+handler.diamantes = 5;
 
 
 export default handler;

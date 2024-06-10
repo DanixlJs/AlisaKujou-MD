@@ -17,7 +17,7 @@ let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
 let link = await (isTele ? uploadImage : uploadFile)(media)
 let info = `❀ *RESULTADOS:*\n✰ *Enlace ⪼* ${link}\n◈ *Tamaño ⪼* ${media.length} Bytes\n◈ *Expira ⪼* ${isTele ? 'No Expira' : 'Desconocido'}\n◈ *Acortado ⪼* ${await shortUrl(link)}]`
 
-conn.reply(m.chat, info, m, { contextInfo: { externalAdReply :{ mediaUrl: global.fakeLink, mediaType: 2, title: global.wm, body: global.dev, thumbnail: await(await fetch(link)).buffer(), sourceUrl: link}}})
+conn.reply(m.chat, info, m, fake, )
 
 }
 handler.help = ['tourl']

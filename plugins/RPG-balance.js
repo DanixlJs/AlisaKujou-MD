@@ -6,7 +6,9 @@ const handler = async (m, {conn}) => {
 
   const name = conn.getName(who);
 
-  conn.sendFile(m.chat, pp, 'pp.jpg', `❀ *BALANCE*\n✰ *Usuario ⪼* ${name}\n◈ *Diamantes ⪼* ${global.db.data.users[who].diamantes}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].alisacoins}\n◈ *Experiencia ⪼* ${global.db.data.users[who].experiencia}\n◈ *Rango ⪼* ${global.db.data.users[who].rango}`, m)
+  let msg = `❀ *RECURSOS DE ⪼* ${name}\n✰ *Diamantes ⪼* ${global.db.data.users[who].diamantes}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].alisacoins}\n◈ *Experiencia ⪼* ${global.db.data.users[who].experiencia}\n◈ *Rango ⪼* ${global.db.data.users[who].rango}`;
+
+  conn.reply(m.chat, msg, m, fake, )
 };
 
 handler.help = ['bal <@tag>'];

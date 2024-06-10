@@ -20,5 +20,6 @@ handler.help = ['google <texto>'];
 handler.tags = ['internet'];
 handler.registrado = true;
 handler.command = ['google'];
+handler.diamantes = 1;
 
 export default handler;

@@ -1,11 +1,11 @@
 import { promises } from 'fs'
+import fs from 'fs'
 import { join } from 'path'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 
   let tags = {
   'info': ' MENU - 𝗜𝗡𝗙𝗢 ',
-  'dadibot': ' MENU - 𝗦𝗘𝗥𝗕𝗢𝗧 ',
   'search': ' MENU - 𝗕𝗨𝗦𝗤𝗨𝗘𝗗𝗔𝗦 ',
   'downloader': ' MENU - 𝗗𝗘𝗦𝗖𝗔𝗥𝗚𝗔𝗦 ',
   'internet': ' MENU - 𝗜𝗡𝗧𝗘𝗥𝗡𝗘𝗧 ',
@@ -25,20 +25,24 @@ import { xpRange } from '../lib/levelling.js'
 
 const defaultMenu = { before: `
 ╭─────〔 ${global.botname}
-│≫ 𝘏𝘰𝘭𝘢 %taguser, %greeting
+│≫ %greeting *%taguser*
 │➮ 𝘉𝘪𝘦𝘯𝘷𝘦𝘯𝘪𝘥𝘰/𝘢 𝘢𝘭 𝘔𝘦𝘯𝘶.
 │
 ╎─────〔 𝗜𝗡𝗙𝗢 𝗕𝗢𝗧
-│≫ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘥 ⪼ %author
-│➮ 𝘛𝘪𝘱𝘰 ⪼ %sbot
-│➮ 𝘌𝘯𝘵𝘰𝘳𝘯𝘰 ⪼ NodeJs
-│➮ 𝘉𝘢𝘪𝘭𝘦𝘺𝘴 ⪼ MultiDivice ^6.7.2
-│➮ 𝘈𝘤𝘵𝘪𝘷𝘰 ⪼ %muptime
-│➮ 𝘙𝘦𝘨𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘴 ⪼ %totalreg
+│≫ *Developed ⪼* %author
+│➮ *Tipo ⪼* %sbot
+│➮ *Entorno ⪼* NodeJs
+│➮ *Baileys ⪼* MultiDivice ^6.7.2
+│➮ *Activo ⪼* %muptime
+│➮ *Registrados ⪼* %totalreg
 │
-╎─────〔 𝗖𝗢𝗠𝗔𝗡𝗗𝗢𝗦
-│`.trimStart(),
-  header: '╎─────〔 %category',
+╰─────〔 𝗖𝗢𝗠𝗔𝗡𝗗𝗢𝗦
+
+> Si tienes alguna sugerencia para un nuevo comando mandalo con
+> → */suggest*
+‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎ㅤㅤㅤㅤ
+`.trimStart(),
+  header: '╭─────〔 %category',
   body: '│✰ *%cmd*\n',
   footer: '│',
   after: `╰─────〔 ❀${global.vs}❀`,
@@ -143,11 +147,23 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
-await conn.reply(m.chat, '❀ 𝗖𝗮𝗿𝗴𝗮𝗻𝗱𝗼 𝗠𝗲𝗻𝘂\n> ◈ Espere un momento.', m, fake,)
-//await conn.sendFile(m.chat, global.icons, 'img.jpg', '❀ 𝗖𝗮𝗿𝗴𝗮𝗻𝗱𝗼 𝗠𝗲𝗻𝘂\n> ◈ Espere un momento.', m)
-m.react('🤍') 
+let category = "video"
 
-conn.sendMessage(m.chat, { video: global.vid, caption: text.trim(), mentions: [m.sender] })
+ const dbPath = './media/database/db.json'
+  const dbData = JSON.parse(fs.readFileSync(dbPath))
+
+  const randomIndex = Math.floor(Math.random() * dbData.links[category].length)
+  const randomVideo = dbData.links[category][randomIndex]
+  global.vid = randomVideo
+
+  const response = await fetch(vid)
+
+  const gif = await response.buffer()
+  
+  await conn.reply(m.chat, '❀ 𝗖𝗮𝗿𝗴𝗮𝗻𝗱𝗼 𝗠𝗲𝗻𝘂\n> ◈ Espere un momento.', m, fake,)
+m.react('🤍')
+
+   await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
   } catch (e) {
     conn.reply(m.chat, '❀ Ocurrió un error.', m)
     throw e

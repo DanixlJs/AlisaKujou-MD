@@ -1,17 +1,11 @@
 import fs from 'fs';
 const handler = (m) => m;
 handler.all = async function(m) {
-  const vn = './media/bot.mp3';
   const chat = global.db.data.chats[m.chat];
   
 if (/^bot$/i.test(m.text) && !chat.isBanned) {
-  
-      if (/^bot$/i.test(m.text) && !chat.isBanned) {
-    conn.sendPresenceUpdate('recording', m.chat);
 
-conn.reply(m.chat, `¡Hola! Soy ${global.wm}, en que puedo ayudarte hoy?`, m, fake, )}
-  
-    m.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: fkontak});
+conn.reply(m.chat, `❀ ¡Hola! Soy ${global.wm}, en que puedo ayudarte hoy?\n✰ Usa */menu* para ver mis comandos.`, m, fake, )
 
   }
   return !0;

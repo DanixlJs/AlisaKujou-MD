@@ -23,11 +23,11 @@ global.db.data.users[m.sender].crimetime = new Date * 1;
 
 if (media === 'text') return m.reply(`❀ ${pickRandom(global.robar)} *${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia += experiencia) 
 
-if (media === 'text2') return m.reply(`✧ ${pickRandom(global.robmal)} *${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia -= crime) 
+if (media === 'text2') return m.reply(`✧ ${pickRandom(global.robmal)} *-${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia -= crime) 
 
 if (media === 'text3') return m.reply(`❀ ${pickRandom(global.robar)} *${diamantes}* Diamantes y *${alisacoins} AlisaCoins.`).catch(global.db.data.users[m.sender].diamantes += diamantes).catch(global.db.data.users[m.sender].alisacoins += alisacoins)
 
-if (media === 'text4') return m.reply(`✧ ${pickRandom(global.robmal)} *${diamantes}* Diamante y *${alisacoins}* AlisaCoins.`).catch(global.db.data.users[m.sender].diamantes -= diamantes).catch(global.db.data.users[m.sender].alisacoins -= crime)
+if (media === 'text4') return m.reply(`✧ ${pickRandom(global.robmal)} *-${diamantes}* Diamante(s) y *-${alisacoins}* AlisaCoins.`).catch(global.db.data.users[m.sender].diamantes -= diamantes).catch(global.db.data.users[m.sender].alisacoins -= crime)
 
 if (media === 'text5') return conn.reply(m.chat, `❀ Le robaste a @${randow.split`@`[0]} una cantidad de *${experiencia}* experiencia.`, m, {contextInfo: {mentionedJid: [randow]}}).catch(global.db.data.users[m.sender].experiencia += experiencia).catch(global.db.data.users[randow].experiencia -= crime) 
 } catch (e) {

@@ -64,7 +64,7 @@ handler.help = ['fb <link>']
 handler.tags = ['downloader']
 handler.command = ['faceboook', 'fb']
 handler.registrado = true
-handler.limit = true
+handler.diamantes = 10
 
 export default handler
 

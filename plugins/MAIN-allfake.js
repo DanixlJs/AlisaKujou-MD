@@ -32,47 +32,30 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? t
 
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
-var rede1 = 'https://youtube.com/';
-var rede2 = 'https://whatsapp.com/';
-var rede3 = 'https://tiktok.com/';
-var rede4 = 'https://instagram.com/';
-global.fakeLink = [rede1, rede2, rede3, rede4].getRandom()
+var l1 = 'https://youtube.com/';
+var l2 = 'https://whatsapp.com/';
+var l3 = 'https://tiktok.com/';
+var l4 = 'https://instagram.com/';
+var l5 = 'https://facebook.com/';
+var l6 = 'https://github.com/';
+global.fakeLink = [l1, l2, l3, l4, l5, l6].getRandom()
 
-var img1 = fs.readFileSync('./media/imagen1.jpg');
-var img2 = fs.readFileSync('./media/imagen2.jpg');
-var img3 = fs.readFileSync('./media/imagen3.jpg');
-var img4 = fs.readFileSync('./media/imagen4.jpg');
-var img5 = fs.readFileSync('./media/imagen5.jpg');
-var img6 = fs.readFileSync('./media/imagen6.jpg');
-var img7 = fs.readFileSync('./media/imagen7.jpg');
-var img8 = fs.readFileSync('./media/imagen8.jpg');
-var img9 = fs.readFileSync('./media/imagen9.jpg');
-var img10 = fs.readFileSync('./media/imagen10.jpg');
-var img11 = fs.readFileSync('./media/imagen11.jpg');
-var img12 = fs.readFileSync('./media/imagen12.jpg');
-var img13 = fs.readFileSync('./media/imagen13.jpg');
-var img14 = fs.readFileSync('./media/imagen14.jpg');
-var img15 = fs.readFileSync('./media/imagen15.jpg');
-var img16 = fs.readFileSync('./media/imagen16.jpg');
-var img17 = fs.readFileSync('./media/imagen17.jpg');
-var img18 = fs.readFileSync('./media/imagen18.jpg');
-var img19 = fs.readFileSync('./media/imagen19.jpg');
-var img20 = fs.readFileSync('./media/imagen10.jpg');
-global.icons = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20].getRandom()
+let category = "imagen"
 
-var vid1 = fs.readFileSync('./media/vid1.mp4');
-var vid2 = fs.readFileSync('./media/vid2.mp4');
-var vid3 = fs.readFileSync('./media/vid3.mp4');
-var vid4 = fs.readFileSync('./media/vid4.mp4');
-var vid5 = fs.readFileSync('./media/vid4.mp4');
-var vid6 = fs.readFileSync('./media/vid4.mp4');
-var vid7 = fs.readFileSync('./media/vid4.mp4');
-var vid8 = fs.readFileSync('./media/vid4.mp4');
-global.vid = [vid1, vid2, vid3, vid4].getRandom()
+ const dbPath = './media/database/db.json'
+  const dbData = JSON.parse(fs.readFileSync(dbPath))
+
+  const randomIndex = Math.floor(Math.random() * dbData.links[category].length)
+  const randomImagen = dbData.links[category][randomIndex]
+
+  const response = await fetch(randomImagen)
+
+  const rimg = await response.buffer()
+  global.icons = rimg
 
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 2024, status: 1, surface : 1, message: global.wm, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
 
-const moji = (await axios.get(`https://raw.githubusercontent.com/GataNina-Li/YartexBot-MD/main/storage/juegos/emojis.json`)).data
+const moji = (await axios.get(`https://raw.githubusercontent.com/DanixlJs/AlisaKujou-MD/master/src/JSON/emogis.json`)).data
 const emoji = await moji[Math.floor(moji.length * Math.random())]
 
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'

@@ -12,5 +12,6 @@ handler.help = ['wallpaper'];
 handler.tags = ['downloader', 'search'];
 handler.command = ['wallpaper'];
 handler.registrado = true;
+handler.diamantes = 2;
 
 export default handler;

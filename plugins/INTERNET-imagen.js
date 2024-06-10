@@ -10,6 +10,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
 handler.help = ['imagen <texto>'];
 handler.tags = ['internet'];
 handler.command = ['imagen'];
+handler.diamantes = 1;
 handler.registrado = true;
 
 export default handler;

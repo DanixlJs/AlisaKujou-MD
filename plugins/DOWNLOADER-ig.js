@@ -57,7 +57,8 @@ return conn.reply(m.chat, '✧ Ocurrió un error inesperado.', m, )
 handler.help = ['ig <link>']
 handler.tags = ['downloader']
 handler.command = ['instagram', 'ig']
-
+handler.diamantes = 5
 handler.registrado = true
+handler.disabled = true
 
 export default handler

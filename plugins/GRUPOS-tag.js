@@ -23,7 +23,7 @@ await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 }
 
 handler.help = ['hidetag <texto>', 'tag <texto>']
-handler.tags = ['group']
+handler.tags = ['grupo']
 handler.command = ['hidetag', 'tag'] 
 handler.group = true
 handler.admin = true

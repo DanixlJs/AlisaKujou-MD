@@ -54,6 +54,7 @@ handler.registrado = true;
 handler.help = ['tt <link', 'tiktok <link>'];
 handler.group = true;
 handler.tags = ['downloader'];
+handler.diamantes = 5;
 
 export default handler;
 
