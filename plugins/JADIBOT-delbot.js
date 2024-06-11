@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-async function handler(message, { conn }, extra) => {
+async function handler(m, { conn }, extra) => {
   const targetJid = message.mentionedJid && message.mentionedJid[0]
     ? message.mentionedJid[0]
     : message.chat
