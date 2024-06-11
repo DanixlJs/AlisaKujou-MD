@@ -16,10 +16,18 @@ let texto = `❀ *EQUIPO DE PROGRAMADORES*
 ◈ *Número ⪼* +54 9 2964 65-0915
 ◈ *GitHub ⪼* https://github.com/WilsonOFC
 
-✰ *Agradecimientos:*
-➤ 📦 Diego-YL-117
+➤ 👨‍💻 Diego-YL-177
+◈ *Rol ⪼* Developer
 ◈ *Número ⪼* +57 301 2482597
 ◈ *GitHub ⪼* https://github.com/Diego-YL-177
+
+➤ 👨‍💻 DanielDiod
+◈ *Rol ⪼* Developer
+◈ *Número ⪼* +51 955 918 117
+◈ *GitHub ⪼* https://github.com/DanielDiod
+
+✰ *Agradecimientos:*
+➤ 📦 Diego-YL-117
 
 > → Si quieres formar parte del equipo ponte en contacto con mi Creador.`
 
@@ -33,6 +41,5 @@ handler.help = ['colaboradores', 'team']
 handler.command = ['colaboradores', 'team']
 handler.registrado = true
 handler.tags = ['info']
-handler.exp = 50
 
 export default handler
