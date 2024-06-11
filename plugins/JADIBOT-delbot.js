@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-async function handler(m, { conn }) => {
+async function handler(m, { conn }) {
   const targetJid = m.mentionedJid && m.mentionedJid[0]
     ? m.mentionedJid[0]
     : m.chat
@@ -12,7 +12,7 @@ async function handler(m, { conn }) => {
 
   if (global.conn.user.jid !== conn.user.jid) {
     return conn.sendMessage(m.chat, {
-      text: "✧ Este comando solo se puede usar en el Bot Principal.*"
+      text: "✧ Este comando solo se puede usar en el Bot Principal."
     }, {
       quoted: m
     });
