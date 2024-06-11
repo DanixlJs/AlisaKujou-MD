@@ -27,9 +27,9 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 };
 
-handler.help = ['get <link>'];
+handler.help = ['g <link>'];
 handler.tags = ['mods'];
-handler.command = ['get'];
+handler.command = ['g'];
 handler.mods = true;
 handler.registrado = true;
 
