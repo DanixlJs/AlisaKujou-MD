@@ -11,7 +11,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
 
   let users = [...uniqueUsers.values()]
 
-  let message = users.map((v, index) => `╭──「@${v.user.jid.replace(/[^0-9]/g, '')}」╼\n│➥ *${index + 1}-*\n│✰ *Link ⪼* https://wa.me/${v.user.jid.replace(/[^0-9]/g, '')}\n│✰ *Nombre ⪼* ${v.user.name || 'Sub-Bot'\n╰────╼`).join('\n\n')
+  let message = users.map((v, index) => `╭──「@${v.user.jid.replace(/[^0-9]/g, '')}」╼\n│➥ *${index + 1}-*\n│✰ *Link ⪼* https://wa.me/${v.user.jid.replace(/[^0-9]/g, '')}\n│✰ *Nombre ⪼* ${v.user.name || 'Sub-Bot'}\n╰────╼`).join('\n\n')
 
   let replyMessage = message.length === 0 ? '' : message
   global.totalUsers = users.length
