@@ -6,6 +6,7 @@ import { xpRange } from '../lib/levelling.js'
 
   let tags = {
   'info': ' MENU - 𝗜𝗡𝗙𝗢 ',
+  'jadibot': ' MENU - 𝗝𝗔𝗗𝗜𝗕𝗢𝗧 ',
   'search': ' MENU - 𝗕𝗨𝗦𝗤𝗨𝗘𝗗𝗔𝗦 ',
   'downloader': ' MENU - 𝗗𝗘𝗦𝗖𝗔𝗥𝗚𝗔𝗦 ',
   'internet': ' MENU - 𝗜𝗡𝗧𝗘𝗥𝗡𝗘𝗧 ',
