@@ -21,28 +21,25 @@ const getDiskSpace = () => {
     }
 };
 
+const formatUptime = (seconds) => {
+    const d = Math.floor(seconds / (3600*24));
+    const h = Math.floor(seconds % (3600*24) / 3600);
+    const m = Math.floor(seconds % 3600 / 60);
+    const s = Math.floor(seconds % 60);
+
+    return `${d}d ${h}h ${m}m ${s}s`;
+};
+
 const handler = async (m, { conn }) => {
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
     const usedMem = totalMem - freeMem;
-   // const uptime = os.uptime();
+    const uptime = process.uptime();
     const hostname = os.hostname();
     const platform = os.platform();
     const arch = os.arch();
     const nodeUsage = process.memoryUsage();
     const diskSpace = getDiskSpace();
-
-        let _uptime = process.uptime() * 1000
-    let _muptime
-    if (process.send) {
-      process.send('uptime')
-      _muptime = await new Promise(resolve => {
-        process.once('message', resolve)
-        setTimeout(resolve, 1000)
-      }) * 1000
-    }
-    let muptime = clockString(_muptime)
-    let uptime = clockString(_uptime)
 
 
     const message = `❀ *ESTADO DEL SISTEMA*
@@ -53,7 +50,7 @@ const handler = async (m, { conn }) => {
 ◈ *RAM Total ⪼* ${formatBytes(totalMem)}
 ◈ *RAM Libre ⪼* ${formatBytes(freeMem)}
 ◈ *RAM Usada ⪼* ${formatBytes(usedMem)}
-◈ *Tiempo Activo ⪼* ${muptime}
+◈ *Tiempo Activo ⪼* ${{formatUptime(uptime)}
 
 ✰ *Uso de Memoria Nodejs:* 
 → RSS: ${formatBytes(nodeUsage.rss)}
@@ -79,11 +76,3 @@ handler.command = ['system'];
 handler.registrado = true;
 
 export default handler;
-
-function clockString(ms) {
-  let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
-  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
-  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
-  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-  return [d, h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
-}
