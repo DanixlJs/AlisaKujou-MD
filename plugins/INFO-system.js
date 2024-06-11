@@ -25,7 +25,7 @@ const handler = async (m, { conn }) => {
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
     const usedMem = totalMem - freeMem;
-    const uptime = os.uptime();
+   // const uptime = os.uptime();
     const hostname = os.hostname();
     const platform = os.platform();
     const arch = os.arch();
