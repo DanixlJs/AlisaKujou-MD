@@ -2,11 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 async function handler(m, { conn }) {
-  const targetJid = m.mentionedJid && m.mentionedJid[0]
-    ? m.mentionedJid[0]
-    : m.chat
-      ? conn.user.jid
-      : m.sender;
+  const targetJid = m.sender;
 
   const targetUser = `${targetJid.split('@')[0]}`;
 
