@@ -1,26 +1,26 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-async function handler(m, { conn }, extra) => {
-  const targetJid = message.mentionedJid && message.mentionedJid[0]
-    ? message.mentionedJid[0]
-    : message.chat
+async function handler(m, { conn }) => {
+  const targetJid = m.mentionedJid && m.mentionedJid[0]
+    ? m.mentionedJid[0]
+    : m.chat
       ? conn.user.jid
-      : message.sender;
+      : m.sender;
 
   const targetUser = `${targetJid.split('@')[0]}`;
 
   if (global.conn.user.jid !== conn.user.jid) {
-    return conn.sendMessage(message.chat, {
+    return conn.sendMessage(m.chat, {
       text: "✧ Este comando solo se puede usar en el Bot Principal.*"
     }, {
-      quoted: message
+      quoted: m
     });
   } else {
-    await conn.sendMessage(message.chat, {
+    await conn.sendMessage(m.chat, {
       text: "❀ Eliminando Datos del SubBot."
     }, {
-      quoted: message
+      quoted: m
     });
   }
 
@@ -30,10 +30,10 @@ async function handler(m, { conn }, extra) => {
       force: true
     });
 
-    await conn.sendMessage(message.chat, {
+    await conn.sendMessage(m.chat, {
       text: "❀ Se cerró la sesión y se eliminaron todos los Datos del SubBot."
     }, {
-      quoted: message
+      quoted: m
     });
   } catch (error) {
     console.error("✧ Error ⪼", error);
