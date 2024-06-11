@@ -1,7 +1,7 @@
 const handler = async (m, {conn}) => {
-  const who = message.mentionedJid && message.mentionedJid[0]
-    ? message.mentionedJid[0]
-    : message.chat;
+  const who = m.mentionedJid && m.mentionedJid[0]
+    ? m.mentionedJid[0]
+    : m.chat;
 
   try {
     const pp = await conn.getProfilePicture(who);
