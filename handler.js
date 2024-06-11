@@ -188,7 +188,7 @@ export async function handler(chatUpdate) {
         if (!('antiCall' in settings)) settings.antiCall = true;
         if (!('antiPrivate' in settings)) settings.antiPrivate = false;
         if (!('modejadibot' in settings)) settings.modejadibot = false;
-        if (!('antispam' in settings)) settings.antispam = false;
+        if (!('antispam' in settings)) settings.antispam = true;
         if (!('audios_bot' in settings)) settings.audios_bot = true;  
         if (!('modoia' in settings)) settings.modoia = false;      
       } else {
@@ -200,7 +200,7 @@ export async function handler(chatUpdate) {
           antiCall: true,
           antiPrivate: false,
           modejadibot: true,
-          antispam: false,
+          antispam: true,
           audios_bot: true,
           modoia: false
         };
