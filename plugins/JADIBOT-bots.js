@@ -15,7 +15,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
 
   let replyMessage = message.length === 0 ? '' : message
   global.totalUsers = users.length
-  let responseMessage = `╭──「${global.wm」╼\n│❀ *Total Sub-Bots ≫* ${global.totalUsers || '0'}\n╰────╼\n\n${replyMessage.trim()}`.trim()
+  let responseMessage = `╭──「${global.wm}」╼\n│❀ *Total Sub-Bots ≫* ${global.totalUsers || '0'}\n╰────╼\n\n${replyMessage.trim()}`.trim()
 
   await stars.sendMessage(m.chat, { text: responseMessage, mentions: stars.parseMention(responseMessage) }, { quoted: fkontak })
 }
