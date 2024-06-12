@@ -17,7 +17,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
       "antispam",
       "audios_bot",
       "modoia",
-      `${global.opts['pconly']}`,
+      "global.opts['pconly']",
       `${global.opts['pgonly']}`,
       `${global.opts['self']}`
     ];
