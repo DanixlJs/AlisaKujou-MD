@@ -27,7 +27,7 @@ global.author = `${global.botname}`;
 global.wm = '☙𝘼𝙡𝙞𝙨𝙖 𝙆𝙪𝙟𝙤𝙪​᭄';
 global.dev = '👑𝐷𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑑 𝑏𝑦 • 🧑‍💻DanixlJs';
 global.team = '👑𝐷𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑑 𝑏𝑦 • 🧑‍💻DanixlJs';
-global.vs = '1.0.0-(beta)';
+global.vs = '1.0.7';
 
 global.img = fs.readFileSync('./Menu.jpg');
 global.img2 = fs.readFileSync('./AhoraQue.png');
