@@ -1,4 +1,4 @@
-const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, isGroup, isBotAdmin}) => {
+const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, isBotAdmin}) => {
 	let nn = global.db.data.chats[m.chat];
 	let bot = global.db.data.settings[conn.user.jid];
 	if (command === 'open') {
@@ -16,6 +16,7 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	}
 
 	if (command === 'config') {
+	if (!isAdmin && !isOwner) return m.reply(`No tienes permisos para utilizar este comando.`);
 	let msg = `*CONFIGURACIONES*\n> Bienvenido al menu de Configuración de ${global.botname}\n*Use ${usedPrefix}toggle <opción>*\n\n`;
 		
 	if (isAdmin) msg += `*CONFIG - GRUPOS*
