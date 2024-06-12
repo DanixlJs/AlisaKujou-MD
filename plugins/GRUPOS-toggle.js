@@ -1,6 +1,6 @@
 const handler = async (m, { conn, args, usedPrefix, command }) => {
     if (args.length < 1) {
-        await conn.reply(m.chat, `✧ Ingrese una opción valida, Ejemplo:\n> → *${usedPrefix + command}<opción>*`, m);
+        await conn.reply(m.chat, `✧ Ingrese una opción valida, Ejemplo:\n> → *${usedPrefix + command} <modoadmin>*`, m);
         return;
     }
 
@@ -9,22 +9,18 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
         "welcome",
         "detect",
         "detect2",
-        "sWelcome",
-        "sBye",
-        "sPromote",
-        "sDemote",
         "antidelete",
         "modohorny",
         "reaction",
         "autosticker",
         "audios",
-        "antilink",
-        "antilink2",
+        "antiLink",
+        "antiLink2",
         "antiviewonce",
-        "antitoxic",
-        "antitraba",
-        "antiarab",
-        "antiarab2",
+        "antiToxic",
+        "antiTraba",
+        "antiArab",
+        "antiArab2",
         "antiporno",
         "modoadmin",
         "simi",
@@ -33,7 +29,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     ];
 
     if (!options.includes(option)) {
-        await conn.reply(m.chat, `✧ La opción seleccionada no es válida, Las opciones disponibles son:\n> → ${options.join('\n> → ')}`, m);
+        await conn.reply(m.chat, `✧ La opción seleccionada no es válida, Las opciones disponibles son:\n> → *${options.join('\n> → *')*}*`, m);
         return;
     }
 
