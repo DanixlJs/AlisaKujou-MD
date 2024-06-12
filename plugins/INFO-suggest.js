@@ -2,7 +2,7 @@ const handler = async (m, { conn, text, usedPrefix, groupMetadata }) => {
 	const user = global.db.data.users[m.sender]
 	let time = user.suggestime + 300000
 	
-	if (new Date < 300000) throw `✧ Espera *${msToTime(time - new Date())}* para enviar otro reporte.`
+	if (new Date - user.suggestime < 300000) throw `✧ Espera *${msToTime(time - new Date())}* para enviar otra sugerencia.`
 	if (!text) return m.reply('✧ Ingresa la sugerencia que quieras enviar a los Moderadores.')
 	if (text.length < 5) return m.reply('✧ Tu sugerencia es demasiado corta, minimo 5 carácteres.')
 	
