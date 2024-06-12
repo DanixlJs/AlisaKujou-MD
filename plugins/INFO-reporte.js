@@ -1,8 +1,8 @@
 const handler = async (m, {conn, text, usedPrefix, command, groupMetadata}) => {
   const user = global.db.data.users[m.sender];
-  const time = user.reportime + 300000;
+  const time = user.reportime + 30000;
 
-  if (new Date - user.reportime < 300000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a enviar otro reporte.`;
+  if (new Date - user.reportime < 30000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a enviar otro reporte.`;
 
   if (!text) throw `✧ Por favor escribe el reporte que quieras enviar a los Moderadores.`;
 
@@ -31,7 +31,7 @@ export default handler;
 function msToTime(duration) {
   const milliseconds = parseInt((duration % 1000) / 100);
   let seconds = Math.floor((duration / 1000) % 60);
-  let minutes = Math.floor((duration / (1000 + 60)) * 60);
+  let minutes = Math.floor((duration / (1000 * 60)) * 60);
   let hours = Math.floor((duration / (1000 * 60 * 60)) * 24);
   hours = (hours < 10) ? '0' + hours : hours;
   minutes = (minutes < 10) ? '0' + minutes : minutes;
