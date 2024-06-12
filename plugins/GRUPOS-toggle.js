@@ -29,7 +29,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     ];
 
     if (!options.includes(option)) {
-        await conn.reply(m.chat, `✧ La opción seleccionada no es válida, Las opciones disponibles son:\n> → *${options.join('\n> → *')*}*`, m);
+        await conn.reply(m.chat, `✧ La opción seleccionada no es válida, Las opciones disponibles son:\n> → ${options.join('\n> → ')}`, m);
         return;
     }
 
