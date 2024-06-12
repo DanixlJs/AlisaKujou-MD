@@ -51,7 +51,8 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *antiPrivate* ${bot.antiPrivate ? 'on' : 'off'}
 - *antispam* ${bot.antispam ? 'on' : 'off'}
 - *modoia* ${bot.modoia ? 'on' : 'off'}
-- *audios_bot* ${bot.audios_ia ? 'on' : 'off'}`
+- *audios_bot* ${bot.audios_ia ? 'on' : 'off'}`;
+		await conn.reply(m.chat, msg, m, fake, )
 	}
 };
 
