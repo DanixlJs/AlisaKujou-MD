@@ -18,7 +18,7 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	if (command === 'config') {
 	let msg = `*CONFIGURACIONES*\n> Bienvenido al menu de Configuración de ${global.botname}\n*Use ${usedPrefix}toggle <opción>*\n\n`;
 		
-	if (isGroup) msg += `*CONFIG - GRUPOS*
+	if (isAdmin) msg += `*CONFIG - GRUPOS*
 - *welcome* ${nn.welcome ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *detect* ${nn.detect ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *detect2* ${nn.detect2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
@@ -52,14 +52,14 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *antiPrivate* ${bot.antiPrivate ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antispam* ${bot.antispam ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modoia* ${bot.modoia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *audios_bot* ${bot.audios_ia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}`;
+- *audios_bot* ${bot.audios_bot ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}`;
 		
 		await conn.reply(m.chat, msg, m, fake, )
 	}
 };
 
 handler.help = ['open', 'close', 'config'];
-handler.tags = ['grupo'];
+handler.tags = ['grupo', 'owner'];
 handler.command = ['open', 'close', 'config'];
 handler.group = true;
 handler.registrado = true;
