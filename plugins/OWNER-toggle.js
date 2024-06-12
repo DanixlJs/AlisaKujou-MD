@@ -7,7 +7,6 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
 
     const option = args[0].toLowerCase();
     const options = [
-      "self",
       "autoread",
       "autoread2",
       "restrict",
@@ -16,10 +15,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
       "modejadibot",
       "antispam",
       "audios_bot",
-      "modoia",
-      "global.opts['pconly']",
-      `${global.opts['pgonly']}`,
-      `${global.opts['self']}`
+      "modoia"
     ];
 
     if (!options.includes(option)) {
@@ -27,11 +23,11 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
         return;
     }
 
-    const chat = global.db.data.chats[m.chat];
+    const bot = global.db.data.settings[conn.user.jid];
 
-    chat[option] = !chat[option];
+    bot[option] = !bot[option];
 
-    await conn.reply(m.chat, `❀ *${option}* ha sido ${chat[option] ? '*activada*' : '*desactivada*'} correctamente.`, m, fake, );
+    await conn.reply(m.chat, `❀ *${option}* ha sido ${bot[option] ? '*activada*' : '*desactivada*'} correctamente.`, m, fake, );
 };
 
 handler.help = ['towner <opción>'];
