@@ -76,9 +76,9 @@ export async function handler(chatUpdate) {
 		if (!isNumber(user.minetime)) user.minetime = -1;
 	        if (!isNumber(user.minetime2)) user.minetime2 = -1;
 	        if (!isNumber(user.minetime3)) user.minetime3 = -1;
-  if (!isNumber(user.reportime)) user.reportime = -1,
-  if (!isNumber(user.suggestime)) user.suggestime = -1,
-  if (!isNumber(user.adventure)) user.adventure = -1;
+		if (!isNumber(user.reportime)) user.reportime = -1;
+		if (!isNumber(user.suggestime)) user.suggestime = -1;
+		if (!isNumber(user.adventure)) user.adventure = -1;
 		if (!isNumber(user.sluttime)) user.sluttime = -1;
 		if (!isNumber(user.worktime)) user.worktime = -1;
 		if (!('baneado' in user)) user.baneado = false;
