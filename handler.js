@@ -6,8 +6,9 @@ import path, {join} from 'path';
 import {unwatchFile, watchFile} from 'fs';
 import fs from 'fs';
 import chalk from 'chalk';
-import mddd5 from 'md5';
+//import mddd5 from 'md5';
 import ws from 'ws';
+import './plugins/MAIN-allfake.js';
 
 const {proto} = (await import('@whiskeysockets/baileys')).default;
 const isNumber = (x) => typeof x === 'number' && !isNaN(x);
@@ -279,14 +280,12 @@ export async function handler(chatUpdate) {
             __filename,
           });
         } catch (e) {
-          console.error(e);
-          const md5c = fs.readFileSync('./plugins/' + m.plugin);
-          fetch('https://themysticbot.cloud:2083/error', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({number: conn.user.jid, plugin: m.plugin, command: `${m.text}`, reason: format(e), md5: mddd5(md5c)}),
-          });
-        }
+	console.error(e)
+	for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
+	let data = (await conn.onWhatsApp(jid))[0] || {}
+	if (data.exists)
+	m.reply(`✧ El comando *${m.text}* está fallando, favor de revisarlo.`, data.jid)
+}}}
       }
       if (!opts['restrict']) {
         if (plugin.tags && plugin.tags.includes('admin')) { 
@@ -498,18 +497,12 @@ const messageText = `✧ El usuario ha sido Baneado.
               text = text.replace(new RegExp(key, 'g'), 'Administrador');
             }
             if (e.name) {
-              const md5c = fs.readFileSync('./plugins/' + m.plugin);
-              fetch('https://themysticbot.cloud:2083/error', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({number: conn.user.jid, plugin: m.plugin, command: `${usedPrefix}${command} ${args.join(' ')}`, reason: text, md5: mddd5(md5c)}),
-              }).then((res) => res.json()).then((json) => {
-                console.log(json);
-              }).catch((err) => {
-                console.error(err);
-              });
-            }
-            await m.reply(text);
+	for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
+	let data = (await conn.onWhatsApp(jid))[0] || {}
+	if (data.exists)
+	m.reply(`✧ El comando *${m.text}* está fallando, favor de revisarlo.`, data.jid)
+}
+	m.reply(text)
           }
         } finally {
           if (typeof plugin.after === 'function') {
