@@ -8,7 +8,7 @@ const handler = async (m, { conn, text, usedPrefix, groupMetadata }) => {
 	
 	conn.reply('120363284046748076@g.us', `❀ *SUGERENCIA RECIBIDA*\n\n✰ *Usuario ⪼* wa.me/${m.sender.split`@`[0]}\n◈ *Sugerencia ⪼* ${text}\n◈ *Grupo ⪼* ${groupMetadata.subject}\n◈ *ID ⪼* ${groupMetadata.id}`, m, fake,)
 	m.reply('❀ Tu sugerencia se envió con éxito a los Moderadores.')
-	user.suggestime = 300000
+	user.suggestime = new Date * 1
 }
 
 handler.registrado = true
