@@ -3,13 +3,12 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn }) => {
 
-let user = db.data.users[m.sender]
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who, 'image').catch(_ => './src/avatar_contact.png')
+let pp = wait conn.profilePictureUrl(who, 'image').catch(_ => './src/avatar_contact.png')
 let { premium, level, diamantes, alisacoins, rango, experiencia, registrado, regtime, edad , desc, genero, userol } = global.db.data.users[who]
 let username = conn.getName(who)
 
-let str = `
+let noprem = `
 ❀ *PERFIL DE USUARIO*
 ✰ *Nombre ⪼* ${username}
 ◈ *Tag ⪼* @${who.replace(/@.+/, '')}
@@ -30,7 +29,27 @@ ${desc ? desc : ''}
 ◈ *Premium ⪼* ${premium ? '✅': '❌'}
 `.trim()
 
-conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, fake, { mentions: [who] })
+let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
+│⧼👤⧽ ᴜsᴜᴀʀɪᴏ 「${username}」
+│⧼🍃⧽ ᴇᴅᴀᴅ ${registrado ? edad : ''}
+│⧼⭐⧽ ɢᴇɴᴇʀᴏ ${genero}
+│⧼🔱⧽ ʀᴏʟ ${userol ? userol : 『𝑷𝒓𝒆𝒎𝒊𝒖𝒎』'}
+╰───⪨
+✐ ${desc ? desc : 'Ｏ(≧∇≦)Ｏ'}
+
+╭────⪩ 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 ⪨
+│⧼💎⧽ ᴅɪᴀᴍᴀɴᴛᴇs ${diamantes}
+│⧼💴 ᴀʟɪsᴀᴄᴏɪɴs ${alisacoins}
+│
+│⧼🔰⧽ ɴɪᴠᴇʟ ${level}
+│⧼🌟⧽ ᴇxᴘᴇʀɪᴇɴᴄɪᴀ ${experiencia}
+│⧼⚜️⧽ ʀᴀɴɢᴏ ${rango}
+│
+╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim()
+
+let msg = ${premium ? prem : noprem}
+
+conn.sendFile(m.chat, pp, 'perfil.jpg', msg, m, { mentions: [who] })
 
 }
 
