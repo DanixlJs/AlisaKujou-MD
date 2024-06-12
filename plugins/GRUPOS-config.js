@@ -17,6 +17,7 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 
 	if (command === 'config') {
 	let msg = `*CONFIGURACIONES*\n> Bienvenido al menu de Configuración de ${global.botname}\n*Use ${usedPrefix}toggle <opción>*\n\n`;
+		
 	if (isGroup) msg += `*CONFIG - GRUPOS*
 - *welcome* ${nn.welcome ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *detect* ${nn.detect ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
@@ -34,10 +35,10 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *antiArab* ${nn.antiArab ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antiArab2* ${nn.antiArab2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antiporno* ${nn.antiporno ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *game* ${chat.game ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *autolevelup* ${chat.autolevelup ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *modoadmin* ${chat.modoadmin ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *simi* ${chat.simi ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}\n\n`;
+- *game* ${nn.game ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *autolevelup* ${nn.autolevelup ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *modoadmin* ${nn.modoadmin ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *simi* ${nn.simi ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}\n\n`;
 
 	if (isOwner) msg += `*CONFIG - OWNER*
 - *self* ${global.opts['self'] ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
@@ -52,6 +53,7 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *antispam* ${bot.antispam ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modoia* ${bot.modoia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *audios_bot* ${bot.audios_ia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}`;
+		
 		await conn.reply(m.chat, msg, m, fake, )
 	}
 };
