@@ -15,7 +15,7 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	m.react('✅');
 	}
 
-	if (command === 'config' {
+	if (command === 'config') {
 	let msg = `*CONFIGURACIONES*\n> Bienvenido al menu de Configuración de ${global.botname\n*Use ${usedPrefix}toggle <opción>*\n\n`;
 		if (isGroup) msg += `*CONFIG - GRUPOS*
 - *welcome* ${chat.welcome ? 'on' : 'off'}
