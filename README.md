@@ -17,7 +17,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 - **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
 
-- **Versión Actual ⪼** 1.0.0-(beta)
+- **Versión Actual ⪼** 1.0.7-(beta)
 - **Estado ⪼** Face de Desarrollo y Pruebas
 
 ---
