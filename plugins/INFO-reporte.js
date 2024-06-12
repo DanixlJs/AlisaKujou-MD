@@ -17,6 +17,7 @@ conn.reply('595983799436@s.whatsapp.net', teks, m, fake, );
 conn.reply('120363284046748076@g.us', teks, m, fake, );
 
   conn.reply(m.chat, '❀ El reporte se envió correctamente a los Moderadores, de ser necesario recibirá una respuesta.', m, fake, );
+  user.reportime = new Date * 1;
 };
 
 handler.help = ['report <texto>', 'reportar <texto>'];
