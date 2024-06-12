@@ -2,56 +2,56 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	let nn = global.db.data.chats[m.chat];
 	let bot = global.db.data.settings[conn.user.jid];
 	if (command === 'open') {
-		if (!isAdmin) return m.react('');
-		if (!isbotAdmin) return m.react('');
+		if (!isAdmin) return m.react('❌');
+		if (!isbotAdmin) return m.react('❌');
 	await conn.groupSettingUpdate(m.chat, 'not_announcement');
 	m.react('✅');
 	}
 	
 	if (command === 'close') {
-		if (!isAdmin) return m.react('');
-		if (!isbotAdmin) return m.react('');
+		if (!isAdmin) return m.react('❌');
+		if (!isbotAdmin) return m.react('❌');
 	await conn.groupSettingUpdate(m.chat, 'announcement');
 	m.react('✅');
 	}
 
 	if (command === 'config') {
 	let msg = `*CONFIGURACIONES*\n> Bienvenido al menu de Configuración de ${global.botname}\n*Use ${usedPrefix}toggle <opción>*\n\n`;
-		if (isGroup) msg += `*CONFIG - GRUPOS*
-- *welcome* ${chat.welcome ? 'on' : 'off'}
-- *detect* ${chat.detect ? 'on' : 'off'}
-- *detect2* ${chat.detect2 ? 'on' : 'off'}
-- *antidelete* ${chat.antidelete ? 'on' : 'off'}
-- *modohorny* ${chat.modohorny ? 'on' : 'off'}
-- *reaction* ${chat.reaction ? 'on' : 'off'}
-- *autosticker* ${chat.autosticker ? 'on' : 'off'}
-- *audios* ${chat.audios ? 'on' : 'off'}
-- *antiLink* ${chat.antiLink ? 'on' : 'off'}
-- *antiLink2* ${chat.antiLink2 ? 'on' : 'off'}
-- *antiviewonce* ${chat.antiviewonce ? 'on' : 'off'}
-- *antiToxic* ${chat.antiToxic ? 'on' : 'off'}
-- *antiTraba* ${chat.antiTraba ? 'on' : 'off'}
-- *antiArab* ${chat.antiArab ? 'on' : 'off'}
-- *antiArab2* ${chat.antiArab2 ? 'on' : 'off'}
-- *antiporno* ${chat.antiporno ? 'on' : 'off'}
-- *game* ${chat.game ? 'on' : 'off'}
-- *autolevelup* ${chat.autolevelup ? 'on' : 'off'}
-- *modoadmin* ${chat.modoadmin ? 'on' : 'off'}
-- *simi* ${chat.simi ? 'on' : 'off'}\n\n`;
+	if (isGroup) msg += `*CONFIG - GRUPOS*
+- *welcome* ${nn.welcome ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *detect* ${nn.detect ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *detect2* ${nn.detect2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antidelete* ${nn.antidelete ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *modohorny* ${nn.modohorny ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *reaction* ${nn.reaction ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *autosticker* ${nn.autosticker ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *audios* ${nn.audios ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiLink* ${nn.antiLink ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiLink2* ${nn.antiLink2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiviewonce* ${nn.antiviewonce ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiToxic* ${nn.antiToxic ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiTraba* ${nn.antiTraba ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiArab* ${nn.antiArab ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiArab2* ${nn.antiArab2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiporno* ${nn.antiporno ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *game* ${chat.game ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *autolevelup* ${chat.autolevelup ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *modoadmin* ${chat.modoadmin ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *simi* ${chat.simi ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}\n\n`;
 
 	if (isOwner) msg += `*CONFIG - OWNER*
-- *self* ${global.opts['self'] ? 'on' : 'off'}
-- *pconly* ${global.opts['pconly'] ? 'on' : 'off'}
-- *pgonly* ${global.opts['pgonly'] ? 'on' : 'off'}
-- *restrict* ${bot.restrict ? 'on' : 'off'}
+- *self* ${global.opts['self'] ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *pconly* ${global.opts['pconly'] ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *pgonly* ${global.opts['pgonly'] ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *restrict* ${bot.restrict ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modejadibot* ${bot.modejadibot}
-- *autoread* ${bot.autoread ? 'on' : 'off'}
-- *autoread2* ${bot.autoread2 ? 'on' : 'off'}
-- *antiCall* ${bot.antiCall ? 'on' : 'off'}
-- *antiPrivate* ${bot.antiPrivate ? 'on' : 'off'}
-- *antispam* ${bot.antispam ? 'on' : 'off'}
-- *modoia* ${bot.modoia ? 'on' : 'off'}
-- *audios_bot* ${bot.audios_ia ? 'on' : 'off'}`;
+- *autoread* ${bot.autoread ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *autoread2* ${bot.autoread2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiCall* ${bot.antiCall ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antiPrivate* ${bot.antiPrivate ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *antispam* ${bot.antispam ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *modoia* ${bot.modoia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
+- *audios_bot* ${bot.audios_ia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}`;
 		await conn.reply(m.chat, msg, m, fake, )
 	}
 };
