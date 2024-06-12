@@ -1,4 +1,4 @@
-import axios from 'axios'
+/*import axios from 'axios'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 try {
@@ -21,3 +21,4 @@ handler.registrado = true
 handler.diamantes = 1
 
 export default handler
+*/
