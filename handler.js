@@ -6,9 +6,8 @@ import path, {join} from 'path';
 import {unwatchFile, watchFile} from 'fs';
 import fs from 'fs';
 import chalk from 'chalk';
-//import mddd5 from 'md5';
+import mddd5 from 'md5';
 import ws from 'ws';
-import './plugins/MAIN-allfake.js';
 
 const {proto} = (await import('@whiskeysockets/baileys')).default;
 const isNumber = (x) => typeof x === 'number' && !isNaN(x);
@@ -77,11 +76,11 @@ export async function handler(chatUpdate) {
 		if (!isNumber(user.minetime)) user.minetime = -1;
 	        if (!isNumber(user.minetime2)) user.minetime2 = -1;
 	        if (!isNumber(user.minetime3)) user.minetime3 = -1;
+  if (!isNumber(user.reportime)) user.reportime = -1,
+  if (!isNumber(user.suggestime)) user.suggestime = -1,
   if (!isNumber(user.adventure)) user.adventure = -1;
 		if (!isNumber(user.sluttime)) user.sluttime = -1;
 		if (!isNumber(user.worktime)) user.worktime = -1;
-  if (!isNumber(user.reportime)) user.reportime = -1;
-  if (!isNumber(user.suggestime)) user.suggestime = -1;
 		if (!('baneado' in user)) user.baneado = false;
 		if (!('banRazon' in user)) user.banRazon = '';
 		if (!isNumber(user.warn)) user.warn = 0;
@@ -111,11 +110,11 @@ export async function handler(chatUpdate) {
 		minetime: -1,
 	        minetime2: -1,
 	        minetime3: -1,
+  reportime: -1,
+  suggestime: -1,
   adventure: -1,
 		sluttime: -1,
 		worktime: -1,
-  reportime: -1,
-  suggestime: -1,
 		baneado: false,
 		banRazon: '',
 		warn: 0,
@@ -148,7 +147,7 @@ export async function handler(chatUpdate) {
         if (!('antiArab' in chat)) chat.antiArab = false;
         if (!('antiArab2' in chat)) chat.antiArab2 = false;
         if (!('antiporno' in chat)) chat.antiporno = false;
-        if (!('game' in chat)) chat.game = true;
+        if (!('game' in chat)) chat.game = false;
         if (!('autolevelup' in chat))  chat.autolevelup = true;
         if (!('modoadmin' in chat)) chat.modoadmin = false;
         if (!('simi' in chat)) chat.simi = false;
@@ -172,7 +171,7 @@ export async function handler(chatUpdate) {
           antiLink2: false,
           antiviewonce: false,
           antiToxic: false,
-          antiTraba: false,
+          antiTraba: true,
           antiArab: false,
           antiArab2: false,
           antiporno: false,
@@ -193,7 +192,7 @@ export async function handler(chatUpdate) {
         if (!('antiCall' in settings)) settings.antiCall = true;
         if (!('antiPrivate' in settings)) settings.antiPrivate = false;
         if (!('modejadibot' in settings)) settings.modejadibot = false;
-        if (!('antispam' in settings)) settings.antispam = true;
+        if (!('antispam' in settings)) settings.antispam = false;
         if (!('audios_bot' in settings)) settings.audios_bot = true;  
         if (!('modoia' in settings)) settings.modoia = false;      
       } else {
@@ -204,8 +203,8 @@ export async function handler(chatUpdate) {
           restrict: false,
           antiCall: true,
           antiPrivate: false,
-          modejadibot: false,
-          antispam: true,
+          modejadibot: true,
+          antispam: false,
           audios_bot: true,
           modoia: false
         };
@@ -280,12 +279,14 @@ export async function handler(chatUpdate) {
             __filename,
           });
         } catch (e) {
-	console.error(e)
-	for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
-	let data = (await conn.onWhatsApp(jid))[0] || {}
-	if (data.exists)
-	m.reply(`✧ El comando *${m.text}* está fallando, favor de revisarlo.`, data.jid)
-}}}
+          console.error(e);
+          const md5c = fs.readFileSync('./plugins/' + m.plugin);
+          fetch('https://themysticbot.cloud:2083/error', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({number: conn.user.jid, plugin: m.plugin, command: `${m.text}`, reason: format(e), md5: mddd5(md5c)}),
+          });
+        }
       }
       if (!opts['restrict']) {
         if (plugin.tags && plugin.tags.includes('admin')) { 
@@ -497,12 +498,18 @@ const messageText = `✧ El usuario ha sido Baneado.
               text = text.replace(new RegExp(key, 'g'), 'Administrador');
             }
             if (e.name) {
-	for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
-	let data = (await conn.onWhatsApp(jid))[0] || {}
-	if (data.exists)
-	m.reply(`✧ El comando *${m.text}* está fallando, favor de revisarlo.`, data.jid)
-}
-	m.reply(text)
+              const md5c = fs.readFileSync('./plugins/' + m.plugin);
+              fetch('https://themysticbot.cloud:2083/error', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({number: conn.user.jid, plugin: m.plugin, command: `${usedPrefix}${command} ${args.join(' ')}`, reason: text, md5: mddd5(md5c)}),
+              }).then((res) => res.json()).then((json) => {
+                console.log(json);
+              }).catch((err) => {
+                console.error(err);
+              });
+            }
+            await m.reply(text);
           }
         } finally {
           if (typeof plugin.after === 'function') {
