@@ -8,12 +8,12 @@ const handler = async (m, {conn, usedPrefix, command}) => {
 
 //conn.sendFile(m.chat, json.url, 'error.jpg', `❀ 😻`, m);
 
-conn.sendButton(m.chat, `❀ Random Waifu 😻`, '> *Nota ⪼* No genere Spam con los botones o será Baneado.', json.url, [['🔄 SIGUIENTE', `${usedPrefix + command}`]], m)
+conn.sendButton(m.chat, `❀ 😻`, '> *Nota ⪼* No genere Spam con los botones o será Baneado.', json.url, [['🔄 SIGUIENTE', `${usedPrefix + command}`]], m)
 };
 
-handler.help = ['waifu', 'rw'];
+handler.help = ['waifu'];
 handler.tags = ['anime'];
-handler.command = ['waifu', 'rw'];
+handler.command = ['waifu'];
 handler.registrado = true;
 handler.group = true;
 
