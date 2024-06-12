@@ -47,8 +47,6 @@ let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔�
 │
 ╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim()
 
-let msg = ${premium ? prem : noprem}
-
 conn.sendFile(m.chat, pp, 'perfil.jpg', ${who.premium ? `${prem.trim()}` : `${noprem.trim()}`}, m, fake, { mentions: [who] })
 
 }
