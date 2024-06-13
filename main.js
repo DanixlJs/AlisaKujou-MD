@@ -476,3 +476,4 @@ console.log(chalk.greenBright(`\n╭──────────────�
 _quickTest()
 .then()
 .catch(console.error)
+ console.info = () => {};
