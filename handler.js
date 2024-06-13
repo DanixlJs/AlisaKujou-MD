@@ -55,6 +55,8 @@ export async function handler(chatUpdate) {
 	if (!isNumber(user.diamantes)) user.diamantes = 20;
 	if (!isNumber(user.alisacoins)) user.alisacoins = 500;
 	if (!isNumber(user.experiencia)) user.experiencia = 0;
+	if (!isNumber(user.bank)) user.bank = 0;
+	if (!isNumber(user.bank2)) user.bank2 = 0;
 	if (!('registrado' in user)) user.registrado = false;
 	if (!user.registrado) {
 		if (!('name' in user)) user.name = '';
@@ -91,6 +93,8 @@ export async function handler(chatUpdate) {
 		diamantes: 20,
 		alisacoins: 500,
 		experiencia: 0,
+	        bank: 0,
+	        bank2: 0,
 		registrado: false,
 		name: m.name,
 		edad: -1,
