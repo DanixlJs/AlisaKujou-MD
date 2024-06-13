@@ -6,7 +6,7 @@ const handler = async (m, {conn}) => {
 
   const name = conn.getName(who);
 
-  let msg = `❀ *RECURSOS ACTUALES*\n\n✰ *Usuario ⪼* ${name}\n◈ *Diamantes ⪼* ${global.db.data.users[who].diamantes}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].alisacoins}\n◈ *Experiencia ⪼* ${global.db.data.users[who].experiencia}\n◈ *Rango ⪼* ${global.db.data.users[who].rango}\n\n❀ *BANCO*\n\n✰ *Diamantes ⪼* ${global.db.data.users[who].bank}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].bank2}`;
+  let msg = `❀ *RECURSOS ACTUALES*\n✰ *Usuario ⪼* ${name}\n◈ *Diamantes ⪼* ${global.db.data.users[who].diamantes}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].alisacoins}\n◈ *Experiencia ⪼* ${global.db.data.users[who].experiencia}\n◈ *Rango ⪼* ${global.db.data.users[who].rango}\n\n❀ *BANCO*\n✰ *Diamantes ⪼* ${global.db.data.users[who].bank}\n◈ *AlisaCoins ⪼* ${global.db.data.users[who].bank2}`;
 
   conn.reply(m.chat, msg, m, fake, )
 };
