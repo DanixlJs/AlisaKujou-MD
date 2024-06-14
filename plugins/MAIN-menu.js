@@ -36,7 +36,7 @@ const defaultMenu = { before: `
 │➮ *Baileys ⪼* MultiDivice ^6.7.5
 │➮ *Activo ⪼* %muptime
 │➮ *Registrados ⪼* %totalreg
-│➮ *Sub-Bots Activos ⪼* 
+│➮ *Sub-Bots Activos ⪼* ${global.totalUsers}
 │
 ╰─────〔 𝗖𝗢𝗠𝗔𝗡𝗗𝗢𝗦
 
