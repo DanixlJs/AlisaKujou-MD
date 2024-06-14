@@ -7,7 +7,10 @@ var handler = async (m, { conn, participants, usedPrefix, command }) => {
 
     const groupInfo = await conn.groupMetadata(m.chat);
     const ownerGroup = groupInfo.owner || m.chat.split`-`[0] + '@s.whatsapp.net';
-    const ownerBot = global.owner[0][0] + '@s.whatsapp.net';
+   // const ownerBot = global.owner[0][0] + '@s.whatsapp.net';
+    const ownerBot = global.owner[i][0];
+if (user.replace(/@s\.whatsapp\.net$/, '') === ownerBot) {
+aa = ownerBot + '@s.whatsapp.net'
 
     if (user === conn.user.jid) {
         return conn.reply(m.chat, '✧ No me puedo auto eliminar del grupo.', m);
