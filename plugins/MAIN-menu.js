@@ -33,9 +33,10 @@ const defaultMenu = { before: `
 │≫ *Developed ⪼* %author
 │➮ *Tipo ⪼* %sbot
 │➮ *Entorno ⪼* NodeJs
-│➮ *Baileys ⪼* MultiDivice ^6.7.2
+│➮ *Baileys ⪼* MultiDivice ^6.7.5
 │➮ *Activo ⪼* %muptime
 │➮ *Registrados ⪼* %totalreg
+│➮ *Sub-Bots Activos ⪼* 
 │
 ╰─────〔 𝗖𝗢𝗠𝗔𝗡𝗗𝗢𝗦
 
