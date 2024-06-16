@@ -51,9 +51,53 @@ Este repositorio está bajo la licencia Apache 2.0, asegúrate de leerla para sa
 
 ---
 
-## INSTALACIÓN
+## INSTALACIÓN POR TERMUX
 
-Actualmente Alisa no está lista para instalarla, una vez que se termine de desarrollar y pasar las pruebas correspondientes pondré los pasos para una instalación exitosa.
+```bash
+cd && termux-setup-storage
+```
+
+```bash
+apt-get update -y && apt-get upgrade -y
+```
+
+```bash
+pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn 
+```
+
+```bash
+git clone https://github.com/DanixlJs/AlisaKujou-MD && cd AlisaKujou-MD
+```
+
+```bash
+yarn install
+```
+
+```bash
+npm install
+```
+
+```bash
+npm update
+```
+
+```bash
+npm start
+``` 
+
+## Obtener otro QR o Code
+```bash
+cd AlisaKujou-MD
+rm -rf Session
+npm start
+```
+
+## Iniciar en caso de que se detenga
+
+```bash
+cd AlisaKujou-MD
+npm start
+```
 
 ---
 
