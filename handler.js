@@ -356,7 +356,7 @@ for (const name in global.plugins) {
     continue;
 }
 
-global.db.data.settings[mconn.conn.user.jid].botcommandCount = += 1;
+global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
 
     m.plugin = name;
 
