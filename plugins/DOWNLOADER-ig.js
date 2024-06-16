@@ -4,7 +4,6 @@ import instagramGetUrl from 'instagram-url-direct'
 import { instagram } from '@xct007/frieren-scraper'
 import { instagramdl } from '@bochilteam/scraper'
 var handler = async (m, {conn, args, command, usedPrefix}) => {
-if (m.sender === conn.user.jid) return;
 
 if (!args[0]) return conn.reply(m.chat, `✧ Ingresa el Link del video que quiera descargar.`, m, )
 conn.reply(m.chat, `❀ Procesando, espere un momento.`, m, )
