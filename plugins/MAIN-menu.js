@@ -52,7 +52,6 @@ const defaultMenu = { before: `
 
 
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
-if (m.sender === conn.user.jid) return;
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let { experiencia, diamantes, level } = global.db.data.users[m.sender]
