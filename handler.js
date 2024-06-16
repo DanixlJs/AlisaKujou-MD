@@ -195,6 +195,7 @@ export async function handler(chatUpdate) {
         if (!('modejadibot' in settings)) settings.modejadibot = false;
         if (!('antispam' in settings)) settings.antispam = true;
         if (!('modoia' in settings)) settings.modoia = false;      
+        if (!('botcommandCount' in settings)) settings.botcommandCount = 0;
       } else {
         global.db.data.settings[this.user.jid] = {
           botname: 'AlisaBot-MD',
@@ -206,7 +207,8 @@ export async function handler(chatUpdate) {
           antiPrivate: false,
           modejadibot: true,
           antispam: true,
-          modoia: false
+          modoia: false,
+          botcommandCount: 0
         };
       }
     } catch (e) {
@@ -272,7 +274,6 @@ for (const name in global.plugins) {
   }
   const __filename = join(___dirname, name);
 
-  // Verificación para evitar que el bot responda a sus propios mensajes
   if (m.sender === this.user.jid) {
     continue;
   }
@@ -352,7 +353,10 @@ for (const name in global.plugins) {
 
     if (!isAccept) {
       continue;
-    }
+    } 
+
+global.db.data.settings[mconn.conn.user.jid].botcommandCount = 
+  (global.db.data.settings[mconn.conn.user.jid].botcommandCount || 0) + 1;
 
     m.plugin = name;
 
