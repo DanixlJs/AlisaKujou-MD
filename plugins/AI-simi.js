@@ -1,7 +1,6 @@
 import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
 const handler = async (m, {conn, text, command, args, usedPrefix}) => {
-  if (m.sender === conn.user.jid) return;
   if (!text) return conn.reply(m.chat, `✧ Ingresa un texto para empezar a hablar con ${global.botname}`, m, fake, )
   try {
     const api = await fetch('https://api.simsimi.net/v2/?text=' + text + '&lc=es');
