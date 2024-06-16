@@ -24,7 +24,7 @@ responseType: 'arraybuffer'
 })
 return res.data
 } catch (e) {
-console.log(`Error: ${e}`)
+console.log(`✧ Error: ${e}`)
 }}
 
 let pp = ''
@@ -48,6 +48,7 @@ global.dev = '「</>」𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐝 𝐛𝐲 ● 👨‍
 global.vs = '2.0.0';
 global.packname = 'ᰔᩚ 𝐒𝐭𝐢𝐜𝐤𝐞𝐫 𝐛𝐲';
 global.author = `${global.botname} ᰔᩚ`;
+global.botcommandcount = bot.botcommandCount;
 
 let category = "imagen"
 
