@@ -25,7 +25,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 - **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
 
 - **Versión Actual ⪼** 2.0.0
-- **Estado ⪼** Face de Desarrollo y Pruebas
+- **Estado ⪼** Público
 
 ---
 
@@ -88,7 +88,7 @@ npm start
 ## Obtener otro QR o Code
 ```bash
 cd AlisaKujou-MD
-rm -rf Session
+rm -rf Sessions
 npm start
 ```
 
