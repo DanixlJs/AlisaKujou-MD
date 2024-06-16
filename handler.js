@@ -208,7 +208,7 @@ export async function handler(chatUpdate) {
           modejadibot: true,
           antispam: true,
           modoia: false,
-          botcommandCount: 0
+          botcommandCount: 0,
         };
       }
     } catch (e) {
@@ -352,11 +352,11 @@ for (const name in global.plugins) {
                         false;
 
     if (!isAccept) {
-      continue;
-    } 
+    m.reply(`✧ El comando ingresado no es válido. Usa */menu* para ver mis comandos.`);
+    continue;
+}
 
-global.db.data.settings[mconn.conn.user.jid].botcommandCount = 
-  (global.db.data.settings[mconn.conn.user.jid].botcommandCount || 0) + 1;
+global.db.data.settings[mconn.conn.user.jid].botcommandCount = += 1;
 
     m.plugin = name;
 
