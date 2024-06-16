@@ -8,7 +8,6 @@ const configuration = new Configuration({organization: global.openai_org_id, api
 const openaiii = new OpenAIApi(configuration);
 
 const handler = async (m, {conn, text, usedPrefix, command}) => {
-if (m.sender === conn.user.jid) return;
 if (usedPrefix == 'a' || usedPrefix == 'A') return;
 if (!text) return conn.reply(m.chat, `✧ Ingrese una petición para que la AI lo responda, Ejemplo:\n> *${usedPrefix + command} Código de una Calculadora en .js*`, m, fake, )   
 try {
