@@ -6,10 +6,17 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 ---
 
+## NOVEDADES
+
+- Se agrego una protección a todos los plugins para que el Bot no responda a sus propios mensajes y este genere Spam.
+- Se rediseño el Menu.
+
+---
+
 ## CARACTERÍSTICAS DEL PROYECTO
 
 - **Entorno ⪼** NodeJs
-- **Baileys ⪼** MultiDivide ^6.7.2
+- **Baileys ⪼** MultiDivide ^6.7.5
 - **Comandos de administración ⪼** Alisa cuenta con comandos para administrar tus grupos de manera más fácil, los más usados son:
 ◈ /kick
 ◈ /promote
@@ -17,7 +24,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 - **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
 
-- **Versión Actual ⪼** 1.0.7-(beta)
+- **Versión Actual ⪼** 2.0.0
 - **Estado ⪼** Face de Desarrollo y Pruebas
 
 ---
