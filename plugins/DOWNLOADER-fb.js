@@ -2,13 +2,12 @@ import fetch from 'node-fetch'
 import { facebook } from '@xct007/frieren-scraper'
 
 var handler = async (m, { conn, args, command, usedPrefix, text }) => {
-if (m.sender === conn.user.jid) return;
 
 let vid
 const isCommand7 = /^(facebook|fb|facebookdl|fbdl)$/i.test(command)
 
 async function reportError(e) {
-await conn.reply(m.chat, `✧ Ocurrió un error inesperado.`, m, fake, )
+await m.reply(m.chat, `✧ Ocurrió un error inesperado.`)
 console.log(e)
 }
 
