@@ -9,9 +9,9 @@ try {
 const stdout = execSync('git pull' + (m.fromMe && text ? ' ' + text : ''));
 let messager = stdout.toString()
 
-if (messager.includes('Already up to date.')) messager = '✧ Ya estoy actualizada a la última versión.'
+if (messager.includes('Already up to date.')) messager = '❀ Ya estoy actualizada a la última versión.'
 
-if (messager.includes('Updating')) messager = '✧ Actualización exitosa.\n\n' + stdout.toString()
+if (messager.includes('Updating')) messager = '❀ *ACTUALIZACIÓN EXITOSA*\n\n' + stdout.toString()
 conn.reply(m.chat, messager, m, fake,)
 
 } catch { 
