@@ -3,7 +3,6 @@ import {join} from 'path';
 import {exec} from 'child_process';
 
 const handler = async (m, {conn, args, __dirname, usedPrefix, command}) => {
-if (m.sender === conn.user.jid) return;
   try {
     const q = m.quoted ? m.quoted : m;
     const mime = ((m.quoted ? m.quoted : m.msg).mimetype || '');
@@ -26,7 +25,7 @@ if (m.sender === conn.user.jid) return;
       const media = await q.download(true);
       exec(`ffmpeg -i ${media} ${set} ${filename}`, async (err, stderr, stdout) => {
         await unlinkSync(media);
-        if (err) throw `✧ Error.`;
+        if (err) await `✧ Ocurrió un error inesperado.`;
         const buff = await readFileSync(filename);
         conn.sendFile(m.chat, buff, ran, null, m, true, {
           type: 'audioMessage',
@@ -35,7 +34,7 @@ if (m.sender === conn.user.jid) return;
       });
     } else m.reply(`✧ Responda a un Audio con *${usedPrefix + command}*`);
   } catch (e) {
-    throw e;
+    m.reply(e);
   }
 };
 handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
