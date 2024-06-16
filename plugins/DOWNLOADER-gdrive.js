@@ -3,8 +3,7 @@ import {sizeFormatter} from 'human-readable';
 const formatSize = sizeFormatter({
   std: 'JEDEC', decimalPlaces: 2, keepTrailingZeroes: false, render: (literal, symbol) => `${literal} ${symbol}B`});
 const handler = async (m, {conn, args, usedPrefix }) => {
-if (m.sender === conn.user.jid) return;
-  if (!args[0]) throw '✧ Ingrese el Link del archivo que quiera descargar.';
+  if (!args[0]) await m.reply('✧ Ingrese el Link del archivo que quiera descargar.');
   try {
     GDriveDl(args[0]).then(async (res) => {
       conn.reply(m.chat, '❀ Procesando, espere un momento.', m);
