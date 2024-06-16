@@ -54,7 +54,7 @@ const handler = async (m, { conn, command }) => {
   }
 };
 
-handler.command = ['gitupdate', 'gitoffupdate'];
+handler.command = ['gitonupdate', 'gitoffupdate'];
 handler.registrado = true;
 handler.rowner = true;
 handler.group = true;
