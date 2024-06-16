@@ -352,7 +352,6 @@ for (const name in global.plugins) {
                         false;
 
     if (!isAccept) {
-    m.reply(`✧ El comando ingresado no es válido. Usa */menu* para ver mis comandos.`);
     continue;
 }
 
