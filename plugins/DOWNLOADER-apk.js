@@ -1,7 +1,6 @@
 import { search, download } from 'aptoide-scraper'
 
 var handler = async (m, {conn, usedPrefix, command, text}) => {
-if (m.sender === conn.user.jid) return;
 
 if (!text) return conn.reply(m.chat, `✧ Ingresa el nombre del Apk que quieras descargar, Ejemplo\n> *${usedPrefix + command} CapCut*`, m, )
 try {
@@ -17,7 +16,7 @@ return await conn.reply(m.chat, '✧ El archivo es demasiado pesado.', m, )
 }
 await conn.sendMessage(m.chat, {document: {url: data5.dllink}, mimetype: 'application/vnd.android.package-archive', fileName: data5.name + '.apk', caption: null}, {quoted: m})
 } catch {
-return conn.reply(m.chat, '✧ Ocurrió un error inesperado..', m, )
+await m.reply(m.chat, '✧ Ocurrió un error inesperado..')
 }    
 }
 
