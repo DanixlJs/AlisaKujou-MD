@@ -2,7 +2,6 @@ import fetch from 'node-fetch';
 const regex = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i;
 
 const handler = async (m, {args, usedPrefix, command}) => {
-  if (m.sender === conn.user.jid) return;
   if (!args[0]) return m.reply(`✧ Ingrese el Link del Repositorio, Ejemplo:\n> *${usedPrefix + command} https://github.com/DanixlJs/AlisaKujou-MD*`);
   if (!regex.test(args[0])) return m.reply('✧ El Link no es válido.');
   let [_, user, repo] = args[0].match(regex) || [];
