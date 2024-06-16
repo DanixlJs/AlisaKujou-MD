@@ -17,7 +17,7 @@ for (const folder of folders) {
 }
 for (const file of files) {
   if (file == __filename) continue;
-  console.error('Checking', file);
+  console.error('✧ Chequeando: ', file);
   const error = syntaxError(fs.readFileSync(file, 'utf8'), file, {
     sourceType: 'module',
     allowReturnOutsideFunction: true,
@@ -25,5 +25,5 @@ for (const file of files) {
   });
   if (error) assert.ok(error.length < 1, file + '\n\n' + error);
   assert.ok(file);
-  console.log('Done', file);
+  console.log('❀ Realizado: ', file);
 }

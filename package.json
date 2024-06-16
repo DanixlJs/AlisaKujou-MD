@@ -1,6 +1,6 @@
 {
 "name": "Alisa Kujou - MD",
-"version": "1.0.7", 
+"version": "2.0.0", 
 "description": "Simple WhatsApp Bot",
 "main": "index.js",
 "type": "module",
@@ -18,8 +18,7 @@
 "test2": "nodemon index.js" },
 
 "homepage": "https://github.com/DanixlJs/AlisaKujou-MD",
-"author": {
-"name": "DanixlJs" },
+"author": "DanixlJs",
 
 "repository": {
 "type": "git",

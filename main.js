@@ -1,3 +1,4 @@
+console.log('\n➤ Archivo en Ejecución: main.js')
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
 import './config.js';
 import './api.js';
@@ -104,7 +105,7 @@ global.loadChatgptDB = async function loadChatgptDB() {
 };
 loadChatgptDB();
 
-global.authFile = `AlisaSession`;
+global.authFile = `Session`;
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile);
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
@@ -126,7 +127,7 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
 do {
-opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
+opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos'))
 
 if (!/^[1-2]$/.test(opcion)) {
 console.log('Por favor, seleccione solo 1 o 2.\n')
@@ -137,7 +138,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['AlisaKujou-MD', 'Safari', '2.0.0'] : methodCodeQR ? ['AlisaKujou-MD', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '110.0.5585.95'],
+browser: opcion == '1' ? ['❀ Safari', 'Safari', '2.0.0'] : methodCodeQR ? ['❀ Safari', 'Safari', '2.0.0'] : ['❀ Ubuntu', 'Chrome', '110.0.5585.95'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -161,23 +162,23 @@ if (!fs.existsSync(`./${authFile}/creds.json`)) {
 if (opcion === '2' || methodCode) {
 opcion = '2'
 if (!conn.authState.creds.registered) {  
-if (MethodMobile) throw new Error('No se puede usar un código de emparejamiento con la API móvil')
+if (MethodMobile) throw new Error('✧ No se puede usar un código de emparejamiento con la API móvil')
 
 let numeroTelefono
 if (!!phoneNumber) {
 numeroTelefono = phoneNumber.replace(/[^0-9]/g, '')
 if (!Object.keys(PHONENUMBER_MCC).some(v => numeroTelefono.startsWith(v))) {
-console.log(chalk.bgBlack(chalk.bold.redBright("Comience con el código de país de su número de WhatsApp, Ejemplo: +595983xxxxxx\n")))
+console.log(chalk.bgBlack(chalk.bold.redBright("✧ Comience con el código de país de su número de WhatsApp, Ejemplo: +595983xxxxxx\n")))
 process.exit(0)
 }} else {
 while (true) {
-numeroTelefono = await question(chalk.bgBlack(chalk.bold.yellowBright('Ingresa el número que será bot\nPor ejemplo: +595983xxxxxx\n')))
+numeroTelefono = await question(chalk.bgBlack(chalk.bold.yellowBright('✧ Ingresa el número que será bot\nPor ejemplo: +595983xxxxxx\n')))
 numeroTelefono = numeroTelefono.replace(/[^0-9]/g, '')
 
 if (numeroTelefono.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => numeroTelefono.startsWith(v))) {
 break 
 } else {
-console.log(chalk.bgBlack(chalk.bold.redBright("Por favor, escriba su número de WhatsApp.\nEjemplo: +595983xxxxxx\n")))
+console.log(chalk.bgBlack(chalk.bold.redBright("✧ Por favor, escriba su número de WhatsApp.\nEjemplo: +595983xxxxxx\n")))
 }}
 rl.close()  
 } 
@@ -185,14 +186,14 @@ rl.close()
         setTimeout(async () => {
             let codigo = await conn.requestPairingCode(numeroTelefono)
             codigo = codigo?.match(/.{1,4}/g)?.join("-") || codigo
-            console.log(chalk.black(chalk.bgGreen(`Código de Vinculación: `)), chalk.black(chalk.white(codigo)))
+            console.log(chalk.black(chalk.bgGreen(`❀ Código de Vinculación: `)), chalk.black(chalk.white(codigo)))
         }, 3000)
 }}
 }
 
 conn.isInit = false;
 conn.well = false;
-conn.logger.info(`Cargando...\n`);
+conn.logger.info(`❀ Cargando, espere un momento...\n`);
 
 if (!opts['test']) {
   if (global.db) {
@@ -218,13 +219,13 @@ function clearTmp() {
 
 function purgeSession() {
 let prekey = []
-let directorio = readdirSync("./AlisaSession")
+let directorio = readdirSync("./Session")
 let filesFolderPreKeys = directorio.filter(file => {
 return file.startsWith('pre-key-') 
 })
 prekey = [...prekey, ...filesFolderPreKeys]
 filesFolderPreKeys.forEach(files => {
-unlinkSync(`./AlisaSession/${files}`)
+unlinkSync(`./Session/${files}`)
 })
 } 
 
@@ -245,11 +246,11 @@ unlinkSync(`./JadiBotSessions/${directorio}/${fileInDir}`)
 })
 if (SBprekey.length === 0) return; 
 } catch (err) {
-console.log(chalk.bold.red(`Algo salio mal durante la eliminación, archivos no eliminados`))
+console.log(chalk.bold.red(`✧ Algo salio mal durante la eliminación, archivos no eliminados`))
 }}
 
 function purgeOldFiles() {
-const directories = ['./AlisaSession/', './JadiBotSessions/']
+const directories = ['./Session/', './JadiBotSessions/']
 const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
@@ -261,10 +262,10 @@ if (err) throw err;
 if (stats.isFile() && stats.mtimeMs < oneHourAgo && file !== 'creds.json') { 
 unlinkSync(filePath, err => {  
 if (err) throw err
-console.log(chalk.bold.green(`Archivo ${file} borrado con éxito`))
+console.log(chalk.bold.green(`❀ Archivo ${file} borrado con éxito`))
 })
 } else {  
-console.log(chalk.bold.red(`Archivo ${file} no borrado` + err))
+console.log(chalk.bold.red(`✧ Archivo ${file} no borrado` + err))
 } }) }) }) })
 }
 
@@ -280,7 +281,7 @@ async function connectionUpdate(update) {
   if (global.db.data == null) loadDatabase();
 if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
 if (opcion == '1' || methodCodeQR) {
-        console.log(chalk.yellow('Escanea el código para conectarte a Alisa Kujou - MD'));
+        console.log(chalk.yellow('╭───────────────────╼\n│❀ Escanea el código para conectarte.\n╰───────────────────╼'));
  }}
    if (connection == 'open') {
 await conn.groupAcceptInvite('Kbj38zCqOvqH9KM5bRH1Hb')
@@ -288,17 +289,17 @@ console.log(chalk.bold.cyan('╭────────────────
    }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 if (reason == 405) {
-await fs.unlinkSync("./AlisaSession/" + "creds.json")
-console.log(chalk.bold.redBright(`✧ Conexión reemplazada, por favor espere un momento me voy a reiniciar...\n◈Si aparece error vuelve a iniciar con: npm start`)) 
+await fs.unlinkSync("./Session/" + "creds.json")
+console.log(chalk.bold.redBright(`✧ Conexión reemplazada, por favor espere un momento me voy a reiniciar.\nSi aparece error vuelve a iniciar con: npm start`)) 
 process.send('reset')}
 if (connection === 'close') {
     if (reason === DisconnectReason.badSession) {
         conn.logger.error(`✧ Sesión incorrecta, por favor elimina la carpeta ${global.authFile} y escanea nuevamente.`);
     } else if (reason === DisconnectReason.connectionClosed) {
-        conn.logger.warn(`✧ Conexión cerrada, reconectando...`);
+        conn.logger.warn(`✧ Conexión cerrada, reconectando.`);
         await global.reloadHandler(true).catch(console.error);
     } else if (reason === DisconnectReason.connectionLost) {
-        conn.logger.warn(`✧ Conexión perdida con el servidor, reconectando...`);
+        conn.logger.warn(`✧ Conexión perdida con el servidor, reconectando.`);
         await global.reloadHandler(true).catch(console.error);
     } else if (reason === DisconnectReason.connectionReplaced) {
         conn.logger.error(`✧ Conexión reemplazada, se ha abierto otra nueva sesión, por favor, cierra la sesión actual primero.`);
@@ -308,7 +309,7 @@ if (connection === 'close') {
         conn.logger.info(`✧ Reinicio necesario, reinicie el servidor si presenta algún problema.`);
         await global.reloadHandler(true).catch(console.error);
     } else if (reason === DisconnectReason.timedOut) {
-        conn.logger.warn(`✧ Tiempo de conexión agotado, reconectando...`);
+        conn.logger.warn(`✧ Tiempo de conexión agotado, reconectando.`);
         await global.reloadHandler(true).catch(console.error);
     } else {
         conn.logger.warn(`✧ Razón de desconexión desconocida. ${reason || ''}: ${connection || ''}`);
@@ -346,14 +347,16 @@ global.reloadHandler = async function(restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate);
   }
 
-conn.welcome = '◥@user◤\n❦ 𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 𝗮\n> @subject\n\n✰ Usa */menu* para ver mis comandos.\n\n➤ 𝗡𝗼𝘁𝗮: Lee la descripción del grupo para evitar inconvenientes.' 
-conn.bye = '✧ 𝗦𝗲 𝗻𝗼𝘀 𝗳𝘂𝗲 𝘂𝗻 𝗨𝘀𝘂𝗮𝗿𝗶𝗼\n◥@user◤ ya no forma parte del grupo.\n\n➤ Esperemos que vuelva pronto.'
-conn.spromote = '❀ @user 𝗮𝗵𝗼𝗿𝗮 𝗲𝘀 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿.'
-conn.sdemote = '❀ @user 𝘆𝗮 𝗻𝗼 𝗲𝘀 𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿.'
-conn.sDesc = '❀ 𝗔𝘁𝗲𝗻𝗰𝗶𝗼𝗻 𝗹𝗲𝗮𝗻 𝗹𝗮 𝗻𝘂𝗲𝘃𝗮 𝗱𝗲𝘀𝗰𝗿𝗶𝗽𝗰𝗶𝗼𝗻 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼.\n\n@desc'
-conn.sSubject = '❀ 𝗦𝗲 𝗮𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗼 𝗲𝗹 𝗻𝗼𝗺𝗯𝗿𝗲 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼 𝗮\n✰ @subject'
-conn.sIcon = '❀ 𝗦𝗲 𝗮𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗼 𝗹𝗮 𝗜𝗺𝗮𝗴𝗲𝗻 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼.'
-conn.sRevoke = '❀ 𝗦𝗲 𝗮𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗼 𝗲𝗹 𝗲𝗻𝗹𝗮𝗰𝗲 𝗱𝗲𝗹 𝗚𝗿𝘂𝗽𝗼 𝗮\n> → [@revoke]'
+conn.welcome = '╭───────────────────╼\n│ 「 @user 」\n│ᰔᩚ 𝐁𝐢𝐞𝐧𝐯𝐞𝐧𝐢𝐝𝐨 𝐚\n│➥ @subject\n│\n│✰ Usa */menu* para ver mis comandos.\n│\n│➤ 𝐍𝐨𝐭𝐚: Lee la descripción del grupo para evitar inconvenientes.\n╰───────────────────╼'
+ 
+conn.bye = '╭───────────────────╼\n│➽ 𝐒𝐞 𝐧𝐨𝐬 𝐟𝐮𝐞 𝐮𝐧 𝐔𝐬𝐮𝐚𝐫𝐢𝐨\n│ 「 @user 」\n│Ya no forma parte del grupo.\n│\n│➤ Esperemos que vuelva pronto.\n╰───────────────────╼'
+
+conn.spromote = '❀ 「 @user 」 𝐚𝐡𝐨𝐫𝐚 𝐞𝐬 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐫.'
+conn.sdemote = '❀ 「 @user 」 𝐲𝐚 𝐧𝐨 𝐞𝐬 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐫.'
+conn.sDesc = '❀ 𝐋𝐞𝐚𝐧 𝐥𝐚 𝐧𝐮𝐞𝐯𝐚 𝐝𝐞𝐬𝐜𝐫𝐢𝐩𝐜𝐢𝐨𝐧 𝐝𝐞𝐥 𝐆𝐫𝐮𝐩𝐨.\n\n@desc'
+conn.sSubject = '❀ 𝐒𝐞 𝐚𝐜𝐭𝐮𝐚𝐥𝐢𝐳𝐨 𝐞𝐥 𝐧𝐨𝐦𝐛𝐫𝐞 𝐝𝐞𝐥 𝐆𝐫𝐮𝐩𝐨 𝐚\n✰ @subject'
+conn.sIcon = '❀ 𝐒𝐞 𝐚𝐜𝐭𝐮𝐚𝐥𝐢𝐳𝐨 𝐥𝐚 𝐢𝐦𝐚𝐠𝐞𝐧 𝐝𝐞𝐥 𝐆𝐫𝐮𝐩𝐨.'
+conn.sRevoke = '❀ 𝐋𝐢𝐧𝐤 𝐝𝐞𝐥 𝐠𝐫𝐮𝐩𝐨 𝐚𝐜𝐭𝐮𝐚𝐥𝐢𝐳𝐚𝐝𝐨 𝐚\n> [@revoke]'
     
   conn.handler = handler.handler.bind(global.conn);
   conn.participantsUpdate = handler.participantsUpdate.bind(global.conn);
