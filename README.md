@@ -58,7 +58,7 @@ Actualmente Alisa no está lista para instalarla, una vez que se termine de desa
 ---
 
 ## AGRADECIMIENTO
-@OfcDiego
+- @OfcDiego
 [![GitHub](https://img.shields.io/badge/GitHub-OfcDiego-blue?logo=github)](https://github.com/OfcDiego)
 
 ---
