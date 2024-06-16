@@ -127,7 +127,7 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
 do {
-opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos'))
+opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1- Con código QR\n') + opcionTexto('2- Con código de 8 dígitos/n/n'))
 
 if (!/^[1-2]$/.test(opcion)) {
 console.log('Por favor, seleccione solo 1 o 2.\n')
