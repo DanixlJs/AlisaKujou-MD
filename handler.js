@@ -261,214 +261,238 @@ export async function handler(chatUpdate) {
     const isAdmin = isRAdmin || user?.admin == 'admin' || false; 
         const isBotAdmin = bot?.admin || false; 
 
-    const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins');
-    for (const name in global.plugins) {
-      const plugin = global.plugins[name];
-      if (!plugin) {
-        continue;
-      }
-      if (plugin.disabled) {
-        continue;
-      }
-      const __filename = join(___dirname, name);
-      if (typeof plugin.all === 'function') {
-        try {
-          await plugin.all.call(this, m, {
-            chatUpdate,
-            __dirname: ___dirname,
-            __filename,
-          });
-        } catch (e) {
-          console.log("✧ Error en:", e);
+ const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins');
+for (const name in global.plugins) {
+  const plugin = global.plugins[name];
+  if (!plugin) {
+    continue;
+  }
+  if (plugin.disabled) {
+    continue;
+  }
+  const __filename = join(___dirname, name);
+
+  // Verificación para evitar que el bot responda a sus propios mensajes
+  if (m.sender === this.user.jid) {
+    continue;
+  }
+
+  if (typeof plugin.all === 'function') {
+    try {
+      await plugin.all.call(this, m, {
+        chatUpdate,
+        __dirname: ___dirname,
+        __filename,
+      });
+    } catch (e) {
+      console.log("✧ Error en:", e);
+    }
+  }
+
+  const str2Regex = (str) => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+  const _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix;
+  const match = (_prefix instanceof RegExp ? 
+            [[_prefix.exec(m.text), _prefix]] :
+            Array.isArray(_prefix) ? 
+                _prefix.map((p) => {
+                  const re = p instanceof RegExp ? 
+                        p :
+                        new RegExp(str2Regex(p));
+                  return [re.exec(m.text), re];
+                }) :
+                typeof _prefix === 'string' ? 
+                    [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
+                    [[[], new RegExp]]
+  ).find((p) => p[1]);
+
+  if (typeof plugin.before === 'function') {
+    if (await plugin.before.call(this, m, {
+      match,
+      conn: this,
+      participants,
+      groupMetadata,
+      user,
+      bot,
+      isROwner,
+      isOwner,
+      isRAdmin,
+      isAdmin,
+      isBotAdmin,
+      isPrems,
+      chatUpdate,
+      __dirname: ___dirname,
+      __filename,
+    })) {
+      continue;
+    }
+  }
+
+  if (typeof plugin !== 'function') {
+    continue;
+  }
+
+  if ((usedPrefix = (match[0] || '')[0])) {
+    const noPrefix = m.text.replace(usedPrefix, '');
+    let [command, ...args] = noPrefix.trim().split` `.filter((v) => v);
+    args = args || [];
+    const _args = noPrefix.trim().split` `.slice(1);
+    const text = _args.join` `;
+    command = (command || '').toLowerCase();
+    const fail = plugin.fail || global.dfail; 
+    const isAccept = plugin.command instanceof RegExp ? 
+                plugin.command.test(command) :
+                Array.isArray(plugin.command) ? 
+                    plugin.command.some((cmd) => cmd instanceof RegExp ? 
+                        cmd.test(command) :
+                        cmd === command,
+                    ) :
+                    typeof plugin.command === 'string' ? 
+                        plugin.command === command :
+                        false;
+
+    if (!isAccept) {
+      continue;
+    }
+
+    m.plugin = name;
+
+    if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
+      const chat = global.db.data.chats[m.chat];
+      const user = global.db.data.users[m.sender];
+      const botSpam = global.db.data.settings[mconn.conn.user.jid];
+
+      if (!['MODS-unbanchat.js', 'INFO-contacto.js'].includes(name) && chat && chat?.isBanned && !isROwner && !isMods) return; 
+      if (name != 'MODS-unbanchat.js' && name != 'OWNER-exec.js' && name != 'OWNER-exec2.js' && chat?.isBanned && !isROwner && !isMods) return; 
+
+      if (m.text && user.baneado && !isROwner) {
+        if (typeof user.bannedMessageCount === 'undefined') {
+          user.bannedMessageCount = 0;
         }
-      }
-      const str2Regex = (str) => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
-      const _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix;
-      const match = (_prefix instanceof RegExp ? 
-                [[_prefix.exec(m.text), _prefix]] :
-                Array.isArray(_prefix) ? 
-                    _prefix.map((p) => {
-                      const re = p instanceof RegExp ? 
-                            p :
-                            new RegExp(str2Regex(p));
-                      return [re.exec(m.text), re];
-                    }) :
-                    typeof _prefix === 'string' ? 
-                        [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
-                        [[[], new RegExp]]
-      ).find((p) => p[1]);
-      if (typeof plugin.before === 'function') {
-        if (await plugin.before.call(this, m, {
-          match,
-          conn: this,
-          participants,
-          groupMetadata,
-          user,
-          bot,
-          isROwner,
-          isOwner,
-          isRAdmin,
-          isAdmin,
-          isBotAdmin,
-          isPrems,
-          chatUpdate,
-          __dirname: ___dirname,
-          __filename,
-        })) {
-          continue;
+
+        if (user.bannedMessageCount < 3) {
+          const messageNumber = user.bannedMessageCount + 1;
+          const messageText = `╭───────────────────╼\n│ ✧ 𝐄𝐒𝐓𝐀𝐒 𝐁𝐀𝐍𝐄𝐀𝐃𝐎 ✧\n│◈ 𝐀𝐯𝐢𝐬𝐨: ${messageNumber}/3 ${user.banRazon ? `\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: ${user.banRazon}` : '\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: Sin Especificar'}\n│\n│➤ *Puedes apelar el Baneo con mi Creador.\n│➥ wa.me/595983799436*\n╰───────────────────╼`.trim();
+          m.reply(messageText);
+          user.bannedMessageCount++;
+        } else if (user.bannedMessageCount === 3) {
+          user.bannedMessageSent = true;
+        } else {
+          return;
         }
+        return;
       }
-      if (typeof plugin !== 'function') {
-        continue;
-      }
-      if ((usedPrefix = (match[0] || '')[0])) {
-        const noPrefix = m.text.replace(usedPrefix, '');
-        let [command, ...args] = noPrefix.trim().split` `.filter((v) => v);
-        args = args || [];
-        const _args = noPrefix.trim().split` `.slice(1);
-        const text = _args.join` `;
-        command = (command || '').toLowerCase();
-        const fail = plugin.fail || global.dfail; 
-        const isAccept = plugin.command instanceof RegExp ? 
-                    plugin.command.test(command) :
-                    Array.isArray(plugin.command) ? 
-                        plugin.command.some((cmd) => cmd instanceof RegExp ? 
-                            cmd.test(command) :
-                            cmd === command,
-                        ) :
-                        typeof plugin.command === 'string' ? 
-                            plugin.command === command :
-                            false;
 
-        if (!isAccept) {
-          continue;
-        }
-        m.plugin = name;
-        if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
-          const chat = global.db.data.chats[m.chat];
-          const user = global.db.data.users[m.sender];
-          const botSpam = global.db.data.settings[mconn.conn.user.jid];
-
-          if (!['MODS-unbanchat.js', 'INFO-contacto.js'].includes(name) && chat && chat?.isBanned && !isROwner &&!isMods) return; 
-          if (name != 'MODS-unbanchat.js' && name != 'OWNER-exec.js' && name != 'OWNER-exec2.js' && chat?.isBanned && !isROwner && !isMods) return; 
-
-          if (m.text && user.baneado && !isROwner) {
-            if (typeof user.bannedMessageCount === 'undefined') {
-              user.bannedMessageCount = 0;
-            }
-
-            if (user.bannedMessageCount < 3) {
-              const messageNumber = user.bannedMessageCount + 1;
-const messageText = `╭───────────────────╼\n│ ✧ 𝐄𝐒𝐓𝐀𝐒 𝐁𝐀𝐍𝐄𝐀𝐃𝐎 ✧\n│◈ 𝐀𝐯𝐢𝐬𝐨: ${messageNumber}/3 ${user.banRazon ? `\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: ${user.banRazon}` : '\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: Sin Especificar'}\n│\n│➤ *Puedes apelar el Baneo con mi Creador.\n│➥ wa.me/595983799436*\n╰───────────────────╼`.trim();
-              m.reply(messageText);
-              user.bannedMessageCount++;
-            } else if (user.bannedMessageCount === 3) {
-              user.bannedMessageSent = true;
-            } else {
-              return;
-            }
+      if (botSpam.antispam && m.text && user && user.lastCommandTime && (Date.now() - user.lastCommandTime) < 30000 && !isROwner) {
+        if (user.commandCount === 2) {
+          const remainingTime = Math.ceil((user.lastCommandTime + 30000 - Date.now()) / 30000);
+          if (remainingTime > 0) {
+            const messageText = `✧ Espera *${remainingTime}* para usar otro comando.`;
+            m.reply(messageText);
             return;
-          }
-          if (botSpam.antispam && m.text && user && user.lastCommandTime && (Date.now() - user.lastCommandTime) < 30000 && !isROwner) {
-            if (user.commandCount === 2) {
-              const remainingTime = Math.ceil((user.lastCommandTime + 30000 - Date.now()) / 30000);
-              if (remainingTime > 0) {
-                const messageText = `✧ Espera *${remainingTime}* para usar otro comando.`;
-                m.reply(messageText);
-                return;
-              } else {
-                user.commandCount = 0;
-              }
-            } else {
-              user.commandCount += 1;
-            }
           } else {
-            user.lastCommandTime = Date.now();
-            user.commandCount = 1;
+            user.commandCount = 0;
           }
+        } else {
+          user.commandCount += 1;
         }
-                const hl = _prefix;
-        const adminMode = global.db.data.chats[m.chat].modoadmin;
-        const alisakujou = `${plugin.botAdmin || plugin.admin || plugin.group || plugin || noPrefix || hl || m.text.slice(0, 1) == hl || plugin.command}`;
-        if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && alisakujou) return;
+      } else {
+        user.lastCommandTime = Date.now();
+        user.commandCount = 1;
+      }
+    }
 
-        if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { 
-          fail('owner', m, this);
-          continue;
-        }
-        if (plugin.rowner && !isROwner) { 
-          fail('rowner', m, this);
-          continue;
-        }
-        if (plugin.owner && !isOwner) { 
-          fail('owner', m, this);
-          continue;
-        }
-        if (plugin.mods && !isMods) { 
-          fail('mods', m, this);
-          continue;
-        }
-        if (plugin.premium && !isPrems) { 
-          fail('premium', m, this);
-          continue;
-        }
-        if (plugin.group && !m.isGroup) { 
-          fail('group', m, this);
-          continue;
-        } else if (plugin.botAdmin && !isBotAdmin) { 
-          fail('botAdmin', m, this);
-          continue;
-        } else if (plugin.admin && !isAdmin) { 
-          fail('admin', m, this);
-          continue;
-        }
-        if (plugin.private && m.isGroup) { 
-          fail('private', m, this);
-          continue;
-        }
-        if (plugin.registrado == true && _user.registrado == false) { 
-          fail('unreg', m, this);
-          continue;
-        }
-        m.isCommand = true;
-        const xp = 'experiencia' in plugin ? parseInt(plugin.experiencia) : 9; 
-        if (xp > 200) {
-          m.reply('Ngecit -_-');
-        }
-        else {
-          m.experiencia += xp;
-        }
-        if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
-          mconn.conn.reply(m.chat, `✧ Te quedaste sin Diamantes, usa uno de los siguientes comandos para comprar mas.\n> *${usedPrefix}buy <cantidad>*\n> *${usedPrefix}buyall*`, m);
-          continue; 
-        }
-        if (plugin.level > _user.level) {
-          mconn.conn.reply(m.chat, `✧ Necesitas el nivel *${plugin.level}* para poder usar este comando, tu nivel actual es *${_user.level}*.`, m);
-          continue; 
-        }
-        const extra = {
-          match,
-          usedPrefix,
-          noPrefix,
-          _args,
-          args,
-          command,
-          text,
-          conn: this,
-          participants,
-          groupMetadata,
-          user,
-          bot,
-          isROwner,
-          isOwner,
-          isRAdmin,
-          isAdmin,
-          isBotAdmin,
-          isPrems,
-          chatUpdate,
-          __dirname: ___dirname,
-          __filename,
-        };
+    const hl = _prefix;
+    const adminMode = global.db.data.chats[m.chat].modoadmin;
+    const alisakujou = `${plugin.botAdmin || plugin.admin || plugin.group || plugin || noPrefix || hl || m.text.slice(0, 1) == hl || plugin.command}`;
+    if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && alisakujou) return;
+
+    if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { 
+      fail('owner', m, this);
+      continue;
+    }
+
+    if (plugin.rowner && !isROwner) { 
+      fail('rowner', m, this);
+      continue;
+    }
+
+    if (plugin.owner && !isOwner) { 
+      fail('owner', m, this);
+      continue;
+    }
+
+    if (plugin.mods && !isMods) { 
+      fail('mods', m, this);
+      continue;
+    }
+
+    if (plugin.premium && !isPrems) { 
+      fail('premium', m, this);
+      continue;
+    }
+
+    if (plugin.group && !m.isGroup) { 
+      fail('group', m, this);
+      continue;
+    } else if (plugin.botAdmin && !isBotAdmin) { 
+      fail('botAdmin', m, this);
+      continue;
+    } else if (plugin.admin && !isAdmin) { 
+      fail('admin', m, this);
+      continue;
+    }
+
+    if (plugin.private && m.isGroup) { 
+      fail('private', m, this);
+      continue;
+    }
+
+    if (plugin.registrado == true && _user.registrado == false) { 
+      fail('unreg', m, this);
+      continue;
+    }
+
+    m.isCommand = true;
+    const xp = 'experiencia' in plugin ? parseInt(plugin.experiencia) : 9; 
+    if (xp > 200) {
+      m.reply('Ngecit -_-');
+    } else {
+      m.experiencia += xp;
+    }
+
+    if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
+      mconn.conn.reply(m.chat, `✧ Te quedaste sin Diamantes, usa uno de los siguientes comandos para comprar mas.\n> *${usedPrefix}buy <cantidad>*\n> *${usedPrefix}buyall*`, m);
+      continue; 
+    }
+
+    if (plugin.level > _user.level) {
+      mconn.conn.reply(m.chat, `✧ Necesitas el nivel *${plugin.level}* para poder usar este comando, tu nivel actual es *${_user.level}*.`, m);
+      continue; 
+    }
+
+    const extra = {
+      match,
+      usedPrefix,
+      noPrefix,
+      _args,
+      args,
+      command,
+      text,
+      conn: this,
+      participants,
+      groupMetadata,
+      user,
+      bot,
+      isROwner,
+      isOwner,
+      isRAdmin,
+      isAdmin,
+      isBotAdmin,
+      isPrems,
+      chatUpdate,
+      __dirname: ___dirname,
+      __filename,
+    };
                 try {
           await plugin.call(this, m, extra);
           if (!isPrems) {
