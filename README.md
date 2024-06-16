@@ -58,8 +58,8 @@ Actualmente Alisa no está lista para instalarla, una vez que se termine de desa
 ---
 
 ## AGRADECIMIENTO
-- @Diego-YL-177
-- [![GitHub](https://img.shields.io/badge/GitHub-Diego--YL--177-blue?logo=github)](https://github.com/Diego-YL-177)
+@OfcDiego
+[![GitHub](https://img.shields.io/badge/GitHub-OfcDiego-blue?logo=github)](https://github.com/OfcDiego)
 
 ---
 
