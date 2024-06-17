@@ -2,7 +2,6 @@ import MessageType from '@whiskeysockets/baileys'
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
 
 let handler = async (m, { conn, text, participants }) => {
-if (m.sender === conn.user.jid) return;
 let users = participants.map(u => conn.decodeJid(u.id))
 let q = m.quoted ? m.quoted : m
 let c = m.quoted ? m.quoted : m.msg
