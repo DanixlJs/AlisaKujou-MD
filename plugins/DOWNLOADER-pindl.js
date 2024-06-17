@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 try {
 if (!text) return m.reply(`✧ Ingresa un Link de Pinterest.`)
@@ -12,13 +11,12 @@ await conn.sendMessage(m.chat, { video: { url: sms }, quoted: m })
 } else {
 return m.reply(`✧ Ocurrió un error inesperado.`)
 }} catch (error) {
+ console.log(error)
 }}
-
 handler.tags = ['downloader']
 handler.help = ['pindl <linm>']
 handler.command = ['pindl']
 handler.registrado = true
 handler.disabled = true
 handler.diamantes = 1
-
 export default handler
