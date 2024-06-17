@@ -3,10 +3,9 @@ import {promisify} from 'util';
 import fs from 'fs';
 const exec = promisify(_exec).bind(cp);
 const handler = async (m, {conn, isROwner, usedPrefix, command, text}) => {
-if (m.sender === conn.user.jid) return
   const ar = Object.keys(plugins);
   const ar1 = ar.map((v) => v.replace('.js', ''));
-  if (!text) throw `✧ Ingresa el nombre del Plugin.`;
+  if (!text) return m.reply(`✧ Ingresa el nombre del Plugin.`);
   if (!ar1.includes(text)) return m.reply(`✧ No se encontró resultados, verifica que sea correcto.`);
   let o;
   try {
@@ -25,10 +24,8 @@ if (m.sender === conn.user.jid) return
     }
   }
 };
-
 handler.help = ['getplugin <archivo>'];
 handler.tags = ['owner'];
 handler.command = ['getplugin'];
 handler.rowner = true;
-
 export default handler;
