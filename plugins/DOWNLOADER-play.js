@@ -11,7 +11,6 @@ let limit2 = 400;
 let limit_a1 = 50;
 let limit_a2 = 400;
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
-if (m.sender === conn.user.jid) return;
  if (!text) return conn.reply(m.chat, `✧ Ingresa el nombre de la canción que quiera descargar, Ejemplo:\n> *${usedPrefix + command} Huellas - Maiye Torrex*`,  m, )
   try {
     const yt_play = await search(args.join(' '));
@@ -28,7 +27,7 @@ if (m.sender === conn.user.jid) return;
 ◈ *Canal ⪼* ${yt_play[0].author.url}
 ◈ *Enlace ⪼* ${yt_play[0].url}
 
-> → Enviando ${additionalText}, aguarde un momento.`.trim();
+> Enviando ${additionalText}, aguarde un momento.`.trim();
 await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: { title: yt_play[0].title, body: global.wm, thumbnailUrl: yt_play[0].thumbnail, mediaType: 1, showAdAttribution: true, renderLargerThumbnail: true }}} , { quoted: fkontak })
   if (command == 'play') {
     try {    
@@ -109,7 +108,7 @@ await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: {
   }
 } catch (error) {
     console.log(error)
-    return m.reply('✧ Ocurrió un error inesperado.');
+    m.reply('✧ Ocurrió un error inesperado.');
   }
 };
 
