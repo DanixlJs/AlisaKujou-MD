@@ -4,11 +4,11 @@ import cheerio from 'cheerio';
 import {mediafiredl} from '@bochilteam/scraper';
 
 const handler = async (m, {conn, args, usedPrefix, command }) => {
-if (m.sender === conn.user.jid) return;
   if (!args[0]) return m.reply(`✧ Ingrese el Link del archivo que quiera descargar.`);
   try {
     const resEX = await mediafiredl(args[0]);
-    const captionES = `❀ *MEDIAFIRE DL*
+    const captionES = `
+❀ *MEDIAFIRE DL*
 ✰ *Nombre ⪼* ${resEX.filename}
 ◈ *Peso ⪼* ${resEX.filesizeH}
 ◈ *Tipo ⪼* ${resEX.ext}
@@ -20,7 +20,8 @@ if (m.sender === conn.user.jid) return;
     try {
       const res = await mediafireDl(args[0]);
       const {name, size, date, mime, link} = res;
-      const caption = `❀ *MEDIAFIRE DL*
+      const caption = `
+❀ *MEDIAFIRE DL*
 ✰ *Nombre ⪼* ${resEX.filename}
 ◈ *Peso ⪼* ${resEX.filesizeH}
 ◈ *Tipo ⪼* ${resEX.ext}
