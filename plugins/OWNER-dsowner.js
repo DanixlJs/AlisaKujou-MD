@@ -1,10 +1,8 @@
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs';
 import path from 'path';
-
 const handler = async (m, { conn, usedPrefix }) => {
-if (m.sender === conn.user.jid) return;
   if (global.conn.user.jid !== conn.user.jid) {
-    return conn.sendMessage(m.chat, {text: '✧ Usa éste comando en el Bot Principal.'}, {quoted: fkontak });
+    return conn.sendMessage(m.chat, {text: '✧ Usa éste comando en el Bot Principal.'}, {quoted: m });
   }
   await conn.sendMessage(m.chat, {text: '❀ Iniciando eliminación de archivos de Sesión.'}, {quoted: m });
   const sessionPath = './Session/';
@@ -31,11 +29,9 @@ if (m.sender === conn.user.jid) return;
   }
   await conn.sendMessage(m.chat, {text: `❀ Hola, ahora me vez?`}, {quoted: m });
 };
-
 handler.help = ['dsowner'];
 handler.tags = ['owner'];
 handler.command = ['dsowner'];
 handler.rowner = true;
 handler.registrado = true;
-
 export default handler;
