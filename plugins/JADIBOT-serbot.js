@@ -187,10 +187,6 @@ conn.bye = '╭───────────────────╼\n│
 
 conn.spromote = '❀ 「 @user 」 𝐚𝐡𝐨𝐫𝐚 𝐞𝐬 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐫.'
 conn.sdemote = '❀ 「 @user 」 𝐲𝐚 𝐧𝐨 𝐞𝐬 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐫.'
-conn.sDesc = '❀ 𝐋𝐞𝐚𝐧 𝐥𝐚 𝐧𝐮𝐞𝐯𝐚 𝐝𝐞𝐬𝐜𝐫𝐢𝐩𝐜𝐢𝐨𝐧 𝐝𝐞𝐥 𝐆𝐫𝐮𝐩𝐨.\n\n@desc'
-conn.sSubject = '❀ 𝐒𝐞 𝐚𝐜𝐭𝐮𝐚𝐥𝐢𝐳𝐨 𝐞𝐥 𝐧𝐨𝐦𝐛𝐫𝐞 𝐝𝐞𝐥 𝐆𝐫𝐮𝐩𝐨 𝐚\n✰ @subject'
-conn.sIcon = '❀ 𝐒𝐞 𝐚𝐜𝐭𝐮𝐚𝐥𝐢𝐳𝐨 𝐥𝐚 𝐢𝐦𝐚𝐠𝐞𝐧 𝐝𝐞𝐥 𝐆𝐫𝐮𝐩𝐨.'
-conn.sRevoke = '❀ 𝐋𝐢𝐧𝐤 𝐝𝐞𝐥 𝐠𝐫𝐮𝐩𝐨 𝐚𝐜𝐭𝐮𝐚𝐥𝐢𝐳𝐚𝐝𝐨 𝐚\n> [@revoke]'
 conn.handler = handler.handler.bind(conn)
 conn.participantsUpdate = handler.participantsUpdate.bind(conn)
 conn.groupsUpdate = handler.groupsUpdate.bind(conn)
@@ -228,7 +224,7 @@ jddt()
 }
 handler.help = ['serbot', 'serbot --code']
 handler.tags = ['jadibot']
-handler.command = ['serbot', 'serbot --code']
+handler.command = ['serbot', 'jadibot']
 handler.registrado = true
 //handler.diamantes = 50
 export default handler
