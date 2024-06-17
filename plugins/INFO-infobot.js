@@ -32,7 +32,7 @@ const handler = async (m, { conn }) => {
     const arch = os.arch();
     const nodeUsage = process.memoryUsage();
     const diskSpace = getDiskSpace();
-    const sbot = ${conn.user.jid ? 'Main-Bot' : 'Sub-Bot'};
+    const sbot = `${conn.user.jid ? 'Main-Bot' : 'Sub-Bot'}`;
 
 
     const message = `❀ *ESTADO DE:* ${global.botname}
