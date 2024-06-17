@@ -1,15 +1,9 @@
-const {
-  proto,
-  generateWAMessage,
-  areJidsSameUser,
-} = (await import('@whiskeysockets/baileys')).default;
-
+const { proto, generateWAMessage, areJidsSameUser, } = (await import('@whiskeysockets/baileys')).default;
 export async function all(m, chatUpdate) {
   if (m.isBaileys) return;
   if (!m.message) return;
   if (!m.msg.fileSha256) return;
   if (!(Buffer.from(m.msg.fileSha256).toString('base64') in global.db.data.sticker)) return;
-
   const hash = global.db.data.sticker[Buffer.from(m.msg.fileSha256).toString('base64')];
   const {text, mentionedJid} = hash;
   const messages = await generateWAMessage(m.chat, {text: text, mentions: mentionedJid}, {
