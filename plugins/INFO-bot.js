@@ -1,7 +1,6 @@
 import fs from 'fs';
 const handler = (m) => m;
 handler.all = async function(m) {
-if (m.sender === conn.user.jid) return;
   const chat = global.db.data.chats[m.chat];
   
 if (/^bot$/i.test(m.text) && !chat.isBanned) {
