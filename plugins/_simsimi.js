@@ -2,10 +2,7 @@ import translate from '@vitalets/google-translate-api';
 import axios from 'axios';
 import fetch from 'node-fetch';
 const handler = (m) => m;
-
 handler.before = async (m) => {
-  if (m.sender === conn.user.jid) return;
-
   const chat = global.db.data.chats[m.chat];
   if (chat.simi) {
    try {
@@ -13,12 +10,10 @@ handler.before = async (m) => {
       const ressimi = await simitalk(textodem);
       await m.conn.sendMessage(m.chat, { text: ressimi.resultado.simsimi }, { quoted: m });
   } catch (err) {
-console.log("✧ Error ⪼", err)}
+console.log(err)}
 }
 };
-
 export default handler;
-
 async function simitalk(ask, apikeyyy = "iJ6FxuA9vxlvz5cKQCt3", language = "es") {
     if (!ask) return { status: false, resultado: { msg: "✧ Debes ingresar un texto para hablar con SimSimi." }};
     try {
