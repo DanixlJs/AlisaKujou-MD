@@ -3,7 +3,8 @@ import fs from 'fs'
 import { join } from 'path'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
-let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
+let handler = async (m, { conn, usedPrefix: _p, __dirname }) => { 
+  try {
   let tags = {
   'info': '𝐈𝐍𝐅𝐎',
   'jadibot': '𝐉𝐀𝐃𝐈𝐁𝐎𝐓',
@@ -46,7 +47,7 @@ const defaultMenu = { before: `
   body: '┃│✦ *%cmd*\n',
   footer: '┃╰──────────────────╸',
   after: '┗━━━━━━━━━━━━━━━━━━━╼',
-} try {
+}
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let { experiencia, diamantes, level } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
