@@ -6,18 +6,14 @@ import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import {tiktokdl} from '@bochilteam/scraper';
 const CFROSAPI = global.APIs.CFROSAPI;
 const handler = async (m, {conn, text, args, usedPrefix, command}) => {
-
   if (!text) return m.reply(`✧ Ingresa el Link del video que quieras descargar.`);
   if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) return m.reply(`✧ Ingresa un Link válido.`);
   const texto = `❀ Procesando, espere un momento.`;
   try {
-m.react('🕒') 
     const aa = {quoted: m, userJid: conn.user.jid};
     const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: texto, contextInfo: {externalAdReply: {title: global.wm, body: global.dev, thumbnail: global.icons, sourceUrl: global.fakeLink}, mentionedJid: [m.sender]}}}, aa);
-
     await conn.relayMessage(m.chat, prep.message, {messageId: prep.key.id, mentions: [m.sender]});
     const dataFn = await conn.getFile(`${CFROSAPI}/api/tiktokv2?url=${args[0]}`);
-
     const desc1n = `❀ Aquí tiene su video.`;
     await conn.sendMessage(m.chat, {video: dataFn.data, caption: desc1n}, {quoted: m});
   } catch (ee1) {
@@ -51,13 +47,11 @@ m.react('🕒')
 };
 handler.command = ['tt', 'tiktok'];
 handler.registrado = true;
-handler.help = ['tt <link', 'tiktok <link>'];
+handler.help = ['tt <link>', 'tiktok <link>'];
 handler.group = true;
 handler.tags = ['downloader'];
-handler.diamantes = 5;
-
+handler.diamantes = 2;
 export default handler;
-
 async function tiktokdlF(url) {
   if (!/tiktok/.test(url)) return `✧ Ingresa el Link del video que quieras descargar.`;
   const gettoken = await axios.get('https://tikdown.org/id');
