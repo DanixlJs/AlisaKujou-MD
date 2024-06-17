@@ -1,6 +1,5 @@
 const handler = async (m, {conn, usedPrefix, command }) => {
-if (m.sender === conn.user.jid) return;
-  if (!m.quoted) throw `✧ Responde al mensaje que quieras eliminar.`;
+  if (!m.quoted) return m.reply(`✧ Responde al mensaje que quieras eliminar.`);
   try {
     const delet = m.message.extendedTextMessage.contextInfo.participant;
     const bang = m.message.extendedTextMessage.contextInfo.stanzaId;
