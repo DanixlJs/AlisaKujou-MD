@@ -7,19 +7,15 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	await conn.groupSettingUpdate(m.chat, 'not_announcement');
 	m.react('✅');
 	}
-	
 	if (command === 'close') {
 		if (!isAdmin) return m.react('❌');
 		if (!isbotAdmin) return m.react('❌');
 	await conn.groupSettingUpdate(m.chat, 'announcement');
 	m.react('✅');
 	}
-
 	if (command === 'config') {
 	if (!isAdmin && !isOwner) return m.reply(`No tienes permisos para utilizar este comando.`);
-
-	let msg = `╾──⟬ *CONFIGURACIONES* ⟭──╼\n> ✰ Bienvenido al menu de Configuración de ${global.botname}\n◈ *Use ${usedPrefix}toggle <opción>*\n\n`;
-		
+	let msg = `╾──⟬ *CONFIGURACIONES* ⟭──╼\n> ✰ Bienvenido al menu de Configuración de ${global.botname}\n◈ *Use ${usedPrefix}toggle <opción>*\n\n`;	
 	if (isAdmin) msg += `
 ╾──⟬ *𝐂𝐎𝐍𝐅𝐈𝐆 - 𝐆𝐑𝐔𝐏𝐎𝐒* ⟭──╼
 
@@ -41,7 +37,6 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *autolevelup* ${nn.autolevelup ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modoadmin* ${nn.modoadmin ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *simi* ${nn.simi ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}\n\n`;
-
 	if (isOwner) msg += `
 ╾──⟬ *𝐂𝐎𝐍𝐅𝐈𝐆 - 𝐎𝐖𝐍𝐄𝐑* ⟭──╼
 - *self* ${global.opts['self'] ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
@@ -53,16 +48,13 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *antiPrivate* ${bot.antiPrivate ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antispam* ${bot.antispam ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modoia* ${bot.modoia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-`;
-		
-		await conn.reply(m.chat, msg, m, fake, )
+`;	
+	await conn.reply(m.chat, msg, m, fake, )
 	}
 };
-
 handler.help = ['open', 'close', 'config'];
 handler.tags = ['grupo'];
 handler.command = ['open', 'close', 'config'];
 handler.group = true;
 handler.registrado = true;
-
 export default handler;
