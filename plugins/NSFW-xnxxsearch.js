@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 const handler = async (m, {text, usedPrefix, command}) => {
-if (m.sender === conn.user.jid) return;
  if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}toggle modohorny* para activarlos si eres Administrador.`);
   if (!text) return m.reply(`✰ Ingrese un texto para realizar la búsqueda, Ejemplo:\n> *${usedPrefix + command} Con mi Prima*`);
   try {
@@ -27,18 +26,15 @@ if (m.sender === conn.user.jid) return;
     m.reply(cap);
     global.videoListXXX.push(vids_);
   } catch {
-    throw e;
+    console.log(e);
   }
 };
-
 handler.help = ['xnxxsearch <texto>'];
 handler.tags = ['downloader', 'premium', 'nsfw'];
 handler.command = ['xnxxsearch'];
 handler.registrado = true;
 handler.premium = true;
-
 export default handler;
-
 async function xnxxsearch(query) {
   return new Promise((resolve, reject) => {
     const baseurl = 'https://www.xnxx.com';
@@ -68,5 +64,3 @@ async function xnxxsearch(query) {
     }).catch((err) => reject({code: 503, status: false, result: err}));
   });
 }
-
-
