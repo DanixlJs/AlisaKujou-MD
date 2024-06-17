@@ -6,7 +6,6 @@ const {
 } = (await import('@whiskeysockets/baileys')).default;
 
 export async function all(m, chatUpdate) {
-if (this.user.jid) return;
   if (m.isBaileys) {
     return;
   }
