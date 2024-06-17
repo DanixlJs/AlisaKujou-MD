@@ -1,5 +1,4 @@
 let handler = async (m, { conn, args }) => {
-if (m.sender === conn.user.jid) return;
 let group = m.chat
 let link = 'https://chat.whatsapp.com/' + await conn.groupInviteCode(group)
 
