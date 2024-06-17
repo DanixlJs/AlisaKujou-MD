@@ -14,7 +14,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
         return;
     }
 
-    const chat = global.db.data.settings[this.user.jid];
+    const chat = global.db.data.settings[this.user.jid] = {}
 
     chat[option] = !chat[option];
 
