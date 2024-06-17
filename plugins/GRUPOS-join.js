@@ -1,7 +1,6 @@
 const { default: makeWASocket, DisconnectReason, useMultiFileAuthState } = await import('@whiskeysockets/baileys');
 
 const handler = async (m, { conn, args, text, usedPrefix, command, isROwner }) => {
-if (m.sender === conn.user.jid) return;
     if (args.length === 0) {
         await conn.reply(m.chat, `✧ Ingresa el Link de tu grupo.`, m);
         return;
@@ -39,7 +38,7 @@ let mentionedJid = conn.parseMention(msg)
             await conn.reply(m.chat, `❀ Tu solicitud ha sido enviada a los Moderadores del Bot.`, m, fake, );
         }
     } catch (error) {
-        await conn.reply(m.chat, `✧ Ocurrió un error inesperado.`, m);
+        await m.reply(`✧ Ocurrió un error inesperado.`);
         console.error(error);
     }
 };
