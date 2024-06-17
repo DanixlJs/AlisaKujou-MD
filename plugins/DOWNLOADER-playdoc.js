@@ -3,9 +3,7 @@ import yts from 'yt-search';
 import ytdl from 'ytdl-core';
 import axios from 'axios';
 import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
-
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
-
   if (!text) return m.reply(`✧ Ingese el nombre de la canción que quiera descargar, Ejemplo:\n> *${usedPrefix + command} Huellas - Maiye Torrex* `);
   try {
     const yt_play = await search(args.join(' '));
@@ -85,20 +83,16 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
     m.reply('✧ Ocurrió un error inesperado.');
   }
 };
-
 handler.help = ['playdoc <texto>', 'playdoc2 <texto>', 'play3 <texto>', 'play4 <texto>'];
 handler.tags = ['downloader'];
 handler.command = ['playdoc', 'playdoc2', 'play3', 'play4'];
 handler.registrado = true;
 handler.diamantes = 5;
-
 export default handler;
-
 async function search(query, options = {}) {
   const search = await yts.search({query, hl: 'es', gl: 'ES', ...options});
   return search.videos;
 }
-
 function MilesNumber(number) {
   const exp = /(\d)(?=(\d{3})+(?!\d))/g;
   const rep = '$1.';
@@ -106,7 +100,6 @@ function MilesNumber(number) {
   arr[0] = arr[0].replace(exp, rep);
   return arr[1] ? arr.join('.') : arr[0];
 }
-
 function secondString(seconds) {
   seconds = Number(seconds);
   const d = Math.floor(seconds / (3600 * 24));
@@ -119,7 +112,6 @@ function secondString(seconds) {
   const sDisplay = s > 0 ? s + (s == 1 ? ' segundo' : ' segundos') : '';
   return dDisplay + hDisplay + mDisplay + sDisplay;
 }
-
 function bytesToSize(bytes) {
   return new Promise((resolve, reject) => {
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -129,7 +121,6 @@ function bytesToSize(bytes) {
     resolve(`${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`);
   });
 }
-
 async function ytMp3(url) {
   return new Promise((resolve, reject) => {
     ytdl.getInfo(url).then(async (getUrl) => {
@@ -151,7 +142,6 @@ async function ytMp3(url) {
     }).catch(reject);
   });
 }
-
 async function ytMp4(url) {
   return new Promise(async (resolve, reject) => {
     ytdl.getInfo(url).then(async (getUrl) => {
