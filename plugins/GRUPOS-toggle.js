@@ -82,7 +82,7 @@ ${usedPrefix + command} antillamar*
 *${usedPrefix + command} modoia*
   `.trim();
 
-const isEnable = /toggle|1/i.test(command);
+const isEnable = /toggle2|1/i.test(command);
 const chat = global.db.data.chats[m.chat];
 const user = global.db.data.users[m.sender];
 const bot = global.db.data.settings[conn.user.jid] || {};
