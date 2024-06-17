@@ -15,15 +15,12 @@ const handler = async (m, {conn, args, usedPrefix }) => {
     console.log(e);
   }
 };
-
 handler.command = ['gdrive'];
 handler.registrado = true;
 handler.premium = true;
 handler.tags = ['downloader', 'premium'];
 handler.help = ['gdrive <link>'];
-
 export default handler;
-
 async function GDriveDl(url) {
   let id;
   if (!(url && url.match(/drive\.google/i))) throw 'Invalid URL';
