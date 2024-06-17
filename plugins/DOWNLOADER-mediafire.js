@@ -2,7 +2,6 @@ import axios from 'axios';
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 import {mediafiredl} from '@bochilteam/scraper';
-
 const handler = async (m, {conn, args, usedPrefix, command }) => {
   if (!args[0]) return m.reply(`✧ Ingrese el Link del archivo que quiera descargar.`);
   try {
@@ -26,7 +25,7 @@ const handler = async (m, {conn, args, usedPrefix, command }) => {
 ◈ *Peso ⪼* ${resEX.filesizeH}
 ◈ *Tipo ⪼* ${resEX.ext}
 
-> → Descargando su archivo.`.trim();
+> Descargando su archivo.`.trim();
       await m.reply(caption);
       await conn.sendFile(m.chat, link, name, '', m, null, {mimetype: mime, asDocument: true});
     } catch {
@@ -34,15 +33,12 @@ const handler = async (m, {conn, args, usedPrefix, command }) => {
     }
   }
 };
-
 handler.registrado = true;
 handler.premium = true;
 handler.help = ['mediafire <url>'];
 handler.tags = ['downloader', 'premium'];
 handler.command = ['mediafire', 'mediafiredl', 'mf'];
-
 export default handler;
-
 async function mediafireDl(url) {
   const res = await axios.get(`https://www-mediafire-com.translate.goog/${url.replace('https://www.mediafire.com/', '')}?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp`);
   const $ = cheerio.load(res.data);
