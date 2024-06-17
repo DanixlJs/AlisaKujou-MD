@@ -106,7 +106,7 @@ export async function handler(chatUpdate) {
 		afk: -1,
 		afkRazon: '',
 		rango: 'Guerrero V',
-        level: 0,
+	      	level: 0,
 		claimtime: -1,
 		cofretime: -1,
 		crimetime: -1,
@@ -114,9 +114,9 @@ export async function handler(chatUpdate) {
 		minetime: -1,
 	        minetime2: -1,
 	        minetime3: -1,
-  reportime: -1,
-  suggestime: -1,
-  adventure: -1,
+  		reportime: -1,
+	      	suggestime: -1,
+	      	adventure: -1,
 		sluttime: -1,
 		worktime: -1,
 		baneado: false,
@@ -187,7 +187,7 @@ export async function handler(chatUpdate) {
       if (settings) {
         if (!('botname' in settings)) settings.botname = 'AlisaBot-MD';
         if (!('botcoins' in settings)) settings.botcoins = 'AlisaCoins';
-        if (!('botwm' in settings)) settings.botwm = 'Test wm';
+        if (!('botwm' in settings)) settings.botwm = 'Alisa Kujou - MD';
         if (!('self' in settings)) settings.self = false;
         if (!('autoread' in settings)) settings.autoread = false;
         if (!('antiCall' in settings)) settings.antiCall = true;
@@ -200,7 +200,7 @@ export async function handler(chatUpdate) {
         global.db.data.settings[this.user.jid] = {
           botname: 'AlisaBot-MD',
           botcoins: 'AlisaCoins',
-          botwm: 'Test wm',
+          botwm: 'Alisa Kujou - MD',
           self: false,
           autoread: false,
           antiCall: true,
@@ -352,6 +352,8 @@ for (const name in global.plugins) {
                         false;
 
     if (!isAccept) {
+	    const nocommand = `✧ El comando ingresado no es válido, utilize */menu* para ver todos mis comandos.`;
+	    m.reply(nocommand);
     continue;
 }
 
@@ -612,7 +614,7 @@ export async function participantsUpdate({id, participants, action}) {
             const antiArab = JSON.parse(fs.readFileSync('./src/antiArab.json'));
             const userPrefix = antiArab.some((prefix) => user.startsWith(prefix));
             const botTt2 = groupMetadata.participants.find((u) => m.conn.decodeJid(u.id) == m.conn.user.jid) || {};
-let about = (await this.fetchStatus(user).catch(console.error) || {}).status || '×'
+	    let about = (await this.fetchStatus(user).catch(console.error) || {}).status || '×'
             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || '❀  Bienvenido 「 @user 」,').replace('@bio', about).replace('@subject', await m.conn.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Sin descripción') :
                               (chat.sBye || this.bye || conn.bye || '✧ Hasta luego 「 @user 」,')).replace('@bio', about).replace('@user', '@' + user.split('@')[0]);
 
