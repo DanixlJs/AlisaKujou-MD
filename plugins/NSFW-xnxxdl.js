@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 const handler = async (m, {conn, args, command, usedPrefix }) => {
-if (m.sender === conn.user.jid) return;
   if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}toggle modohorny* para activarlos si eres Administrador.`);
   if (!args[0]) return m.reply(`✧ Link inválido.`);
   try {
@@ -18,13 +17,13 @@ if (m.sender === conn.user.jid) return;
             if (index < matchingItem.urls.length) {
               xnxxLink = matchingItem.urls[index];
             } else {
-              throw `✧ Asegúrate de elegir un número del 1 al ${matchingItem.urls.length}`;
+              m.reply(`✧ Asegúrate de elegir un número del 1 al ${matchingItem.urls.length})`;
             }
           } else {
-            throw `✧ Primero realiza la búsqueda con *${usedPrefix}xnxxsearch <texto>* para poder descargarlo con *${usedPrefix + command} <numero>*`;
+            m.reply(`✧ Primero realiza la búsqueda con *${usedPrefix}xnxxsearch <texto>* para poder descargarlo con *${usedPrefix + command} <numero>*`);
           }
         } else {
-          throw `✧ Primero realiza la búsqueda con *${usedPrefix}xnxxsearch <texto>* para poder descargarlo con *${usedPrefix + command} <numero>*`;
+          m.reply(`✧ Primero realiza la búsqueda con *${usedPrefix}xnxxsearch <texto>* para poder descargarlo con *${usedPrefix + command} <numero>*`);
         }
       }
     }
@@ -32,18 +31,15 @@ if (m.sender === conn.user.jid) return;
     const json = await res.result.files;
     conn.sendMessage(m.chat, {document: {url: json.high}, mimetype: 'video/mp4', fileName: res.result.title}, {quoted: m});
   } catch {
-    throw '✧ Ocurrió un error inesperado.';
+    m.reply('✧ Ocurrió un error inesperado.');
   }
 };
-
 handler.help = ['xnxxdl <numero>'];
 handler.command = ['xnxxdl'];
 handler.tags = ['downloader', 'premium', 'nsfw'];
 handler.premium = true;
 handler.registrado = true;
-
 export default handler;
-
 async function xnxxdl(URL) {
   return new Promise((resolve, reject) => {
     fetch(`${URL}`, {method: 'get'}).then((res) => res.text()).then((res) => {
