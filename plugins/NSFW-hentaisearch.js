@@ -18,14 +18,11 @@ if (m.sender === conn.user.jid) return;
   }
   conn.sendFile(m.chat, randomThumbnail, 'error.jpg', teks, m);
 };
-
 handler.help = ['hentaisearch <texto>', 'searchhentai <texto>'];
 handler.command = ['hentaisearch', 'searchhentai'];
 handler.tags = ['nsfw'];
 handler.registrado = true;
-
 export default handler;
-
 async function searchHentai(search) {
   return new Promise((resolve, reject) => {
     axios.get('https://hentai.tv/?s=' + search).then(async ({data}) => {
