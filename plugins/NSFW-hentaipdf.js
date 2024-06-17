@@ -2,7 +2,6 @@ import fetch from 'node-fetch';
 import PDFDocument from 'pdfkit';
 import {extractImageThumb} from '@whiskeysockets/baileys';
 const handler = async (m, {conn, text, usedPrefix, command, args}) => {
-if (m.sender === conn.user.jid) return;
   if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}toggle modohorny* para activarlos si eres Administrador.`);
   if (!text) return m.reply(`✧ Ingrese el nombre del manga hentai qué quieras descargar.`);
   try {
@@ -22,17 +21,14 @@ if (m.sender === conn.user.jid) return;
     const imagepdf = await toPDF(pages);
     await conn.sendMessage(m.chat, {document: imagepdf, jpegThumbnail, fileName: data.title.english + '.pdf', mimetype: 'application/pdf'}, {quoted: m});
   } catch {
-    throw `✧ Sin resultados en la búsqueda.`;
+    m.reply(`✧ Sin resultados en la búsqueda.`);
   }
 };
-
 handler.help = ['hentaipdf <texto>'];
 handler.command = ['hentaipdf'];
 handler.tags = ['nsfw'];
 handler.registrado = true;
-
 export default handler;
-
 async function nhentaiScraper(id) {
   const uri = id ? `https://cin.guru/v/${+id}/` : 'https://cin.guru/';
   const html = (await axios.get(uri)).data;
