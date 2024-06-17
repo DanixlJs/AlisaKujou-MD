@@ -5,11 +5,9 @@ import {dirname} from 'path';
 import {createRequire} from 'module';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(__dirname);
-
 const handler = async (m, _2, msg, pickRandom, isOwner ) => {
   const mention = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
   const {conn, usedPrefix, noPrefix, args, groupMetadata, command, isROwner} = _2;
-if (m.sender === conn.user.jid) return;
   if (!isROwner) return;
   let _return;
   const name = conn.getName(m.sender);
@@ -34,16 +32,12 @@ if (m.sender === conn.user.jid) return;
     m.exp = old;
   }
 };
-
 handler.help = ['>', '=>'];
 handler.tags = ['advanced'];
 handler.customPrefix = /=?>|~/;
 handler.command = /(?:)/i;
 handler.registrado = true;
-
 export default handler;
-
-
 class CustomArray extends Array {
   constructor(...args) {
     if (typeof args[0] == 'number') return super(Math.min(args[0], 10000));
