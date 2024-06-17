@@ -1,7 +1,5 @@
 const {downloadContentFromMessage} = (await import('@whiskeysockets/baileys'));
-
 export async function before(m, {isAdmin, isBotAdmin}) {
-  if (this.user.jid) return;
   const chat = db.data.chats[m.chat];
   if (/^[.~#/\$,](read)?viewonce/.test(m.text)) return;
   if (!chat?.antiviewonce || chat?.isBanned) return;
