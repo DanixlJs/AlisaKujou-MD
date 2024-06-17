@@ -6,10 +6,9 @@ import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import {tiktokdl} from '@bochilteam/scraper';
 const CFROSAPI = global.APIs.CFROSAPI;
 const handler = async (m, {conn, text, args, usedPrefix, command}) => {
-if (m.sender === conn.user.jid) return;
 
-  if (!text) throw `✧ Ingresa el Link del video que quieras descargar.`;
-  if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) throw `✧ Ingresa un Link válido.`;
+  if (!text) return m.reply(`✧ Ingresa el Link del video que quieras descargar.`);
+  if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) return m.reply(`✧ Ingresa un Link válido.`);
   const texto = `❀ Procesando, espere un momento.`;
   try {
 m.react('🕒') 
@@ -43,7 +42,7 @@ m.react('🕒')
           const cap = `❀ Aquí tiene su video.`;
           await conn.sendMessage(m.chat, {video: {url: url}, caption: cap}, {quoted: m});
         } catch {
-          throw `✧ Ocurrió un error inesperado.`;
+          m.reply(`✧ Ocurrió un error inesperado.`);
           }
         }
       }
