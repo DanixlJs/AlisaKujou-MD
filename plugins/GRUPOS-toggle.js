@@ -82,7 +82,7 @@ ${usedPrefix + command} antillamar*
 *${usedPrefix + command} modoia*
   `.trim();
 
-const isEnable = /toggle2|1/i.test(command);
+const isEnable = /true|enable|(turn)?on|1/i.test(command);
 const chat = global.db.data.chats[m.chat];
 const user = global.db.data.users[m.sender];
 const bot = global.db.data.settings[conn.user.jid] || {};
@@ -340,13 +340,13 @@ throw false
 chat.antifake = isEnable          
 break
 
-case 'jadibot': case 'modojadibot': case 'serbot': case 'modoserbot': 
+case 'jadibot': case 'modejadibot': case 'serbot': case 'modoserbot': 
 isAll = true
 if (!isROwner) {
 global.dfail('rowner', m, conn)
 throw false
 }
-bot.jadibotmd = isEnable
+bot.modejadibot = isEnable
 break 
 
 case 'restrict': case 'restringir':
@@ -490,5 +490,5 @@ conn.reply(m.chat, `*${isEnable ? '💭' : '☁️'} La Función ${type} Se Ha $
 }
 handler.help = ['en', 'dis'].map((v) => v + 'able <option>');
 handler.tags = ['group', 'owner'];
-handler.command = /^(toggle)$/i;
+handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i;
 export default handler;
