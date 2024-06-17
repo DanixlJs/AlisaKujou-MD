@@ -13,11 +13,9 @@ await conn.sendFile(m.chat, dl_url, title + '.mp4', `❀ Aqui tiene.`, m, false,
     console.log(e)
     m.reply('✧ Ocurrió un error inesperado.')
 }}
-
 handler.help = ['yt <enlace>']
 handler.tags = ['downloader']
 handler.command = ['ytmp4', 'yt', 'ytv']
 handler.registrado = true 
 handler.diamantes = 10
-
 export default handler
