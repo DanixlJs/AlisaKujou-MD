@@ -10,8 +10,11 @@ global.botnumber = ""
 global.confirmCode = ""
 global.owner = [
 ['595983799436', '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', true],
-['5492964650915', '👨‍💻 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿(Wilson-OFC)', true]]
-global.contactos = [["595983799436", '👑𝗢𝘄𝗻𝗲𝗿', 1]]
+['527203190618']
+]
+global.contactos = [
+["595983799436", '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', 1]
+]
 global.suittag = ['595973755967']
 global.prems = []
 global.mods = ['595985665263', '51979946825', '51986707393']
