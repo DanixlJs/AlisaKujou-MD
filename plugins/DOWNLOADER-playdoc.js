@@ -5,9 +5,8 @@ import axios from 'axios';
 import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
 
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
-if (m.sender === conn.user.jid) return;
 
-  if (!text) throw `✧ Ingese el nombre de la canción que quiera descargar, Ejemplo:\n> *${usedPrefix + command} Huellas - Maiye Torrex* `;
+  if (!text) return m.reply(`✧ Ingese el nombre de la canción que quiera descargar, Ejemplo:\n> *${usedPrefix + command} Huellas - Maiye Torrex* `);
   try {
     const yt_play = await search(args.join(' '));
     let additionalText = '';
@@ -23,7 +22,7 @@ if (m.sender === conn.user.jid) return;
 ◈ *Canal ⪼* ${yt_play[0].author.url}
 ◈ *Enlace ⪼* ${yt_play[0].url}
 
-> → Enviando ${additionalText}, aguarde un momento.`.trim();
+> Enviando ${additionalText}, aguarde un momento.`.trim();
     conn.sendMessage(m.chat, {image: {url: yt_play[0].thumbnail}, caption: texto1}, {quoted: m});
     if (command == 'play3' || command == 'playdoc') {
       try {
@@ -77,13 +76,13 @@ if (m.sender === conn.user.jid) return;
             const n4 = lolh.result.thumbnail;
             await conn.sendMessage(m.chat, {document: {url: n2}, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `✰ *Título ⪼* ${n}\n◈ *Peso ⪼* ${n3}`, thumbnail: await fetch(n4)}, {quoted: m});
           } catch {
-            await conn.reply(m.chat, '✧ Ocurrió un error inesperado.', m);
+             m.reply('✧ Ocurrió un error inesperado.');
           }
         }
       }
     }
   } catch {
-    return m.reply('✧ Ocurrió un error inesperado.');
+    m.reply('✧ Ocurrió un error inesperado.');
   }
 };
 
