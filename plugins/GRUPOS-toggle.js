@@ -1,5 +1,4 @@
 const handler = async (m, { conn, args, usedPrefix, command }) => {
-if (m.sender === conn.user.jid) return;
     if (args.length < 1) {
         await conn.reply(m.chat, `✧ Ingrese una opción valida, Ejemplo:\n> *${usedPrefix + command} <modoadmin>*`, m);
         return;
