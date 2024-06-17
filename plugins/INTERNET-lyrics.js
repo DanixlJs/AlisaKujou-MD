@@ -2,8 +2,6 @@ import {find_lyrics} from '@brandond/findthelyrics';
 import {getTracks} from '@green-code/music-track-data';
 import {googleImage} from '@bochilteam/scraper';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
-if (m.sender === conn.user.jid) return;
-
   const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : '';
   if (!teks) return m.reply(`✧ Ingrese un texto para realizar la búsqueda.\n> *${usedPrefix + command} <texto>*`);
   try {
@@ -29,10 +27,8 @@ if (m.sender === conn.user.jid) return;
     m.reply(`✧ Ocurrió un error inesperado.`);
   }
 };
-
 handler.help = ['lyrics', 'letra'];
 handler.tags = ['internet', 'search'];
 handler.command = ['letras', 'lyrics'];
 handler.registrado = true;
-
 export default handler;
