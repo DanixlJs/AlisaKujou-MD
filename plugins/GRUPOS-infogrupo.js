@@ -1,5 +1,4 @@
 const handler = async (m, {conn, participants, groupMetadata}) => {
-if (m.sender === conn.user.jid) return;
 
   const pp = await conn.profilePictureUrl(m.chat, 'image').catch((_) => null) || `${global.icons}`;
 
