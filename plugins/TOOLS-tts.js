@@ -3,7 +3,6 @@ import {readFileSync, unlinkSync} from 'fs';
 import {join} from 'path';
 const defaultLang = 'es';
 const handler = async (m, {conn, args, usedPrefix, command}) => {
-if ( m.sender === conn.user.jid) return;
   let lang = args[0];
   let text = args.slice(1).join(' ');
   if ((args[0] || '').length !== 2) {
