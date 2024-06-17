@@ -1,4 +1,8 @@
-const { proto, generateWAMessage, areJidsSameUser, decryptPollVote, } = (await import('@whiskeysockets/baileys')).default;
+const { proto,
+       generateWAMessage,
+       areJidsSameUser,
+       decryptPollVote,
+      } = (await import('@whiskeysockets/baileys')).default;
 export async function all(m, chatUpdate) {
   if (m.isBaileys) {
     return;
@@ -19,11 +23,6 @@ export async function all(m, chatUpdate) {
     }
     if (plugin.disabled) {
       continue;
-    }
-    if (!opts['restrict']) {
-      if (plugin.tags && plugin.tags.includes('admin')) {
-        continue;
-      }
     }
     if (typeof plugin !== 'function') {
       continue;
