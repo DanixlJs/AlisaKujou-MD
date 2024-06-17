@@ -8,11 +8,9 @@ await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: '❀ Aqui tien
   console.log(e)
   m.reply('✧ Ocurrió un error inesperado.')
 }}
-
 handler.help = ['ig <enlace>']
 handler.tags = ['downloader']
 handler.command = ['ig', 'instagram']
 handler.registrado = true 
 handler.diamantes = 5
-
 export default handler
