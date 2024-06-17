@@ -1,5 +1,5 @@
 var handler = async (m, { conn,usedPrefix, command, text }) => {
-//if (isNaN(text) && !text.match(/@/g)){
+if (isNaN(text) && !text.match(/@/g)){
 } else if (isNaN(text)) {
 var number = text.split`@`[1]
 } else if (!isNaN(text)) {
