@@ -1,5 +1,4 @@
 var handler = async (m, { conn, args }) => {
-if (m.sender === conn.user.jid) return;
   if (args.length < 2) {
     return conn.reply(m.chat, '✧ Ingresa una categoría y el texto correspondiente.', m);
   }
@@ -22,11 +21,9 @@ if (m.sender === conn.user.jid) return;
   global.db.data.settings[conn.user.jid] = botConfig;
   conn.reply(m.chat, '❀ Configuración actualizada correctamente.', m);
 };
-
 handler.command = ['set'];
 handler.help = ['set <categoría> <texto>'];
 handler.tags = ['owner'];
 handler.registrado = true;
 handler.rowner = true;
-
 export default handler;
