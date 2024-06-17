@@ -1,5 +1,4 @@
 const handler = async (m, {conn, usedPrefix, text, command}) => {
-if (m.sender === conn.user.jid) return;
   let hash = text;
   if (m.quoted && m.quoted.fileSha256) hash = m.quoted.fileSha256.toString('hex');
   if (!hash) return m.reply(`✧ Use *${usedPrefix}listcmd* para ver la lista de CMD's agregados.`);
@@ -8,10 +7,8 @@ if (m.sender === conn.user.jid) return;
   delete sticker[hash];
   m.reply(`❀ CMD eliminado con éxito.`);
 };
-
 handler.command = ['delcmd <cmd>'];
 handler.tags = ['owner'];
 handler.help = ['delcmd'];
 handler.rowner = true;
-
 export default handler;
