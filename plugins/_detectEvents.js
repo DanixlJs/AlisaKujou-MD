@@ -39,15 +39,12 @@ let txt1 = `❀ Nuevo Administrador `
 txt1 += `@${m.messageStubParameters[0].split`@`[0]} `
 txt1 += `a ascendido a Administrador, le otorgó @${m.sender.split`@`[0]}`
 await conn.sendMessage(m.chat, {text: txt1, mentions: [...txt1.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), contextInfo: { mentionedJid: [...txt1.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "body": global.dev, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "mediaUrl": global.channel, "sourceUrl": global.channel}}})
-
 } else if (chat.detect2 && m.messageStubType == 30) {
 let txt2 = `✧ @${m.messageStubParameters[0].split`@`[0]} ya no es Administrador, `
 txt2 += `fue degradado @${m.sender.split`@`[0]}`
 await conn.sendMessage(m.chat, {text: txt2, mentions: [...txt2.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), contextInfo: { mentionedJid: [...txt2.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "body": global.dev, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "mediaUrl": global.channel, "sourceUrl": global.channel}}})
-
 } else if (chat.detect2 && m.messageStubType == 72) {
 await this.sendMessage(m.chat, { text: `❀ ${usuario} se cambió la configuración de los Mensajes Temporales a *${m.messageStubParameters[0]}*`, mentions: [m.sender] }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-
 } else if (chat.detect2 && m.messageStubType == 123) {
 await this.sendMessage(m.chat, { text: `❀ ${usuario} desactivó los Mensajes Temporales.`, mentions: [m.sender] }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 } else {
