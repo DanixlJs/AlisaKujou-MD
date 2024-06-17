@@ -1,6 +1,4 @@
 const handler = async (m, {conn, usedPrefix, command}) => {
-if ( m.sender === conn.user.jid) return;
-
   if (!m.quoted) return m.reply(`✧ Responda a un video que desee convertir en Gif con Audio.`);
   const q = m.quoted || m;
   const mime = (q.msg || q).mimetype || '';
@@ -9,10 +7,8 @@ if ( m.sender === conn.user.jid) return;
   const media = await q.download();
   conn.sendMessage(m.chat, {video: media, gifPlayback: true, caption: '❀ Aquí tienes.'}, {quoted: m});
 };
-
 handler.command = ['togifaudio'];
 handler.registrado = true;
 handler.tags = ['tools'];
 handler.help = ['togifaudio'];
-
 export default handler;
