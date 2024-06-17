@@ -6,24 +6,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
 
     const option = args[0].toLowerCase();
     const options = [
-        "welcome",
-        "detect",
-        "detect2",
-        "antidelete",
-        "modohorny",
-        "autosticker",
-        "audios",
-        "antiLink",
-        "antiLink2",
-        "antiviewonce",
-        "antiToxic",
-        "antiTraba",
-        "antiArab",
-        "antiporno",
-        "modoadmin",
-        "simi",
-        "game",
-        "autolevelup"
+        "modejadibot"   
     ];
 
     if (!options.includes(option)) {
@@ -31,17 +14,17 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
         return;
     }
 
-    const chat = global.db.data.chats[m.chat];
+    const chat = global.db.data.settings[this.user.jid];
 
     chat[option] = !chat[option];
 
     await conn.reply(m.chat, `❀ *${option}* ha sido ${chat[option] ? '*activada*' : '*desactivada*'} correctamente.`, m, fake, );
 };
 
-handler.help = ['toggle <opción>'];
-handler.command = ['toggle'];
+handler.help = ['toggle2 <opción>'];
+handler.command = ['toggle2'];
 handler.tags = ['grupo'];
-handler.admin = true;
+//handler.admin = true;
 handler.registrado = true;
 
 export default handler;
