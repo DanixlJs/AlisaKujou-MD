@@ -1,5 +1,4 @@
 var handler = async (m, { conn, participants, usedPrefix, command }) => {
-if (m.sender === conn.user.jid) return;
     if (!m.mentionedJid[0] && !m.quoted) {
         return conn.reply(m.chat, '✧ Etiqueta al usuario que quieras expulsar.', m);
     }
