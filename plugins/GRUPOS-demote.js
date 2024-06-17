@@ -1,16 +1,12 @@
 var handler = async (m, { conn,usedPrefix, command, text }) => {
-
 if (isNaN(text) && !text.match(/@/g)){
-
 } else if (isNaN(text)) {
 var number = text.split`@`[1]
 } else if (!isNaN(text)) {
 var number = text
 }
-
 if (!text && !m.quoted) return m.reply(`✧ Etiqueta al usuario que quieras degradar.`)
 if (number.length > 13 || (number.length < 11 && number.length > 0)) return m.reply(`✧ El número no es válido.`)
-
 try {
 if (text) {
 var user = number + '@s.whatsapp.net'
@@ -24,9 +20,7 @@ var user = number + '@s.whatsapp.net'
 conn.groupParticipantsUpdate(m.chat, [user], 'demote')
 conn.reply(m.chat, `❀ Hecho.`, m, fake, )
 }
-
 }
-
 handler.help = ['demote <@tag>']
 handler.tags = ['grupo']
 handler.command = ['demote']
@@ -34,5 +28,4 @@ handler.registrado = true
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
-
 export default handler
