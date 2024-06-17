@@ -1,5 +1,4 @@
 const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, isBotAdmin}) => {
-if (m.sender === conn.user.jid) return;
 	let nn = global.db.data.chats[m.chat];
 	let bot = global.db.data.settings[conn.user.jid];
 	if (command === 'open') {
