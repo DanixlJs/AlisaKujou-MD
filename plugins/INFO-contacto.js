@@ -1,7 +1,6 @@
 import PhoneNumber from 'awesome-phonenumber'
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-if (m.sender === conn.user.jid) return
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let pp = await conn.profilePictureUrl(who).catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
@@ -12,8 +11,8 @@ let biobot = biografiaBot.status?.toString() || 'Sin Biografía'
 let name = await conn.getName(who)
 
   await sendContactArray(conn, m.chat, [
-     [`595983799436`, `👑Owner`, `🧑‍💻danixljs`, 'Solo Cosas referentes al Bot', 'josedanielcristaldovera023@gmail.com', `🇵🇾 Paraguay`, `https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb`, bio],
-[`${conn.user.jid.split('@')[0]}`, `🤍Bot OFC`, `${global.wm}`, `${global.dev}`, 'alisakujoumd@gmail.com', `🇵🇾 Paraguay`, `https://github.com/DanixlJs/AlisaKujou-MD`, biobot]
+     [`595983799436`, `👑 Owner`, `🧑‍💻danixljs`, 'Solo Cosas referentes al Bot', 'josedanielcristaldovera023@gmail.com', `🇵🇾 Paraguay`, `https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb`, bio],
+[`${conn.user.jid.split('@')[0]}`, `🤍 Bot OFC`, `${global.wm}`, `${global.dev}`, 'alisakujoumd@gmail.com', `🇵🇾 Paraguay`, `https://github.com/DanixlJs/AlisaKujou-MD`, biobot]
 ], m)
   } 
 
