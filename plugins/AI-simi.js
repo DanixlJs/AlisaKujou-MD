@@ -24,11 +24,9 @@ const handler = async (m, {conn, text, command, args, usedPrefix}) => {
     }
   }
 };
-
 handler.help = ['simi <texto>', 'bot <texto>']
 handler.tags = ['ai']
 handler.command = ['bot', 'simi']
 handler.group = true
 handler.registrado = true
-
 export default handler
