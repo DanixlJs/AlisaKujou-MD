@@ -1,16 +1,12 @@
 import fetch from 'node-fetch'
 import { facebook } from '@xct007/frieren-scraper'
-
 var handler = async (m, { conn, args, command, usedPrefix, text }) => {
-
 let vid
 const isCommand7 = /^(facebook|fb|facebookdl|fbdl)$/i.test(command)
-
 async function reportError(e) {
 await m.reply(m.chat, `✧ Ocurrió un error inesperado.`)
 console.log(e)
 }
-
 switch (true) {   
 case isCommand7:
 if (!text) return conn.reply(m.chat, `✧ Ingrese el Link del video que quiera descargar.`,m )
@@ -58,16 +54,13 @@ await conn.sendFile(m.chat, js.result.HD, 'error.mp4', `*${message}*`, m)
 } catch (e) {
 reportError(e)}
 }}}
-
 }
 handler.help = ['fb <link>']
 handler.tags = ['downloader']
 handler.command = ['faceboook', 'fb']
 handler.registrado = true
 handler.diamantes = 10
-
 export default handler
-
 function checkMessageType(url) {
 if (url.includes('www.facebook.com')) {
 if (url.includes('/groups/')) {
