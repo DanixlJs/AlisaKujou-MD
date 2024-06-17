@@ -10,8 +10,8 @@ global.botnumber = ""
 global.confirmCode = ""
 global.owner = [
 ['595983799436', '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', true],
-['527203190618']
-]
+['527203190618'],
+['573012482597']]
 global.contactos = [
 ["595983799436", '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', 1]
 ]
