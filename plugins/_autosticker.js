@@ -1,9 +1,6 @@
 import {sticker} from '../lib/sticker.js';
 const handler = (m) => m;
 handler.all = async function(m) {
-    if (m.sender === conn.user.jid) {
-    return;
-  }
   const chat = db.data.chats[m.chat];
   const user = db.data.users[m.sender];
   if (chat.autosticker && m.isGroup) {
