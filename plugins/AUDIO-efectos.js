@@ -1,7 +1,6 @@
 import {unlinkSync, readFileSync} from 'fs';
 import {join} from 'path';
 import {exec} from 'child_process';
-
 const handler = async (m, {conn, args, __dirname, usedPrefix, command}) => {
   try {
     const q = m.quoted ? m.quoted : m;
@@ -41,9 +40,7 @@ handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 
 handler.tags = ['audio'];
 handler.command = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
 handler.registrado = true;
-
 export default handler;
-
 const getRandom = (ext) => {
   return `${Math.floor(Math.random() * 10000)}${ext}`;
 };
