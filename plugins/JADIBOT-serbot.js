@@ -27,7 +27,10 @@ let rtx2 = `❀ *SER BOT - CODE*\n✰ Usa éste Código para convertirte en Sub-
 if (global.conns instanceof Array) console.log()
 else global.conns = []
 let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
-if (m.sender === conn.user.jid) return
+if (!global.db.data.settings[conn.user.jid].modejadibot) {
+m.reply('✧ La opción de ser Sub-Bot ha sido desactivada por mi Creador.')
+return
+}
 let parentw = conn
 if (conn.user.jid !== global.conn.user.jid) return parentw.reply(m.chat, `✧ Este comando solo se puede ejecutar en el Bot Oficial.\n✰ wa.me/${global.conn.user.jid.split`@`[0]}&text=${usedPrefix + command}`, fkontak)
 const mcode = args[0] && args[0].includes('--code') ? true : args[1] && args[1].includes('--code') ? true : false;
@@ -223,15 +226,12 @@ creloadHandler(false)
 jddt()
 })
 }
-
 handler.help = ['serbot', 'serbot --code']
-handler.tags = [`jadibot`]
+handler.tags = ['jadibot']
 handler.command = ['serbot', 'serbot --code']
 handler.registrado = true
-handler.diamantes = 50
-
+//handler.diamantes = 50
 export default handler
-
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 function sleep(ms) {
 return new Promise(resolve => setTimeout(resolve, ms));}
