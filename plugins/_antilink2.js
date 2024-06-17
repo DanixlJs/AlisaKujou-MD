@@ -1,6 +1,5 @@
 const linkRegex = /https:/i;
 export async function before(m, {isAdmin, isBotAdmin, text}) {
-  if (this.user.jid) return;
   if (m.isBaileys && m.fromMe) {
     return !0;
   }
