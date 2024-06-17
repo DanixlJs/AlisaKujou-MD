@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 
 const handler = async (m, { conn, args, usedPrefix }) => {
-if (m.sender === conn.user.jid) return;
     if (!args[0]) {
         await conn.reply(m.chat, `✧ Ingresa el Link del video que quieras descargar.`, m);
         return;
@@ -33,12 +32,12 @@ if (m.sender === conn.user.jid) return;
 
         videoStream.on('error', (error) => {
             console.log('✧ Error ⪼', error);
-            conn.reply(m.chat, '✧ Ocurrió un error inesperado.\n\n' + error, m);
+            m.reply('✧ Ocurrió un error inesperado.');
         });
 
     } catch (error) {
         console.log('✧ Error ⪼', error);
-        await conn.reply(m.chat, '✧ Ocurrió un error inesperado.', m);
+        m.reply('✧ Ocurrió un error inesperado.');
     }
 };
 
