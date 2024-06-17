@@ -1,7 +1,6 @@
 const handler = async (m, { conn, args, participants, usedPrefix, command }) => {
-if (m.sender === conn.user.jid) return;
     const prefix = args[0];
-    if (!prefix) throw `✧ Ingresa un prefijo de país, Ejemplo:\n> → *${usedPrefix + command} 92*`;
+    if (!prefix) return m.reply(`✧ Ingresa un prefijo de país, Ejemplo:\n> → *${usedPrefix + command} 92*`);
 
     const membersWithPrefix = participants
         .filter(p => p.id.startsWith(prefix))
