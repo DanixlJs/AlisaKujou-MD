@@ -18,7 +18,7 @@ const checkRepoUpdates = async (conn, m) => {
       previousUpdatedAt = message;
       previousCommitUser = login;
 
-      const updateMessage = `❀ *ANUNCIO*\n> El Repositorio ha sido actualizado.\n✰ *Repositorio ⪼* ${html_url}\n◈ *Mensaje de Commit ⪼* ${message}\n◈ *Realizado por ⪼* ${login}`;
+      const updateMessage = `❀ *REPOSITORIO ACTUALIZADO*\n> El Repositorio *${repo}* ha sido actualizado.\n\n✰ *Repositorio ⪼* https://github.com/${owner}/${repo}\n◈ *Mensaje de Commit ⪼* ${message}\n◈ *Realizado por ⪼* ${login}`;
 
       conn.sendMessage(m.chat, { text: updateMessage }, { quoted: m });
     }
