@@ -2,7 +2,7 @@ import {wallpaper} from '@bochilteam/scraper';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
 if (m.sender === conn.user.jid) return;
 
-  if (!text) throw `✧ Ingresa un texto para realizar la búsqueda, Ejemplo:\n> *${usedPrefix + command} Alisa Mikhailovna Kujou*`;
+  if (!text) return m.reply(`✧ Ingresa un texto para realizar la búsqueda, Ejemplo:\n> *${usedPrefix + command} Alisa Mikhailovna Kujou*`);
 
   const res = await wallpaper(text);
   const img = res[Math.floor(Math.random() * res.length)];
