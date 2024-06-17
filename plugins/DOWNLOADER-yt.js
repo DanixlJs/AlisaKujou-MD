@@ -1,50 +1,23 @@
-import ytdl from 'ytdl-core';
-import fs from 'fs';
-import path from 'path';
+import Scraper from "@SumiFX/Scraper"
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+if (!args[0]) return m.reply('✧ Ingresa un enlace de Youtube.')
+if (!args[0].match(/youtu/gi)) return conn.reply(m.chat, `✧ El enlace no es válido.`, m)
+let user = global.db.data.users[m.sender]
+try {
+let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp4(args[0])
+if (size.includes('GB') || size.replace(' MB', '') > 500) { return await m.reply('✧ El archivo pesa mas de 500 MB, se canceló la Descarga.')}
+let txt = `❀ YOUTUBE DL\n ✰ *Titulo ⪼* ${title}\n◈ *Calidad ⪼* ${quality}\n◈ *Peso ⪼* ${size}\n\n> Descargando su archivo, espere un momento.`
+await conn.sendFile(m.chat, thumbnail, 'thumbnail.jpg', txt, m)
+await conn.sendFile(m.chat, dl_url, title + '.mp4', `❀ Aqui tiene.`, m, false, { asDocument: user.useDocument })
+} catch (e){
+    console.log(e)
+    m.reply('✧ Ocurrió un error inesperado.')
+}}
 
-const handler = async (m, { conn, args, usedPrefix }) => {
-    if (!args[0]) {
-        await conn.reply(m.chat, `✧ Ingresa el Link del video que quieras descargar.`, m);
-        return;
-    }
+handler.help = ['yt <enlace>']
+handler.tags = ['downloader']
+handler.command = ['ytmp4', 'yt', 'ytv']
+handler.registrado = true 
+handler.diamantes = 10
 
-    const url = args[0];
-
-    if (!ytdl.validateURL(url)) {
-        await conn.reply(m.chat, '✧ Ingresa un enlace válido de YouTube.', m);
-        return;
-    }
-
-    try {
-        const info = await ytdl.getInfo(url);
-        const videoTitle = info.videoDetails.title.replace(/[\/\\?%*:|"<>]/g, '-');
-
-        const filePath = path.resolve(__dirname, './tmp', `${videoTitle}.mp4`);
-        
-        const videoStream = ytdl(url, { quality: 'highestvideo' });
-
-        videoStream.pipe(fs.createWriteStream(filePath));
-
-        videoStream.on('end', async () => {
-            await conn.sendFile(m.chat, filePath, `${videoTitle}.mp4`, `❀ *YOUTUBE DL*\n✰ *Título ⪼* ${videoTitle}`, m);
-            fs.unlinkSync(filePath);
-        });
-
-        videoStream.on('error', (error) => {
-            console.log('✧ Error ⪼', error);
-            m.reply('✧ Ocurrió un error inesperado.');
-        });
-
-    } catch (error) {
-        console.log('✧ Error ⪼', error);
-        m.reply('✧ Ocurrió un error inesperado.');
-    }
-};
-
-handler.help = ['yt <link>'];
-handler.tags = ['downloader'];
-handler.command = ['yt', 'youtube'];
-handler.registrado = true;
-handler.diamantes = 10;
-
-export default handler;
+export default handler
