@@ -1,15 +1,9 @@
 const handler = async (m, {conn, participants, groupMetadata}) => {
-
   const pp = await conn.profilePictureUrl(m.chat, 'image').catch((_) => null) || `${global.icons}`;
-
   const {antiToxic, reaction, antiTraba, antidelete, antiviewonce, welcome, detect, detect2, antiLink, antiLink2, modohorny, autosticker, modoadmin, audios} = global.db.data.chats[m.chat];
-
   const groupAdmins = participants.filter((p) => p.admin);
-
   const listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.id.split('@')[0]}`).join('\n');
-
   const owner = groupMetadata.owner || groupAdmins.find((p) => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net';
-
   const text = `❀ *INFO GRUPO*
 ✰ *ID:*
 → ${groupMetadata.id}
@@ -41,14 +35,11 @@ ${listAdmin}
 ◈ *Antitraba:* ${antiTraba ? '✅' : '❌'} 
 ◈ *Modoadmin:* ${modoadmin ? '✅' : '❌'} 
 `.trim();
-
   conn.sendFile(m.chat, pp, 'img.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner]});
 };
-
 handler.help = ['infogrupo'];
 handler.tags = ['grupo'];
 handler.command = ['infogrupo', 'gp'];
 handler.registrado = true
 handler.group = true;
-
 export default handler;
