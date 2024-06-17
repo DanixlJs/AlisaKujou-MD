@@ -192,7 +192,7 @@ export async function handler(chatUpdate) {
         if (!('autoread' in settings)) settings.autoread = false;
         if (!('antiCall' in settings)) settings.antiCall = true;
         if (!('antiPrivate' in settings)) settings.antiPrivate = false;
-        if (!('modejadibot' in settings)) settings.modejadibot = false;
+        if (!('modejadibot' in settings)) settings.modejadibot = true;
         if (!('antispam' in settings)) settings.antispam = true;
         if (!('modoia' in settings)) settings.modoia = false;      
         if (!('botcommandCount' in settings)) settings.botcommandCount = 0;
