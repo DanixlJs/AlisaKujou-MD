@@ -1,5 +1,4 @@
 let handler = m => m
-
 handler.before = function (m) {
     let user = global.db.data.users[m.sender]
     let rango = (user.level <= 3) ? 'Guerrero V'
@@ -47,9 +46,7 @@ handler.before = function (m) {
       : ((user.level >= 405) && (user.level <= 700)) ? 'Titan II'
       : ((user.level >= 700) && (user.level <= 1000)) ? 'Titan I'
       : 'Dragón rey estrella'
-
     user.rango = rango
     return true
 }
-
 export default handler
