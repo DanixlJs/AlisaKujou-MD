@@ -1,5 +1,4 @@
-var handler = async (m, { conn,usedPrefix, command, text }) => {
-if (m.sender === conn.user.jid) return;
+var handler = async (m, { conn,usedPrefix, command, text }) => 
 
 if (isNaN(text) && !text.match(/@/g)){
 
@@ -9,8 +8,8 @@ var number = text.split`@`[1]
 var number = text
 }
 
-if (!text && !m.quoted) return conn.reply(m.chat, `✧ Etiqueta a un usuario para otorgarle Administrador.`, m, fake, )
-if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, `✧ El número es incorrecto.`, m, fake, )
+if (!text && !m.quoted) return m.reply(m.chat, `✧ Etiqueta a un usuario para otorgarle Administrador.`)
+if (number.length > 13 || (number.length < 11 && number.length > 0)) return m.reply(m.chat, `✧ El número es incorrecto.`)
 
 try {
 if (text) {
