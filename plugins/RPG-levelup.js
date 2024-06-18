@@ -1,16 +1,12 @@
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import { levelup } from '../lib/canvas.js' 
-
 import PhoneNumber from 'awesome-phonenumber'
 import { promises } from 'fs'
 import { join } from 'path'
 let handler = async (m, { conn, usedPrefix, command, args, usedPrefix: _p, __dirname, isOwner, text, isAdmin, isROwner }) => {
-
 const { levelling } = '../lib/levelling.js'
-
 let { experiencia, diamantes, level, rango } = global.db.data.users[m.sender]
 let { min, xp, max } = xpRange(level, global.multiplier)
-
 let d = new Date(new Date + 3600000)
 let locale = 'es'
 let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
@@ -48,23 +44,19 @@ let replace = {
 '%': '%',
 p: _p, uptime, muptime,
 me: conn.getName(conn.user.jid),
-
 experiencia: experiencia - min,
 maxexp: xp,
 totalexp: experiencia,
 xp4levelup: max - experiencia,
-
 level, diamantes, weton, week, date, dateIslamic, time, totalreg, rtotalreg, rango,
 readmore: readMore
 }
 text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let mentionedJid = [who]
 let username = conn.getName(who)
 let name = conn.getName(m.sender)
 let user = global.db.data.users[m.sender]
-
 if (!canLevelUp(user.level, user.experiencia, global.multiplier)) {
 let { min, xp, max } = xpRange(user.level, global.multiplier)
 throw `❀ *TU NIVEL ACTUAL*
@@ -73,13 +65,10 @@ throw `❀ *TU NIVEL ACTUAL*
 ◈ *Rango ⪼* ${user.rango}
 ◈ *Experiencia ⪼* ${user.experiencia - min}/${xp}
 > Te falta *${max - user.experiencia}* de experiencia para subir de nivel.`.trim()}
-
 let before = user.level * 1
 while (canLevelUp(user.level, user.experiencia, global.multiplier)) user.level++
-if (before !== user.level) {
-
+if (before !== user.level) 
 let teks = `❀ Bien hecho *${conn.getName(m.sender)}*, subiste al nivel *${user.level}*`
-
 let str = `❀ *SUBISTE DE NIVEL*
 ✧ *Usuario ⪼* ${name}
 ◈ *Nivel Anterior ⪼* ${before}
@@ -87,22 +76,17 @@ let str = `❀ *SUBISTE DE NIVEL*
 ◈ *Rango ⪼* ${user.rango}
 ◈ *Fecha ⪼* ${new Date().toLocaleString('id-ID')}
 > Cuando más interactues conmigo mayor será tu nivel.`.trim()
-
 try {
 const img = await levelup(teks, user.level)
 conn.sendMessage(m.chat, {image: global.icons, caption: str, mentions: conn.parseMention(str)}, {quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-
 } catch (e) {
 m.reply(str)
 }}}
-
 handler.help = ['levelup', 'level']
 handler.tags = ['rpg']
 handler.command = ['levelup', 'level'] 
 handler.registrado = true
-
 export default handler
-
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 function clockString(ms) {
