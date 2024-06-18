@@ -1,29 +1,21 @@
 const handler = async (m, {conn, isPrems}) => {
-if ( m.sender === conn.user.jid) return;
   let enviando;
   if (enviando) return
   enviando = true
   const hasil = Math.floor(Math.random() * 5000);
   const time = global.db.data.users[m.sender].adventuretime + 300000;
   if (new Date - global.db.data.users[m.sender].adventuretime < 300000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a realizar otra Aventura.`;
-
    let adventuretext = `❀ Te embarcas en una emocionante aventura:\n> ✰ *${pickRandom(global.adventure)}*\n◈ Gracias a la aventura obtienes *${hasil}* de experiencia.`;
-
    conn.reply(m.chat, adventuretext, m, fake,);
-
   global.db.data.users[m.sender].experiencia += hasil;
   global.db.data.users[m.sender].adventuretime = new Date() * 1;
   enviando = false
 };
-
 handler.help = ['aventura', 'adventure'];
 handler.tags = ['rpg'];
 handler.command = ['aventura', 'adventure'];
-handler.fail = null;
 handler.registrado = true;
-
 export default handler;
-
 function msToTime(duration) {
   const milliseconds = parseInt((duration % 1000) / 100);
   let seconds = Math.floor((duration / 1000) % 60);
@@ -34,11 +26,9 @@ function msToTime(duration) {
   seconds = (seconds < 10) ? '0' + seconds : seconds;
   return minutes + ' Minuto(s) ' + seconds + ' Segundo(s)';
 }
-
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())];
 }
-
 global.adventure = [
   'Eres un maestro alquimista, destilando misteriosas pociones en busca de secretos perdidos.',
   'Te conviertes en un intrépido cazador de tesoros, explorando lugares olvidados en busca de riquezas escondidas.',
