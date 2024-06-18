@@ -127,10 +127,10 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
 do {
-opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1- Con código QR\n') + opcionTexto('2- Con código de 8 dígitos/n/n'))
+opcion = await question(colores('❀ Seleccione una opción:\n') + opcionQR('1- Con código QR\n') + opcionTexto('2- Con código de 8 dígitos\n\n'))
 
 if (!/^[1-2]$/.test(opcion)) {
-console.log('Por favor, seleccione solo 1 o 2.\n')
+console.log('✧ Por favor, seleccione solo 1 o 2.\n')
 }} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${authFile}/creds.json`))
 }
 
@@ -138,7 +138,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['❀ Safari', 'Safari', '2.0.0'] : methodCodeQR ? ['❀ Safari', 'Safari', '2.0.0'] : ['❀ Ubuntu', 'Chrome', '110.0.5585.95'],
+browser: opcion == '1' ? ['❀ - AlisaKujou MD', 'Safari', '2.0.0'] : methodCodeQR ? ['❀ - AlisaKujou MD', 'Safari', '2.0.0'] : ['❀ - AlisaKujou MD', 'Chrome', '110.0.5585.95'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -193,7 +193,7 @@ rl.close()
 
 conn.isInit = false;
 conn.well = false;
-conn.logger.info(`❀ Cargando, espere un momento...\n`);
+conn.logger.info(`❀ Cargando, espere un momento.\n`);
 
 if (!opts['test']) {
   if (global.db) {
