@@ -1,7 +1,6 @@
 import MessageType from '@whiskeysockets/baileys';
 const pajak = 0;
 const handler = async (m, {conn, text}) => {
-if (m.sender === conn.user.jid) return;
   let who;
   if (m.isGroup) who = m.mentionedJid[0];
   else who = m.chat;
@@ -19,13 +18,10 @@ if (m.sender === conn.user.jid) return;
   let nametag = conn.getName(who)
   m.reply(`❀ Se han añadido *${xp}* de experiencia a *${nametag}*`);
 };
-
 handler.help = ['setexp <@tag>', 'addexp <@tag>'];
 handler.command = ['setexp', 'addexp'];
 handler.register = true;
 handler.group = true;
 handler.rowner = true;
 handler.tags = ['owner'];
-
-
 export default handler;
