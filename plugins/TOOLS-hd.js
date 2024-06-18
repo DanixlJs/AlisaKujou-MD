@@ -1,14 +1,11 @@
 import FormData from "form-data";
 import Jimp from "jimp";
 const handler = async (m, {conn, usedPrefix, command}) => {
-if ( m.sender === conn.user.jid) return;
  try {    
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || q.mediaType || "";
   if (!mime) return m.reply(`✧ Responda a una imagen para mejorar la calidad.`);
-
   if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`✧ El tipo de Archivos *${mime}* no es compatible, envía o responda a una imagen.`);
-
   m.reply("❀ Procesando, espere un momento.");
   let img = await q.download?.();
   let pr = await remini(img, "enhance");
@@ -17,14 +14,11 @@ if ( m.sender === conn.user.jid) return;
   return m.reply("✧ Ocurrió un error inesperado.");
  }
 };
-
 handler.help = ["hd"];
 handler.tags = ["ai", "tools"];
 handler.command = ["hd"];
 handler.register = true;
-
 export default handler;
-
 async function remini(imageData, operation) {
   return new Promise(async (resolve, reject) => {
     const availableOperations = ["enhance", "recolor", "dehaze"];
