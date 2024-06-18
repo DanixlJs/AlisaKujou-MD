@@ -1,7 +1,7 @@
 const handler = async (m, {conn}) => {
     let user = global.db.data.users[m.sender];
-    const d = Math.floor(Math.random() * 20);
-    let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${d}* Diamante(s)`;
+    const d = Math.floor(Math.random() * 50);
+    let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${d + 1}* Diamante(s)`;
     const time = user.minetime2 + 600000;
     if (new Date - user.minetime2 < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar Diamantes.`)
     conn.reply(m.chat, msg, m, fake,);
