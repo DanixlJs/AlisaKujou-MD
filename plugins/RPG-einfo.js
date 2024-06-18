@@ -3,20 +3,14 @@ function msToTime(duration) {
     let minutes = Math.floor((duration / (1000 * 60)) % 60);
     let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
     let days = Math.floor(duration / (1000 * 60 * 60 * 24));
-    
     hours = (hours < 10) ? '0' + hours : hours;
     minutes = (minutes < 10) ? '0' + minutes : minutes;
     seconds = (seconds < 10) ? '0' + seconds : seconds;
-    
     return `${days} Día(s) ${hours} Hora(s) ${minutes} Minuto(s) ${seconds} Segundo(s)`;
 }
-
 const handler = async (m, { conn }) => {
-if (m.sender === conn.user.jid) return;
     let user = global.db.data.users[m.sender];
-
     const now = Date.now();
-
     const times = {
         Mineria: user.minetime,
         Mineria2: user.minetime2,
@@ -30,9 +24,7 @@ if (m.sender === conn.user.jid) return;
         Crimen: user.crimetime
     };
         let nametag = conn.getName(m.sender);
-
     let response = `❀ *ECONOMY INFO*\n✰ *Usuario ⪼* ${nametag}\n\n`;
-
     for (let [key, value] of Object.entries(times)) {
         let remainingTime = value - now;
         if (remainingTime > 0) {
@@ -41,14 +33,11 @@ if (m.sender === conn.user.jid) return;
             response += `◈ ${key.charAt(0).toUpperCase() + key.slice(1)}: Ahora\n`;
         }
     }
-
     await conn.reply(m.chat, response, m, fake, );
 };
-
 handler.help = ['einfo'];
 handler.command = ['einfo'];
 handler.tags = ['rpg'];
 handler.registrado = true;
 handler.disabled = true;
-
 export default handler;
