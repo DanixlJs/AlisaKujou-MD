@@ -8,11 +8,11 @@ let handler = async (m, {conn, usedPrefix, text}) => {
   if (!text && !m.quoted)
     return conn.reply(
       m.chat,
-      '✧ Etiqueta a la persona que quieras Ascender.',
+      '✧ Etiqueta al usuario que quieras ascender.',
       m
     );
   if (number.length > 13 || (number.length < 11 && number.length > 0))
-    return conn.reply(m.chat, `✧ El número indicado no es válido.`, m);
+    return conn.reply(m.chat, `✧ El número no es válido.`, m);
   try {
     if (text) {
       var user = number + "@s.whatsapp.net";
