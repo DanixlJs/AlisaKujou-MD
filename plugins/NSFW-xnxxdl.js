@@ -17,7 +17,7 @@ const handler = async (m, {conn, args, command, usedPrefix }) => {
             if (index < matchingItem.urls.length) {
               xnxxLink = matchingItem.urls[index];
             } else {
-              m.reply(`✧ Asegúrate de elegir un número del 1 al ${matchingItem.urls.length})`;
+              m.reply(`✧ Asegúrate de elegir un número del 1 al ${matchingItem.urls.length}`);
             }
           } else {
             m.reply(`✧ Primero realiza la búsqueda con *${usedPrefix}xnxxsearch <texto>* para poder descargarlo con *${usedPrefix + command} <numero>*`);
