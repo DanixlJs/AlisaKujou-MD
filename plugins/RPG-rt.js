@@ -3,7 +3,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     const bet = parseInt(args[1]);
     if (user.alisacoins < bet) return m.reply(`✧ No tienes esa cantidad de *${bet}* para apostar, solo tienes *${user.alisacoins}* ${global.botcoins}`)
     if (user.alisacoins < 200) {
-        await conn.reply(m.chat, '✧ Te quedaste sin ${global.botcoins} y el mínimo para apostar es *200*.', m);
+        await conn.reply(m.chat, `✧ Te quedaste sin ${global.botcoins} y el mínimo para apostar es *200*.`, m);
         return;
     }
     if (!args[0] || !['black', 'red'].includes(args[0])) {
@@ -14,10 +14,10 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     if (args[0] === result) {
         const payout = bet * 2;
         user.alisacoins += payout;
-        await conn.reply(m.chat, `❀ El resultado cayó en *${result}* y ganaste *${payout}* AlisaCoins.`, m, fake, );
+        await conn.reply(m.chat, `❀ El resultado cayó en *${result}* y ganaste *${payout}* ${global.botcoins}`, m, fake, );
     } else {
         user.alisacoins -= bet;
-        await conn.reply(m.chat, `✧ El resultado cayó en *${result}* y perdiste *-${bet}* AlisaCoins.`, m);
+        await conn.reply(m.chat, `✧ El resultado cayó en *${result}* y perdiste *-${bet}* ${global.botcoins}`, m);
     }
     global.db.data.users[m.sender] = user;
 };
