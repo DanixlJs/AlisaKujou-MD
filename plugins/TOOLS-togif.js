@@ -1,7 +1,6 @@
 import {webp2mp4} from '../lib/webp2mp4.js';
 import {ffmpeg} from '../lib/converter.js';
 const handler = async (m, {conn, usedPrefix, command}) => {
-if ( m.sender === conn.user.jid) return;
   if (!m.quoted) return m.reply(`✧ Responda a un Sticker.`);
   const mime = m.quoted.mimetype || '';
   if (!/webp/.test(mime)) return m.reply(`✧ Responda a un Sticker.`);
@@ -20,10 +19,8 @@ if ( m.sender === conn.user.jid) return;
   }
   await conn.sendFile(m.chat, out, 'error.mp4', '', m, 0, {thumbnail: out});
 };
-
 handler.help = ['togif'];
 handler.tags = ['tools'];
 handler.registrado = true;
 handler.command = ['tovideo', 'togif'];
-
 export default handler;
