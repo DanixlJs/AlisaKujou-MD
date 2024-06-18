@@ -1,13 +1,10 @@
 import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
-
 var handler = async (m, { conn }) => {
-
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who, 'image').catch(_ => `${global.icons}`)
+let pp = await conn.profilePictureUrl(who, 'image').catch(_ => `${global.img}`)
 let { premium, level, diamantes, alisacoins, rango, experiencia, registrado, regtime, edad , desc, genero, userol } = global.db.data.users[who]
 let username = conn.getName(who)
-
 let noprem = `
 ❀ *PERFIL DE USUARIO*
 ✰ *Nombre ⪼* ${username}
@@ -26,7 +23,6 @@ let noprem = `
 ◈ *Registrado ⪼* ${registrado ? '✅': '❌'}
 ◈ *Premium ⪼* ${premium ? '✅': '❌'}
 `.trim()
-
 let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
 │⧼👤⧽ *ᴜsᴜᴀʀɪᴏ:* 「${username}」
 │⧼🍃⧽ *ᴇᴅᴀᴅ:* ${registrado ? edad : ''}
@@ -44,15 +40,11 @@ let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔�
 │⧼⚜️⧽ *ʀᴀɴɢᴏ:* ${rango}
 │
 ╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim()
-
 conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, fake, { mentions: [who] })
-
 }
-
 handler.help = ['profile']
 handler.registrado = true
 handler.group = true
 handler.tags = ['rpg']
 handler.command = ['profile', 'perfil']
-
 export default handler
