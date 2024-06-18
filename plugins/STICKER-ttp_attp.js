@@ -3,8 +3,6 @@ import fg from 'api-dylux'
 import fetch from 'node-fetch';
 import {Sticker} from 'wa-sticker-formatter';
 const handler = async (m, {conn, text, args, usedPrefix, command}) => {
-if ( m.sender === conn.user.jid) return;
-
     if (!text) return m.reply(`✧ Ingrese un texto para convertirlo en Sticker.`);
     let color = '2FFF2E'
     let res = await fg.ttp(text, color) 
@@ -12,21 +10,17 @@ if ( m.sender === conn.user.jid) return;
     if (stiker) return await conn.sendFile(m.chat, stiker, '', '', m, fake, )
     throw stiker.toString()
     const teks = encodeURI(text);
-
     if (command == 'attp') {
     const a1 = await (await fetch(`https://api.erdwpe.com/api/maker/attp?text=${teks}`)).buffer();
     const a2 = await createSticker(a1, false, global.packname, global.author);
     conn.sendFile(m.chat, a2, 'sticker.webp', '', m, {asSticker: true});
   }
 };
-
 handler.command = ['attp', 'ttp'];
 handler.registrado = true
 handler.help = ['attp <text>', 'ttp <texto>'];
 handler.tags = ['sticker'];
-
 export default handler;
-
 async function createSticker(img, url, packName, authorName, quality) {
   const stickerMetadata = {type: 'full', pack: packName, author: authorName, quality};
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer();
