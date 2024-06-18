@@ -26,9 +26,7 @@ handler.help = ['tts <idioma> <texto>'];
 handler.tags = ['tools'];
 handler.registrado = true;
 handler.command = ['tts'];
-
 export default handler;
-
 function tts(text, lang = 'es') {
   console.log(lang, text);
   return new Promise((resolve, reject) => {
