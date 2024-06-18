@@ -152,8 +152,8 @@ echo -e "\e[36m
 ❥ GitHub: http://github.com/DanixlJS
 ❥ Número: +595 983799 436
 
-❥ Creditos a: Diego-YL-177
-❥ GitHub: http://github.com/Diego-YL-177
+❥ Creditos a: OfcDiego
+❥ GitHub: http://github.com/OfcDiego
 
 
 > Gracias por elegirnos, tenga un lindo día.\n\e[0m"
