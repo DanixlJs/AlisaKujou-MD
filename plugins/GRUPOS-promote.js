@@ -6,9 +6,7 @@ let handler = async (m, {conn, usedPrefix, text}) => {
     var number = text;
   }
   if (!text && !m.quoted)
-    return m.reply('✧ Etiqueta al usuario que quieras ascender.'),
-      m
-    );
+    return m.reply('✧ Etiqueta al usuario que quieras ascender.');
   if (number.length > 13 || (number.length < 11 && number.length > 0))
     return m.reply(`✧ El número no es válido.`);
   try {
