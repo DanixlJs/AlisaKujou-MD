@@ -2,7 +2,7 @@ const handler = async (m, {conn}) => {
 if (m.sender === conn.user.jid) return;
     let user = global.db.data.users[m.sender];
     const alisacoins = Math.floor(Math.random() * 10000);
-    let msg = `❀ En hora buena, minaste la cantidad de *${alisacoins}* AlisaCoins.`;
+    let msg = `❀ En hora buena, minaste la cantidad de *${alisacoins}* ${global.botcoins}`;
     const time = user.minetime3 + 600000;
     if (new Date - user.minetime3 < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar ${global.botcoins}`)
     conn.reply(m.chat, msg, m, fake,);
