@@ -18,9 +18,9 @@ user.name = name.trim()
 user.edad = edad
 user.regtime = + new Date
 user.registrado = true
-global.db.data.users[m.sender].alisacoins += 600
-global.db.data.users[m.sender].diamantes += 10
-global.db.data.users[m.sender].experiencia += 245
+global.db.data.users[m.sender].alisacoins += 1000
+global.db.data.users[m.sender].diamantes += 100
+global.db.data.users[m.sender].experiencia += 900
 let sn = createHash('md5').update(m.sender).digest('hex')
 m.react('📩')
 let regbot = `❀ *REGISTRO COMPLETO*
@@ -28,9 +28,9 @@ let regbot = `❀ *REGISTRO COMPLETO*
 ◈ *Edad ⪼* ${edad} años
 
 ➤ *RECOMPENSAS*
-◈ 10 Diamantes
-◈ 600 AlisaCoins
-◈ 245 Experiencia
+◈ 100 Diamantes
+◈ 1000 ${global.botcoins}
+◈ 900 Experiencia
 
 > Use *${usedPrefix}myns* para saber su serie.
 `
