@@ -3,7 +3,6 @@ import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 async function wikipedia(querry) {
   try {
-if ( m.sender === conn.user.jid) return;
     const link = await axios.get(`https://es.wikipedia.org/wiki/${querry}`);
     const $ = cheerio.load(link.data);
     const judul = $('#firstHeading').text().trim();
@@ -37,10 +36,8 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
     m.reply('✧ Ocurrió un error inesperado.');
   });
 };
-
 handler.help = ['wikipedia <texto>'];
 handler.registrado = true;
 handler.tags = ['internet', 'search'];
 handler.command = ['wiki', 'wikipedia'];
-
 export default handler;
