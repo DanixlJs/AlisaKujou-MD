@@ -1,29 +1,22 @@
 const handler = async (m, {conn}) => {
-if ( m.sender === conn.user.jid) return;
   let enviando;
   if (enviando) return
   enviando = true
   const coins = Math.floor(Math.random() * 5000);
   const time = global.db.data.users[m.sender].worktime + 60000;
-  if (new Date - global.db.data.users[m.sender].worktime < 60000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`;
-
-   let worktext = `❀ ${pickRandom(global.work)} *${coins}* AlisaCoins.`;
-
+  if (new Date - global.db.data.users[m.sender].worktime < 60000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`);
+   let worktext = `❀ ${pickRandom(global.work)} *${coins}* ${global.botcoins}`;
    conn.reply(m.chat, worktext, m, fake,);
-
   global.db.data.users[m.sender].alisacoins += coins;
   global.db.data.users[m.sender].worktime = new Date() * 1;
   enviando = false
 };
-
 handler.help = ['work', 'w'];
 handler.tags = ['rpg'];
 handler.command = ['work', 'w', 'chambear'];
 handler.fail = null;
 handler.registrado = true;
-
 export default handler;
-
 function msToTime(duration) {
   const milliseconds = parseInt((duration % 1000) / 100);
   let seconds = Math.floor((duration / 1000) % 60);
@@ -34,11 +27,9 @@ function msToTime(duration) {
   seconds = (seconds < 10) ? '0' + seconds : seconds;
   return minutes + ' Minuto(s) ' + seconds + ' Segundo(s)';
 }
-
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())];
 }
-
 global.work = [
   "Trabajaste en una tienda de ropa y ganaste",
   "Trabajaste en una librería y ganaste",
