@@ -1,8 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
-if ( m.sender === conn.user.jid) return
-	
-    if (!text) return conn.reply(m.chat, '✧ Ingresa o etiqueta a un usuario.', m)
-	
+if (!text) return conn.reply(m.chat, '✧ Ingresa o etiqueta a un usuario.', m)
   let personalidad = `❀ *PERSONALIDAD DE* 『 ${text} 』
 ✰ *Buena Moral ⪼* ${pickRandom(['6%','12%','20%','27%','35%','41%','49%','54%','60%','66%','73%','78%','84%','92%','93%','94%','96%','98,3%','99,7%','99,9%','1%','2,9%','0%','0,4%'])}
 ◈ *Mala Moral ⪼* ${pickRandom(['6%','12%','20%','27%','35%','41%','49%','54%','60%','66%','73%','78%','84%','92%','93%','94%','96%','98,3%','99,7%','99,9%','1%','2,9%','0%','0,4%'])}
@@ -22,9 +19,7 @@ handler.tags = ['rpg']
 handler.registrado = true
 handler.command = ['personalidad']
 handler.group = true
-
 export default handler 
-
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)]
 }
