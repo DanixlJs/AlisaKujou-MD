@@ -1,7 +1,5 @@
 import {createHash} from 'crypto';
-
 const handler = async function(m, {args, conn, usedPrefix}) {
-if ( m.sender === conn.user.jid) return;
   if (!args[0]) return m.reply(`✧ Ingrese su número de serie.`);
   const user = global.db.data.users[m.sender];
   const sn = createHash('md5').update(m.sender).digest('hex');
@@ -9,11 +7,8 @@ if ( m.sender === conn.user.jid) return;
   user.registrado = false;
   conn.reply(m.chat, `❀ Registro eliminado.`, m, fake, );
 };
-
 handler.help = ['unreg <serie>'];
 handler.tags = ['rpg'];
 handler.command = ['unreg'];
 handler.registrado = true;
-
 export default handler;
-
