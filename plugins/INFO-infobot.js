@@ -33,20 +33,24 @@ const handler = async (m, { conn }) => {
     const nodeUsage = process.memoryUsage();
     const diskSpace = getDiskSpace();
     const sbot = `${conn.user.jid ? 'Main-Bot' : 'Sub-Bot'}`;
-    global.tchats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
-    global.groupsr = Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats && !chat.metadata?.read_only && !chat.metadata?.announce).map(v => v[0])
+    let chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
+    let groups = Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats && !chat.metadata?.read_only && !chat.metadata?.announce).map(v => v[0])
 
 
     const message = `
 ❀ *ESTADO DE:* ${global.botname}
+
 ✰ *Activa ⪼* ${uptime}
 ◈ *Tipo ⪼* ${sbot}
 ◈ *Bot Uso ⪼* Publico
+◈ *Sub-Bots ⪼* ${global.totalUsers}
 ◈ *Comandos ejecutados ⪼* ${global.botcommandcount}
-◈ *Chats Privados ⪼* ${global.tchats.length}
-◈ *Grupos ⪼* ${global.groupsr.length}
+◈ *Chats Privados ⪼* ${chats.length}
+◈ *Grupos ⪼* ${groups.length}
+
 
 ❀ *ESTADO DEL SISTEMA*
+
 ✰ *Host ⪼* ${hostname}
 ◈ *Plataforma ⪼* ${platform}
 ◈ *Arquitectura ⪼* ${arch}
