@@ -138,7 +138,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['❀ - AlisaKujou MD', 'Safari', '2.0.0'] : methodCodeQR ? ['❀ - AlisaKujou MD', 'Safari', '2.0.0'] : ['❀ - AlisaKujou MD', 'Chrome', '110.0.5585.95'],
+browser: opcion == '1' ? ['AlisaKujouMD', 'Safari', '2.0.0'] : methodCodeQR ? ['AlisaKujouMD', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '110.0.5585.95'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -411,7 +411,7 @@ global.reload = async (_ev, filename) => {
         conn.logger.warn(`✧ Plugin Eliminado ⪼ '${filename}'`);
         return delete global.plugins[filename];
       }
-    } else conn.logger.info(`✧ Nuevo Plugin ⪼ '${filename}'`);
+    } else conn.logger.info(`❀ Nuevo Plugin ⪼ '${filename}'`);
     const err = syntaxerror(readFileSync(dir), filename, {
       sourceType: 'module',
       allowAwaitOutsideFunction: true,
