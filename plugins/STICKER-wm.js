@@ -1,6 +1,5 @@
 import {addExif} from '../lib/sticker.js';
 const handler = async (m, {conn, text}) => {
-
   if (!m.quoted) return m.reply('✧ Responda a un Sticker.');
   let stiker = false;
   try {
@@ -19,10 +18,8 @@ const handler = async (m, {conn, text}) => {
     else return m.reply('✧ Ocurrió un error inesperado.');
   }
 };
-
 handler.help = ['wm <packname>|<author>'];
 handler.tags = ['sticker'];
 handler.command = ['wm'];
 handler.registrado = true;
-
 export default handler;
