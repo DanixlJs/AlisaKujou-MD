@@ -1,18 +1,13 @@
 import fs from 'fs';
-
 const timeout = 60000; // 60 segundos
 const poin = 1000;
-
 const handler = async (m, { conn, usedPrefix }) => {
-if ( m.sender === conn.user.jid) return;
   conn.tekateki = conn.tekateki ? conn.tekateki : {};
   const id = m.chat;
-
   if (id in conn.tekateki) {
     conn.reply(m.chat, '✧ Todavía hay acertijos sin responder en este chat.', conn.tekateki[id][0]);
     throw false;
   }
-
   const tekateki = JSON.parse(fs.readFileSync(`./src/game/acertijo.json`));
   const json = tekateki[Math.floor(Math.random() * tekateki.length)];
   const _clue = json.response;
@@ -23,7 +18,6 @@ if ( m.sender === conn.user.jid) return;
 ◈ *Tiempo ⪼* ${(timeout / 1000).toFixed(2)} Segundos
 ◈ *Premio ⪼* *+${poin}* ${global.botcoins}
 `.trim();
-
   conn.tekateki[id] = [
     await conn.reply(m.chat, caption, m),
     json,
@@ -36,10 +30,8 @@ if ( m.sender === conn.user.jid) return;
     }, timeout)
   ];
 };
-
 handler.help = ['acertijo'];
 handler.tags = ['rpg'];
 handler.command = ['acertijo'];
 handler.registrado = true;
-
 export default handler;
