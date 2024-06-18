@@ -59,15 +59,15 @@ let name = conn.getName(m.sender)
 let user = global.db.data.users[m.sender]
 if (!canLevelUp(user.level, user.experiencia, global.multiplier)) {
 let { min, xp, max } = xpRange(user.level, global.multiplier)
-throw `❀ *TU NIVEL ACTUAL*
+return m.reply(`❀ *TU NIVEL ACTUAL*
 ✰ *Usuario ⪼* ${name}
 ◈ *Nivel ⪼* ${user.level}
 ◈ *Rango ⪼* ${user.rango}
 ◈ *Experiencia ⪼* ${user.experiencia - min}/${xp}
-> Te falta *${max - user.experiencia}* de experiencia para subir de nivel.`.trim()}
+> Te falta *${max - user.experiencia}* de experiencia para subir de nivel.`)}
 let before = user.level * 1
 while (canLevelUp(user.level, user.experiencia, global.multiplier)) user.level++
-if (before !== user.level) 
+if (before !== user.level) {
 let teks = `❀ Bien hecho *${conn.getName(m.sender)}*, subiste al nivel *${user.level}*`
 let str = `❀ *SUBISTE DE NIVEL*
 ✧ *Usuario ⪼* ${name}
