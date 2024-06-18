@@ -5,7 +5,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     m.reply('❀ Nombre cambiado con Éxito.')
   } catch (e) {
     console.log(e)
-    throw `✧ Ocurrió un error inesperado.`
+    m.reply(`✧ Ocurrió un error inesperado.`)
   }
 }
 handler.help = ['setbotname']
