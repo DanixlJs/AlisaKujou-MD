@@ -2,7 +2,6 @@ import translate from '@vitalets/google-translate-api';
 import {Anime} from '@shineiichijo/marika';
 const client = new Anime();
 const handler = async (m, {conn, text, usedPrefix, command}) => {
-if ( m.sender === conn.user.jid) return;
   if (!text) return m.reply(`✧ Ingresa el nombre del anime que quieras buscar, Ejemplo:\n> *${usedPrefix + command} Roshidere*`);
   try {
     const anime = await client.searchAnime(text);
@@ -26,16 +25,13 @@ if ( m.sender === conn.user.jid) return;
 ◈ *Enlace ⪼* ${result.url}
 ◈ *Background ⪼* ${resultes.text}
 ◈ *Ringkasan ⪼* ${resultes2.text}`;
-
     conn.sendFile(m.chat, result.images.jpg.image_url, 'error.jpg', AnimeInfo, m);
   } catch {
     m.reply(`✧ Ocurrió un error inesperado.`);
   }
 };
-
 handler.command = ['animeinfo'];
 handler.tags = ['search', 'internet']
 handler.registrado = true;
 handler.help = ['animeinfo <texto>'];
-
 export default handler;
