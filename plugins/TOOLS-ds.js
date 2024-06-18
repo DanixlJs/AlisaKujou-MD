@@ -1,8 +1,6 @@
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs';
 import path from 'path';
-
 const handler = async (m, { conn, usedPrefix }) => {
-if ( m.sender === conn.user.jid) return;
   if (global.conn.user.jid !== conn.user.jid) {
     return conn.sendMessage(m.chat, {text: '✧ Solo se puede ejecutar en el Bot Principal.'}, {quoted: m});
   }
@@ -31,10 +29,8 @@ if ( m.sender === conn.user.jid) return;
   }
   await conn.sendMessage(m.chat, {text: `❀ Hola, ahora me vez?`}, {quoted: m});
 };
-
 handler.help = ['ds'];
 handler.tags = ['tools'];
 handler.command = ['ds'];
 handler.registrado = true;
-
 export default handler;
