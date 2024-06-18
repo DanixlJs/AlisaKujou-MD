@@ -1,28 +1,22 @@
 import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
 const handler = async (m, {conn, command}) => {
-if (m.sender === conn.user.jid) return;
-
   if (command === 'consejo') {
     const consejo = consejos[Math.floor(Math.random() * consejos.length)];
     const mensaje = `❀ *CONSEJO DEL DÍA*\n> ✰ *${consejo}*`;
     await conn.reply(m.chat, mensaje, m, fake, );
   }
-
   if (command === 'fraseromantica') {
     const frase_romantica = frasesromanticas[Math.floor(Math.random() * frasesromanticas.length)];
     const mensaje = `❀ *FRASE ROMÁNTICA*\n> ✰ *${frase_romantica}*`;
     await conn.reply(m.chat, mensaje, m, fake, );
   }
 };
-
 handler.tags = ['rpg'];
 handler.registrado = true;
 handler.command = ['consejo', 'fraseromantica'];
 handler.help = ['consejo', 'fraseromantica'];
-
 export default handler;
-
 async function cerpen(category) {
   return new Promise((resolve, reject) => {
     const title = category.toLowerCase().replace(/[()*]/g, '');
@@ -50,7 +44,6 @@ async function cerpen(category) {
         });
   });
 }
-
 global.frasesromanticas = [
   'Eres la luz que ilumina mi vida en la oscuridad.',
   'Contigo, cada día es una nueva aventura llena de amor.',
@@ -83,7 +76,6 @@ global.frasesromanticas = [
   'Eres el pedacito que me faltaba para completar mi alma.',
   'Amar es encontrar en ti todo lo que nunca supe que necesitaba.',
 ];
-
 global.consejos = [
   'Acepta que los cambios son parte natural de la vida, y aprende a adaptarte a ellos.',
   'Nunca dejes de aprender; el conocimiento es una herramienta poderosa.',
