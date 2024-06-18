@@ -205,7 +205,7 @@ export async function handler(chatUpdate) {
           autoread: false,
           antiCall: true,
           antiPrivate: false,
-          modejadibot: true,
+          modejadibot: false,
           antispam: true,
           modoia: false,
           botcommandCount: 0,
@@ -389,7 +389,7 @@ global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
         if (user.commandCount === 2) {
           const remainingTime = Math.ceil((user.lastCommandTime + 30000 - Date.now()) / 30000);
           if (remainingTime > 0) {
-            const messageText = `✧ Espera *${remainingTime}* para usar otro comando.`;
+            const messageText = `✧ Espera un momento para usar otro comando.`;
             m.reply(messageText);
             return;
           } else {
@@ -464,7 +464,7 @@ global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
     }
 
     if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
-      mconn.conn.reply(m.chat, `✧ Te quedaste sin Diamantes, usa uno de los siguientes comandos para comprar mas.\n> *${usedPrefix}buy <cantidad>*\n> *${usedPrefix}buyall*`, m);
+      mconn.conn.reply(m.chat, `✧ Te quedaste sin Diamantes, usa uno de los siguientes comandos para comprar mas.\n> *${usedPrefix}buy <cantidad>*\n> *${usedPrefix}buyall*\n> O usa *${usedPrefix}mine2* para minar más Diamantes.`, m);
       continue; 
     }
 
@@ -728,7 +728,7 @@ global.dfail = (type, m, conn) => {
     unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*'
     }[type];
   const aa = {quoted: m, userJid: conn.user.jid};
-  const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: msg, contextInfo: {externalAdReply: {title: wm, body: dev, thumbnail: icons, sourceUrl: channel}}}}, aa);
+  const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: msg, contextInfo: {externalAdReply: {title: global.wm, body: global.dev, thumbnail: global.icons, sourceUrl: global.channel}}}}, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, {messageId: prep.key.id});
 };
 
