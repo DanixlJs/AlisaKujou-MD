@@ -1,11 +1,8 @@
 import {performance} from 'perf_hooks';
 const handler = async (m, {conn, text}) => {
-if (m.sender === conn.user.jid) return;
-    
 const start = performance.now();    
 const end = performance.now();
 const executionTime = (end - start);
-    
 const ipParts = [];
 for (let i = 0; i < 4; i++) {
 ipParts.push(Math.floor(Math.random() * 256))};
@@ -46,11 +43,10 @@ externalMac: `${Math.floor(Math.random() * 256).toString(16).toUpperCase()}:${Ma
 modemJumps: Math.floor(Math.random() * 100)
 };
 if (m.mentionedJid[0]) {
-fakeData.name_tag = text //`@${m.mentionedJid[0].split('@')[0]}` //conn.getName(m.mentionedJid[0])
+fakeData.name_tag = text 
 } else {
 fakeData.name_tag = text    
 }
-    
 const doxeo = `❀ *DOXXEO COMPLETO*
 ✰ *Doxxeo realizado en:*
 > → *${executionTime} segundos.*
@@ -89,7 +85,6 @@ const doxeo = `❀ *DOXXEO COMPLETO*
 *Tcp:* ${fakeData.tcp3}
 *EXTERNAL MAC:* ${fakeData.externalMac}
 *MODEM JUMPS:* ${fakeData.modemJumps}`;
-    
 async function loading() {
 var hawemod = [
 "《 █▒▒▒▒▒▒▒▒▒▒▒》10%",
@@ -107,15 +102,12 @@ var hawemod = [
  }
 loading()    
 };
-
 handler.help = ['doxear <@tag>'];
 handler.tags = ['rpg'];
 handler.command = ['doxxear'];
 handler.registrado = true;
 handler.diamantes = 5;
-
 export default handler;
-
 function getRandomValue(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
