@@ -19,4 +19,4 @@ handler.help = ['pfp <@tag>'];
 handler.registrado = true;
 handler.group = true;
 
-export default pfpHandler;
+export default handler;
