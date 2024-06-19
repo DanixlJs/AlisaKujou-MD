@@ -1,9 +1,9 @@
 import { isNumber } from 'util';
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
-  if (!text) return m.reply(`✧ Asegúrate de mencionar al usuario y usar el comando de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <@tag> <duración>*`);
+  if (!text) return m.reply(`✧ Asegúrate de etiquetar al usuario y usar el comando de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <@tag> <duración>*`);
   
   let [mentionedJid] = m.mentionedJid || [];
-  if (!mentionedJid) return m.reply('✧ Por favor, menciona a un usuario.');
+  if (!mentionedJid) return m.reply('✧ Por favor, etiqueta a un usuario.');
   
   let duration = args[1];
   if (!duration) return m.reply(`✧ Asegúrate de ingresar el tiempo, Ejemplo:\n> *${usedPrefix + command} @DanixlJs 1h*`);
@@ -25,9 +25,8 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
   if (!global.db.data.users[mentionedJid]) global.db.data.users[mentionedJid] = {};
   global.db.data.users[mentionedJid].premium = true;
   global.db.data.users[mentionedJid].premiumTime = Date.now() + msDuration;
-  let taguser = conn.getName(mentionedJid);
 
-  conn.reply(m.chat,`❀ *@${taguser}* ahora es usuario premium por *${time}${unit}*`, m, fake, { mentions: [mentionedJid] });
+  conn.reply(m.chat,`❀ *@${mentionedJid}* ahora es usuario un premium por *${time}${unit}*`, m, { mentions: [mentionedJid] });
 };
 
 handler.help = ['addprem <@tag> <duración>'];
