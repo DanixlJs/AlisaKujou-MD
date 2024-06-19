@@ -14,18 +14,16 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	m.react('✅');
 	}
 	if (command === 'config') {
-	if (!isAdmin && !isOwner) return m.reply(`No tienes permisos para utilizar este comando.`);
-	let msg = `╾──⟬ *CONFIGURACIONES* ⟭──╼\n> ✰ Bienvenido al menu de Configuración de ${global.botname}\n◈ *Use ${usedPrefix}toggle <opción>*\n\n`;	
+	if (!isAdmin && !isOwner) return m.reply(`✧ No tienes permisos para utilizar este comando.`);
+	let msg = `╾──⟬ *CONFIGURACIONES* ⟭──╼\n> ✰ Lista de opciones configurables de *${global.botname}*`;	
 	if (isAdmin) msg += `
 ╾──⟬ *𝐂𝐎𝐍𝐅𝐈𝐆 - 𝐆𝐑𝐔𝐏𝐎𝐒* ⟭──╼
 
 - *welcome* ${nn.welcome ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *detect* ${nn.detect ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *detect2* ${nn.detect2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antidelete* ${nn.antidelete ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modohorny* ${nn.modohorny ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *autosticker* ${nn.autosticker ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
-- *audios* ${nn.audios ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antiLink* ${nn.antiLink ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antiLink2* ${nn.antiLink2 ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *antiviewonce* ${nn.antiviewonce ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
