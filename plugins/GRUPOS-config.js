@@ -47,7 +47,7 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 - *antispam* ${bot.antispam ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 - *modoia* ${bot.modoia ? '   ⧼✅⧽ Activado' : '   ⧼❌⧽ Desactivado'}
 `;	
-	await conn.reply(m.chat, msg, m, fake, )
+	await conn.sendFile(m.chat, global.icons, 'img.jpg', msg, m, )
 	}
 };
 handler.help = ['open', 'close', 'config'];
