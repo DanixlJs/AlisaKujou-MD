@@ -3,6 +3,7 @@ const handler = async (m, {conn, command, text, isOwner}) => {
 					return
 }
 		if (command === 'prefix') {
+		if (!text) return m.reply('✧ Ingresa un Prefijo para Alisa')
 		global.prefix = [`${text}`]
 		if (text.length > 1) return m.reply('✧ El prefijo no puede tener más de 1 carácteres.')
 		await conn.reply(m.chat, `❀ Se cambió el Prefijo a *[ ${text} ]*, m, fake, )`
