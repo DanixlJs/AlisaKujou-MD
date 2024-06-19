@@ -15,7 +15,7 @@ const handler = async (m, { conn, command }) => {
 };
 
 handler.command = ['pfp'];
-handler.help = ['pfp <@tag>];
+handler.help = ['pfp <@tag>'];
 handler.registrado = true;
 handler.group = true;
 
