@@ -7,7 +7,6 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
     const options = [
         "welcome",
         "detect",
-        "detect2",
         "antidelete",
         "modohorny",
         "autosticker",
