@@ -530,14 +530,15 @@ global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
       }
     }
 let user; const stats = global.db.data.stats;
-if (m) {
+if (m) { 
 let utente = global.db.data.users[m.sender]
 if (utente.muto == true) {
 let bang = m.key.id
 let cancellazzione = m.key.participant
-await conn.sendMessage(m.chat, { delete: { remoteJid: m.key.remoteJid, fromMe: false, id: m.key.id, participant: m.sender } })
-//await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: cancellazzione } })
-}}
+await conn.sendMessage(m.chat, {
+delete: {
+remoteJid: m.chat, fromMe: false, id: bang, participant: cancellazzione
+}})
 }
       if (m.sender && (user = global.db.data.users[m.sender])) {
         user.experiencia += m.experiencia;
