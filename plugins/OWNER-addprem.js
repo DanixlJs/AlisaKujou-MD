@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
   global.db.data.users[mentionedJid].premium = true;
   global.db.data.users[mentionedJid].premiumTime = Date.now() + msDuration;
 
-  conn.sendMessage(m.chat, { text: `❀ @${mentionedJid.split('@')[0]} ahora es usuario premium por *${time} ${unit}*` }, { quoted: m });
+  conn.reply(m.chat,`❀ @${mentionedJid.split('@')[0]} ahora es usuario premium por *${time}${unit}*`, m, fake, { mentions: [mentionedJid] });
 };
 
 handler.help = ['addprem <@tag> <duración>'];
