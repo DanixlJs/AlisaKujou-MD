@@ -26,8 +26,8 @@ let rtx = `❀ *SER BOT - QR*\n✰ Escanea el código QR para convertirte en Sub
 let rtx2 = `❀ *SER BOT - CODE*\n✰ Usa éste Código para convertirte en Sub-Bot Temporal.\n> ◈ Tres Puntitos → Dispositivos Vinculados → Vincular Dispositivo → Vincular con el número de teléfono.\n\n➤ *Importante:*\n◈ No es recomendable usar tu cuenta principal.\n◈ Si el Bot principal se reinicia, todos los Sub-Bots se desconectaran.`
 if (global.conns instanceof Array) console.log()
 else global.conns = []
-let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
-if (!global.db.data.settings[conn.user.jid].modejadibot) {
+let handler = async (m, { conn, args, usedPrefix, command, isOwner, isROwner}) => {
+if (!global.db.data.settings[conn.user.jid].modejadibot && !isROwner) {
 m.reply('✧ La opción de ser Sub-Bot ha sido desactivada por mi Creador.')
 return
 }
