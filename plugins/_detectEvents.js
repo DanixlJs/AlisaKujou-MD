@@ -13,8 +13,8 @@ const img = await (await fetch(pp)).buffer()
 const chat = global.db.data.chats[m.chat]
 const mentionsString = [m.sender, m.messageStubParameters[0], ...groupAdmins.map((v) => v.id)]
 const mentionsContentM = [m.sender, m.messageStubParameters[0]]
-if (chat.detect2 && m.messageStubType == 2) {
-/*const chatId = m.isGroup ? m.chat : m.sender;
+/*if (chat.detect && m.messageStubType == 2) {
+const chatId = m.isGroup ? m.chat : m.sender;
 const uniqid = chatId.split('@')[0];
 const sessionPath = './Session/';
 const files = await fs.readdir(sessionPath);
