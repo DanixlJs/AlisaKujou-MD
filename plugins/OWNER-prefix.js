@@ -1,5 +1,5 @@
 const handler = async (m, {conn, command, text, isOwner}) => {
-if (isOwner) {
+if (!isOwner) {
 return
 }
 if (command === 'prefix') {
