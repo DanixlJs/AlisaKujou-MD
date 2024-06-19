@@ -1,14 +1,9 @@
 const handler = async (m, { conn, command }) => {
-  let mentionedJid = [];
-  if (m.message.extendedTextMessage.contextInfo.mentionedJid) {
-    mentionedJid = m.message.extendedTextMessage.contextInfo.mentionedJid;
-  }
-  let target = mentionedJid[0] || m.quoted.sender;
-  if (!target) return m.reply('✧ Por favor, etiqueta a alguien o responde a su mensaje.');
-
+  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+  if (!who) return m.reply('✧ Por favor, etiqueta a alguien.');
   try {
-    const profilePicUrl = await conn.getProfilePicture(target);
-    await conn.sendMessage(m.chat, { image: { url: profilePicUrl }, caption: '' });
+    const pp = await conn.getProfilePicture(who);
+    await conn.sendMessage(m.chat, { image: { url: pp }, caption: '' });
   } catch (e) {
     m.reply('✧ Lo siento, no pude obtener la foto de perfil.');
   }
