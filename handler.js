@@ -84,6 +84,7 @@ export async function handler(chatUpdate) {
 		if (!isNumber(user.sluttime)) user.sluttime = -1;
 		if (!isNumber(user.worktime)) user.worktime = -1;
 		if (!('baneado' in user)) user.baneado = false;
+   if (!('muto' in user)) user.muto = false
 		if (!('banRazon' in user)) user.banRazon = '';
 		if (!isNumber(user.warn)) user.warn = 0;
 		if (!('warnRazon' in user)) user.warnRazon = '';
@@ -120,6 +121,7 @@ export async function handler(chatUpdate) {
 		sluttime: -1,
 		worktime: -1,
 		baneado: false,
+   muto: false,
 		banRazon: '',
 		warn: 0,
 		warnRazon: '',
