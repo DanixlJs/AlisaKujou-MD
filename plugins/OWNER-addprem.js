@@ -25,8 +25,9 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
   if (!global.db.data.users[mentionedJid]) global.db.data.users[mentionedJid] = {};
   global.db.data.users[mentionedJid].premium = true;
   global.db.data.users[mentionedJid].premiumTime = Date.now() + msDuration;
+  let taguser = conn.getName(mentionedJid);
 
-  conn.reply(m.chat,`❀ @${mentionedJid.split('@')[0]} ahora es usuario premium por *${time}${unit}*`, m, fake, { mentions: [mentionedJid] });
+  conn.reply(m.chat,`❀ *@${taguser}* ahora es usuario premium por *${time}${unit}*`, m, fake, { mentions: [mentionedJid] });
 };
 
 handler.help = ['addprem <@tag> <duración>'];
