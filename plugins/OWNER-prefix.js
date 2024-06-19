@@ -12,6 +12,7 @@ if (command === 'resetprefix') {
 global.prefix = new RegExp('^[/.#!]')
 await conn.reply(m.chat, '❀ Se ha reseteado el prefijo de Alisa', m, fake, )
 }
+}
 
 handler.tags = ['owner']
 handler.command = ['prefix', 'resetprefix']
