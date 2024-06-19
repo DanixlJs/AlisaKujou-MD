@@ -42,7 +42,7 @@ const defaultMenu = { before: `
 ┃│「✏️」 𝐕𝐞𝐫𝐬𝐢𝐨𝐧: ${global.vs}
 ┃│「📁」 𝐄𝐧𝐭𝐨𝐫𝐧𝐨: Nodejs
 ┃│「📚」 𝐁𝐚𝐢𝐥𝐞𝐲𝐬: MultiDivice ^6.7.5
-┃│「🕐」 𝐀𝐜𝐭𝐢𝐯𝐨: %muptime
+┃│「🕐」 𝐀𝐜𝐭𝐢𝐯𝐚: %muptime
 ┃│「👤」 𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐬: %rtotalreg
 ┃│「📈」 𝐂𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐞𝐣𝐞𝐜𝐮𝐭𝐚𝐝𝐨𝐬: ${global.botcommandcount}
 ┃│「🖇️」 𝐒𝐮𝐛𝐁𝐨𝐭 𝐀𝐜𝐭𝐢𝐯𝐨𝐬: ${global.totalUsers || '0'}
