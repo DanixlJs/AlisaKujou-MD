@@ -724,8 +724,8 @@ global.dfail = (type, m, conn) => {
     group: '✧ Este comando solo se puede ejecutar en Grupos.',
     private: '✧ Este comando solo se puede ejecutar en mi Privado.',
     admin: '✧ Este comando solo lo pueden usar los Administradores.',
-    botAdmin: '✧ Alisa necesita ser Administrador para ejecutar esa funcion.',
-    unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*'
+    botAdmin: '✧ Alisa necesita ser Administradora para ejecutar esa funcion.',
+    unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*\n> ✰ *Ejemplo:* Alisa.17'
     }[type];
   const aa = {quoted: m, userJid: conn.user.jid};
   const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: msg, contextInfo: {externalAdReply: {title: global.wm, body: global.dev, thumbnail: global.icons, sourceUrl: global.channel}}}}, aa);
