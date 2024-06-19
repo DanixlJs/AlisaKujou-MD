@@ -8,8 +8,9 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
   
   global.db.data.users[mentionedJid].premium = false;
   global.db.data.users[mentionedJid].premiumTime = 0;
+  let taguser = conn.getName(mentionedJid)
 
-  conn.reply(m.chat, `✧ @${mentionedJid.split('@')[0]} ya no es un usuario premium.`, m, fake, { mentions: [mentionedJid]} );
+  conn.reply(m.chat, `✧ *@${taguser}* ya no es un usuario premium.`, m, fake, { mentions: [mentionedJid]} );
 };
 
 handler.help = ['delprem <@tag>'];
