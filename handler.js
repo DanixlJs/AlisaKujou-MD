@@ -134,13 +134,12 @@ export async function handler(chatUpdate) {
       if (chat) {
         if (!('isBanned' in chat)) chat.isBanned = false;
         if (!('welcome' in chat)) chat.welcome = true;
-        if (!('detect' in chat)) chat.detect = false;
-        if (!('detect2' in chat)) chat.detect2 = true;
+        if (!('detect' in chat)) chat.detect = true;
         if (!('sWelcome' in chat)) chat.sWelcome = '';
         if (!('sBye' in chat)) chat.sBye = '';
         if (!('sPromote' in chat)) chat.sPromote = '';
         if (!('sDemote' in chat)) chat.sDemote = '';
-        if (!('delete' in chat)) chat.antidelete = false;
+        if (!('delete' in chat)) chat.antidelete = true;
         if (!('modohorny' in chat)) chat.modohorny = false;
         if (!('autosticker' in chat)) chat.autosticker = false;
         if (!('audios' in chat)) chat.audios = false;
@@ -151,8 +150,8 @@ export async function handler(chatUpdate) {
         if (!('antiTraba' in chat)) chat.antiTraba = true;
         if (!('antiArab' in chat)) chat.antiArab = false;
         if (!('antiporno' in chat)) chat.antiporno = false;
-        if (!('game' in chat)) chat.game = false;
-        if (!('autolevelup' in chat))  chat.autolevelup = true;
+        if (!('game' in chat)) chat.game = true;
+        if (!('autolevelup' in chat))  chat.autolevelup = false;
         if (!('modoadmin' in chat)) chat.modoadmin = false;
         if (!('simi' in chat)) chat.simi = false;
         if (!isNumber(chat.experienciaired)) chat.experienciaired = 0;
@@ -160,13 +159,12 @@ export async function handler(chatUpdate) {
         global.db.data.chats[m.chat] = {
           isBanned: false,
           welcome: true,
-          detect: false,
-          detect2: true,
+          detect: true,
           sWelcome: '',
           sBye: '',
           sPromote: '',
           sDemote: '',
-          antidelete: false,
+          antidelete: true,
           modohorny: false,
           autosticker: false,
           audios: false,
@@ -179,8 +177,8 @@ export async function handler(chatUpdate) {
           antiporno: false,
           modoadmin: false,
           simi: false,
-          game: false,
-          autolevelup: true,
+          game: true,
+          autolevelup: false,
           experienciaired: 0,
         };
       }
