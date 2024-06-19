@@ -8,7 +8,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command, isOwner }) => {
   if (!global.db.data.users[mentionedJid]) global.db.data.users[mentionedJid] = {}
   global.db.data.users[mentionedJid].muto = true
   let taguser = conn.getName(mentionedJid)
-  conn.reply(`❀ *${taguser}* ha sido muteado.`)
+  conn.reply(m.chat, `❀ *${taguser}* ha sido muteado.`, m, fake, )
 }
   if (command === 'unmute') {
   if (!text) return m.reply(`✧ Etiqueta a la persona que quieras desmutear.`)
@@ -18,7 +18,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command, isOwner }) => {
   if (!global.db.data.users[mentionedJid]) global.db.data.users[mentionedJid] = {}
   global.db.data.users[mentionedJid].muto = false
   let taguser = conn.getName(mentionedJid)
-  conn.reply(`❀ *${taguser}* ha sido desmuteado.`)
+  conn.reply(m.chat, `❀ *${taguser}* ha sido desmuteado.`, m, fake, )
 }
 }
 
