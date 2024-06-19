@@ -4,6 +4,7 @@ const handler = async (m, {conn, isOwner}) => {
   const caption = `❀ *USUARIOS BANEADOS*
 ✰ *Total ⪼* ${users.length} ${users ? '\n' + users.map(([jid], i) => `
 ${isOwner ? '@' + jid.split`@`[0] : jid}`.trim()).join('\n') : ''}
+
 ❀ *CHATS MUTEADOS*
 ✰ *Total ⪼* ${chats.length} ${chats ? '\n' + chats.map(([jid], i) => `
 ${isOwner ? '@' + jid.split`@`[0] : jid}`.trim()).join('\n') : ''}
