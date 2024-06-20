@@ -1,5 +1,7 @@
 import TicTacToe from '../lib/tictactoe.js';
 const handler = async (m, {conn, usedPrefix, command, text}) => {
+  
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   conn.game = conn.game ? conn.game : {};
   if (Object.values(conn.game).find((room) => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) return m.reply('✧ Todavía estás en juego.');
   if (!text) return m.reply(`✧ Ingresa un nombre para la sala.`);
