@@ -1,4 +1,5 @@
 const handler = async (m, {conn}) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
 if (m.sender === conn.user.jid) return;
     let user = global.db.data.users[m.sender];
     const alisacoins = Math.floor(Math.random() * 10000);
