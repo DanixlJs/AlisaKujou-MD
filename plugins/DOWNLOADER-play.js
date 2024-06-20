@@ -116,7 +116,7 @@ handler.help = ['play <texto>', 'play2 <texto>'];
 handler.tags = ['downloader'];
 handler.command = ['play', 'play2'];
 handler.registrado = true;
-handler.diamantes = 5;
+handler.diamantes = 1;
 
 
 export default handler;
