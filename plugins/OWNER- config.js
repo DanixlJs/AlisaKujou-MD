@@ -1,7 +1,6 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✧ Por favor ingresa una opción.`);
-  let args = text.split(' ');
-  let option = args[0].toLowerCase();
+  let option = text;
   let options = [
   "self",
   "autoread",
@@ -14,7 +13,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   "gconly",
 ];
   if (!options.includes(option)) {
-    return m.reply(`✧ La opción *${option}* no es válida, Use *${usedPrefix}config* para ver las opciones disponibles.`);
+    return m.reply(`✧ La opción *${option}* no es válida.> Use *${usedPrefix}config* para ver las opciones disponibles.`);
   }
   let target = conn.user.jid;
   if (!global.db.data.settings[target]) global.db.data.settings[target] = {};
