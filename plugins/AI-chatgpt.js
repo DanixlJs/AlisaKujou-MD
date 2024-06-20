@@ -5,7 +5,7 @@ import {Configuration, OpenAIApi} from 'openai'
 const configuration = new Configuration({organization: global.openai_org_id, apiKey: global.openai_key})
 const openaiii = new OpenAIApi(configuration);
 const handler = async (m, {conn, text, usedPrefix, command, isOwner}) => {
-if (!global.db.data.chats[m.chat].modoia && !isOwner) return m.reply('✧ Los comandos de *AI*  fueron desactivados por mi Creador.)
+if (!global.db.data.chats[m.chat].modoia && !isOwner) return m.reply('✧ Los comandos de *AI*  fueron desactivados por mi Creador.')
 if (usedPrefix == 'a' || usedPrefix == 'A') return
 if (!text) return conn.reply(m.chat, `✧ Ingrese una petición para que la AI lo responda, Ejemplo:\n> *${usedPrefix + command} Código de una Calculadora en .js*`, m, fake, )   
 try {
