@@ -6,7 +6,7 @@ const db_load = (path) => (fs.readFileSync(path, 'utf8'))
 const db_save = (path, data) => {
     fs.writeFileSync(path, JSON.stringify(data, null, 2))
 }
-const series = db_load(db)
+let series = db_load(db)
 
 let characteres = db_load(db)
 
