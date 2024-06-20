@@ -13,7 +13,7 @@ const db_save = (path, data) => {
 
 let series = db_load(dbPath);
 
-const handler = async (m, {conn, args, command, usedPrefix}) => {
+const handler = async (m, { conn, args, command, usedPrefix }) => {
     if (command === 'adds') {
         if (args.length < 2) {
             await m.reply(`Asegúrate de usarlo de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <nombre> = <tag>*`);
@@ -40,8 +40,8 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
             return;
         }
 
-        const aid = args[0]; // Obtener el ID
-        const [name, tag] = args.slice(2).join(' ').split('=').map(str => str.trim()); // Obtener nombre y tag
+        const aid = parseInt(args[0], 10); // Obtener el ID como número
+        const [name, tag] = args.slice(1).join(' ').split('=').map(str => str.trim()); // Obtener nombre y tag
 
         // Verificar si el ID existe en la base de datos
         const anime = series.find(anime => anime.id === aid);
@@ -71,4 +71,4 @@ handler.help = ['adds <nombre> = <tag>', 'addc <id> <nombre> = <tag>'];
 handler.registrado = true;
 handler.rowner = true;
 
-export default handler;
+module.exports = handler;
