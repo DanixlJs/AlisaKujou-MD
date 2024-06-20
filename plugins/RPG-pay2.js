@@ -1,5 +1,6 @@
 const confirmacion = {};
 async function handler(m, { conn, args, usedPrefix, command }) {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   if (confirmacion[m.sender]) {
     return conn.sendMessage(m.chat, { text: '✧ Aun hay una transferencia en proceso, por favor espera un momento.', mentions: [m.sender] }, { quoted: m });
   }
