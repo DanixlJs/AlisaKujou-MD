@@ -1,4 +1,5 @@
 const handler = async (m, {isPrems, conn}) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   const time = global.db.data.users[m.sender].cofretime + 86400000;
   if (new Date - global.db.data.users[m.sender].cofretime < 86400000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a reclamarlo`);
   const dia = Math.floor(Math.random() * 50);
