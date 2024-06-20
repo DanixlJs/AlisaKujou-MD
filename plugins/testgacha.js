@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const db = './src/gacha/database,json'
+const db = './src/gacha/database.json'
 const db_load = (path) => (fs.readFileSync(path, 'utf8'))
 const db_save = (path, data) => {
     fs.writeFileSync(path, JSON.stringify(data, null, 2))
