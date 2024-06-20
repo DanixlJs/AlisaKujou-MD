@@ -43,12 +43,17 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const aid = parseInt(args[0], 10); // Obtener el ID como número
         const [name, tag] = args.slice(1).join(' ').split('=').map(str => str.trim()); // Obtener nombre y tag
 
+        console.log(`Buscando anime con ID: ${aid}`); // Agregar depuración
+        console.log(`Base de datos: ${JSON.stringify(series, null, 2)}`); // Mostrar base de datos
+
         // Verificar si el ID existe en la base de datos
         const anime = series.find(anime => anime.id === aid);
         if (!anime) {
             await m.reply(`El ID ${aid} no se encontró en la base de datos.`);
             return;
         }
+
+        console.log(`Anime encontrado: ${JSON.stringify(anime, null, 2)}`); // Agregar depuración
 
         const character = {
             name: name,
