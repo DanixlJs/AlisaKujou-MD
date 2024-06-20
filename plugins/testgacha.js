@@ -76,4 +76,4 @@ handler.help = ['adds <nombre> = <tag>', 'addc <id> <nombre> = <tag>'];
 handler.registrado = true;
 handler.rowner = true;
 
-module.exports = handler;
+export default handler;
