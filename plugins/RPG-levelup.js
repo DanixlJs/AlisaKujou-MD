@@ -4,6 +4,7 @@ import PhoneNumber from 'awesome-phonenumber'
 import { promises } from 'fs'
 import { join } from 'path'
 let handler = async (m, { conn, usedPrefix, command, args, usedPrefix: _p, __dirname, isOwner, text, isAdmin, isROwner }) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
 const { levelling } = '../lib/levelling.js'
 let { experiencia, diamantes, level, rango } = global.db.data.users[m.sender]
 let { min, xp, max } = xpRange(level, global.multiplier)
