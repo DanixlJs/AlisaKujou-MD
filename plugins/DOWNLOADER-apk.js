@@ -13,5 +13,5 @@ handler.help = ['apk <aplicación>']
 handler.tags = ['downloader']
 handler.command = ['aptoide', 'apk']
 handler.registrado = true 
-handler.diamantes = 5
+handler.diamantes = 1
 export default handler
