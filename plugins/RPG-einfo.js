@@ -9,6 +9,7 @@ function msToTime(duration) {
     return `${days} Día(s) ${hours} Hora(s) ${minutes} Minuto(s) ${seconds} Segundo(s)`;
 }
 const handler = async (m, { conn }) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     let user = global.db.data.users[m.sender];
     const now = Date.now();
     const times = {
