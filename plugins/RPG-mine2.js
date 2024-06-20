@@ -1,4 +1,5 @@
 const handler = async (m, {conn}) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     let user = global.db.data.users[m.sender];
     const d = Math.floor(Math.random() * 50);
     let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${d + 1}* Diamante(s)`;
