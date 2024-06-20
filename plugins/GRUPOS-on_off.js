@@ -1,7 +1,8 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✧ Por favor ingresa una opción.`);
-  let args = text.split(' ');
-  let option = args[0].toLowerCase();
+  //let args = text.split(' ');
+  let option = text;
+  //let option = args[0].toLowerCase();
   let options = [
   "welcome",
   "detect",
