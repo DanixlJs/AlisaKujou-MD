@@ -16,7 +16,7 @@ let series = db_load(dbPath);
 const handler = async (m, {conn, args, command, usedPrefix}) => {
     if (command === 'adds') {
         if (args.length < 2) {
-            await m.reply(`✧ Asegúrate de usarlo de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <nombre> = <tag>*`);
+            await m.reply(`Asegúrate de usarlo de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <nombre> = <tag>*`);
             return;
         }
 
@@ -31,20 +31,22 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
 
         series.push(anime);
         db_save(dbPath, series);
-        await conn.reply(m.chat, `❀ *${serie}* se agregó correctamente a la Base de Datos.`);
+        await conn.reply(m.chat, `${serie} se agregó correctamente a la Base de Datos.`);
     }
 
     if (command === 'addc') {
         if (args.length < 3) {
-            await m.reply(`✧ Asegúrate de usarlo de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <id> <nombre> = <tag>*`);
+            await m.reply(`Asegúrate de usarlo de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <id> <nombre> = <tag>*`);
             return;
         }
 
         const aid = args[0];
-        const [name, tag] = args.slice(1).join(' ').split('=').map(str => str.trim());
+        const [name, tag] = args.slice(2).join(' ').split('=').map(str => str.trim());
+
+        // Verificar si el ID existe en la base de datos
         const anime = series.find(anime => anime.id === aid);
         if (!anime) {
-            await m.reply(`✧ No se encontró una serie con el ID de *${aid}*.`);
+            await m.reply(`El ID ${aid} no se encontró en la base de datos.`);
             return;
         }
 
@@ -60,7 +62,7 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
         anime.characters.push(character);
 
         db_save(dbPath, series);
-        await m.reply(`❀ Personaje agregado al anime *${anime.name}* con ID *${aid}*`);
+        await m.reply(`Personaje agregado al anime *${anime.name}* con ID *${aid}*`);
     }
 }
 
