@@ -87,7 +87,7 @@ handler.help = ['playdoc <texto>', 'playdoc2 <texto>', 'play3 <texto>', 'play4 <
 handler.tags = ['downloader'];
 handler.command = ['playdoc', 'playdoc2', 'play3', 'play4'];
 handler.registrado = true;
-handler.diamantes = 5;
+handler.diamantes = 1;
 export default handler;
 async function search(query, options = {}) {
   const search = await yts.search({query, hl: 'es', gl: 'ES', ...options});
