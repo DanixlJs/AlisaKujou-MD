@@ -1,15 +1,16 @@
-import fetch from 'node-fetch';
-import axios from 'axios';
-import translate from '@vitalets/google-translate-api';
-import {Configuration, OpenAIApi} from 'openai';
-const configuration = new Configuration({organization: global.openai_org_id, apiKey: global.openai_key});
+import fetch from 'node-fetch'
+import axios from 'axios'
+import translate from '@vitalets/google-translate-api'
+import {Configuration, OpenAIApi} from 'openai'
+const configuration = new Configuration({organization: global.openai_org_id, apiKey: global.openai_key})
 const openaiii = new OpenAIApi(configuration);
 const handler = async (m, {conn, text, usedPrefix, command}) => {
-if (usedPrefix == 'a' || usedPrefix == 'A') return;
+if (!global.db.data.chats[m.chat].modoia && !isOwner) return m.reply('✧ Los comandos de *AI*  fueron desactivados por mi Creador.)
+if (usedPrefix == 'a' || usedPrefix == 'A') return
 if (!text) return conn.reply(m.chat, `✧ Ingrese una petición para que la AI lo responda, Ejemplo:\n> *${usedPrefix + command} Código de una Calculadora en .js*`, m, fake, )   
 try {
 await m.reply('❀ Procesando, espere un momento.')
-conn.sendPresenceUpdate('composing', m.chat);
+conn.sendPresenceUpdate('composing', m.chat)
 let gpt = await fetch(`https://delirius-api-oficial.vercel.app/api/ia2?text=${text}`)
 let res = await gpt.json()
 await m.reply(res.gpt)
@@ -23,7 +24,7 @@ await m.reply(res.data)
 handler.help = ['chatgpt <texto>', 'ia <texto>']
 handler.tags = ['ai']
 handler.registrado = true
-handler.diamantes = 5
+handler.diamantes = 1
 handler.command = ['ia', 'chatgpt']
 
-export default handler;
+export default handler
