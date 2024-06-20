@@ -59,7 +59,7 @@ handler.help = ['fb <link>']
 handler.tags = ['downloader']
 handler.command = ['faceboook', 'fb']
 handler.registrado = true
-handler.diamantes = 10
+handler.diamantes = 1
 export default handler
 function checkMessageType(url) {
 if (url.includes('www.facebook.com')) {
