@@ -1,5 +1,5 @@
 var handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
 if (!text) return conn.reply(m.chat, `✧ Ingresa una pregunta.`, m, fake, )
 m.react('❔')
 await delay(1000 * 1)
