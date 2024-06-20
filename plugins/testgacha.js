@@ -17,7 +17,7 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
         return
     }
 
-    const [serie, tag] = args.join(' ').split('=').map((str) => str.strim())
+    const [serie, tag] = args.join(' ').split('=').map((str) => str.trim())
     const id = Math.floor(100000 + Math.random() * 900000)
     const anime = {
         name: serie,
@@ -37,7 +37,7 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
         }
 
     const aid = args[0]
-    const ct = args.slice(1).join(' ').split('\n').map(line => line.split('=').map(str => str.strim()))
+    const ct = args.slice(1).join(' ').split('\n').map(line => line.split('=').map(str => str.trim()))
 
     for (const [cname, ctag] of ct) {
         const character = {
