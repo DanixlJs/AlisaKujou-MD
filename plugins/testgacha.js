@@ -41,14 +41,7 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
         }
 
         const aid = args[0];
-        const [name, tag] = args.slice(2).join(' ').split('=').map(str => str.trim());
-
-        // Verificar si el ID existe en la base de datos
-        const anime = series.find(anime => anime.id === aid);
-        if (!anime) {
-            await m.reply(`El ID ${aid} no se encontró en la base de datos.`);
-            return;
-        }
+        const [name, tag] = args.slice(1).join(' ').split('=').map(str => str.trim());
 
         const character = {
             name: name,
@@ -59,10 +52,14 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
             voteTime: 0,
         }
 
-        anime.characters.push(character);
+        series.forEach(anime => {
+            if (anime.id === aid) {
+                anime.characters.push(character);
+            }
+        });
 
         db_save(dbPath, series);
-        await m.reply(`Personaje agregado al anime *${anime.name}* con ID *${aid}*`);
+        await m.reply(`Personaje agregado al anime con ID *${aid}*`);
     }
 }
 
