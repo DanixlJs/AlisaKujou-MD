@@ -1,4 +1,5 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   try {
     let user = global.db.data.users[m.sender];
     let [type, amount] = text.split(' ');
