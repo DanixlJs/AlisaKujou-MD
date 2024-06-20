@@ -1,4 +1,5 @@
 let handler = async (m, { conn, command, text }) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
 if (!text) return conn.reply(m.chat, '✧ Ingresa o etiqueta a un usuario.', m)
   let personalidad = `❀ *PERSONALIDAD DE* 『 ${text} 』
 ✰ *Buena Moral ⪼* ${pickRandom(['6%','12%','20%','27%','35%','41%','49%','54%','60%','66%','73%','78%','84%','92%','93%','94%','96%','98,3%','99,7%','99,9%','1%','2,9%','0%','0,4%'])}
