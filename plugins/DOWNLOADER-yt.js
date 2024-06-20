@@ -17,5 +17,5 @@ handler.help = ['yt <enlace>']
 handler.tags = ['downloader']
 handler.command = ['ytmp4', 'yt', 'ytv']
 handler.registrado = true 
-handler.diamantes = 10
+handler.diamantes = 5
 export default handler
