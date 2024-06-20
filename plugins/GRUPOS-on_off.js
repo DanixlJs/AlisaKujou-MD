@@ -26,10 +26,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   let target = m.chat;
   if (!global.db.data.chats[target]) global.db.data.chats[target] = {};
   if (command === 'on' || command === 'enable') {
-    global.db.data.chats[target].option = true;
+    global.db.data.chats[target][option] = true;
     conn.sendMessage(m.chat, { text: `❀ La opción *${option}* ha sido activada.` }, { quoted: m });
   } else if (command === 'off' || command === 'disable') {
-    global.db.data.chats[target].option = false;
+    global.db.data.chats[target][option] = false;
     conn.sendMessage(m.chat, { text: `❀ La opción *${option}* ha sido desactivada.` }, { quoted: m });
   }
 };
