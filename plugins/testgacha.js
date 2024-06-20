@@ -9,7 +9,7 @@ const db_save = (path, data) => {
 }
 let series = db_load(dbPath);
 const handler = async (m, { conn, args, command, usedPrefix }) => {
-    if (command === 'sinfo' {
+    if (command === 'sinfo') {
         if (args.length < 1) {
             await m.reply(`Asegurate de usarlo de la siguiente manera, Ejemplo:\n> *${usedPrefix + command} <anime>*`);
             return;
