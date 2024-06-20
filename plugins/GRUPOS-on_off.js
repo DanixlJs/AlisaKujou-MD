@@ -1,8 +1,6 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✧ Por favor ingresa una opción.`);
-  //let args = text.split(' ');
   let option = text;
-  //let option = args[0].toLowerCase();
   let options = [
   "welcome",
   "detect",
@@ -22,7 +20,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   "simi",
 ];
   if (!options.includes(option)) {
-    return m.reply(`✧ La opción *${option}* no es válida, Use *${usedPrefix}config* para ver las opciones disponibles.`);
+    return m.reply(`✧ La opción *${option}* no es válida.> Use *${usedPrefix}config* para ver las opciones disponibles.`);
   }
   let target = m.chat;
   if (!global.db.data.chats[target]) global.db.data.chats[target] = {};
