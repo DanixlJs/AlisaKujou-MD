@@ -43,7 +43,7 @@ const handler = async (m, { conn }) => {
 ✰ *Activa ⪼* ${uptime}
 ◈ *Tipo ⪼* ${sbot}
 ◈ *Bot Uso ⪼* Publico
-◈ *Sub-Bots ⪼* ${global.totalUsers}
+◈ *Sub-Bots ⪼* ${global.totalUsers || '0'}
 ◈ *Comandos ejecutados ⪼* ${global.botcommandcount}
 ◈ *Chats Privados ⪼* ${chats.length}
 ◈ *Grupos ⪼* ${groups.length}
