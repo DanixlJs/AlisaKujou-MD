@@ -8,7 +8,7 @@ try {
     if (!results.length) return conn.reply(m.chat, '✧ No se encontraron resultados.', m);
     const randomResult = getRandomElement(results);
     const videoUrl = randomResult.nowm;
-    await conn.sendFile(m.chat, videoUrl, 'tts.mp4', `❀ *TIKTOK SEARCH*\n✰ *Resultados para:*\n ${text}`, m);
+    await conn.sendFile(m.chat, videoUrl, 'tts.mp4', `❀ *TIKTOK SEARCH*\n✰ *Resultados para:*\n> ${text}`, m);
 } catch (error) {
     console.log(error);
 }
