@@ -20,7 +20,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
             await m.reply(`No se encontró una serie con ese Nombre.`);
             return;
         }
-        const cnum = anime.characteres.length;
+        const cnum = anime.characters.length;
         const msg = `INFO - SERIE
         - Nombre: ${anime.name}
         - Tag: ${anime.tag}
