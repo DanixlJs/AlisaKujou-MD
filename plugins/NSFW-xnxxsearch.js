@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 const handler = async (m, {text, usedPrefix, command}) => {
- if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}toggle modohorny* para activarlos si eres Administrador.`);
+ if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}on modohorny* para activarlos si eres Administrador.`);
   if (!text) return m.reply(`✰ Ingrese un texto para realizar la búsqueda, Ejemplo:\n> *${usedPrefix + command} Con mi Prima*`);
   try {
     const vids_ = {
