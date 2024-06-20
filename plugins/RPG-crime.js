@@ -1,6 +1,7 @@
 let crime = 500
 let diamante = 10
 const handler = async (m, {conn, usedPrefix, command, groupMetadata, participants, isPrems}) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
 const date = global.db.data.users[m.sender].crimetime + 600000; 
 if (new Date - global.db.data.users[m.sender].crimetime < 3600000) return m.reply(`✧ Espera *${msToTime(date - new Date())}* para realizar otro crimen.`)
 let randow
