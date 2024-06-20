@@ -19,10 +19,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   let target = conn.user.jid;
   if (!global.db.data.settings[target]) global.db.data.settings[target] = {};
   if (command === 'oon' || command === 'oenable') {
-    global.db.data.settings[target].option = true;
+    global.db.data.settings[target][option] = true;
     conn.sendMessage(m.chat, { text: `❀ La opción *${option}* ha sido activada.` }, { quoted: m });
   } else if (command === 'ooff' || command === 'odisable') {
-    global.db.data.settings[target].option = false;
+    global.db.data.settings[target][option] = false;
     conn.sendMessage(m.chat, { text: `❀ La opción *${option}* ha sido desactivada.` }, { quoted: m });
   }
 };
