@@ -12,5 +12,5 @@ handler.help = ['ig <enlace>']
 handler.tags = ['downloader']
 handler.command = ['ig', 'instagram']
 handler.registrado = true 
-handler.diamantes = 5
+handler.diamantes = 1
 export default handler
