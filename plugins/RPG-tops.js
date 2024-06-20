@@ -1,4 +1,5 @@
 const handler = async (m, {conn, args, participants}) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   const users = Object.entries(global.db.data.users).map(([key, value]) => {
     return {...value, jid: key};
   });
