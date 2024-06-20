@@ -1,4 +1,5 @@
 const handler = async (m, {conn}) => {
+  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   let who;
   if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
   else who = m.sender;
