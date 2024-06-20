@@ -1,6 +1,7 @@
 import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
-const handler = async (m, {conn, text, command, args, usedPrefix}) => {
+const handler = async (m, {conn, text, command, args, usedPrefix, isOwner}) => {
+  if (!global.db.data.chats[m.chat].simi && !isOwner) return m.reply('✧ Los comandos de *AI* fueron desactivados por mi Creador.');
   if (!text) return conn.reply(m.chat, `✧ Ingresa un texto para empezar a hablar con ${global.botname}`, m, fake, )
   try {
     const api = await fetch('https://api.simsimi.net/v2/?text=' + text + '&lc=es');
