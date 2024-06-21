@@ -4,11 +4,10 @@ import { join } from 'path'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => { 
-  try {
-    let chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
-    let groups = Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats && !chat.metadata?.read_only && !chat.metadata?.announce).map(v => v[0])
-    
-  let tags = {
+try {
+let chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
+let groups = Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats && !chat.metadata?.read_only && !chat.metadata?.announce).map(v => v[0])
+let tags = {
   'info': '𝐈𝐍𝐅𝐎',
   'jadibot': '𝐉𝐀𝐃𝐈𝐁𝐎𝐓',
   'search': '𝐁𝐔𝐒𝐐𝐔𝐄𝐃𝐀𝐒',
@@ -167,25 +166,19 @@ const defaultMenu = { before: `
     conn.reply(m.chat, '❀ Ocurrió un error inesperado.', m)
   }
 }
-
 handler.help = ['menu']
 handler.tags = ['info']
 handler.command = ['menú', 'menu', 'help'] 
-handler.registrado = false
-
+handler.registrado = true
 export default handler
-
-
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
-
 function clockString(ms) {
   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
-
   var ase = new Date();
   var hour = ase.getHours();
 switch(hour){
