@@ -1,4 +1,3 @@
-const { default: makeWASocket, DisconnectReason, useMultiFileAuthState } = await import('@whiskeysockets/baileys');
 const handler = async (m, { conn, args, text, usedPrefix, command, isROwner }) => {
     if (args.length === 0) {
         await conn.reply(m.chat, `✧ Ingresa el Link de tu grupo.`, m);
