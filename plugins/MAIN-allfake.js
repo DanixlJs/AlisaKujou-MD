@@ -32,6 +32,7 @@ var l4 = 'https://instagram.com/';
 var l5 = 'https://facebook.com/';
 var l6 = 'https://github.com/';
 global.fakeLink = [l1, l2, l3, l4, l5, l6].getRandom()
+global.canales = [channel, channel2].getRandom()
 let bot = global.db.data.settings[this.user.jid];
 global.botname = bot.botname;
 global.wm = bot.botwm;
