@@ -53,7 +53,7 @@ let category = "imagen"
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 2024, status: 1, surface : 1, message: global.wm, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'
 global.cred = Buffer.from(credit, 'base64')
-let canalId = ["120363302120826314@newsletter", "120363263466636910@newsletter"]
+let canalId = ["120363302120826314@newsletter", "120363314021119064@newsletter"]
 let canalNombre = [`${global.wm}`, "♋︎ 𝐃𝙴𝚅 𝐖𝙾𝚁𝙻𝙳 - 𝐓𝙴𝙰𝙼 ♋︎"]
 async function getRandomChannel() {
 let randomIndex = Math.floor(Math.random() * canalId.length)
