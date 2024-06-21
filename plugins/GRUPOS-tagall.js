@@ -1,9 +1,4 @@
 const handler = async (m, {isOwner, isAdmin, conn, text, participants, args, command, usedPrefix}) => {
-  if (usedPrefix == 'a' || usedPrefix == 'A') return;
-  if (!(isAdmin || isOwner)) {
-    global.dfail('admin', m, conn);
-    return;
-  }
   const pesan = args.join` `;
   const oi = `✰ *Mensaje ⪼* ${pesan}`;
   let teks = `❀ *INVOCANDO GRUPO*\n${oi}\n\n◈ *Tag:*\n`;
