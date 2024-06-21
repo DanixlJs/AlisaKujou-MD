@@ -19,7 +19,6 @@ let texto = `❀ *EQUIPO DE PROGRAMADORES*
 
 > Si quieres formar parte del equipo ponte en contacto con mi Creador.`
 conn.reply(m.chat, texto, m, fake, )
-m.react('🥏') 
 }
 handler.help = ['colaboradores', 'team']
 handler.command = ['colaboradores', 'team']
