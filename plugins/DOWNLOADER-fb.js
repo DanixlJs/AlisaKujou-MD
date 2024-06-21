@@ -4,7 +4,7 @@ var handler = async (m, { conn, args, command, usedPrefix, text }) => {
 let vid
 const isCommand7 = /^(facebook|fb|facebookdl|fbdl)$/i.test(command)
 async function reportError(e) {
-await m.reply(m.chat, `✧ Ocurrió un error inesperado.`)
+await m.reply(`✧ Ocurrió un error inesperado.`)
 console.log(e)
 }
 switch (true) {   
