@@ -14,10 +14,8 @@ let str = `❀ *GRUPOS OFICIALES*
 `
 await conn.reply(m.chat, str, m, fake, )
 }
-
 handler.command = ['grupos']
 handler.help = ['grupos']
 handler.tags = ['info']
 handler.registrado = true
-
 export default handler
