@@ -10,8 +10,11 @@ let str = `❀ *GRUPOS OFICIALES*
 
 ❀ *CANALES OFICIALES*
 ✰ *🤍 𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂 - 𝗠𝗗​᭄ ᎪΝႮΝᏟᏆϴՏ*
-> [https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y]
-`
+> [${channel}]
+
+✰ *♋︎ 𝐃𝙴𝚅 𝐖𝙾𝚁𝙻𝙳 - 𝐓𝙴𝙰𝙼 ♋︎*
+> [${channel2}]`
+
 await conn.reply(m.chat, str, m, fake, )
 }
 handler.command = ['grupos']
