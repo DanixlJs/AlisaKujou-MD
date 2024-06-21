@@ -23,7 +23,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command, isROwner }) =
             const GroupId = '120363284046748076@g.us';
             const displayName = await conn.getName(m.sender);
             let msg = `❀ *INVITACIÓN A GRUPO*\n✰ *Usuario ⪼* @${m.sender.replace('@s.whatsapp.net', '').trim()}\n◈ *Grupo ⪼* ${groupName}\n◈ *Participantes ⪼* ${participantCount}\n ◈ *Link:*\n> [${link}]`
-            await conn.reply(GroupId, msg, m, { mentions: [m.sender], quoted: fake } );
+            await conn.reply(GroupId, msg, m, { mentions: [m.sender]} );
             await conn.reply(m.chat, `❀ Tu solicitud ha sido enviada a los Moderadores del Bot.`, m, fake, );
         }
     } catch (error) {
