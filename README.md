@@ -17,11 +17,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 - **Entorno ⪼** NodeJs
 - **Baileys ⪼** MultiDivide ^6.7.5
-- **Comandos de administración ⪼** Alisa cuenta con comandos para administrar tus grupos de manera más fácil, los más usados son:
-◈ /kick
-◈ /promote
-◈ /demote
-
+- **Comandos de administración ⪼** Alisa cuenta con comandos para administrar tus grupos de manera más fácil.
 - **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
 
 - **Versión Actual ⪼** 2.0.0
@@ -29,9 +25,13 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 ---
 
-## GRUPOS OFICIALES
+## GRUPOS DE COLABORACIÓN
 
-[![GRUPO-OFC](https://img.shields.io/badge/GRUPO-OFC-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb)
+- **🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂​᭄ 𝚡 ⏤͟͟͞͞𝐍𝐞𝐤𝐨'𝐬 𝐂𝐥𝐮𝐛⏤͟͟͞͞★**
+[![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb)
+
+- **🌸𝒀𝒐𝒔𝒉𝒊𝒌𝒐𝑩𝒐𝒕-𝑴𝑫 x ೄྀ ᥲᥣіsᥲ kᥙȷ᥆ᥙ mძ​᭄**
+[![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GvJAupaHXTQDNivZIa2l5D)
 
 ---
 
