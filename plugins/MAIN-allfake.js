@@ -2,7 +2,6 @@ import pkg from '@whiskeysockets/baileys'
 import fs from 'fs'
 import fetch from 'node-fetch'
 import axios from 'axios'
-import moment from 'moment-timezone'
 const { generateWAMessageFromContent, prepareWAMessageMedia, proto } = pkg
 var handler = m => m
 handler.all = async function (m) {
@@ -24,7 +23,6 @@ return res.data
 } catch (e) {
 console.log(`✧ Error: ${e}`)
 }}
-let pp = ''
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? this.user.jid : m.sender
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 var l1 = 'https://youtube.com/';
@@ -52,13 +50,8 @@ let category = "imagen"
   const rimg = await response.buffer()
   global.icons = rimg
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "120363220559890200@g.us" } : {}) }, message: { orderMessage: { itemCount : 2024, status: 1, surface : 1, message: global.wm, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
-const moji = (await axios.get(`https://raw.githubusercontent.com/DanixlJs/AlisaKujou-MD/master/src/JSON/emogis.json`)).data
-const emoji = await moji[Math.floor(moji.length * Math.random())]
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'
 global.cred = Buffer.from(credit, 'base64')
-global.nombre = conn.getName(m.sender)
-global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 global.fake = { contextInfo: { mentionedJid: conn.parseMention(global.wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363302120826314@newsletter', serverMessageId: '', newsletterName: `${global.wm}` }, externalAdReply: { title: global.wm, body: global.dev, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: global.icons, thumbnail: global.icons, sourceUrl: global.fakeLink }}}, { quoted: m }
 }
 export default handler
-
