@@ -28,7 +28,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 - **Baileys ⪼** MultiDivide ^6.7.5
 - **Comandos de administración ⪼** Alisa cuenta con comandos para administrar tus grupos de manera más fácil.
 - **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
-- **Comandos para descargar Videos y Audios, así también para buscar imágenes.
+- **Comandos de Descarga ⪼*** Cuenta con una variedad de comandos para descargar Videos y Audios, así también para buscar imágenes.
 - **Versión Actual ⪼** 2.0.0
 - **Estado ⪼** Público
 
