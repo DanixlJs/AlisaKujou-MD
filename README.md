@@ -7,7 +7,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 ---
 ---
 
-> [!PELIGRO]
+> [!CUATION]
 > Se agregó una protección para que el Bot no responda a sus propios mensajes y este genere Spam.
 - Se rediseño el Menu.
 
