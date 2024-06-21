@@ -1,6 +1,5 @@
 import os from 'os';
 import { execSync } from 'child_process';
-
 const formatBytes = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
@@ -9,7 +8,6 @@ const formatBytes = (bytes, decimals = 2) => {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 };
-
 const getDiskSpace = () => {
     try {
         const stdout = execSync('df -h | grep -E "^/dev/root|^/dev/sda1"').toString();
@@ -20,7 +18,6 @@ const getDiskSpace = () => {
         return null;
     }
 };
-
 const handler = async (m, { conn }) => {
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
@@ -35,8 +32,6 @@ const handler = async (m, { conn }) => {
     const sbot = `${conn.user.jid ? 'Main-Bot' : 'Sub-Bot'}`;
     let chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
     let groups = Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats && !chat.metadata?.read_only && !chat.metadata?.announce).map(v => v[0])
-
-
     const message = `
 ❀ *ESTADO DE:* ${global.botname}
 
@@ -70,19 +65,14 @@ ${diskSpace ? `
 → Tamaño Total: ${diskSpace.size}
 → Usado: ${diskSpace.used}
 → Disponible: ${diskSpace.available}
-→ Porcentaje de Uso: ${diskSpace.usePercent}` : 'Error.'}
-`;
-
+→ Porcentaje de Uso: ${diskSpace.usePercent}` : 'Error.'}`;
     await conn.reply(m.chat, message.trim(), m, fake, );
 };
-
 handler.help = ['info', 'status', 'infobot'];
 handler.tags = ['info'];
 handler.command = ['info', 'status', 'infobot'];
 handler.registrado = true;
-
 export default handler;
-
 function clockString(ms) {
   const d = isNaN(ms) ? '--' : Math.floor(ms / 86400000);
   const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24;
