@@ -45,18 +45,6 @@ global.packname = 'ᰔᩚ 𝐒𝐭𝐢𝐜𝐤𝐞𝐫 𝐛𝐲';
 global.author = `${global.botname} ᰔᩚ`;
 global.botcommandcount = bot.botcommandCount;
 
-let canalId = ["120363302120826314@newsletter", "120363263466636910@newsletter"]
-let canalNombre = ["✰ 𝐀𝙻𝙸𝚂𝙰 𝐊𝚄𝙹𝙾𝚄 ✰", "♋︎ 𝐃𝙴𝚅 𝐖𝙾𝚁𝙻𝙳 - 𝐓𝙴𝙰𝙼 ♋︎"]
-
-async function getRandomChannel() {
-let randomIndex = Math.floor(Math.random() * canalId.length)
-let id = canalId[randomIndex]
-global.nombre = canalNombre[randomIndex]
-return { id, nombre }
-} 
-
-global.canalesid = await getRandomChannel()
-
 let category = "imagen"
  const dbPath = './media/database/db.json'
   const dbData = JSON.parse(fs.readFileSync(dbPath))
@@ -71,6 +59,19 @@ global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'
 global.cred = Buffer.from(credit, 'base64')
 
-global.fake = { contextInfo: { mentionedJid: conn.parseMention(global.wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: canalesid, serverMessageId: '', newsletterName: `${nombre}` }, externalAdReply: { title: global.wm, body: global.dev, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: global.icons, thumbnail: global.icons, sourceUrl: global.fakeLink }}}, { quoted: m }
+
+let canalId = ["120363302120826314@newsletter", "120363263466636910@newsletter"]
+let canalNombre = ["✰ 𝐀𝙻𝙸𝚂𝙰 𝐊𝚄𝙹𝙾𝚄 ✰", "♋︎ 𝐃𝙴𝚅 𝐖𝙾𝚁𝙻𝙳 - 𝐓𝙴𝙰𝙼 ♋︎"]
+
+async function getRandomChannel() {
+let randomIndex = Math.floor(Math.random() * canalId.length)
+let id = canalId[randomIndex]
+let nombre = canalNombre[randomIndex]
+return { id, nombre }
+} 
+
+let randomChannel = await getRandomChannel()
+
+global.fake = { contextInfo: { mentionedJid: conn.parseMention(global.wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: randomChannel.id, serverMessageId: '', newsletterName: randomChannel.nombre }, externalAdReply: { title: global.wm, body: global.dev, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: global.icons, thumbnail: global.icons, sourceUrl: global.fakeLink }}}, { quoted: m }
 }
 export default handler
