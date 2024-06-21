@@ -1,5 +1,5 @@
 const handler = async (m, {conn, participants, groupMetadata}) => {
-  const pp = await conn.profilePictureUrl(m.chat, 'image').catch((_) => null) || `${global.icons}`;
+  const pp = await conn.profilePictureUrl(m.chat, 'image').catch((_) => null) || 'https://telegra.ph/file/7079b6b104a3eb98b2392.png';
   let nn = global.db.data.chats[m.chat];
   const groupAdmins = participants.filter((p) => p.admin);
   const listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.id.split('@')[0]}`).join('\n');
