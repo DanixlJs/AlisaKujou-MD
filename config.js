@@ -11,9 +11,10 @@ global.confirmCode = ""
 global.owner = [
 ['595983799436', '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', true],
 ['573012482597']]
+
 global.contactos = [
-["595983799436", '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', 1]
-]
+["595983799436", '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', 1]]
+
 global.suittag = ['595973755967']
 global.prems = []
 global.mods = ['595985665263', '51979946825', '51986707393']
@@ -24,6 +25,7 @@ global.md = 'https://github.com/DanixlJs/AlisaKujou-MD'
 global.gp = 'https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb'
 global.patreon = 'https://patreon.com/DanixlJs'
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y'
+global.channel2 = 'https://whatsapp.com/channel/0029VaQD7LAJP216tu9liI2A'
 global.d = new Date(new Date + 3600000);
 global.locale = 'es';
 global.dia = d.toLocaleDateString(locale, {weekday: 'long'});
