@@ -7,16 +7,15 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 ---
 ---
 
-## 🌟 NOVEDADES 🌟
-
-- Se agregó una protección para que el Bot no responda a sus propios mensajes y este genere Spam.
+> [!TIP]
+> Se agregó una protección para que el Bot no responda a sus propios mensajes y este genere Spam.
 - Se rediseño el Menu.
 
 ---
 ---
 
 
-> [!ATENCION]
+> [!WARNING]
 
 > **Si vas a instalar el Bot, te recomiendo usar otro número ya que no vas a poder ejecutar Comandos desde el número del Bot por la protección antes mencionado.**
 
