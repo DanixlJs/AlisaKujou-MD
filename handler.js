@@ -527,7 +527,8 @@ global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
         this.msgqueque.splice(quequeIndex, 1);
       }
     }
-let user; const stats = global.db.data.stats;
+let user; 
+const stats = global.db.data.stats;
 if (m) { 
 let utente = global.db.data.users[m.sender]
 if (utente.muto) {
