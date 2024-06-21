@@ -3,7 +3,7 @@ if (!m.mentionedJid[0] && !m.quoted) {
 return m.reply('✧ Etiqueta al usuario que quieras degradar.')
 }
 let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
-if (user !== isROwner) return m.reply('Nel wey')
+if (user === isROwner) return m.reply('Nel wey')
 conn.groupParticipantsUpdate(m.chat, [user], 'demote')
 m.react('✅')
 }
