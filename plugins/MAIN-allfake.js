@@ -17,7 +17,7 @@ headers: {
 'Upgrade-Insecure-Request': 1
 },
 ...options,
-responseType: 'arrayBuffer'
+responseType: 'arraybuffer'
 })
 return res.data
 } catch (e) {
@@ -47,7 +47,7 @@ let category = "imagen"
   const random = Math.floor(Math.random() * db_.links[category].length)
   const randomlink = db_.links[category][random]
   const response = await fetch(randomlink)
-  const rimg = await response.arrayBuffer()
+  const rimg = await response.buffer()
   global.icons = rimg
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "595983799436@s.whatsapp.net" } : {}) }, message: { orderMessage: { itemCount : 2024, status: 1, surface : 1, message: `${global.wm}\n${global.dev}`, orderTitle: 'Bang', thumbnail: global.icons, sellerJid: '0@s.whatsapp.net' }}}
 var credit = 'X8KpIFJlcXVlc3RlZCBieSBDdXJpb3NpdHlCb3Rf'
