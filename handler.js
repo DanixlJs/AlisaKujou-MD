@@ -139,18 +139,18 @@ export async function handler(chatUpdate) {
         if (!('sBye' in chat)) chat.sBye = '';
         if (!('sPromote' in chat)) chat.sPromote = '';
         if (!('sDemote' in chat)) chat.sDemote = '';
-        if (!('delete' in chat)) chat.antidelete = true;
-        if (!('modohorny' in chat)) chat.modohorny = false;
+        if (!('delete' in chat)) chat.delete = false;
+        if (!('nsfw' in chat)) chat.nsfw = false;
         if (!('autosticker' in chat)) chat.autosticker = false;
         if (!('audios' in chat)) chat.audios = false;
         if (!('antiLink' in chat)) chat.antiLink = true;
         if (!('antiLink2' in chat)) chat.antiLink2 = false;
-        if (!('antiviewonce' in chat)) chat.antiviewonce = false;
+        if (!('antiunavez' in chat)) chat.antiunavez = false;
         if (!('antiToxic' in chat)) chat.antiToxic = false;
-        if (!('antiTraba' in chat)) chat.antiTraba = true;
+        if (!('antiTraba' in chat)) chat.antiTraba = false;
         if (!('antiArab' in chat)) chat.antiArab = false;
-        if (!('antiporno' in chat)) chat.antiporno = false;
-        if (!('game' in chat)) chat.game = true;
+        if (!('antinsfw' in chat)) chat.antinsfw = false;
+        if (!('rpg' in chat)) chat.rpg = true;
         if (!('autolevelup' in chat))  chat.autolevelup = false;
         if (!('modoadmin' in chat)) chat.modoadmin = false;
         if (!('simi' in chat)) chat.simi = false;
@@ -164,20 +164,20 @@ export async function handler(chatUpdate) {
           sBye: '',
           sPromote: '',
           sDemote: '',
-          antidelete: true,
-          modohorny: false,
+          delete: false,
+          nsfw: false,
           autosticker: false,
           audios: false,
           antiLink: true,
           antiLink2: false,
-          antiviewonce: false,
+          antiunavez: false,
           antiToxic: false,
           antiTraba: true,
           antiArab: false,
-          antiporno: false,
+          antinsfw: false,
           modoadmin: false,
           simi: false,
-          game: true,
+          rpg: true,
           autolevelup: false,
           experienciaired: 0,
         };
@@ -286,7 +286,7 @@ for (const name in global.plugins) {
         __filename,
       });
     } catch (e) {
-      console.log("✧ Error en:", e);
+      console.log("[ ✧ ] ERROR:\n", e);
     }
   }
 
@@ -502,7 +502,7 @@ global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
             m.diamantes = m.diamantes || plugin.diamantes || false;
           }
         } catch (e) {
-          console.log("✧ Error en:", e);
+          console.log("[ ✧ ] ERROR:\n", e);
         } finally {
           if (typeof plugin.after === 'function') {
             try {
@@ -581,8 +581,6 @@ if (!isNumber(stat.success)) {
     }
     const settingsREAD = global.db.data.settings[mconn.conn.user.jid] || {};
     if (opts['autoread']) await mconn.conn.readMessages([m.key]);
-    if (settingsREAD.autoread2) await mconn.conn.readMessages([m.key]);
-
 
 function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
 }}
@@ -699,7 +697,7 @@ let date = d.toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'nu
         if (fromMe) return 
         let msg = mconn.conn.serializeM(mconn.conn.loadMessage(id))
         let chat = global.db.data.chats[msg?.chat] || {}
-        if (!chat?.antidelete) return 
+        if (!chat?.delete) return 
         if (!msg) return 
         if (!msg?.isGroup) return 
 
