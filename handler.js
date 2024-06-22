@@ -724,10 +724,7 @@ global.dfail = (type, m, conn) => {
     botAdmin: '✧ Alisa necesita ser Administradora para ejecutar esa funcion.',
     unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*\n> ✰ *Ejemplo:* Alisa.17'
     }[type];
-  const aa = {quoted: m, userJid: conn.user.jid};
-  const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: msg, contextInfo: {externalAdReply: {title: global.wm, body: global.dev, thumbnail: global.icons, sourceUrl: global.canales}}}}, aa);
-  if (msg) return conn.relayMessage(m.chat, prep.message, {messageId: prep.key.id});
-};
+    if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
 
 const file = global.__filename(import.meta.url, true);
 watchFile(file, async () => {
