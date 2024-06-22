@@ -37,10 +37,10 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 ## 💠 GRUPOS DE COLABORACIÓN 💠
 
 - **🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂​᭄ 𝚡 ⏤͟͟͞͞𝐍𝐞𝐤𝐨'𝐬 𝐂𝐥𝐮𝐛⏤͟͟͞͞★**
-[![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb)
+- [![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb)
 
 - **🌸𝒀𝒐𝒔𝒉𝒊𝒌𝒐𝑩𝒐𝒕-𝑴𝑫 x ೄྀ ᥲᥣіsᥲ kᥙȷ᥆ᥙ mძ​᭄**
-[![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GvJAupaHXTQDNivZIa2l5D)
+- [![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GvJAupaHXTQDNivZIa2l5D)
 
 ---
 ---
@@ -49,7 +49,7 @@ Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una
 
 Si quieres colaborar conmigo, puedes hablarme a mi WhatsApp.
 
-[![👨‍💻danixljs](https://img.shields.io/badge/👨‍💻danixljs-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/595983799436)
+- [![👨‍💻danixljs](https://img.shields.io/badge/👨‍💻danixljs-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/595983799436)
 
 ---
 ---
@@ -58,7 +58,7 @@ Si quieres colaborar conmigo, puedes hablarme a mi WhatsApp.
 
 Este repositorio está bajo la licencia Apache 2.0, asegúrate de leerla para saber lo que puedes y no puedes hacer con el código fuente.
 
-[![Licencia Apache 2.0](https://img.shields.io/badge/Licencia-Apache%202.0-blue?style=for-the-badge)](LICENSE)
+- [![Licencia Apache 2.0](https://img.shields.io/badge/Licencia-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 ---
 ---
