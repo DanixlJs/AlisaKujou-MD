@@ -38,6 +38,9 @@ global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y';
 global.botdate = `${moment.tz('America/Asuncion').format('DD/MM/YY')}`;
 global.bottime = `${moment.tz('America/Asuncion').format('HH:mm:ss')}`;
 
+// PREFIJO 
+global.prefix = new RegExp('^[/.#!]');
+
 // NOTA: Cuando Más Alto, más difícil será subir de nivel.
 global.multiplier = 500;
 
