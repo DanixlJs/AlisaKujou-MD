@@ -3,12 +3,12 @@ const handler = async (m, {conn}) => {
   let enviando;
   if (enviando) return
   enviando = true
-  let user = global.db.data.users
+  let user = global.db.data.users[m.sender];
   const coins = Math.floor(Math.random() * 5000);
   const time = user.worktime + 60000;
   if (new Date - user.worktime < 60000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`);
    let worktext = `❀ ${pickRandom(global.work)} *${coins}* ${global.botcoins}`;
-   conn.reply(m.chat, worktext, m, fake,);
+   conn.reply(m.chat, worktext, m, );
   user.dinero += coins;
   user.worktime = new Date() * 1;
   enviando = false
