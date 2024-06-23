@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 const handler = async (m, {conn, args, command, usedPrefix }) => {
-  if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}on modohorny* para activarlos si eres Administrador.`);
+  if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}on nsfw* para activarlos si eres Administrador.`);
   if (!args[0]) return m.reply(`✧ Link inválido.`);
   try {
     await conn.reply(m.chat, '❀ Procesando, espere un momento.', m);
