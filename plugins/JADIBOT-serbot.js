@@ -139,9 +139,9 @@ if (connection == `open`) {
 conn.isInit = true
 global.conns.push(conn)
 await parentw.sendMessage(m.chat, {text : args[0] ? `❀ Conexión exitosa al WhatsApp.` : `❀ Haz vinculado un SubBot con éxito.`}, { quoted: fkontak })
-await parentw.sendMessage(m.chat, {text : `❀ SubBot conectado, espere un momento.`}, { quoted: fkontak })
+await parentw.sendMessage(m.chat, {text : `❀ *CONEXIÓN - EXITOSA*\n✰ Cargando, espere un momento.\n\n> ➤ Use *${usedPrefix}token* para saber su Token.`}, { quoted: fkontak })
 await sleep(5000)
-if (!args[0]) parentw.sendMessage(m.chat, {text : usedPrefix + command + ' ' + Buffer.from(fs.readFileSync('./JadiBotSessions/' + id + '/creds.json'), 'utf-8').toString('base64')}, { quoted: fkontak })    
+/*if (!args[0]) parentw.sendMessage(m.chat, {text : usedPrefix + command + ' ' + Buffer.from(fs.readFileSync('./JadiBotSessions/' + id + '/creds.json'), 'utf-8').toString('base64')}, { quoted: fkontak })*/
 
 }}
 setInterval(async () => {
