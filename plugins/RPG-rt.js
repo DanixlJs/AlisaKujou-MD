@@ -1,5 +1,5 @@
 const handler = async (m, { conn, args, usedPrefix }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     const user = global.db.data.users[m.sender];
     const bet = parseInt(args[1]);
     if (user.dinero < bet) return m.reply(`✧ No tienes esa cantidad de *${bet}* para apostar, solo tienes *${user.dinero}* ${global.botcoins}`)
