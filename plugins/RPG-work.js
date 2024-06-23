@@ -5,11 +5,12 @@ const handler = async (m, {conn}) => {
   enviando = true
   let user = global.db.data.users[m.sender];
   const coins = Math.floor(Math.random() * 5000);
+  const coins2 = Math.floor(Math.random() * 20000);
   const time = user.worktime + 60000;
   if (new Date - user.worktime < 60000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`);
-   let worktext = `❀ ${pickRandom(global.work)} *${coins}* ${global.botcoins}`;
+   let worktext = `❀ ${pickRandom(global.work)} *${user.premium ? coins2 : coins}* ${global.botcoins}`;
    conn.reply(m.chat, worktext, m, );
-  user.dinero += coins;
+  user.dinero += user.premium ? coins2 : coins;
   user.worktime = new Date() * 1;
   enviando = false
 };
