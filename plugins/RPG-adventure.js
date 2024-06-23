@@ -3,14 +3,15 @@ const handler = async (m, {conn, isPrems}) => {
   let enviando;
   if (enviando) return
   enviando = true
+  let user = global.db.data.users;
   const exp = Math.floor(Math.random() * 10000);
   const exp2 = Math.floor(Math.random() * 50000);
   const time = global.db.data.users[m.sender].adventuretime + 300000;
   if (new Date - global.db.data.users[m.sender].adventuretime < 300000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a realizar otra Aventura.`);
-   let adventuretext = `❀ Te embarcas en una emocionante aventura:\n> ✰ *${pickRandom(global.adventure)}*\n◈ Gracias a la aventura obtienes *${global.db.data.users[m.sender].premium ? exp2 : exp}* de experiencia.`;
+   let adventuretext = `❀ Te embarcas en una emocionante aventura:\n> ✰ *${pickRandom(global.adventure)}*\n◈ Gracias a la aventura obtienes *${user.premium ? exp2 : exp}* de experiencia.`;
    conn.reply(m.chat, adventuretext, m, fake,);
-  global.db.data.users[m.sender].experiencia += `${global.db.data.users[m.sender].premium ? exp2 : exp}`;
-  global.db.data.users[m.sender].adventuretime = new Date() * 1;
+   user.experiencia += user.premium ? exp2 : exp;
+   user.adventuretime = new Date() * 1;
   enviando = false
 };
 handler.help = ['aventura', 'adventure'];
