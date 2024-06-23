@@ -1,5 +1,5 @@
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
 let user = global.db.data.users[m.sender]
 if (command === 'setgenre') {
 if (!text) return m.reply('✧ Por favor escribe el género con el que te identificas.\n◈ Hombre\n◈ Mujer\n◈ Otro')
