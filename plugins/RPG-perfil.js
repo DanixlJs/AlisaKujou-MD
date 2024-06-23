@@ -1,7 +1,7 @@
 import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 var handler = async (m, { conn }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/7079b6b104a3eb98b2392.png')
 let { premium, level, diamantes, dinero, rango, experiencia, registrado, regtime, edad , desc, genero, userol } = global.db.data.users[who]
