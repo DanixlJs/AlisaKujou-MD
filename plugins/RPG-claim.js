@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
   }
   let reward = user.premium ? 200000 : 100000;
   user.dinero += reward;
-  conn.reply(m.chat, `❀ *REWARD DIARIO*\n✰ Reclamaste tu recompensa diaria y obtuviste *${reward} ${global.botcoins}*.`, m);
+  conn.reply(m.chat, `❀ *REWARD DIARIO*\n✰ Reclamaste tu recompensa diaria y obtuviste *${reward}* ${global.botcoins}.`, m);
   user.dailytime = new Date().getTime();
 };
 handler.help = ['daily'];
