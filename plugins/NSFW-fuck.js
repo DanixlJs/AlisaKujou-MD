@@ -1,5 +1,5 @@
 let handler = async (m, { conn, command, text, usedPrefix }) => {
-if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}on modohorny* para activarlos si eres Administrador.`);
+if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply(`✧ Los comandos *NSFW* están desactivados en este grupo.\n> *${usedPrefix}on nsfw* para activarlos si eres Administrador.`);
 if (!text) return m.reply(`✧ Etiqueta a una persona.`)
 let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 let is = conn.getName(m.sender)
