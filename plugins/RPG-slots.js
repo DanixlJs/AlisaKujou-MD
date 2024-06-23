@@ -11,9 +11,9 @@ return result;
 };
 const evaluateResult = (result, bet) => {
 if (result[0] === result[1] && result[1] === result[2]) {
-return { message: '❀ ¡ GANASTE !', winnings: bet * 10 };
+return { message: '❀ ¡ GANASTE !', winnings: bet * 3 };
 } else if (result[0] === result[1] || result[1] === result[2] || result[0] === result[2]) {
-        return { message: '✧ ¡ CASI !', winnings: bet * 1.5 };
+        return { message: '✧ ¡ CASI !', winnings: bet * 0.5 };
     } else {
         return { message: '✦ ¡ PERDISTE !', winnings: 0 };
     }
