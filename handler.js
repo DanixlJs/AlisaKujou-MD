@@ -180,7 +180,7 @@ const settings = global.db.data.settings[this.user.jid];
 if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {};
 if (settings) {
 if (!('botname' in settings)) settings.botname = 'AlisaBot-MD';
-if (!('botcoins' in settings)) settings.botcoins = 'dinero';
+if (!('botcoins' in settings)) settings.botcoins = 'AlyaCoins';
 if (!('botwm' in settings)) settings.botwm = 'Alisa Kujou - MD';
 if (!('self' in settings)) settings.self = false;
 if (!('autoread' in settings)) settings.autoread = false;
@@ -193,7 +193,7 @@ if (!('botcommandCount' in settings)) settings.botcommandCount = 0;
 } else {
 global.db.data.settings[this.user.jid] = {
 botname: 'AlisaBot-MD',
-botcoins: 'dinero',
+botcoins: 'AlyaCoins',
 botwm: 'Alisa Kujou - MD',
 self: false,
 autoread: false,
