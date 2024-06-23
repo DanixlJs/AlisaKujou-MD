@@ -2,7 +2,8 @@ let handler = async (m, {conn}) => {
   if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.')
   let time = global.db.data.users[m.sender].dailytime + 86400000
   if (new Date - global.db.data.users[m.sender].dailytime < 86400000) return conn.reply(m.chat, `✧ Espera *${msToTime(time - new Date())}* para  volver a reclamarlo.`, m, )
-global.db.data.users[m.sender].dinero += `${global.db.data.users[m.sender].premium ? '200000' : '100000'}`
+let reward = `${global.db.data.users[m.sender].premium ? '200000' : '100000'}`
+global.db.data.users[m.sender].dinero += reward
 conn.reply(m.chat, `❀ *REWARD DIARIO*\n✰ Reclamaste tu recompensa diaria y obtuviste *${global.db.data.users[m.sender].premium ? '200000' : '100000'} ${global.botcoins}*.`, m, fake, )
 global.db.data.users[m.sender].dailytime = new Date * 1
 }
