@@ -24,7 +24,7 @@ const evaluateResult = (result, bet) => {
 };
 
 // Handler para el comando /slots
-const handler = async (m, { conn, args, global }) => {
+const handler = async (m, { conn, args }) => {
     const bet = parseInt(args[0]);
 
     if (isNaN(bet) || bet < 10) {
