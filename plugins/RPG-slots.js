@@ -26,8 +26,8 @@ const handler = async (m, { conn, args }) => {
     }
     const userDiamonds = global.db.data.users[m.sender].diamantes;
     if (userDiamonds < bet) {
-        await conn.reply(m.chat, '✧ No tienes *${bet}* Diamante(s) para apostar, Solo tienes *&
-${userDiamonds}* Diamante(s).', m);
+        await conn.reply(m.chat, `✧ No tienes *${bet}* Diamante(s) para apostar, Solo tienes *&
+${userDiamonds}* Diamante(s).`, m);
         return;
     }
     global.db.data.users[m.sender].diamantes -= bet;
@@ -40,7 +40,7 @@ ${userDiamonds}* Diamante(s).', m);
             symbols[Math.floor(Math.random() * symbols.length)]
         ];
         await conn.sendMessage(m.chat, { text: `🎰  𝗦𝗟𝗢𝗧𝗦  🎰\n──────────\n ${randomResult.join(' │ ')}\n──────────\n✧ ¡ Girando !`, edit: initialMessage.key });
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 500));
     }
     const result = spinSlots();
     const evaluation = evaluateResult(result, bet);
