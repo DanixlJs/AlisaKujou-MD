@@ -23,9 +23,8 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
         db[user].warnRazon = `${reason}`;
         const nametag = await conn.getName(user);
         await conn.reply(m.chat, `❀ El usuario @${user.replace('@s.whatsapp.net', '').trim()} ha sido advertido.\n> ✰ *Advertencias ⪼* ${db[user].warn}\n> ◈ *Razón ⪼* ${reason}`, m, { mentions: [user]} );
-       let nn = conn.getName(m.sender);
   let msg = `✧ El usuario @${user.replace('@s.whatsapp.net', '').trim()} recibió una advertencia de @${m.sender.replace('@s.whatsapp.net', '').trim()}, Razón ⪼ ${reason}`
-       conn.reply('120363284046748076@g.us', msg, m, { mentions: [conn.parseMentions(msg)]} );
+       conn.reply('120363284046748076@g.us', msg, m, { mentions: conn.parseMention(msg)} );
     } else {
         await conn.reply(m.chat, `El usuario no está registrado.`, m);
     }
