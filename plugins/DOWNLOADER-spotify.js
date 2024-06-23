@@ -15,4 +15,5 @@ handler.help = ['spotify <texto>']
 handler.tags = ['downloader']
 handler.command = ['spotify']
 handler.registrado = true
+handler.diamantes = 1
 export default handler
