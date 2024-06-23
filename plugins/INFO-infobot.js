@@ -36,7 +36,7 @@ const handler = async (m, { conn, usedPrefix }) => {
 ❀ *ESTADO DE:* ${global.botname}
 
 ✰ *Activa ⪼* ${uptime}
-◈ *Prefijo ⪼* ${usedPrefix}
+◈ *Prefijo ⪼* [ ${usedPrefix} ]
 ◈ *Moneda ⪼* ${global.botcoins}
 ◈ *Tipo ⪼* ${sbot}
 ◈ *Bot Uso ⪼* Publico
