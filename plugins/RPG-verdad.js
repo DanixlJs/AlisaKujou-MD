@@ -1,5 +1,5 @@
 const handler = async (m, {conn}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   conn.reply(m.chat, `❀ *RESPONDE CON LA VERDAD*\n> ✰ *${pickRandom(global.verdad)}*`, m, fake, );
 };
 handler.help = ['verdad'];
