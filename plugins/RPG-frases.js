@@ -1,7 +1,7 @@
 import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
 const handler = async (m, {conn, command}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   if (command === 'consejo') {
     const consejo = consejos[Math.floor(Math.random() * consejos.length)];
     const mensaje = `❀ *CONSEJO DEL DÍA*\n> ✰ *${consejo}*`;

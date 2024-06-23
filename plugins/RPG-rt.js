@@ -2,8 +2,8 @@ const handler = async (m, { conn, args, usedPrefix }) => {
   if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     const user = global.db.data.users[m.sender];
     const bet = parseInt(args[1]);
-    if (user.alisacoins < bet) return m.reply(`✧ No tienes esa cantidad de *${bet}* para apostar, solo tienes *${user.alisacoins}* ${global.botcoins}`)
-    if (user.alisacoins < 200) {
+    if (user.dinero < bet) return m.reply(`✧ No tienes esa cantidad de *${bet}* para apostar, solo tienes *${user.dinero}* ${global.botcoins}`)
+    if (user.dinero < 200) {
         await conn.reply(m.chat, `✧ Te quedaste sin ${global.botcoins} y el mínimo para apostar es *200*.`, m);
         return;
     }
@@ -14,10 +14,10 @@ const handler = async (m, { conn, args, usedPrefix }) => {
     const result = Math.random() < 0.5 ? 'black' : 'red';
     if (args[0] === result) {
         const payout = bet * 2;
-        user.alisacoins += payout;
+        user.dinero += payout;
         await conn.reply(m.chat, `❀ El resultado cayó en *${result}* y ganaste *${payout}* ${global.botcoins}`, m, fake, );
     } else {
-        user.alisacoins -= bet;
+        user.dinero -= bet;
         await conn.reply(m.chat, `✧ El resultado cayó en *${result}* y perdiste *-${bet}* ${global.botcoins}`, m);
     }
     global.db.data.users[m.sender] = user;

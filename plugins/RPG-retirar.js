@@ -1,10 +1,10 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   try {
     let user = global.db.data.users[m.sender];
     let [type, amount] = text.split(' ');
     if (command === 'retirar' || command === 'with') {
-      if (type === 'diamantes' || type === 'alisacoins') {
+      if (type === 'diamantes' || type === 'dinero') {
         if (!amount || isNaN(amount) || amount <= 0) {
           m.reply(`✧ Ingrese una cantidad válida de *${type}* para retirar.`);
         }
@@ -15,11 +15,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
           }
           user.diamantes += amount;
           user.bank -= amount;
-        } else if (type === 'alisacoins') {
-          if (user.alisacoins < amount) {
+        } else if (type === 'dinero') {
+          if (user.dinero < amount) {
             m.reply(`✧ No tienes esa cantidad en el Banco.`);
           }
-          user.alisacoins += amount;
+          user.dinero += amount;
           user.bank2 -= amount;
         }
         m.reply(`✧ Has retirado *${amount}* *${type}* del banco.`);
@@ -27,7 +27,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         let totaldiamantes = user.bank;
         let totalcoins = user.bank2;
         user.diamantes = totaldiamantes;
-        user.alisacoins = totalcoins;
+        user.dinero = totalcoins;
         user.bank = 0;
         user.bank2 = 0;
         m.reply(`✧ Has retirado todos tus Diamantes y ${global.botcoins} del banco.`);

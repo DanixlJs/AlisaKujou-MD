@@ -1,14 +1,15 @@
 const handler = async (m, {conn, isPrems}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   let enviando;
   if (enviando) return
   enviando = true
-  const hasil = Math.floor(Math.random() * 5000);
+  const exp = Math.floor(Math.random() * 10000);
+  const exp2 = Math.floor(Math.random() * 50000);
   const time = global.db.data.users[m.sender].adventuretime + 300000;
-  if (new Date - global.db.data.users[m.sender].adventuretime < 300000) throw `✧ Espera *${msToTime(time - new Date())}* para volver a realizar otra Aventura.`;
-   let adventuretext = `❀ Te embarcas en una emocionante aventura:\n> ✰ *${pickRandom(global.adventure)}*\n◈ Gracias a la aventura obtienes *${hasil}* de experiencia.`;
+  if (new Date - global.db.data.users[m.sender].adventuretime < 300000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a realizar otra Aventura.`);
+   let adventuretext = `❀ Te embarcas en una emocionante aventura:\n> ✰ *${pickRandom(global.adventure)}*\n◈ Gracias a la aventura obtienes *${global.db.data.users[m.sender].premium ? exp2 : exp}* de experiencia.`;
    conn.reply(m.chat, adventuretext, m, fake,);
-  global.db.data.users[m.sender].experiencia += hasil;
+  global.db.data.users[m.sender].experiencia += `${global.db.data.users[m.sender].premium ? exp2 : exp}`;
   global.db.data.users[m.sender].adventuretime = new Date() * 1;
   enviando = false
 };

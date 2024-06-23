@@ -1,19 +1,19 @@
 const handler = async (m, {isPrems, conn}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   const time = global.db.data.users[m.sender].cofretime + 86400000;
   if (new Date - global.db.data.users[m.sender].cofretime < 86400000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a reclamarlo`);
   const dia = Math.floor(Math.random() * 50);
-  const alisacoins = Math.floor(Math.random() * 10000);
+  const dinero = Math.floor(Math.random() * 10000);
   const expp = Math.floor(Math.random() * 10000);
   global.db.data.users[m.sender].diamantes += dia;
-  global.db.data.users[m.sender].alisacoins += alisacoins;
+  global.db.data.users[m.sender].dinero += dinero;
   global.db.data.users[m.sender].experiencia += expp;
   const texto = `❀ *COFRE DIARIO*
 ✰ Abriste tu cofre diario y obtuviste los siguientes recursos:
-> ◈ Diamantes ⪼ *${dia}* 
-> ◈ ${global.botcoins} ⪼ *${alisacoins}*
-> ◈ Experiencia ⪼ *${expp}*`;
-  await conn.reply(m.chat, texto,m ,fake, );
+> ◈ *Diamantes ⪼ ${dia}* 
+> ◈ *${global.botcoins} ⪼ ${dinero}*
+> ◈ *Experiencia ⪼ ${expp}*`;
+  await conn.reply(m.chat, texto, m ,fake, );
   global.db.data.users[m.sender].cofretime = new Date * 1;
 };
 handler.help = ['cofre'];

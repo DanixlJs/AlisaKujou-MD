@@ -9,7 +9,7 @@ function msToTime(duration) {
     return `${days} Día(s) ${hours} Hora(s) ${minutes} Minuto(s) ${seconds} Segundo(s)`;
 }
 const handler = async (m, { conn }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     let user = global.db.data.users[m.sender];
     const now = Date.now();
     const times = {
@@ -17,7 +17,7 @@ const handler = async (m, { conn }) => {
         Mineria2: user.minetime2,
         Mineria3: user.minetime3,
         Trabajar: user.worktime,
-        Claim: user.claimtime,
+        Daily: user.dailytime,
         Cofre: user.cofretime,
         Robar: user.robtime,
         Slut: user.sluttime,

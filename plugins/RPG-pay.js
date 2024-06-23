@@ -17,7 +17,7 @@ async function handler(m, { conn, args, usedPrefix, command }) {
   if (!(who in global.db.data.users)) {
     return conn.sendMessage(m.chat, { text: `✧ El usuario *${who}* no está en la base de datos.`, mentions: [m.sender] }, { quoted: m });
   }
-  if (user.alisacoins < amount) {
+  if (user.dinero < amount) {
     return conn.sendMessage(m.chat, { text: `✧ No tienes suficientes ${global.botcoins} para transferir.`, mentions: [m.sender] }, { quoted: m });
   }
   const confirmMessage = `❀ *CONFIRMACIÓN*\n✰ ¿Estás seguro de que deseas transferir *${amount}* ${global.botcoins} a @${(who || '').replace(/@s\.whatsapp\.net/g, '')}?
@@ -52,15 +52,15 @@ handler.before = async (m) => {
     return conn.sendMessage(m.chat, { text: '✧ Transferencia cancelada.', mentions: [m.sender] }, { quoted: m });
   }
   if (/^Si|si$/i.test(m.text)) {
-    const previous = user.alisacoins;
-    const _previous = _user.alisacoins;
-    user.alisacoins -= amount;
-    _user.alisacoins += amount;
-    if (previous > user.alisacoins && _previous < _user.alisacoins) {
+    const previous = user.dinero;
+    const _previous = _user.dinero;
+    user.dinero -= amount;
+    _user.dinero += amount;
+    if (previous > user.dinero && _previous < _user.dinero) {
       conn.sendMessage(m.chat, { text: `❀ Se transfirieron correctamente *${amount}* ${global.botcoins} a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}`, mentions: [to] }, { quoted: m });
     } else {
-      user.alisacoins = previous;
-      _user.alisacoins = _previous;
+      user.dinero = previous;
+      _user.dinero = _previous;
       conn.sendMessage(m.chat, { text: `✧ Error al transferir *${amount}* ${global.botcoins} a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}`, mentions: [to] }, { quoted: m });
     }
     clearTimeout(timeout);

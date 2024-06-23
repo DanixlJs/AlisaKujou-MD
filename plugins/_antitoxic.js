@@ -9,7 +9,7 @@ export async function before(m, {conn, isAdmin, isBotAdmin, isOwner}) {
   const isToxic = toxicRegex.exec(m.text);
   if (isToxic && chat.antiToxic && !isOwner && !isAdmin) {
     user.warn += 1;
-    if (!(user.warn >= 3)) await m.reply(`${user.warn == 1 ? `✧ Hola @${m.sender.split`@`[0]}` : `✧ Hola @${m.sender.split`@`[0]}`}, decir la palabra "${isToxic}" esta prohibido.\n> → *Advertencia ⪼* ${user.warn}/3.` + '*', false, {mentions: [m.sender]});
+    if (!(user.warn >= 3)) await m.reply(`${user.warn == 1 ? `✧ Hola @${m.sender.replace('@s.whatsapp.net', '').trim()}` : `✧ Hola @${m.sender.replace('@s.whatsapp.net', '').trim()}`}, decir la palabra "${isToxic}" esta prohibido.\n> *Advertencia ⪼* ${user.warn}/3.` + '*', false, {mentions: [m.sender]});
   }
   if (user.warn >= 3) {
     user.warn = 0;

@@ -8,7 +8,7 @@ const handler = async (m, {conn}) => {
   if (new Date - global.db.data.users[m.sender].worktime < 60000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a Trabajar.`);
    let worktext = `❀ ${pickRandom(global.work)} *${coins}* ${global.botcoins}`;
    conn.reply(m.chat, worktext, m, fake,);
-  global.db.data.users[m.sender].alisacoins += coins;
+  global.db.data.users[m.sender].dinero += coins;
   global.db.data.users[m.sender].worktime = new Date() * 1;
   enviando = false
 };

@@ -1,6 +1,6 @@
 import {performance} from 'perf_hooks';
 const handler = async (m, {conn, text}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
 const start = performance.now();    
 const end = performance.now();
 const executionTime = (end - start);

@@ -9,7 +9,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
         user = args[0].replace('@', '') + '@s.whatsapp.net';
         reason = args.slice(1).join(' ');
     } else {
-        await conn.reply(m.chat, `✧ Etiqueta o responde al mensaje del usuario que quieras Advertir, Ejemplo:\n> → *${usedPrefix}warn <@tag> <razón>*\n> *${usedPrefix}warn <razón>*`, m);
+        await conn.reply(m.chat, `✧ Etiqueta o responde al mensaje del usuario que quieras Advertir, Ejemplo:\n> *${usedPrefix}warn <@tag> <razón>*\n> *${usedPrefix}warn <razón>*`, m);
         return;
     }
     if (db[user]) {
@@ -22,9 +22,10 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
         db[user].warn += 1;
         db[user].warnRazon = `${reason}`;
         const nametag = await conn.getName(user);
-        await conn.reply(m.chat, `❀ El usuario *${nametag}* ha sido advertido.\n> ✰ *Advertencias ⪼* ${db[user].warn}\n> ◈ *Razón ⪼* ${reason}`, m, fake, { mentionedJid: [user] });
+        await conn.reply(m.chat, `❀ El usuario @${user.replace('@s.whatsapp.net', '').trim()} ha sido advertido.\n> ✰ *Advertencias ⪼* ${db[user].warn}\n> ◈ *Razón ⪼* ${reason}`, m, { mentions: [user]} );
        let nn = conn.getName(m.sender);
-       conn.reply('120363284046748076@g.us', `✧ El usuario *${nametag}* recibió una advertencia de *${nn}*.`, m, fake, { mentionedJid: [user] });
+  let msg = `✧ El usuario @${user.replace('@s.whatsapp.net', '').trim()} recibió una advertencia de @${m.sender.replace('@s.whatsapp.net', '').trim()}, Razón ⪼ ${reason}`
+       conn.reply('120363284046748076@g.us', msg, m, { mentions: [conn.parseMentions(msg)]} );
     } else {
         await conn.reply(m.chat, `El usuario no está registrado.`, m);
     }

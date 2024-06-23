@@ -1,7 +1,7 @@
 let crime = 500
 let diamante = 10
 const handler = async (m, {conn, usedPrefix, command, groupMetadata, participants, isPrems}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
 const date = global.db.data.users[m.sender].crimetime + 600000; 
 if (new Date - global.db.data.users[m.sender].crimetime < 3600000) return m.reply(`✧ Espera *${msToTime(date - new Date())}* para realizar otro crimen.`)
 let randow
@@ -13,14 +13,14 @@ let randow = ps.getRandom()
 let users = global.db.data.users[randow]
 const experiencia = Math.floor(Math.random() * 9000)
 const diamantes = Math.floor(Math.random() * 150)
-const alisacoins = Math.floor(Math.random() * 9000)
+const dinero = Math.floor(Math.random() * 9000)
 let or = ['text', 'text2', 'text3', 'text4', 'text5']; 
 let media = or[Math.floor(Math.random() * 4)]
 global.db.data.users[m.sender].crimetime = new Date * 1;
 if (media === 'text') return m.reply(`❀ ${pickRandom(global.robar)} *${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia += experiencia) 
 if (media === 'text2') return m.reply(`✧ ${pickRandom(global.robmal)} *-${experiencia}* experiencia.`).catch(global.db.data.users[m.sender].experiencia -= crime) 
-if (media === 'text3') return m.reply(`❀ ${pickRandom(global.robar)} *${diamantes}* Diamantes y *${alisacoins}* ${global.botcoins}`).catch(global.db.data.users[m.sender].diamantes += diamantes).catch(global.db.data.users[m.sender].alisacoins += alisacoins)
-if (media === 'text4') return m.reply(`✧ ${pickRandom(global.robmal)} *-${diamantes}* Diamante(s) y *-${alisacoins}* ${global.botcoins}`).catch(global.db.data.users[m.sender].diamantes -= diamantes).catch(global.db.data.users[m.sender].alisacoins -= crime)
+if (media === 'text3') return m.reply(`❀ ${pickRandom(global.robar)} *${diamantes}* Diamantes y *${dinero}* ${global.botcoins}`).catch(global.db.data.users[m.sender].diamantes += diamantes).catch(global.db.data.users[m.sender].dinero += dinero)
+if (media === 'text4') return m.reply(`✧ ${pickRandom(global.robmal)} *-${diamantes}* Diamante(s) y *-${dinero}* ${global.botcoins}`).catch(global.db.data.users[m.sender].diamantes -= diamantes).catch(global.db.data.users[m.sender].dinero -= crime)
 if (media === 'text5') return conn.reply(m.chat, `❀ Le robaste a @${randow.split`@`[0]} una cantidad de *${experiencia}* experiencia.`, m, {contextInfo: {mentionedJid: [randow]}}).catch(global.db.data.users[m.sender].experiencia += experiencia).catch(global.db.data.users[randow].experiencia -= crime) 
 } catch (e) {
 console.log(e)}}

@@ -1,12 +1,13 @@
 const handler = async (m, {conn}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     let user = global.db.data.users[m.sender];
-    const d = Math.floor(Math.random() * 50);
-    let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${d + 1}* Diamante(s)`;
+    const d = Math.floor(Math.random() * 50)
+    const d2 = Math.floor(Math.random() * 100);
+    let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${user.premium ? d2 : d}* Diamante(s)`;
     const time = user.minetime2 + 600000;
     if (new Date - user.minetime2 < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar Diamantes.`)
     conn.reply(m.chat, msg, m, fake,);
-    user.diamantes += d;
+    user.diamantes += `${user.premium ? d2 : d}`;
     user.minetime2 = new Date() * 1
 };
 handler.registrado = true;

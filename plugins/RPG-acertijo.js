@@ -2,7 +2,7 @@ import fs from 'fs';
 const timeout = 60000; 
 const poin = 1000;
 const handler = async (m, { conn, usedPrefix }) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   conn.tekateki = conn.tekateki ? conn.tekateki : {};
   const id = m.chat;
   if (id in conn.tekateki) {

@@ -1,6 +1,6 @@
 const toM = (a) => '@' + a.split('@')[0];
 function handler(m, {groupMetadata, conn}) {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   const ps = groupMetadata.participants.map((v) => v.id);
   const a = ps.getRandom();
   let b;

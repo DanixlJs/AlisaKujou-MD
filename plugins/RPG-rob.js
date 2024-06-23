@@ -1,6 +1,6 @@
 const ro = 3000;
 const handler = async (m, {conn, usedPrefix, command}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
   const time = global.db.data.users[m.sender].robtime + 7200000;
   if (new Date - global.db.data.users[m.sender].robtime < 7200000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a robar.`);
   let who;

@@ -9,7 +9,7 @@ export async function before(m, {isAdmin, isBotAdmin, text}) {
   const bang = m.key.id;
   const bot = global.db.data.settings[this.user.jid] || {};
   if (bot) return;
-  const user = `@${m.sender.split`@`[0]}`;
+  const user = `@${m.sender.replace('@s.whatsapp.net', '').trim()}`;
   const isGroupLink = linkRegex.exec(m.text);
   if (chat.antiLink2 && isGroupLink && !isAdmin) {
     if (isBotAdmin) {

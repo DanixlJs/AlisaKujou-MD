@@ -18,8 +18,9 @@ const handler = async (m, { conn, args, text, usedPrefix, command, isROwner }) =
         db[user].banRazon = `${reason}`;
         const nametag = await conn.getName(user);
         const nn = conn.getName(m.sender);
-        await conn.reply(m.chat, `❀ El usuario *${nametag}* ha sido Baneado.\n> ✰ *Razón ⪼* ${reason}`, m, { mentionedJid: [user] });
-        await conn.reply('120363284046748076@g.us', `✧ El usuario *${nametag}* ha sido Baneado por *${nn}*.\n> ✰ *Razón ⪼* ${reason}`, m, fake, );
+        await conn.reply(m.chat, `❀ El usuario @${user.replace('@s.whatsapp.net', '').trim()} ha sido Baneado.\n> ✰ *Razón ⪼* ${reason}`, m, { mentions: [user]} );
+  let msg = `✧ El usuario @${user.replace('@s.whatsapp.net', '').trim()} ha sido Baneado por @${m.sender.replace('@s.whatsapp.net', '').trim()}.\n> ✰ *Razón ⪼* ${reason}`
+        await conn.reply('120363284046748076@g.us', msg, m, { mentions: [conn.parseMentions(msg)} );
     } else {
         m.reply(m.chat, `✧ El usuario no está registrado.`);
     }

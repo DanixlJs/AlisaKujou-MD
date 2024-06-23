@@ -1,13 +1,13 @@
 const handler = async (m, {conn}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
-if (m.sender === conn.user.jid) return;
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     let user = global.db.data.users[m.sender];
-    const alisacoins = Math.floor(Math.random() * 10000);
-    let msg = `❀ En hora buena, minaste la cantidad de *${alisacoins}* ${global.botcoins}`;
+    const dinero = Math.floor(Math.random() * 5000)
+    const dinero2 = Math.floor(Math.random() * 20000);
+    let msg = `❀ En hora buena, minaste la cantidad de *${user.premium ? dinero2 : dinero}* ${global.botcoins}`;
     const time = user.minetime3 + 600000;
     if (new Date - user.minetime3 < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar ${global.botcoins}`)
     conn.reply(m.chat, msg, m, fake,);
-    user.alisacoins += alisacoins;
+    user.dinero += `${user.premium ? dinero2 : dinero}`;
     user.minetime3 = new Date() * 1
 };
 handler.registrado = true;

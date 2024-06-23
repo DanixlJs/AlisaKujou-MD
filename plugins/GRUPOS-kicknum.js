@@ -1,6 +1,6 @@
 const handler = async (m, { conn, args, participants, usedPrefix, command }) => {
     const prefix = args[0];
-    if (!prefix) return m.reply(`✧ Ingresa un prefijo de país, Ejemplo:\n> → *${usedPrefix + command} 92*`);
+    if (!prefix) return m.reply(`✧ Ingresa un prefijo de país, Ejemplo:\n> *${usedPrefix + command} 92*`);
 
     const membersWithPrefix = participants
         .filter(p => p.id.startsWith(prefix))
@@ -11,7 +11,7 @@ const handler = async (m, { conn, args, participants, usedPrefix, command }) => 
             return conn.reply(m.chat, `✧ No se encontraron miembros con el prefijo *+${prefix}*.`, m);
         }
 
-        const memberList = membersWithPrefix.map(id => `> → ${id}`).join('\n');
+        const memberList = membersWithPrefix.map(id => `> → ${id.replace('@s.whatsapp.net', '').trim()}`).join('\n');
         return conn.reply(m.chat, `❀ *RESULTADOS*\n✰ *Prefijo ⪼* +${prefix}:\n${memberList}`, m, fake, );
     }
 

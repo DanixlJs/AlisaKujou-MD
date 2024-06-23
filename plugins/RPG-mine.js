@@ -1,12 +1,13 @@
 const handler = async (m, {conn}) => {
-  if (!global.db.data.chats[m.chat].game) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
     let user = global.db.data.users[m.sender];
     const exp = Math.floor(Math.random() * 10000);
-    let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${exp}* de experiencia.`;
+    const exp2 = Math.floor(Math.random() * 50000)
+    let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${user.premium ? exp2 : exp}* de experiencia.`;
     const time = user.minetime + 600000;
     if (new Date - user.minetime < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar.`)
     conn.reply(m.chat, msg, m, fake,);
-    user.experiencia += exp;
+    user.experiencia += `${user.premium ? exp2 : exp}`;
     user.minetime = new Date() * 1
 };
 handler.registrado = true;
