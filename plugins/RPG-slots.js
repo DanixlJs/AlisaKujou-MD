@@ -32,16 +32,14 @@ ${userDiamonds}* Diamante(s).', m);
     }
     global.db.data.users[m.sender].diamantes -= bet;
     const symbols = ['🍒', '🍋', '🍉', '🍇', '⭐'];
-    const initialMessage = await conn.sendMessage(m.chat, { text: '🎰  𝗦𝗟𝗢𝗧𝗦  🎰 \n──────────\n ◻️ │ ◻️  │ ◻️\n──────────
-✧ ¡ Girando !' });
+    const initialMessage = await conn.sendMessage(m.chat, { text: '🎰  𝗦𝗟𝗢𝗧𝗦  🎰 \n──────────\n ◻️ │ ◻️  │ ◻️\n──────────\n✧ ¡ Girando !' });
     for (let i = 0; i < 5; i++) {
         const randomResult = [
             symbols[Math.floor(Math.random() * symbols.length)], 
             symbols[Math.floor(Math.random() * symbols.length)], 
             symbols[Math.floor(Math.random() * symbols.length)]
         ];
-        await conn.sendMessage(m.chat, { text: `🎰  𝗦𝗟𝗢𝗧𝗦  🎰\n──────────\n ${randomResult.join(' │ ')}\n──────────
-✧ ¡ Girando !`, edit: initialMessage.key });
+        await conn.sendMessage(m.chat, { text: `🎰  𝗦𝗟𝗢𝗧𝗦  🎰\n──────────\n ${randomResult.join(' │ ')}\n──────────\n✧ ¡ Girando !`, edit: initialMessage.key });
         await new Promise(resolve => setTimeout(resolve, 1000));
     }
     const result = spinSlots();
