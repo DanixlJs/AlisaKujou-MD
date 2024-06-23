@@ -23,7 +23,7 @@ font: 'chrome',
 align: 'center',
 colors: ['red', 'white']
 })
-console.log(chalk.yellow(`╭───────────────────╼\n│❀ INFO OWNER\n│◈ Developed: ${author}\n│◈ GitHub: https://github.com/DanixlJs\n│\n│❀ INFO BOT\n│◈ Nombre: ${name}\n│◈ Versión: ${version}\n│◈ Descripción: ${description}\n│◈ Baileys: ^6.7.5\n╰───────────────────╼`))
+console.log(chalk.green(`╭───────────────────╼\n│❀ INFO OWNER\n│◈ Developed: ${author}\n│◈ GitHub: https://github.com/DanixlJs\n│\n│❀ INFO BOT\n│◈ Nombre: ${name}\n│◈ Versión: ${version}\n│◈ Descripción: ${description}\n│◈ Baileys: ^6.7.5\n╰───────────────────╼`))
 var isRunning = false
 function start(file) {
 if (isRunning) return
@@ -53,7 +53,7 @@ break
 })
 p.on('exit', (_, code) => {
 isRunning = false
-console.error('✧ Ocurrió un error:', code)
+console.error('[ ✧ ] ERROR:\n', code)
 process.exit();
 if (code === 0) return
 watchFile(args[0], () => {
