@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { WAMessageStubType } from '@whiskeysockets/baileys';
@@ -9,4 +9,4 @@ console.log("❀ EVENTO DETECTADO:\n", {
         messageStubParameters: m.messageStubParameters,
         type: WAMessageStubType[m.messageStubType],
     });
-}
+}*/
