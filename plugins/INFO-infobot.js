@@ -18,7 +18,7 @@ const getDiskSpace = () => {
         return null;
     }
 };
-const handler = async (m, { conn }) => {
+const handler = async (m, { conn, usedPrefix }) => {
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
     const usedMem = totalMem - freeMem;
@@ -36,6 +36,8 @@ const handler = async (m, { conn }) => {
 ❀ *ESTADO DE:* ${global.botname}
 
 ✰ *Activa ⪼* ${uptime}
+◈ *Prefijo ⪼* ${usedPrefix}
+◈ *Moneda ⪼* ${global.botcoins}
 ◈ *Tipo ⪼* ${sbot}
 ◈ *Bot Uso ⪼* Publico
 ◈ *Sub-Bots ⪼* ${global.totalUsers || '0'}
