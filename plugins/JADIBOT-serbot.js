@@ -226,6 +226,7 @@ handler.help = ['serbot', 'serbot --code']
 handler.tags = ['jadibot']
 handler.command = ['serbot', 'jadibot']
 handler.registrado = true
+handler.disabled = true
 //handler.diamantes = 50
 export default handler
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
