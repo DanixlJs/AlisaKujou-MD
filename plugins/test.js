@@ -32,7 +32,7 @@ if (!fs.existsSync("./JadiBotSessions/"+ authFolderB)){
 fs.mkdirSync("./JadiBotSessions/"+ authFolderB, { recursive: true });
 }
 args[0] ? fs.writeFileSync("./JadiBotSessions/" + authFolderB + "/creds.json", JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t')) : ""
-const {state, saveState, saveCreds} = await useMultiFileAuthState('./JadiBotSessions/${authFolderB}')
+const {state, saveState, saveCreds} = await useMultiFileAuthState(`./JadiBotSessions/${authFolderB}`)
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion();
@@ -119,7 +119,7 @@ global.conns.splice(i, 1)
 let handler = await import('../handler.js')
 let creloadHandler = async function (restatConn) {
 try {
-const Handler = await import(../handler.js?update=${Date.now()}).catch(console.error)
+const Handler = await import(`../handler.js?update=${Date.now()}`).catch(console.error)
 if (Object.keys(Handler || {}).length) handler = Handler
 } catch (e) {
 console.error(e)
