@@ -266,9 +266,9 @@ continue;
 const __filename = join(___dirname, name);
 
 // NO TOCAR
-if (m.sender === this.user.jid) {
+/*if (m.sender === this.user.jid) {
 continue;
-}
+}*/
 
 if (typeof plugin.all === 'function') {
 try {
