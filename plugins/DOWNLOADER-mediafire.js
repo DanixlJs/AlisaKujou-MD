@@ -1,53 +1,20 @@
-import axios from 'axios';
-import fetch from 'node-fetch';
-import cheerio from 'cheerio';
-import {mediafiredl} from '@bochilteam/scraper';
-const handler = async (m, {conn, args, usedPrefix, command }) => {
-  if (!args[0]) return m.reply(`✧ Ingrese el Link del archivo que quiera descargar.`);
-  try {
-    const resEX = await mediafiredl(args[0]);
-    const captionES = `
-❀ *MEDIAFIRE DL*
-✰ *Nombre ⪼* ${resEX.filename}
-◈ *Peso ⪼* ${resEX.filesizeH}
-◈ *Tipo ⪼* ${resEX.ext}
-
-> Descargando su archivo.`.trim();
-    m.reply(captionES);
-    await conn.sendFile(m.chat, resEX.url, resEX.filename, '', m, null, {mimetype: resEX.ext, asDocument: true});
-  } catch {
-    try {
-      const res = await mediafireDl(args[0]);
-      const {name, size, date, mime, link} = res;
-      const caption = `
-❀ *MEDIAFIRE DL*
-✰ *Nombre ⪼* ${resEX.filename}
-◈ *Peso ⪼* ${resEX.filesizeH}
-◈ *Tipo ⪼* ${resEX.ext}
-
-> Descargando su archivo.`.trim();
-      await m.reply(caption);
-      await conn.sendFile(m.chat, link, name, '', m, null, {mimetype: mime, asDocument: true});
-    } catch {
-      await m.reply('✧ Ocurrió un error inesperado.');
-    }
-  }
-};
-handler.registrado = true;
-handler.premium = true;
-handler.help = ['mediafire <url>'];
-handler.tags = ['downloader', 'premium'];
-handler.command = ['mediafire', 'mediafiredl', 'mf'];
-export default handler;
-async function mediafireDl(url) {
-  const res = await axios.get(`https://www-mediafire-com.translate.goog/${url.replace('https://www.mediafire.com/', '')}?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp`);
-  const $ = cheerio.load(res.data);
-  const link = $('#downloadButton').attr('href');
-  const name = $('body > main > div.content > div.center > div > div.dl-btn-cont > div.dl-btn-labelWrap > div.promoDownloadName.notranslate > div').attr('title').replaceAll(' ', '').replaceAll('\n', '');
-  const date = $('body > main > div.content > div.center > div > div.dl-info > ul > li:nth-child(2) > span').text();
-  const size = $('#downloadButton').text().replace('Download', '').replace('(', '').replace(')', '').replace('\n', '').replace('\n', '').replace('                         ', '').replaceAll(' ', '');
-  let mime = '';
-  const rese = await axios.head(link);
-  mime = rese.headers['content-type'];
-  return {name, size, date, mime, link};
-}
+import Scraper from "@SumiFX/Scraper"
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+if (!args[0]) return m.reply('✧ Ingresa un enlace de Mediafire.')
+if (!args[0].match(/mediafire/gi)) return m.reply('✧ El enlace no es un enlace válido de Mediafire.')
+let user = global.db.data.users[m.sender]
+try {
+let { title, ext, aploud, size, dl_url } = await Scraper.mediafire(args[0])
+if (size.includes('GB') || size.replace(' MB', '') > user.premium ? 500 : 100) { return await m.reply(`✧ El archivo pesa más de ${user.premium ? '500' : '100'}MB, ${user.premium ? 'se canceló la descarga.' : 'pasate a Premium para descargar archivos de hasta 500MB.'}`)}
+let txt = `❀ *DOWNLOADER - MEDIAFIRE*\n✰ *Titulo * ${title}\n◈ *Subido * ${aploud}\n◈ *Peso * ${size}\n> Descargando su archivo, espere un momento.`
+await conn.reply(m.chat, txt, m, fake, )
+await conn.sendFile(m.chat, dl_url, title, null, m, null, { mimetype: ext, asDocument: true })
+} catch (e){
+m.reply('✧ Ocurrió un error inesperado.')
+console.log(e)
+}}
+handler.help = ['mediafire <enlace>']
+handler.tags = ['downloader']
+handler.command = ['mediafire', 'mf']
+handler.registrado = true 
+export default handler
