@@ -24,7 +24,7 @@ let handler = async (m, { conn: _conn, args, usedPrefix, command, isOwner, isROw
 if (global.db.data.settings[_conn.user.jid].modejadibot && isROwner) return conn.reply(m.chat, `✧ Esta función ha sido desactivado.`, m, )
 let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn
 if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
-	m.reply(`Este comando solo puede ser usado en el bot principal.\n> ➤ wa.me/${global.conn.user.jid.split'@'[0]}?text=${usedPrefix}code`
+	m.reply(`Este comando solo puede ser usado en el bot principal.\n> ➤ wa.me/${global.conn.user.jid.split'@'[0]}?text=${usedPrefix}code`)
 }
 async function serbot() {
 let authFolderB = crypto.randomBytes(10).toString('hex').slice(0, 8)
