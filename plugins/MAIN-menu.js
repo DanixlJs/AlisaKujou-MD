@@ -151,17 +151,16 @@ const defaultMenu = { before: `
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
   let category = "video"
-  const dbPath = './media/database/db.json'
-  const dbData = JSON.parse(fs.readFileSync(dbPath))
-  const randomIndex = Math.floor(Math.random() * dbData.links[category].length)
-  const randomVideo = dbData.links[category][randomIndex]
-  global.vid = randomVideo
+  const db = './media/database/db.json'
+  const db_ = JSON.parse(fs.readFileSync(db))
+  const random = Math.floor(Math.random() * db_.links[category].length)
+  const rlink = db_.links[category][random]
+  global.vid = rlink
   const response = await fetch(vid)
   const gif = await response.buffer()
   conn.reply(m.chat, '> ╭─────────────────╸\n> │❀ 𝐂𝐚𝐫𝐠𝐚𝐧𝐝𝐨 𝐌𝐞𝐧𝐮\n> │ ◈ Espere un momento.\n> ╰─────────────────╸', m, fake,)
   m.react('🤍')
-  await conn.sendFile(m.chat, global.icons, 'menu.npg', text.trim(), m, { mentions: conn.parseMention(text) })
-  //await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
+  await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
   } catch (e) {
     console.log(e)
     conn.reply(m.chat, '❀ Ocurrió un error inesperado.', m)
