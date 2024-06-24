@@ -1,128 +1,158 @@
-import { 
+const {
     useMultiFileAuthState,
-    fetchLatestBaileysVersion,
     DisconnectReason,
+    fetchLatestBaileysVersion, 
     MessageRetryMap,
-    makeCacheableSignalKeyStore,
+    makeCacheableSignalKeyStore, 
     jidNormalizedUser,
-    PHONENUMBER_MCC 
-} from '@whiskeysockets/baileys';
-import moment from 'moment-timezone';
-import NodeCache from 'node-cache';
-import readline from 'readline';
-import qrcode from 'qrcode';
-import crypto from 'crypto';
-import fs from 'fs';
+    PHONENUMBER_MCC
+   } = await import('@whiskeysockets/baileys')
+import moment from 'moment-timezone'
+import NodeCache from 'node-cache'
+import readline from 'readline'
+import qrcode from "qrcode"
+import crypto from 'crypto'
+import fs from "fs"
 import pino from 'pino';
 import * as ws from 'ws';
-const { CONNECTING } = ws;
-import { Boom } from '@hapi/boom';
+const { CONNECTING } = ws
+import { Boom } from '@hapi/boom'
 import { makeWASocket } from '../lib/simple.js';
-
-if (!global.alisa_subbots) global.alisa_subbots = [];
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-const new_subbot = async (m, args, usedPrefix, command, conn, isQRCode) => {
-    const folder_subbot = crypto.randomBytes(10).toString('hex').slice(0, 8);
-    const authPath = `./JadiBotSessions/${folder_subbot}`;
-    if (!fs.existsSync(authPath)) fs.mkdirSync(authPath, { recursive: true });
-    if (args[0]) {
-        fs.writeFileSync(`${authPath}/creds.json`, JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t'));
-    }
-    const { state, saveState, saveCreds } = await useMultiFileAuthState(authPath);
-    const { version } = await fetchLatestBaileysVersion();
-    const connectionOptions = {
-        logger: pino({ level: 'silent' }),
-        printQRInTerminal: false,
-        auth: {
-            creds: state.creds,
-            keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
-        },
-        version,
-        msgRetryCounterCache: new NodeCache(),
-        getMessage: async (key) => {
-            const jid = jidNormalizedUser(key.remoteJid);
-            const msg = await store.loadMessage(jid, key.id);
-            return msg?.message || '';
-        }
-    };
-
-    const conn_subbots = makeWASocket(connectionOptions);
-    let qrTimeout;
-    conn_subbots.ev.on('connection.update', async (update) => {
-        const { connection, lastDisconnect, qr } = update;
-        if (qr && isQRCode) {
-            await qrcode.toFileStream(m.reply, qr);
-        }
-        if (connection === 'open') {
-            global.alisa_subbots.push({ folder_subbot, conn: conn_subbots });
-            clearTimeout(qrTimeout);
-            await conn.reply(m.chat, `❀ SUB BOTS - EXITO\n✰ SubBot conectado con éxito.\n\n> ➤ Para desconectar use *${usedPrefix}loggout ${folder_subbot}*`, m);
-        }
-        if (lastDisconnect?.error) {
-            const shouldReconnect = lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut;
-            if (shouldReconnect) {
-                conn_subbots.ev.removeAllListeners();
-                new_subbot(m, args, usedPrefix, command, conn, isQRCode); 
-            } else {
-                conn.reply(m.chat, '◈ La conexión ha sido cerrada.', m);
-                fs.rmdirSync(authPath, { recursive: true });
-            }
-        }
-    });
-
-    qrTimeout = setTimeout(() => {
-        if (!conn_subbots.user) {
-            conn.reply(m.chat, '◈ Tiempo de espera agotado, Intente de nuevo.', m);
-            fs.rmdirSync(authPath, { recursive: true });
-            conn_subbots.ev.removeAllListeners();
-        }
-    }, 60000);
-};
-
-const list_subbots = async (m, { conn }) => {
-    if (global.alisa_subbots.length === 0) {
-        await conn.reply(m.chat, '◈ No hay SubBots activos en este momento.', m);
-        return;
-    }
-    let msg = '❀ *SUB BOTS - LISTA*\n\n✰ Lista de los SubBots activos en este momento.\n\n';
-    for (const { folder_subbot, conn: conn_subbots } of global.alisa_subbots) {
-        const user = conn_subbots.user;
-        msg += `╭───────────────────╼\n│✰ *ID ⪼* ${folder_subbot}\n│◈ *Nombre ⪼* ${user.name}\n│◈ *Número ⪼* ${user.id.split(':')[0]}╰───────────────────╼\n\n`;
-    }
-    await conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg) });
-};
-
-const handler = async (m, { conn, args, usedPrefix, command, isROwner }) => {
-    if (!global.db.data.settings[conn.user.jid].modejadibot && !isROwner) return m.reply('◈ Esta opción ha sido deshabilitada por mi Creador.');
-    if (command === 'qr') {
-        new_subbot(m, args, usedPrefix, command, conn, true);
-    } else if (command === 'code') {
-        const phoneNumber = m.sender.split('@')[0];
-        if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            return conn.reply(m.chat, `◈ No se pudo verificar tú número de telefono.`, m);
-        }
-        new_subbot(m, [phoneNumber], usedPrefix, command, conn, false);
-    } else if (command === 'loggout') {
-        const folder_subbot = args[0];
-        const sub_bot = global.alisa_subbots.find(bot => bot.folder_subbot === folder_subbot);
-        if (sub_bot) {
-            sub_bot.conn.ws.close();
-            fs.rmdirSync(`./JadiBotSessions/${folder_subbot}`, { recursive: true });
-            global.alisa_subbots = global.alisa_subbots.filter(bot => bot.folder_subbot !== folder_subbot);
-            conn.reply(m.chat, `◈ SubBot desconectado y la sessión ha sido eliminada.`, m);
-        } else {
-            conn.reply(m.chat, `◈ No se encontró un SubBot con el ID proporcionado.`, m);
-        }
-    } else if (command === 'bots') {
-        list_subbots(m, { conn });
-    }
-};
-
-handler.help = ['qr', 'code', 'loggout', 'bots'];
-handler.tags = ['jadibot'];
-handler.command = ['qr', 'code', 'loggout', 'bots'];
-handler.registrado = true;
-
-export default handler;
+if (global.conns instanceof Array) console.log()
+else global.conns = []
+let handler = async (m, { conn: _conn, args, usedPrefix, command, isOwner, isROwner }) => {
+if (global.db.data.settings[_conn.user.jid].modejadibot && isROwner) return conn.reply(m.chat, `✧ Esta función ha sido desactivado.`, m, )
+let parent = args[0] && args[0] == 'plz' ? _conn : await global.conn
+if (!((args[0] && args[0] == 'plz') || (await global.conn).user.jid == _conn.user.jid)) {
+	m.reply(`Este comando solo puede ser usado en el bot principal.\n> ➤ wa.me/${global.conn.user.jid.split@[0]}?text=${usedPrefix}code`
+}
+async function serbot() {
+let authFolderB = crypto.randomBytes(10).toString('hex').slice(0, 8)
+if (!fs.existsSync("./JadiBotSessions/"+ authFolderB)){
+fs.mkdirSync("./JadiBotSessions/"+ authFolderB, { recursive: true });
+}
+args[0] ? fs.writeFileSync("./JadiBotSessions/" + authFolderB + "/creds.json", JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t')) : ""
+const {state, saveState, saveCreds} = await useMultiFileAuthState(./serbot/${authFolderB})
+const msgRetryCounterMap = (MessageRetryMap) => { };
+const msgRetryCounterCache = new NodeCache()
+const {version} = await fetchLatestBaileysVersion();
+let phoneNumber = m.sender.split('@')[0]
+const methodCodeQR = process.argv.includes("qr")
+const methodCode = !!phoneNumber || process.argv.includes("code")
+const MethodMobile = process.argv.includes("mobile")
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+const question = (texto) => new Promise((resolver) => rl.question(texto, resolver))
+const connectionOptions = {
+logger: pino({ level: 'silent' }),
+printQRInTerminal: false,
+mobile: MethodMobile, 
+browser: [ "Ubuntu", "Chrome", "20.0.04" ], 
+auth: {
+creds: state.creds,
+keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
+},
+markOnlineOnConnect: true, 
+generateHighQualityLinkPreview: true, 
+getMessage: async (clave) => {
+let jid = jidNormalizedUser(clave.remoteJid)
+let msg = await store.loadMessage(jid, clave.id)
+return msg?.message || ""
+},
+msgRetryCounterCache,
+msgRetryCounterMap,
+defaultQueryTimeoutMs: undefined,   
+version
+}
+let conn = makeWASocket(connectionOptions)
+if (methodCode && !conn.authState.creds.registered) {
+if (!phoneNumber) {
+process.exit(0);
+}
+let cleanedNumber = phoneNumber.replace(/[^0-9]/g, '');
+if (!Object.keys(PHONENUMBER_MCC).some(v => cleanedNumber.startsWith(v))) {
+process.exit(0);
+}
+setTimeout(async () => {
+let codeBot = await conn.requestPairingCode(cleanedNumber);
+codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
+let txt = `❀ *SER BOT - CODE*\n✰ Usa éste Código para convertirte en Sub-Bot Temporal.\n> ◈ Tres Puntitos → Dispositivos Vinculados → Vincular Dispositivo → Vincular con el número de teléfono.\n\n➤ *Importante:*\n◈ No es recomendable usar tu cuenta principal.\n◈ Si el Bot principal se reinicia, todos los Sub-Bots se desconectaran.`
+await parent.reply(m.chat, txt, m, fake, )
+await parent.sendMessage(m.chat, { text: codeBot }, { quoted: m })
+rl.close();
+}, 3000);
+}
+conn.isInit = false
+let isInit = true
+async function connectionUpdate(update) {
+const { connection, lastDisconnect, isNewLogin, qr } = update
+if (isNewLogin) conn.isInit = true
+const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode;
+if (code && code !== DisconnectReason.loggedOut && conn?.ws.socket == null) {
+let i = global.conns.indexOf(conn)
+if (i < 0) return console.log(await creloadHandler(true).catch(console.error))
+delete global.conns[i]
+global.conns.splice(i, 1)
+if (code !== DisconnectReason.connectionClosed) {
+parent.sendMessage(m.chat, { text: "✧ Conexión perdida con el servidor, vuelva a conectarse utilizando su Token." }, { quoted: m })
+} else {
+}
+}
+if (global.db.data == null) loadDatabase()
+if (connection == 'open') {
+conn.isInit = true
+global.conns.push(conn)
+await parent.sendMessage(m.chat, {text : args[0] ? '❀ Conectado con éxito.' : '❀ Conectaste un SubBot con éxito.'}, { quoted: m })
+await sleep(5000)
+if (args[0]) return
+await parent.sendMessage(conn.user.jid, {text :  `❀ La próxima vez utilice su Token para iniciar Sesión, para saber si Token use *${usedPrefix}token*`}, { quoted: m })
+}
+}
+setInterval(async () => {
+if (!conn.user) {
+try { conn.ws.close() } catch { }
+conn.ev.removeAllListeners()
+let i = global.conns.indexOf(conn)
+if (i < 0) return
+delete global.conns[i]
+global.conns.splice(i, 1)
+}}, 60000)
+let handler = await import('../handler.js')
+let creloadHandler = async function (restatConn) {
+try {
+const Handler = await import(../handler.js?update=${Date.now()}).catch(console.error)
+if (Object.keys(Handler || {}).length) handler = Handler
+} catch (e) {
+console.error(e)
+}
+if (restatConn) {
+try { conn.ws.close() } catch { }
+conn.ev.removeAllListeners()
+conn = makeWASocket(connectionOptions)
+isInit = true
+}
+if (!isInit) {
+conn.ev.off('messages.upsert', conn.handler)
+conn.ev.off('connection.update', conn.connectionUpdate)
+conn.ev.off('creds.update', conn.credsUpdate)
+}
+conn.handler = handler.handler.bind(conn)
+conn.connectionUpdate = connectionUpdate.bind(conn)
+conn.credsUpdate = saveCreds.bind(conn, true)
+conn.ev.on('messages.upsert', conn.handler)
+conn.ev.on('connection.update', conn.connectionUpdate)
+conn.ev.on('creds.update', conn.credsUpdate)
+isInit = false
+return true
+}
+creloadHandler(false)
+}
+serbot()
+}
+handler.help = ['code']
+handler.tags = ['jadibot]
+handler.command = ['code', 'serbot']
+handler.registrado = true
+export default handler
+function sleep(ms) {
+return new Promise(resolve => setTimeout(resolve, ms));
+}
