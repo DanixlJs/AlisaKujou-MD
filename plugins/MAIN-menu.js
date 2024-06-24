@@ -160,7 +160,7 @@ const defaultMenu = { before: `
   const gif = await response.buffer()
   conn.reply(m.chat, '> ╭─────────────────╸\n> │❀ 𝐂𝐚𝐫𝐠𝐚𝐧𝐝𝐨 𝐌𝐞𝐧𝐮\n> │ ◈ Espere un momento.\n> ╰─────────────────╸', m, fake,)
   m.react('🤍')
-  await conn.sendFile(m.chat, global.icons, 'menu.npg', text.trim(), m, { mentions: [m.sender] })
+  await conn.sendFile(m.chat, global.icons, 'menu.npg', text.trim(), m, { mentions: conn.parseMention(text) })
   //await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
   } catch (e) {
     console.log(e)
