@@ -32,7 +32,7 @@ if (!fs.existsSync("./JadiBotSessions/"+ authFolderB)){
 fs.mkdirSync("./JadiBotSessions/"+ authFolderB, { recursive: true });
 }
 args[0] ? fs.writeFileSync("./JadiBotSessions/" + authFolderB + "/creds.json", JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t')) : ""
-const {state, saveState, saveCreds} = await useMultiFileAuthState(./serbot/${authFolderB})
+const {state, saveState, saveCreds} = await useMultiFileAuthState('./JadiBotSessions/${authFolderB}')
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion();
