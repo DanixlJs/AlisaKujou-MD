@@ -18,7 +18,7 @@ font: 'block',
 align: 'center',
 colors: ['white']
 })
-say(`MultiDivice`, {
+say(`MultiDevice`, {
 font: 'chrome',
 align: 'center',
 colors: ['red', 'white']
@@ -67,4 +67,4 @@ if (!rl.listenerCount()) rl.on('line', line => {
 p.emit('message', line.trim())
 })
 }
-start('main.js')
+start('alisa.js')
