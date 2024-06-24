@@ -14,7 +14,7 @@ m.reply('✧ Ocurrió un error inesperado.')
 console.log(e)
 }}
 handler.help = ['mediafire <enlace>']
-handler.tags = ['downloader']
+handler.tags = ['downloader', 'premium']
 handler.command = ['mediafire', 'mf']
 handler.registrado = true 
 export default handler
