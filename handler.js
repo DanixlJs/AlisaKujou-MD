@@ -669,7 +669,7 @@ admin: '✧ Este comando solo lo pueden usar los Administradores.',
 botAdmin: '✧ Alisa necesita ser Administradora para ejecutar esa funcion.', 
 unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*\n> ✰ *Ejemplo:* Alisa.17'
 }[type];
-if (msg) return conn.reply(m.chat, msg, m, fake).then(_ => m.react('✖️'))}
+if (msg) return conn.reply(m.chat, msg, m,).then(_ => m.react('✖️'))}
 const file = global.__filename(import.meta.url, true);
 
 // NO TOCAR
