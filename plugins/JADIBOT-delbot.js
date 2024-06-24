@@ -35,5 +35,6 @@ handler.help = ['delbot'];
 handler.command = ['delbot'];
 handler.tags = ['jadibot'];
 handler.registrado = true;
+handler.disabled = true;
 handler.private = true;
 export default handler;
