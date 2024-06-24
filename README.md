@@ -1,4 +1,4 @@
-## 🤍Alisa Kujou - MD
+🤍 ALISA KUJOU - MD
 
 ![logo](https://telegra.ph/file/7bac962446d59b42ac4b8.jpg)
 
@@ -107,4 +107,4 @@ npm start
 ---
 ---
 
-*Muchas gracias por Preferirnos 🤍*
+**Muchas gracias por Preferirnos 🤍**
