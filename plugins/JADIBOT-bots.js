@@ -16,5 +16,6 @@ async function handler(m, { conn: stars, usedPrefix }) {
 handler.command = ['bots']
 handler.help = ['bots']
 handler.tags = ['jadibot']
+handler.disabled = true
 handler.registrado = true
 export default handler
