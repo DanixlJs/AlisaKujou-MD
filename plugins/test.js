@@ -149,7 +149,7 @@ creloadHandler(false)
 serbot()
 }
 handler.help = ['code']
-handler.tags = ['jadibot]
+handler.tags = ['jadibot']
 handler.command = ['code', 'serbot']
 handler.registrado = true
 export default handler
