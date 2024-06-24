@@ -2,6 +2,7 @@ console.log('\n➤ Archivo en Ejecución: main.js')
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
 // IMPORTACIONES
 import './config.js';
+import './api.js';
 import {createRequire} from 'module';
 import path, {join} from 'path';
 import {fileURLToPath, pathToFileURL} from 'url';
