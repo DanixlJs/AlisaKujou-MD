@@ -100,8 +100,7 @@ npm start
 ---
 ---
 
-<img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="50" height="50">
- INSTALAR EN FLAREX CLOUD <img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="50" height="50">
+<img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="10" height="10"> INSTALAR EN FLAREX CLOUD <img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="10" height="10">
 
 
 - **Página ⪼** https://www.flarex.cloud
