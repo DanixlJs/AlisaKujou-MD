@@ -50,7 +50,6 @@ conn.reply(m.chat, '❀ Felicidades, ahora eres un usuario premium por 1 hora.',
 };
 handler.registrado = true;
 handler.help = ['premium'];
-handler.command = ['premium'];
+handler.command = ['premium', 'pass1', 'pass2', 'pass3'];
 handler.tags = ['info'];
-handler.disabled = true;
 export default handler;
