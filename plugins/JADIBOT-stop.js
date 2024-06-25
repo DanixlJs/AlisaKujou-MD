@@ -9,7 +9,6 @@ handler.command = ['stop']
 handler.help = ['stop']
 handler.tags = ['jadibot']
 handler.owner = true
-handler.disabled = true
 handler.private = true
 handler.registrado = true
 export default handler
