@@ -19,10 +19,11 @@ let handler = async (m, { conn, usedPrefix, text }) => {
           m,
         )
         .then((_) => m.react("✖️"));
-    let txt = `💜 *TIKTOK SEARCH* 💜\n\n`;
+    let txt = `*ＴｉｋＴｏｋ－Ｓｅａｒｃｈ ⇄ Ⅰ<    ⅠⅠ    >Ⅰ   ↻*\n\n`;
     for (let i = 0; i < (30 <= results.length ? 30 : results.length); i++) {
       let video = results[i];
-      txt ×= `💙 *Aquí Tienes*\n\n`;
+      txt += `\n`;
+      txt += `        ❧  *ᴛɪᴛᴜʟᴏ* : ${video.title}\n\n`;
     }
     const url = "https://i.imgur.com/BO4TfMR.png"; 
     const responseImg = await axios.get(url, { responseType: 'arraybuffer' });
