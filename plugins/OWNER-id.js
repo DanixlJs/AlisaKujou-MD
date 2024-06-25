@@ -1,5 +1,5 @@
 const handler = async (m, {isOwner, conn, groupMetadata}) => {
-if (isOwner) {
+if (!isOwner) {
 return
 }
 m.reply(`${groupMetadata.id}`)
