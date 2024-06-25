@@ -12,8 +12,8 @@ await conn.sendFile(m.chat, dl_url, title + '.mp4', `❀ *Titulo ⪼* ${title}\n
 m.reply('✧ Ocurrió un error inesperado.')
 console.log(e)
 }}
-handler.help = ['ytmp3 <enlace>']
+handler.help = ['ytmp4 <enlace>']
 handler.tags = ['downloader']
-handler.command = ['ytmp3']
+handler.command = ['ytmp4']
 handler.registrado = true
 export default handler
