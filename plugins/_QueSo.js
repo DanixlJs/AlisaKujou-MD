@@ -3,23 +3,22 @@ let queso = `*so* 🧀`
 let arroz = `*rrocito* 🍚`
 
 if (command == 'que' || command == 'Que' || command == 'q' || command == 'Q') {
-'', 'queso.jpg', queso.trim(), fkontak, true, {
-contextInfo: {
-'forwardingScore': 200,
-'isForwarded': false,
-externalAdReply: {
-showAdAttribution: true,
-renderLargerThumbnail: false,
+await conn.sendMessage(m.chat, { text: queso,
+contextInfo:{
+forwardingScore: 9999999,
+isForwarded: false, 
+"externalAdReply": {
+"showAdAttribution": true,
+"containsAutoReply": true,
 title: packname + ' 🤍',
-mediaType: 1,
-sourceUrl: channel,
-thumbnailUrl: icons
-}}
-}, { mentions: m.sender })
+"previewType": "PHOTO",
+thumbnailUrl: icon, 
+sourceUrl: channel}}},
+{ quoted: fkontak})
 }
 
 if (command == 'a' || command == 'A' || command == 'aa' {
- await conn.sendMessage(m.chat, { text: txt,
+ await conn.sendMessage(m.chat, { text: arroz,
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: false, 
