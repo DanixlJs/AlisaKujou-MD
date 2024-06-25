@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
   let img = await (await axios.get('https://i.ibb.co/kyTcqt9/file.jpg', { responseType: 'arraybuffer' })).data
 
   try {
-    let data = await Starlights.tiktokSearch(text)
+    const { data } = await axios.get(`https://apis-starlights-team-cbb6f3a3.koyeb.app/starlight/tiktoksearch?text=${text}`);
 
     if (data && data.length > 0) {
       let txt = `*乂  T I K T O K  -  S E A R C H*`
