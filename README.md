@@ -1,7 +1,6 @@
 ## 🤍 Alisa Kujou - MD
 
-<video width="730" height="300" controls autoplay loop> <source src="https://telegra.ph/file/bb760a74945d47d277ea1.mp4" type="video/mp4">
-</video>
+<iframe width="730" height="300" src="https://telegra.ph/file/bb760a74945d47d277ea1.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 *Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍*
 
 ---
