@@ -12,7 +12,7 @@ isForwarded: false,
 "containsAutoReply": true,
 title: packname + ' 🤍',
 "previewType": "PHOTO",
-thumbnailUrl: icon, 
+thumbnailUrl: icons, 
 sourceUrl: channel}}},
 { quoted: fkontak})
 }
@@ -27,7 +27,7 @@ isForwarded: false,
 "containsAutoReply": true,
 title: packname + ' 🤍',
 "previewType": "PHOTO",
-thumbnailUrl: icon, 
+thumbnailUrl: icons, 
 sourceUrl: channel}}},
 { quoted: fkontak})
 }}
