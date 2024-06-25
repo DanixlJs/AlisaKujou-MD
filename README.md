@@ -102,6 +102,15 @@ npm start
 
 ## 🟣 INSTALAR EN FLAREX CLOUD 🟣
 
+- **Página ⪼** https://www.flarex.cloud
+- **Área de Pagos ⪼** https://billing.flarex.cloud
+- **Game Panel ⪼** https://gamepanel.flarex.cloud
+- **Tutorial ⪼** _En proceso_
+- **Discord ⪼** https://discord.flarex.cloud
+- **Contacto ⪼** hi@flarex.cloud / support@flarex.cloud / partnerships@flarex.cloud
+
+- **Has Deploy Aquí**
+<a href="https://www.flarex.cloud"><img src="https://cdn.flarex.cloud/deploy.png" height="60px"></a>
 
 ---
 ---
