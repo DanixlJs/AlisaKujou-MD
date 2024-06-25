@@ -20,7 +20,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
         txt += `  *» Autor* : ${video.author}\n`
         txt += `  *» Url* : ${video.url}`
       }
-      await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m)
+      await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt)
       await m.react('✅')
     } else {
       await conn.react('✖️')
