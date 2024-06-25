@@ -11,7 +11,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
   let replyMessage = message.length === 0 ? '' : message
   global.totalUsers = users.length
   let responseMessage = `╭──「${global.wm}」╼\n│❀ *Total Sub-Bots ≫* ${totalUsers || '0'}\n╰────╼\n\n${replyMessage.trim()}`.trim()
-  await stars.sendMessage( m.chat, { image: { url: global.icons }, fileName: 'icons.png', mimetype: 'image/png', caption: responseMessage, mentions: await stars.parseMention(responseMessage)}, { quoted: m })
+  await stars.reply(m.chat, responseMenssage, m, { mentions: await stars.parseMention(responseMessage)} )
 }
 
 handler.command = ['bots']
