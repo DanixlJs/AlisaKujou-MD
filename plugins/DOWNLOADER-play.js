@@ -7,7 +7,7 @@ let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp3(res[0].url
 if (size.includes('GB') || size.replace(' MB', '') > 100) { return await m.reply('✧ El archivo supera los 100 MB, se canceló la descarga.')}
 let txt = `❀ *DOWNLOADER - YOUTUBE*\n✰ *Título ⪼* ${title}\n◈ *Duración ⪼* ${res[0].duration}\n◈ *Autor ⪼* ${res[0].author}\n◈ *Calidad ⪼* ${quality}\n◈ *Publicado ⪼* ${res[0].published}\n◈ *Peso ⪼* ${size}\n◈ *Url ⪼* ${res[0].url}\n\n> Descargando su canción, espere un momento.`
 await conn.sendFile(m.chat, thumbnail, 'icon.jpg', txt, m)
-await conn.sendFile(m.chat, dl_url, title + '.mp3', `❀ *Titulo ⪼* ${title}\n◈ *Calidad ⪼* ${quality}`, m, false, { mimetype: 'audio/mp3')
+await conn.sendMessage(m.chat, { audio: { url: dl_url }, mimetype: 'audio/mpeg', contextInfo: { externalAdReply: { title: title, body: global.dev, thumbnailUrl: thumbnail, mediaType: 1, showAdAttribution: true, renderLargerThumbnail: true }}} , { quoted: m })
 } catch (e){
 m.reply('✧ Ocurrió un error inesperado.')
 console.log(e)
