@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   "antiTraba",
   "antiArab",
   "rpg",
-  "antolevelup",
+  "autolevelup",
   "modoadmin",
   "antiNsfw",
   "simi",
