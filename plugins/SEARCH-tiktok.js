@@ -10,10 +10,6 @@ let handler = async (m, { conn, usedPrefix, text }) => {
   await m.react("💙");
   try {
     let response = await axios.get(`https://delirius-api-oficial.vercel.app/api/tiktoksearch?query=${encodeURIComponent(text)}`);
-const createVideo = async (url) => {
-    const { videoMessage } = await generateWAMessageContent({ video: { url } }, { upload: conn.waUploadToServer });
-    return videoMessage;
-};
     let results = response.data.meta;
     if (!results.length)
       return conn
@@ -23,34 +19,24 @@ const createVideo = async (url) => {
           m,
         )
         .then((_) => m.react("✖️"));
-     const push = await Promise.all(selectedResults.map(async (result) => ({
-        body: { text: null },
-        footer: { text: `💥 Ofc Daniel` },
-        header: {
-            title: botname,
-            hasMediaAttachment: true,
-            videoMessage: await createVideo(botname)
-        },
-        nativeFlowMessage: { buttons: [] }
-    })));
-
-    const msgContent = {
-        viewOnceMessage: {
-            message: {
-                messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
-                interactiveMessage: {
-                    body: { text: '💥 *TIKTOK SEARCH* 💥' },
-                    footer: { text: null },
-                    header: { hasMediaAttachment: false },
-                    carouselMessage: { cards: push }
-                }
-            }
-        }
+    let txt = `*ＴｉｋＴｏｋ－Ｓｅａｒｃｈ ⇄ Ⅰ<    ⅠⅠ    >Ⅰ   ↻*\n\n`;
+    for (let i = 0; i < (30 <= results.length ? 30 : results.length); i++) {
+      let video = results[i];
+      txt += `\n`;
+      txt += `        ❧  *ᴛɪᴛᴜʟᴏ* : ${video.title}\n`;
+      txt += `        ❧  *ᴅᴜʀᴀᴄɪÓɴ* : ${video.duration} segundos\n`;
+      txt += `        ❧  *ᴜʀʟ* : ${video.url}\n`;
+      txt += `        ❧  *ᴀᴜᴛᴏʀ* : ${video.author.username || "×"}\n`;
+      txt += `        ❧  *ᴠɪᴇᴡs* : ${video.play}\n`;
+      txt += `        ❧  *ᴄᴏʀᴀᴢᴏɴᴇꜱ* : ${video.like}\n\n`;
     }
-    const msg = generateWAMessageFromContent(m.chat, msgContent, {});
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-} catch (error) {
-    console.log(error);
+    const url = "https://i.imgur.com/BO4TfMR.png"; 
+    const responseImg = await axios.get(url, { responseType: 'arraybuffer' });
+    await conn.sendFile(m.chat, responseImg.data, "thumbnail.png", txt, m); 
+    await m.react("✅");
+  } catch (e) {
+    console.error(e);
+    conn.reply(m.chat, "Ocurrió un error al buscar en TikTok.", m);
     m.react("❌");
   }
 };
