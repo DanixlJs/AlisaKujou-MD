@@ -65,7 +65,7 @@ return response.data;
 return text;
 }}
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) throw `💫 *Que quieres buscar?*`
+if (!text) conn.reply(m.chat, `💫 *Que quieres buscar?*`, m, fake, )
 try {
 //m.react(rwait)
 let songInfo = await spotifyxv(text)
