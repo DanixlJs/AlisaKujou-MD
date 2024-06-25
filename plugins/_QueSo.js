@@ -10,10 +10,10 @@ isForwarded: false,
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
-title: packname + ' 🤍',
+"title": packname + ' 🤍',
 "previewType": "PHOTO",
-thumbnailUrl: icons, 
-sourceUrl: channel}}},
+"thumbnailUrl": icons, 
+"sourceUrl": channel}}},
 { quoted: m})
 }
 
@@ -25,10 +25,10 @@ isForwarded: false,
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
-title: packname + ' 🤍',
+"title": packname + ' 🤍',
 "previewType": "PHOTO",
-thumbnailUrl: icons, 
-sourceUrl: channel}}},
+"thumbnailUrl": icons, 
+"sourceUrl": channel}}},
 { quoted: m})
 }}
 
