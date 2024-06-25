@@ -25,7 +25,7 @@ let Shop = `❀ *TIENDA - SHOP*
 ◈ *Precio:* 2 USD
 ◈ *Tienda:* ${global.patreon}
 `;
-if (command === 'premium' && !isPrems) conn.reply(m.chat, Shop, m, fake, );
+if (command === 'premium' && !user.premium) conn.reply(m.chat, Shop, m, fake, );
 if (command === 'pass1') {
 if (user.dinero < 670000) return m.reply('✧ No tienes suficientes ${global.botcoins} para comprar éste Producto.');
 user.dinero -= 670000;
