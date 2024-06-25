@@ -20,11 +20,10 @@ global.contactos = [
 // GLOBAL - OTROS
 global.suittag = ['595973755967']
 global.prems = []
-global.mods = ['595985665263', '51979946825', '51986707393']
+global.mods = ['5491157436824']
 
 // GLOBAL - IMG
 global.img = fs.readFileSync('./logo.jpg');
-global.img2 = fs.readFileSync('./media/AhoraQue.png');
 
 // GLOBAL - LINKS
 global.md = 'https://github.com/DanixlJs/AlisaKujou-MD';
