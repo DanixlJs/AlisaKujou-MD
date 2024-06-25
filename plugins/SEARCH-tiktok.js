@@ -23,7 +23,8 @@ let handler = async (m, { conn, usedPrefix, text }) => {
     for (let i = 0; i < (30 <= results.length ? 30 : results.length); i++) {
       let video = results[i];
       txt += `\n`;
-      txt += `        ❧  *ᴛɪᴛᴜʟᴏ* : ${video.title}\n\n`;
+      txt += `        ❧  *ᴛɪᴛᴜʟᴏ* : ${video.title}\n`;
+       txt += `       ❧  *ᴜʀʟ* : ${video.url}\n\n`;
     }
     const url = "https://i.imgur.com/BO4TfMR.png"; 
     const responseImg = await axios.get(url, { responseType: 'arraybuffer' });
