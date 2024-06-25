@@ -11,7 +11,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
   let replyMessage = message.length === 0 ? '' : message
   global.totalUsers = users.length
   let responseMessage = `╭──「${global.wm}」╼\n│❀ *Total Sub-Bots ≫* ${totalUsers || '0'}\n╰────╼\n\n${replyMessage.trim()}`.trim()
-  await stars.reply(m.chat, responseMenssage, m, { mentions: await stars.parseMention(responseMessage)} )
+  await stars.reply(m.chat, responseMessage, m, { mentions: await stars.parseMention(responseMessage)} )
 }
 
 handler.command = ['bots']
