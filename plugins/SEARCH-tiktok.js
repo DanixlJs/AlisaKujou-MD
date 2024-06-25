@@ -60,7 +60,7 @@ try {
 
 handler.command = ['tiktoksearch'];
 handler.help = ['tiktoksearch <texto>'];
-handler.register = true;
+//handler.register = true;
 handler.tags = ['search'];
 
 export default handler;
