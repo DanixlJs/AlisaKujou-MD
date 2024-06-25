@@ -1,32 +1,25 @@
-import axios from 'axios';
-//const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import('@whiskeysockets/baileys')).default;
+import axios from "axios";
 
-let handler = async (m, { conn, text }) => {
-if (!text) return conn.reply(m.chat, '💥 Ingresa un texto para realizar la búsqueda.', m, fake);
-
-const createVideo = async (url) => {
-    const { videoMessage } = await generateWAMessageContent({ video: { url } }, { upload: conn.waUploadToServer });
-    return videoMessage;
-};
-
-const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-};
-
-try {
-    const { data } = await axios.get(`https://delirius-api-oficial.vercel.app/api/tiktoksearch?query=${encodeURIComponent(text)}`);
-    const results = data.data;
-
-    if (!results.length) return conn.reply(m.chat, '💌 No se encontraron resultados.', m);
-
-    shuffleArray(results);
-
-    const selectedResults = results.slice(0, 7);
-
-    const push = await Promise.all(selectedResults.map(async (result) => ({
+let handler = async (m, { conn, usedPrefix, text }) => {
+  if (!text)
+    return conn.reply(
+      m.chat,
+      "*🚩 𝙸𝚗𝚐𝚛𝚎𝚜𝚊 𝚕𝚘 𝚚𝚞𝚎 𝚍𝚎𝚜𝚎𝚊𝚜 𝚋𝚞𝚜𝚌𝚊𝚛 𝚎𝚗 𝚃𝚒𝚔𝚃𝚘𝚔.*",
+      m,
+    );
+  await m.react("💙");
+  try {
+    let response = await axios.get(`https://delirius-api-oficial.vercel.app/api/tiktoksearch?query=${encodeURIComponent(text)}`);
+    let results = response.data.meta;
+    if (!results.length)
+      return conn
+        .reply(
+          m.chat,
+          "No se encontraron resultados, intenta con un nombre más corto.",
+          m,
+        )
+        .then((_) => m.react("✖️"));
+     const push = await Promise.all(selectedResults.map(async (result) => ({
         body: { text: null },
         footer: { text: `💥 Ofc Daniel` },
         header: {
@@ -48,8 +41,8 @@ try {
                     carouselMessage: { cards: push }
                 }
             }
-        }
-    };
+        
+    
 
     const msg = generateWAMessageFromContent(m.chat, msgContent, {});
     await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
@@ -57,10 +50,18 @@ try {
     console.log(error);
 }
 };
-
-handler.command = ['tiktoksearch'];
-handler.help = ['tiktoksearch <texto>'];
-//handler.register = true;
-handler.tags = ['search'];
-
+    const url = "https://i.imgur.com/BO4TfMR.png"; 
+    const responseImg = await axios.get(url, { responseType: 'arraybuffer' });
+    await conn.sendFile(m.chat, responseImg.data, "thumbnail.png", txt, m); 
+    await m.react("✅");
+  } catch (e) {
+    console.error(e);
+    conn.reply(m.chat, "Ocurrió un error al buscar en TikTok.", m);
+    m.react("❌");
+  }
+};
+handler.help = ["tiktoksearch"];
+handler.tags = ["search"];
+handler.command = ["tiktoksearch", "tiks"];
+handler.register = true;
 export default handler;
