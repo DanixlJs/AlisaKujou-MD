@@ -1,5 +1,5 @@
 let handler = async (m, { conn, command, usedPrefix }) => {
-let cafirexostxt = `
+
 let queso = `*so* 🧀`
 let txt = `*rrocito* 🍚`
 
@@ -15,7 +15,7 @@ title: botname,
 body: `🤍 Botsito`,
 mediaType: 1,
 sourceUrl: channel,
-thumbnailUrl: icon
+thumbnailUrl: icons
 }}
 }, { mentions: m.sender })
 }
