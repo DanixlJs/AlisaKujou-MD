@@ -87,8 +87,6 @@ let img = await getBuffer(res.imagen)
 conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 await conn.sendMessage(m.chat, {text: info, contextInfo: {forwardingScore: 1, isForwarded: true, "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "thumbnailUrl": img, "mediaUrl": shortURL, "sourceUrl": shortURL}}}, {quoted: m});
 } catch (error) {
-m.reply('✧ Ocurrió un error inesperado.')
-console.log(error)
 }}
 handler.help = ['spotify <texto>']
 handler.command = ['spotify']
