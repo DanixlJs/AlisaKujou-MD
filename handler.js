@@ -182,26 +182,28 @@ if (settings) {
 if (!('botname' in settings)) settings.botname = 'AlisaBot-MD';
 if (!('botcoins' in settings)) settings.botcoins = 'AlyaCoins';
 if (!('botwm' in settings)) settings.botwm = 'Alisa Kujou - MD';
+if (!('autobio' in settings)) settings.autobio = false;
 if (!('self' in settings)) settings.self = false;
 if (!('autoread' in settings)) settings.autoread = false;
 if (!('antiCall' in settings)) settings.antiCall = true;
 if (!('antiPrivate' in settings)) settings.antiPrivate = false;
 if (!('modejadibot' in settings)) settings.modejadibot = false;
-if (!('antispam' in settings)) settings.antispam = true;
-if (!('modoia' in settings)) settings.modoia = false;
+if (!('antispam' in settings)) settings.antispam = false;
+if (!('modoia' in settings)) settings.modoia = true;
 if (!('botcommandCount' in settings)) settings.botcommandCount = 0;
 } else {
 global.db.data.settings[this.user.jid] = {
 botname: 'AlisaBot-MD',
 botcoins: 'AlyaCoins',
 botwm: 'Alisa Kujou - MD',
+autobio: false,
 self: false,
 autoread: false,
 antiCall: true,
 antiPrivate: false,
 modejadibot: false,
-antispam: true,
-modoia: false,
+antispam: false,
+modoia: true,
 botcommandCount: 0,
 };
 }
