@@ -10,6 +10,10 @@ let handler = async (m, { conn, usedPrefix, text }) => {
   await m.react("💙");
   try {
     let response = await axios.get(`https://delirius-api-oficial.vercel.app/api/tiktoksearch?query=${encodeURIComponent(text)}`);
+const createVideo = async (url) => {
+    const { videoMessage } = await generateWAMessageContent({ video: { url } }, { upload: conn.waUploadToServer });
+    return videoMessage;
+};
     let results = response.data.meta;
     if (!results.length)
       return conn
@@ -25,7 +29,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
         header: {
             title: botname,
             hasMediaAttachment: true,
-            videoMessage: await createVideo(result.nowm)
+            videoMessage: await createVideo(botname)
         },
         nativeFlowMessage: { buttons: [] }
     })));
