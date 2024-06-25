@@ -13,6 +13,7 @@ async function handler(m, { conn: stars, usedPrefix }) {
   let responseMessage = `╭──「${global.wm}」╼\n│❀ *Total Sub-Bots ≫* ${totalUsers || '0'}\n╰────╼\n\n${replyMessage.trim()}`.trim()
   await stars.sendMessage( m.chat, { image: { url: global.icons }, fileName: 'icons.png', mimetype: 'image/png', caption: responseMessage, mentions: await stars.parseMention(responseMessage)}, { quoted: m })
 }
+
 handler.command = ['bots']
 handler.help = ['bots']
 handler.tags = ['jadibot']
