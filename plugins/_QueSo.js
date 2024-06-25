@@ -6,7 +6,7 @@ conn.sendMessage(m.chat, {
 text: info,
 contextInfo: {
 externalAdReply: {
-title: packname,
+title: botname,
 thumbnailUrl: icons,
 sourceUrl: channel,
 mediaType: 2,
