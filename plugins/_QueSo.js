@@ -7,7 +7,7 @@ text: info,
 contextInfo: {
 externalAdReply: {
 title: botname,
-thumbnailUrl: icons,
+thumbnailUrl: 'https://qu.ax/zPKl.jpg',
 sourceUrl: channel,
 mediaType: 2,
 }}}, { quoted: m });
