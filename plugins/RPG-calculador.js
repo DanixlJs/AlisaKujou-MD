@@ -1,6 +1,6 @@
 const handler = async (m, { conn, command, text, usedPrefix }) => {
   if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
-  if (!text) throw `✧ Mensiona a un Usuario.`;
+  return conn.reply(m.chat, '✧ Etiqueta al usuario.', m);
   const percentages = (500).getRandom();
   let emoji = '';
   let description = '';
