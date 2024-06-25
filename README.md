@@ -7,15 +7,15 @@
 ---
 ---
 
-## ⚜️ CARACTERÍSTICAS DEL PROYECTO ⚜️
+## ⚜️ CARACTERÍSTICAS ⚜️
 
-- **Entorno ⪼** NodeJs
-- **Baileys ⪼** MultiDivide ^6.7.5
-- **Comandos de administración ⪼** Alisa cuenta con comandos para administrar tus grupos de manera más fácil.
-- **Comandos de RPG ⪼** También cuenta con comandos para que la diversión nunca falte en tu grupo.
-- **Comandos de Descarga ⪼*** Cuenta con una variedad de comandos para descargar Videos y Audios, así también para buscar imágenes.
-- **Versión Actual ⪼** 2.0.0
-- **Estado ⪼** Público
+- **COMANDOS DISPONIBLES**
+☑ SerBot
+☑ Descargas 
+☑ Inteligencia Artificial
+☑ Juegos
+☑ Economia 
+☑ Administración
 
 ---
 ---
@@ -49,7 +49,7 @@ Este repositorio está bajo la licencia Apache 2.0, asegúrate de leerla para sa
 ---
 ---
 
-## 📥 INSTALACIÓN POR TERMUX 📥
+## 📥 INSTAR POR TERMUX 📥
 
 ```bash
 cd && termux-setup-storage
@@ -96,6 +96,12 @@ npm start
 cd AlisaKujou-MD
 npm start
 ```
+
+---
+---
+
+## 🟣 INSTALAR EN FLAREX CLOUD 🟣
+
 
 ---
 ---
