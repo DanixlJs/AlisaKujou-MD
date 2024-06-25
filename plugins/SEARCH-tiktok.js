@@ -23,7 +23,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
         body: { text: null },
         footer: { text: `💥 Ofc Daniel` },
         header: {
-            title: result.title,
+            title: botname,
             hasMediaAttachment: true,
             videoMessage: await createVideo(result.nowm)
         },
