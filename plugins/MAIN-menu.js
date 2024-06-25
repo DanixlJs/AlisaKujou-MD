@@ -28,7 +28,7 @@ let tags = {
   }
 const defaultMenu = { before: `
 > %greeting %taguser
-ᦗ 𝐁𝐢𝐞𝐧𝐯𝐞𝐧𝐢𝐝𝐨 𝐚𝐥 𝐌𝐞𝐧𝐮 ᦗ
+> ᦗ 𝐁𝐢𝐞𝐧𝐯𝐞𝐧𝐢𝐝𝐨 𝐚𝐥 𝐌𝐞𝐧𝐮 ᦗ
 
 ╭────────────────────
 │ *❀ 𝐈𝐍𝐅𝐎 𝐁𝐎𝐓 ʚ♡⃛ɞ(ू•ᴗ•ू❁)*
@@ -149,7 +149,7 @@ const defaultMenu = { before: `
   global.vid = rlink
   const response = await fetch(vid)
   const gif = await response.buffer()
-  conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├────────────────────\n│ᦗ Espere un momento ᦗ\n╰──────────────────', m, fake,)
+  conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n│\n├──────────────────\n│ᦗ Espere un momento ᦗ\n╰──────────────────', m, fake,)
   m.react('🤍')
   await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
   } catch (e) {
