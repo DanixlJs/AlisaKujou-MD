@@ -73,7 +73,7 @@ if (!songInfo.length) throw `*No se encontró la canción*`
 let res = songInfo[0]
 let fileSizeInMB = (await getBuffer(res.url)).length / (1024 * 1024)
 let shortURL = await getTinyURL(res.url)
-const info = `❀ *SPOTIFY - SEARCH*\n✰ *Nombre ⪼* ${title}\n◈ *Artista ⪼* ${artist}\n◈ *Álbum ⪼* ${album}\n◈ *Publicado ⪼* ${published}\n\n> Descargando su canción, espere un momento.`
+const info = `❀ *SPOTIFY - SEARCH*\n✰ *Nombre ⪼* ${res.name}\n◈ *Artista ⪼* ${res.artista.join(', ')}\n◈ *Link ⪼* ${shortURL}\n\n> Descargando su canción, espere un momento.`
 
 let resImg = await fetch(res.imagen)
 let thumbb = await resImg.buffer()
