@@ -2,7 +2,7 @@ import axios from 'axios'
 import Starlights from '@StarlightsTeam/Scraper'
 
 let handler = async (m, { conn, text }) => {
-if (!text) return conn.reply(m.chat, '💥 Ingresa un texto para realizar la búsqueda.', m, rcanal);
+if (!text) return conn.reply(m.chat, '💥 Ingresa un texto para realizar la búsqueda.', m, fake);
 
 const createVideo = async (url) => {
     const { videoMessage } = await generateWAMessageContent({ video: { url } }, { upload: conn.waUploadToServer });
@@ -60,7 +60,7 @@ try {
 
 handler.command = ['tiktoksearch'];
 handler.help = ['tiktoksearch <texto>'];
-handler.register = true;
+//handler.register = true;
 handler.tags = ['search'];
 
 export default handler;
