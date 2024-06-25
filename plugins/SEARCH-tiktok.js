@@ -4,7 +4,7 @@ const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await
 let handler = async (m, { conn, usedPrefix, command, text, args }) => {
   if (!text) return conn.reply(m.chat, `🚩 Ingresa el nombre video que deseas buscar en TikTok.\n\nEjemplo:\n> *${usedPrefix + command}* Alisa Kujou Edit`, m, fake)
 
-  await m.react('🕓')
+ // await m.react('🕓')
   let img = await (await axios.get('https://i.ibb.co/kyTcqt9/file.jpg', { responseType: 'arraybuffer' })).data
 
   try {
@@ -20,13 +20,13 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
         txt += `  *» Autor* : ${video.author}\n`
         txt += `  *» Url* : ${video.url}`
       }
-      await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, estilo)
-      await m.react('✅')
+      await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, estilo)
+     // await m.react('✅')
     } else {
-      await conn.react('✖️')
+    //  await conn.react('✖️')
     }
   } catch {
-    await m.react('✖️')
+   // await m.react('✖️')
   }
 }
 handler.tags = ['search']
