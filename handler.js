@@ -158,7 +158,7 @@ sWelcome: '',
 sBye: '',
 sPromote: '',
 sDemote: '',
-antiDelete: false,
+antidelete: false,
 nsfw: false,
 autosticker: false,
 audios: false,
@@ -667,7 +667,7 @@ group: '✧ Este comando solo se puede ejecutar en Grupos.',
 private: '✧ Este comando solo se puede ejecutar en mi Privado.', 
 admin: '✧ Este comando solo lo pueden usar los Administradores.', 
 botAdmin: '✧ Alisa necesita ser Administradora para ejecutar esa funcion.', 
-unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*\n> ✰ *Ejemplo:* Alisa.17'
+unreg: '✧ Necesitas estar registrado para usar este comando.\n */reg <nombre.edad>*\n> ✰ *Ejemplo:* /reg Alisa.17'
 }[type];
 if (msg) return conn.reply(m.chat, msg, m,).then(_ => m.react('✖️'))}
 const file = global.__filename(import.meta.url, true);
