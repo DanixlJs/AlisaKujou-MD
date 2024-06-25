@@ -65,11 +65,10 @@ return response.data;
 return text;
 }}
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) conn.reply(m.chat, `💫 *Que quieres buscar?*`, m, fake, )
+if (!text) conn.reply(m.chat, `✧ Ingresa un texto para realizar la busqueda.`, m)
 try {
-//m.react(rwait)
 let songInfo = await spotifyxv(text)
-if (!songInfo.length) throw `*No se encontró la canción*`
+if (!songInfo.length) return m.reply(`✧ No hubo resultados en la busqueda.`)
 let res = songInfo[0]
 let fileSizeInMB = (await getBuffer(res.url)).length / (1024 * 1024)
 let shortURL = await getTinyURL(res.url)
@@ -86,9 +85,13 @@ let ttl = await yt.title
 let size = await yt.audio[q].fileSizeH
 let img = await getBuffer(res.imagen)
 conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
-await conn.sendMessage(m.chat, {text: info, contextInfo: {forwardingScore: 9999999, isForwarded: true, "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": botname, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "thumbnailUrl": img, "mediaUrl": shortURL, "sourceUrl": shortURL}}}, {quoted: m});
-//m.react(done)
+await conn.sendMessage(m.chat, {text: info, contextInfo: {forwardingScore: 1, isForwarded: true, "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "thumbnailUrl": img, "mediaUrl": shortURL, "sourceUrl": shortURL}}}, {quoted: m});
 } catch (error) {
+m.reply('✧ Ocurrió un error inesperado.')
+console.log(error)
 }}
-handler.command = /^(spotify|music)$/i
+handler.help = ['spotify <texto>']
+handler.command = ['spotify']
+handler.registrado = true
+handler.tags = ['downloader']
 export default handler
