@@ -2,6 +2,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✧ Por favor ingresa una opción.`);
   let option = text;
   let options = [
+  "autobio",
   "self",
   "autoread",
   "antiCall",
