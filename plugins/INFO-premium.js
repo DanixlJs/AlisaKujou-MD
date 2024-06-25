@@ -1,6 +1,6 @@
-let handler = async (m, { conn, text, usedPrefix, command, isPrems}) => {
-if (isPrems) return m.reply(`✧ Ya eres un Usuario Premium.`);
+let handler = async (m, { conn, text, usedPrefix, command}) => {
 let user = global.db.data.users;
+if (user.premium) return m.reply(`✧ Ya eres un Usuario Premium.`); 
 let Shop = `❀ *TIENDA - SHOP*
 ✰ Bienvenido a la tienda ヾ(❀╹◡╹)ﾉﾞ
 
