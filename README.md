@@ -10,12 +10,12 @@
 ## ⚜️ CARACTERÍSTICAS ⚜️
 
 - **COMANDOS DISPONIBLES**
-☑ SerBot
-☑ Descargas 
-☑ Inteligencia Artificial
-☑ Juegos
-☑ Economia 
-☑ Administración
+- ☑ SerBot
+- ☑ Descargas 
+- ☑ Inteligencia Artificial
+- ☑ Juegos
+- ☑ Economia 
+- ☑ Administración
 
 ---
 ---
