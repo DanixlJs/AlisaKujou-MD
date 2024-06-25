@@ -6,8 +6,8 @@ conn.sendMessage(m.chat, {
 text: info,
 contextInfo: {
 externalAdReply: {
-title: botname,
-thumbnailUrl: `https://qu.ax/zPKl.jpg`,
+title: botname + '🤍',
+thumbnailUrl: 'https://qu.ax/zPKl.jpg',
 sourceUrl: channel,
 mediaType: 2,
 }}}, { quoted: m });
