@@ -5,7 +5,7 @@ if (!args[0].match(/youtu/gi)) return conn.reply(m.chat, `✧ El enlace no es un
 try {
 let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp3(args[0])
 if (size.includes('GB') || size.replace(' MB', '') > 300) { return await m.reply('✧ El archivo supera los 300MB, se canceló la descarga.')}
-let txt = `❀ *DOWNLOADER - YOUTUBE*\n✰ *Título ⪼* ${title}\n◈ *Cálidad ⪼* ${quality}\n◈ *Peso ⪼* ${size}> Descargando su archivo, espere un momento.`
+let txt = `❀ *DOWNLOADER - YOUTUBE*\n✰ *Título ⪼* ${title}\n◈ *Cálidad ⪼* ${quality}\n◈ *Peso ⪼* ${size}\n\n> Descargando su archivo, espere un momento.`
 await conn.sendFile(m.chat, thumbnail, 'icono.jpg', txt, m)
 await conn.sendFile(m.chat, dl_url, title + '.mp3', `❀ *Titulo ⪼* ${title}\n◈ *Calidad ⪼* ${quality}`, m, false, { mimetype: 'audio/mpeg', asDocument: true })
 } catch (e){
