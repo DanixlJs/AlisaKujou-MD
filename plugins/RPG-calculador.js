@@ -1,6 +1,6 @@
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!global.db.data.chats[m.chat].rpg) return m.reply(m.chat, '✧ Los comandos de RPG han sido desactivados en este grupo.');
-  if (!text) conn.reply(`✧ Mensiona a un Usuario.`, m, fake, );
+  if (!global.db.data.chats[m.chat].rpg) return m.reply('✧ Los comandos de RPG han sido desactivados en este grupo.');
+  if (!text) conn.reply(m.chat, `✧ Mensiona a un Usuario.`, m, fake, );
   const percentages = (500).getRandom();
   let emoji = '';
   let description = '';
