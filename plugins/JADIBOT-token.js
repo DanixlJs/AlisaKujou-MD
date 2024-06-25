@@ -13,6 +13,5 @@ async function handler(m, {usedPrefix}) {
   handler.help = ['token']
   handler.tags = ['jadibot']
   handler.registrado = true
-  handler.disabled = true
   handler.private = true
   export default handler
