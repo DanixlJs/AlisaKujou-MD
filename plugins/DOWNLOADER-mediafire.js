@@ -6,7 +6,7 @@ let user = global.db.data.users[m.sender]
 try {
 let { title, ext, aploud, size, dl_url } = await Scraper.mediafire(args[0])
 if (size.includes('GB') || size.replace(' MB', '') > user.premium ? 500 : 100) { return await m.reply(`✧ El archivo pesa más de ${user.premium ? '500' : '100'}MB, ${user.premium ? 'se canceló la descarga.' : 'pasate a Premium para descargar archivos de hasta 500MB.'}`)}
-let txt = `❀ *DOWNLOADER - MEDIAFIRE*\n✰ *Titulo * ${title}\n◈ *Subido * ${aploud}\n◈ *Peso * ${size}\n> Descargando su archivo, espere un momento.`
+let txt = `❀ *DOWNLOADER - MEDIAFIRE*\n✰ *Titulo * ${title}\n◈ *Subido * ${aploud}\n◈ *Peso * ${size}\n\n> Descargando su archivo, espere un momento.`
 await conn.reply(m.chat, txt, m, fake, )
 await conn.sendFile(m.chat, dl_url, title, null, m, null, { mimetype: ext, asDocument: true })
 } catch (e){
