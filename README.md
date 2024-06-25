@@ -1,6 +1,6 @@
 ## 🤍 Alisa Kujou - MD
 
-<iframe width="730" height="300" src="https://telegra.ph/file/bb760a74945d47d277ea1.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="730" height="300">
 
 *Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍*
 
