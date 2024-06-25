@@ -9,7 +9,7 @@ conn.reply(m.chat, `❀ ¡Hola! Soy ${global.wm}, en que puedo ayudarte hoy?\n�
 if (/^que|Que$/i.test(m.text)) {
 conn.reply(m.chat, `so 🧀`, m, fake, )
 }
-if (/^a\A$/i.test(m.text)) {
+if (/^a|A$/i.test(m.text)) {
 conn.reply(m.chat, `*rrocito* 🍚`, m, fake, )
 }
 return !0;
