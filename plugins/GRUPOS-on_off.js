@@ -20,7 +20,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   "simi",
 ];
   if (!options.includes(option)) {
-    return m.reply(`✧ La opción *${option}* no es válida.> Use *${usedPrefix}config* para ver las opciones disponibles.`);
+    return m.reply(`✧ La opción *${option}* no es válida.\n> Use *${usedPrefix}config* para ver las opciones disponibles.`);
   }
   let target = m.chat;
   if (!global.db.data.chats[target]) global.db.data.chats[target] = {};
