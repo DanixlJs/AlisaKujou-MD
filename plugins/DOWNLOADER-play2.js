@@ -7,7 +7,7 @@ let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp4(res[0].url
 if (size.includes('GB') || size.replace(' MB', '') > 100) { return await m.reply('✧ El archivo supera los 100 MB, se canceló la descarga.')}
 let txt = `❀ *DOWNLOADER - YOUTUBE*\n✰ *Título ⪼* ${title}\n◈ *Duración ⪼* ${res[0].duration}\n◈ *Autor ⪼* ${res[0].author}\n◈ *Calidad ⪼* ${quality}\n◈ *Publicado ⪼* ${res[0].published}\n◈ *Peso ⪼* ${size}\n◈ *Url ⪼* ${res[0].url}\n\n> Descargando su video, espere un momento.`
 await conn.sendFile(m.chat, thumbnail, 'icon.jpg', txt, m)
-await conn.sendFile(m.chat, dl_url, title + '.mp4', `❀ *Titulo ⪼* ${title}\n◈ *Calidad ⪼* ${quality}`, m, false, { asDocument: true})
+await conn.sendMessage(m.chat, { video: { url: dl_url }, fileName: `${title}.mp4`, mimetype: 'video/mp4', thumbnail: await fetch(thumbnail) }, { quoted: m })
 } catch (e){
 m.reply('✧ Ocurrió un error inesperado.')
 console.log(e)
