@@ -1,5 +1,5 @@
-import axios from 'axios';
-const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import('@whiskeysockets/baileys')).default;
+import axios from 'axios'
+import Starlights from '@StarlightsTeam/Scraper'
 
 let handler = async (m, { conn, text }) => {
 if (!text) return conn.reply(m.chat, '💥 Ingresa un texto para realizar la búsqueda.', m, fake);
