@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 let handler = async (m, { conn, text, usedPrefix, command, __dirname }) => {
 try {
 let info = `*rrocito* 🍚`
@@ -15,4 +15,4 @@ mediaType: 2,
 console.error(error)}}
 handler.customPrefix = /^(A|a)$/i
 handler.command = new RegExp
-export default handler
+export default handler*/
