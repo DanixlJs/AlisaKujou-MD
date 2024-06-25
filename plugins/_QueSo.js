@@ -1,9 +1,21 @@
-import fetch from 'node-fetch'
-let handler = async (m, { conn, text, usedPrefix, command, __dirname }) => {
-try {
-let info = `*So* 🧀`
+let handler = async (m, { conn, command, usedPrefix }) => {
+let queso = `*so* 🧀`
+let arroz = `*rrocito* 🍚`
+
+if (command == 'que' || command == 'Que' || command == 'q' || command == 'Q') {
 conn.sendMessage(m.chat, {
-text: info,
+text: queso,
+contextInfo: {
+externalAdReply: {
+title: botname + ' 🤍',
+thumbnailUrl: 'https://qu.ax/zPKl.jpg',
+sourceUrl: channel,
+mediaType: 2,
+}}}, { quoted: m })
+}
+
+conn.sendMessage(m.chat, {
+text: arroz,
 contextInfo: {
 externalAdReply: {
 title: botname + ' 🤍',
@@ -11,8 +23,7 @@ thumbnailUrl: 'https://qu.ax/zPKl.jpg',
 sourceUrl: channel,
 mediaType: 2,
 }}}, { quoted: m });
-} catch (error) {
-console.error(error)}}
-handler.customPrefix = /^(Que|que|q|Q|k)$/i
-handler.command = new RegExp
+}}
+
+handler.command = /^(que|Que|q|Q|A|a|aa)$/i
 export default handler
