@@ -1,7 +1,7 @@
 ## 🤍 Alisa Kujou - MD
 
-![logo](https://telegra.ph/file/7bac962446d59b42ac4b8.jpg)
-
+<video width="1280" height="720" controls> <source src="https://telegra.ph/file/bb760a74945d47d277ea1.mp4" type="video/mp4">
+</video>
 *Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍*
 
 ---
@@ -100,8 +100,7 @@ npm start
 ---
 ---
 
-<img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="10" height="10"> INSTALAR EN FLAREX CLOUD <img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="10" height="10">
-
+<img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="20" height="20"> INSTALAR EN FLAREX CLOUD <img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="20" height="20">
 
 - **Página ⪼** https://www.flarex.cloud
 - **Área de Pagos ⪼** https://billing.flarex.cloud
