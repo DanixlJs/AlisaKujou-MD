@@ -14,7 +14,7 @@ title: packname + ' 🤍',
 "previewType": "PHOTO",
 thumbnailUrl: icons, 
 sourceUrl: channel}}},
-{ quoted: fkontak})
+{ quoted: m})
 }
 
 if (command == 'a' || command == 'A' || command == 'aa' {
@@ -29,7 +29,7 @@ title: packname + ' 🤍',
 "previewType": "PHOTO",
 thumbnailUrl: icons, 
 sourceUrl: channel}}},
-{ quoted: fkontak})
+{ quoted: m})
 }}
 
 handler.command = /^(que|Que|q|Q|A|a|aa)$/i
