@@ -27,21 +27,21 @@ let Shop = `❀ *TIENDA - SHOP*
 `;
 if (command === 'premium' && !user.premium) conn.reply(m.chat, Shop, m, fake, );
 if (command === 'pass1') {
-if (user.dinero < 670000) return m.reply('✧ No tienes suficientes ${global.botcoins} para comprar éste Producto.');
+if (user.dinero < 670000) return m.reply(`✧ No tienes suficientes ${global.botcoins} para comprar éste Producto.`);
 user.dinero -= 670000;
 user.premiumTime += 300000;
 user.premium = true;
 conn.reply(m.chat, '❀ Felicidades, ahora eres un usuario premium por 5 minutos.', m, fake, );
 };
 if (command === 'pass2') {
-if (user.dinero < 1000000) return m.reply('✧ No tienes suficientes ${global.botcoins} para comprar éste Producto.');
+if (user.dinero < 1000000) return m.reply(`✧ No tienes suficientes ${global.botcoins} para comprar éste Producto.`);
 user.dinero -= 1000000;
 user.premiumTime += 600000;
 user.premium = true;
 conn.reply(m.chat, '❀ Felicidades, ahora eres un usuario premium por 10 minutos.', m, fake, );
 };
 if (command === 'pass3') {
-if (user.diamantes < 10000) return m.reply('✧ No tienes suficientes Diamantes para comprar éste Producto.');
+if (user.diamantes < 10000) return m.reply(`✧ No tienes suficientes Diamantes para comprar éste Producto.`);
 user.diamantes -= 10000;
 user.premiumTime += 3600000;
 user.premium = true;
