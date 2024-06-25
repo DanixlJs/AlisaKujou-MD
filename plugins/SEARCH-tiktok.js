@@ -22,7 +22,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
     //let txt = `💜 *TIKTOK SEARCH* 💜\n\n`;
     for (let i = 0; i < (30 <= results.length ? 30 : results.length); i++) {
       let video = results[i];
-      txt = `💜 *TIKTOK SEARCH* 💜\n\n💙 *Aquí Tienes*`;
+      let txt = `💜 *TIKTOK SEARCH* 💜\n\n💙 *Aquí Tienes*`;
     }
     const url = "https://i.imgur.com/BO4TfMR.png"; 
     const responseImg = await axios.get(url, { responseType: 'arraybuffer' });
