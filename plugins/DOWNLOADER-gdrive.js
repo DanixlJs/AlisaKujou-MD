@@ -8,9 +8,9 @@ let handler = async (m, { conn, args }) => {
         let isGB = size.includes('GB');
         if (isGB) fileSize *= 1024; 
         if (fileSize > (user.premium ? 500 : 100)) {
-            return await m.reply(El archivo pesa más de ${user.premium ? '500' : '100'}MB, ${user.premium ? 'se canceló la descarga.' : 'pásate a premium para descargar archivos de hasta 500MB.'});
+            return await m.reply(`El archivo pesa más de ${user.premium ? '500' : '100'}MB, ${user.premium ? 'se canceló la descarga.' : 'pásate a premium para descargar archivos de hasta 500MB.'}`);
         }
-        let txt = ❀ *DOWNLOADER - GDRIVE*\n✰ *Nombre:* ${title}\n◈ *Peso:* ${size}\n\n> Descargando su archivo, espere un momento.;
+        let txt = `❀ *DOWNLOADER - GDRIVE*\n✰ *Nombre:* ${title}\n◈ *Peso:* ${size}\n\n> Descargando su archivo, espere un momento.`;
         await conn.reply(m.chat, txt, m);
         await conn.sendMessage(m.chat, { document: { url: dl_url }, fileName: title, mimetype: type }, { quoted: m });
     } catch (e) {
