@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 let handler = async (m, { conn, text, usedPrefix, command, __dirname }) => {
 try {
-let info = `So 🧀`
+let info = `*So* 🧀`
 conn.sendMessage(m.chat, {
 text: info,
 contextInfo: {
