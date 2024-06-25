@@ -13,7 +13,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   "gconly",
 ];
   if (!options.includes(option)) {
-    return m.reply(`✧ La opción *${option}* no es válida.> Use *${usedPrefix}config* para ver las opciones disponibles.`);
+    return m.reply(`✧ La opción *${option}* no es válida.\n> Use *${usedPrefix}config* para ver las opciones disponibles.`);
   }
   let target = conn.user.jid;
   if (!global.db.data.settings[target]) global.db.data.settings[target] = {};
