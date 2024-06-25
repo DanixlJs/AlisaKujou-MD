@@ -7,13 +7,13 @@ if (/^bot$/i.test(m.text)) {
 conn.reply(m.chat, `❀ ¡Hola! Soy ${global.wm}, en que puedo ayudarte hoy?\n✰ Usa */menu* para ver mis comandos.`, m, fake, )
 }
 if (/^que$/i.test(m.text)) {
-m.reply('so 🧀')
+conn.reply(m.chat, 'so 🧀', m, fake, )
 }
 if (/^pene$/i.test(m.text)) {
-m.reply('comes XD')
+conn.reply(m.chat, 'comes XD', m, fake, )
 }
 if (/^loli$/i.test(m.text)) {
-m.reply('Ohh no un Lolicon, llamen a los del FBI')
+m.reply(m.chat, 'Ohh no un Lolicon, llamen a los del FBI', m, fake, )
 }
 return !0;
 };
