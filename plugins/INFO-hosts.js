@@ -33,8 +33,34 @@ isForwarded: false,
 "sourceUrl": 'https://dashboard.infinitywa.xyz'}}},
 { quoted: fkontak})
 }
+if (command === 'flarex') {
+let txt = `❀ *FLAREX CLOUD* ❀
+*¿Quieres un Host de calidad y con bajos precios?*
+Pues te presento a *FlarexCloud*, un hosting de calidad con servidores dedicados y precios por debajo de 1USD, estos servidores están destinados a ofrecerte un Uptime 24/7 para que puedas alojar tus proyectos y qué estos funcionen de manera eficaz.
+
+✰ *Página:* https://www.flarex.cloud
+✰ *Game Panel:* https://gamepanel.flarex.cloud
+
+✰ *Discord:* https://discord.flarex.cloud
+✰ *Comunidad:* https://chat.whatsapp.com/K25DOitoKoQJZLUJhjOK1h
+
+> *Únete a está comunidad y disfruta de un servicio de calidad :D*`
+await conn.sendMessage(m.chat, { text: txt,
+contextInfo:{
+forwardingScore: 1,
+isForwarded: false, 
+"externalAdReply": {
+"showAdAttribution": true,
+"containsAutoReply": true,
+"title": `🟣 *FLAREXCLOUD* 🟣`,
+"body": `✅ HOSTIN DE CALIDAD ✅`,
+"previewType": "PHOTO",
+"thumbnailUrl": 'https://telegra.ph/file/8f789f212b6cd978cd45d.jpg', 
+"sourceUrl": 'https://www.flarex.cloud'}}},
+{ quoted: fkontak})
+}
 }
 handler.tags =['info'] 
-handler.help = ['infinity'] 
-handler.command = ['infinity']
+handler.help = ['infinity', 'flarex'] 
+handler.command = ['infinity', 'flarex']
 export default handler
