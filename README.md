@@ -1,8 +1,8 @@
-## 🤍 Alisa Kujou - MD
+## 𝐀𝐋𝐘𝐀 𝐒𝐀𝐍 - 𝐌𝐃
 
-<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="400" height="400">
+<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="500" height="500">
 
-*Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍*
+*Bienvenido al Repositorio Oficial de Alya, si te agrada el Bot puedes darme una estrellita 🌟🤍*
 
 ---
 ---
@@ -20,22 +20,25 @@
 ---
 ---
 
-## 💠 GRUPOS DE COLABORACIÓN 💠
+## 💠 LINKS OFICIALES 💠
 
-- **🤍𝗔𝗹𝗶𝘀𝗮 𝗞𝘂𝗷𝗼𝘂​᭄ 𝚡 ⏤͟͟͞͞𝐍𝐞𝐤𝐨'𝐬 𝐂𝐥𝐮𝐛⏤͟͟͞͞★**
+- **𝐀𝐥𝐲𝐚 𝐒𝐚𝐧 - 𝐎𝐟𝐢𝐜𝐢𝐚𝐥 ʚ♡⃛ɞ(ू•ᴗ•ू❁)**
 - [![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb)
 
-- **🌸𝒀𝒐𝒔𝒉𝒊𝒌𝒐𝑩𝒐𝒕-𝑴𝑫 x ೄྀ ᥲᥣіsᥲ kᥙȷ᥆ᥙ mძ​᭄**
+- **𝐂𝐚𝐧𝐚𝐥 𝐎𝐟𝐢𝐜𝐢𝐚𝐥 𝐝𝐞 𝐀𝐥𝐲𝐚**
+- [![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y)
+
+- **𝐄𝐦𝐢𝐥𝐢𝐚 𝐑𝐞:𝐙𝐞𝐫𝐨 x ೄྀ ᥲᥣᥡᥲ sᥲᥒ mძ​᭄**
 - [![Click Aquí](https://img.shields.io/badge/Click-Aqui-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GvJAupaHXTQDNivZIa2l5D)
 
 ---
 ---
 
-## 👤 COLABORACIÓN 👤
+## 👤 CONTACTO 👤
 
-Si quieres colaborar conmigo, puedes hablarme a mi WhatsApp.
+Escríbeme si tienes alguna sugerencia o quieres reportar algún Error.
 
-- [![👨‍💻danixljs](https://img.shields.io/badge/👨‍💻danixljs-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/595983799436)
+- [![DanixlJs](https://img.shields.io/badge/DanixlJs-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/595983799436)
 
 ---
 ---
