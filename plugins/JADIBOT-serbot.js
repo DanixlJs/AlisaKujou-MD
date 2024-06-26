@@ -59,7 +59,7 @@ conn.isInit = true
 }
 if (qr) {
 let txt = `❀ *SER BOT - QR*\n✰ Escanea el código QR para convertirte en Sub-Bot Temporal.\n> ◈ Tres Puntitos → Dispositivos Vinculados → Vincular Dispositivo.\n\n➤ *Importante:*\n◈ No es recomendable usar tu cuenta principal.\n◈ Si el Bot principal se reinicia, todos los Sub-Bots se desconectaran.`
-let sendQR = await parentw.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), "qrcode.png", txt, m, null, fake)
+let sendQR = await parentw.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), "qrcode.png", txt, m)
 setTimeout(() => {
 parentw.sendMessage(m.chat, { delete: sendQR.key })
 }, 30000)
@@ -73,7 +73,7 @@ return console.log(await creloadHandler(true).catch(console.error))
 delete global.conns[i]
 global.conns.splice(i, 1)
 if (code !== DisconnectReason.connectionClosed) {
-await parentw.reply(conn.user.jid, "✧ Conexión perdida con el servidor.", m, fake)
+await parentw.reply(conn.user.jid, "✧ Conexión perdida con el servidor.", m)
 }
 }
 if (global.db.data == null) {
