@@ -1,4 +1,4 @@
-## 𝐀𝐋𝐘𝐀 𝐒𝐀𝐍 - 𝐌𝐃
+##     🤍v𝐀𝐋𝐘𝐀 𝐒𝐀𝐍 - 𝐌𝐃 🤍
 
 <img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="500" height="200">
 
@@ -103,7 +103,7 @@ npm start
 ---
 ---
 
-<img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="20" height="20"> INSTALAR EN FLAREX CLOUD <img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="20" height="20">
+<img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="20" height="20"> **INSTALAR EN FLAREX CLOUD** <img src="https://telegra.ph/file/ffbadfeffeff214a032d2.jpg" width="20" height="20">
 
 - **Página ⪼** https://www.flarex.cloud
 - **Área de Pagos ⪼** https://billing.flarex.cloud
@@ -111,9 +111,15 @@ npm start
 - **Tutorial ⪼** _En proceso_
 - **Discord ⪼** https://discord.flarex.cloud
 - **Contacto ⪼** hi@flarex.cloud / support@flarex.cloud / partnerships@flarex.cloud
+<a href="https://www.flarex.cloud"><img src="https://cdn.flarex.cloud/deploy.png" height="60px"></a>
 
-- **Has Deploy Aquí**
-- <a href="https://www.flarex.cloud"><img src="https://cdn.flarex.cloud/deploy.png" height="60px"></a>
+<img src="https://telegra.ph/file/5a177278036dd3966b6b2.jpg" width="20" height="20"> **INSTALAR EN INFINITY HOST** <img src="https://telegra.ph/file/5a177278036dd3966b6b2.jpg" width="20" height="20">
+
+- **Página ⪼** https://www.infinity-wa.xyz
+- **Dashboard ⪼** https://dashboard.infinitywa.xyz
+- **Panel ⪼** https://store.panel-infinitywa.store
+- **Discord ⪼** https://discord.com/invite/vgfpe4Nwd8
+- **Contacto ⪼** wa.me/5492266613038
 
 ---
 ---
