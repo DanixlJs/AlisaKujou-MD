@@ -6,9 +6,10 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
     } else if (args.length >= 1) {
         user = args[0].replace('@', '') + '@s.whatsapp.net';
     } else {
-        await conn.reply(m.chat, `✧ Etiqueta o responde al mensaje del usuario que quieras Desbanear, Ejemplo:\n> *${usedPrefix}unban <@tag>*`, m);
+        await conn.reply(m.chat, `✧ Etiqueta o responde al mensaje del usuario que quieras Desbanear.`, m);
         return;
     }
+    if (!db[user].baneado) return m.reply('✧ El usuario no estaba Baneado');
     if (db[user]) {
         db[user].baneado = false;
         db[user].banRazon = '';
