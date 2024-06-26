@@ -11,7 +11,7 @@ console.log()
 global.conns = []
 }
 let handler = async (m, { conn, args, usedPrefix, command, isOwner, isPrems, isROwner }) => {
-if (!global.db.data.settings[conn.user.jid].modejadibot && isROwner) {
+if (!global.db.data.settings[conn.user.jid].modejadibot && !isROwner) {
 m.reply('✧ La opción de ser Sub-Bot ha sido desactivado por mi creador.')
 return
 }
