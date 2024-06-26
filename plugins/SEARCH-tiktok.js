@@ -11,5 +11,6 @@ let handler = async (m, {conn, text}) => {
         m.reply('Ocurrió un error inesperado.')
         console.log(e)
 }
+}
 handler = ['tiktokvid', 'tts', 'ttv']
 export default handler
