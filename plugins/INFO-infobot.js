@@ -58,7 +58,7 @@ const handler = async (m, { conn, usedPrefix }) => {
 \`\`\`→ Rss          : ${formatBytes(nodeUsage.rss)}
 → heapTotal    : ${formatBytes(nodeUsage.heapTotal)}
 → heapUsed     : ${formatBytes(nodeUsage.heapUsed)}
-→ externa      : ${formatBytes(nodeUsage.external)}
+→ external     : ${formatBytes(nodeUsage.external)}
 → arrayBuffers : ${formatBytes(nodeUsage.arrayBuffers)}\`\`\`
 ${diskSpace ? `
 
