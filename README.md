@@ -1,4 +1,4 @@
-##     🤍v𝐀𝐋𝐘𝐀 𝐒𝐀𝐍 - 𝐌𝐃 🤍
+##     🤍 𝐀𝐋𝐘𝐀 𝐒𝐀𝐍 - 𝐌𝐃 🤍
 
 <img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="500" height="200">
 
@@ -93,8 +93,7 @@ rm -rf Session
 npm start
 ```
 
-## Iniciar en caso de que se detenga
-
+## Iniciar en caso de que se Detenga
 ```bash
 cd AlisaKujou-MD
 npm start
@@ -123,7 +122,7 @@ npm start
 - **Dashboard ⪼** https://dashboard.infinitywa.xyz
 - **Panel ⪼** https://store.panel-infinitywa.store
 - **Discord ⪼** https://discord.com/invite/vgfpe4Nwd8
-- **Contacto ⪼** wa.me/5492266613038
+- **Contacto ⪼** https://wa.me/5492266613038
 
 ---
 ---
