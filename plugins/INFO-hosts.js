@@ -1,6 +1,6 @@
-const handler = async (m, {conn, command} => {
+const handler = async (m, {conn, command}) => {
 if (command === 'infinity') {
-let infifake = { contextInfo: { mentionedJid: conn.parseMention(global.wm), forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363160031023229@newsletter', serverMessageId: '', newsletterName: '♾️ INFINITY - HOST ♾️' }, externalAdReply: { title: '✅ HOSTIN DE CALIDAD ✅', body: '❀ Y buen precio 🌟', mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: 'https://telegra.ph/file/5a177278036dd3966b6b2.jpg', thumbnail: 'https://telegra.ph/file/5a177278036dd3966b6b2.jpg', sourceUrl: 'https://dashboard.infinitywa.xyz' }}}, { quoted: m }
+let infifake = { contextInfo: { mentionedJid: [m.sender], forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363160031023229@newsletter', serverMessageId: '', newsletterName: '♾️ INFINITY - HOST ♾️' }, externalAdReply: { title: '✅ HOSTIN DE CALIDAD ✅', body: '❀ Y buen precio 🌟', mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: 'https://telegra.ph/file/5a177278036dd3966b6b2.jpg', thumbnail: 'https://telegra.ph/file/5a177278036dd3966b6b2.jpg', sourceUrl: 'https://dashboard.infinitywa.xyz' }}}, { quoted: m }
 let txt = `❀ *INFINITY HOST* ❀
 *¿Quieres un hosting para poner tu Bot y no sabes cual usar?*
 Pues te presento a *Infinity Host*, un hosting que te ofrece una gran variedad de servicios para poner tus proyectos y que estos estén 24/7 Activos.
