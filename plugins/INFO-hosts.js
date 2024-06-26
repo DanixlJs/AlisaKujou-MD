@@ -14,7 +14,7 @@ Pues te presento a *Infinity Host*, un hosting que te ofrece una gran variedad d
 ✰ *Panel:* https://store.panel-infinitywa.store
 
 *¿Qué esperas para Adquirir sus servicios? Únete a esta familia :)*`
-let host = { text: txt,
+let host = txt,
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: false, 
