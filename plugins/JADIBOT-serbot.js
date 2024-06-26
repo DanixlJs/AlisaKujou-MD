@@ -87,8 +87,7 @@ await sleep(5000)
 if (args[0]) {
 return
 }
-await parentw.reply(conn.user.jid, "❀ La próxima vez inicia Sesión con tu Token.", m, fake)
-await parentw.reply(conn.user.jid, "❀ *TÚ TOKEN DE SUB-BOT*\n" + usedPrefix + command + " " + Buffer.from(fs.readFileSync(`${folderSub}/creds.json`), 'utf-8').toString('base64'), m, fake )
+await parentw.reply(conn.user.jid, `❀ La próxima vez inicia Sesión con tu Token de Sub-Bot.\n> ✰ Use *{usedPrefix}token* para saber su Token.`, m, fake)
 }
 }
 const timeoutId = setTimeout(() => {
