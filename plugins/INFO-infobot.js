@@ -55,11 +55,11 @@ const handler = async (m, { conn, usedPrefix }) => {
 ◈ *RAM Usada ⪼* ${formatBytes(usedMem)}
 
 ✰ *Uso de Memoria Nodejs:* 
-/`/`/`→ Rss: ${formatBytes(nodeUsage.rss)}
+\`\`\`→ Rss: ${formatBytes(nodeUsage.rss)}
 → heapTotal: ${formatBytes(nodeUsage.heapTotal)}
 → heapUsed: ${formatBytes(nodeUsage.heapUsed)}
 → external: ${formatBytes(nodeUsage.external)}
-→ arrayBuffers: ${formatBytes(nodeUsage.arrayBuffers)}/`/`/`
+→ arrayBuffers: ${formatBytes(nodeUsage.arrayBuffers)}\`\`\`
 ${diskSpace ? `
 
 ✰ *Espacio en Disco:*
