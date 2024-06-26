@@ -26,7 +26,7 @@ body: `✅ HOSTIN DE CALIDAD ✅`,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://qu.ax/EQTd.jpg', 
 sourceUrl: 'https://dashboard.infinitywa.xyz'}}},
-{ quoted: estilo})
+{ quoted: fkontak})
 }
 handler.tags =['info'] 
 handler.help = ['infinity', 'host', 'hosting'] 
