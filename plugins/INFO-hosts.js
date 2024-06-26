@@ -52,7 +52,7 @@ isForwarded: false,
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
-"title": `🟣 *FLAREXCLOUD* 🟣`,
+"title": `🟣 FLAREX CLOUD 🟣`,
 "body": `✅ HOSTIN DE CALIDAD ✅`,
 "previewType": "PHOTO",
 "thumbnailUrl": 'https://telegra.ph/file/8f789f212b6cd978cd45d.jpg', 
