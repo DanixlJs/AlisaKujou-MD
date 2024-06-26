@@ -14,8 +14,7 @@ Pues te presento a *Infinity Host*, un hosting que te ofrece una gran variedad d
 ✰ *Panel:* https://store.panel-infinitywa.store
 
 *¿Qué esperas para Adquirir sus servicios? Únete a esta familia :)*`
-let host = txt,
-contextInfo:{
+let host = contextInfo:{
 forwardingScore: 9999999,
 isForwarded: false, 
 "externalAdReply": {
@@ -25,9 +24,8 @@ title: `♾️ INFINITY - HOST ♾️`,
 body: `✅ HOSTING DE CALIDAD ✅`,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://qu.ax/EQTd.jpg', 
-sourceUrl: 'https://dashboard.infinitywa.xyz'}}},
-{ quoted: fkontak})
-conn.reply(m.chat, host, m, fake, )
+sourceUrl: 'https://dashboard.infinitywa.xyz'}}})
+conn.reply(m.chat, host, txt m, fake, )
 }
 handler.tags =['info'] 
 handler.help = ['infinity', 'host', 'hosting'] 
