@@ -24,7 +24,7 @@ isForwarded: false,
 title: `♾️ INFINITY - HOST ♾️`,
 body: `✅ HOSTING DE CALIDAD ✅`,
 "previewType": "PHOTO",
-thumbnailUrl: 'https://qu.ax/EQTd.jp', 
+thumbnailUrl: 'https://qu.ax/EQTd.jpg', 
 sourceUrl: 'https://dashboard.infinitywa.xyz'}}},
 { quoted: fkontak})
 }
