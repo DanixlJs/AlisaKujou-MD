@@ -21,4 +21,5 @@ handler.command = ['grupos']
 handler.help = ['grupos']
 handler.tags = ['info']
 handler.registrado = true
+handler.disabled = true
 export default handler
