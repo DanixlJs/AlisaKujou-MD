@@ -12,5 +12,8 @@ let handler = async (m, {conn, text}) => {
         console.log(e)
 }
 }
-handler.command = ['tiktokvid', 'tts', 'ttv']
+handler.help = ['tiktoksearch <texto>']
+handler.command = ['tiktokvid', 'tiktoksearch', 'ttv']
+handler.registrado = true
+handler.tags = ['search', 'downloader']
 export default handler
