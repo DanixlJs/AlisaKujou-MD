@@ -2,6 +2,7 @@ import Scraper from "@SumiFX/Scraper"
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 if (!args[0]) return m.reply('✧ Ingresa un enlace de YouTube.')
 if (!args[0].match(/youtu/gi)) return conn.reply(m.chat, `✧ El enlace no es un enlace válido de YouTube.`, m)
+let user = global.db.data.users[m.sender]
 try {
 let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp3(args[0])
 let fileSize = parseFloat(size.replace(/[^0-9.]/g, ''))
