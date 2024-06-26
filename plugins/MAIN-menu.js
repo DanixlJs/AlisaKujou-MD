@@ -150,7 +150,8 @@ const defaultMenu = { before: `
   global.vid = rlink
   const response = await fetch(vid)
   const gif = await response.buffer()
-  conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', m, fake,)
+  //conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', m, fake,)
+await conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', fkontak, { contextInfo:{ forwardingScore: 2022, isForwarded: true, externalAdReply: {title: packname, body: dev, sourceUrl: redes, thumbnail: icons }}})
   m.react('🤍')
   await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
   } catch (e) {
