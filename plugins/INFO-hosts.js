@@ -22,9 +22,9 @@ isForwarded: false,
 "showAdAttribution": true,
 "containsAutoReply": true,
 title: `♾️ INFINITY - HOST ♾️`,
-body: `✅ HOSTIN DE CALIDAD ✅`,
+body: `✅ HOSTING DE CALIDAD ✅`,
 "previewType": "PHOTO",
-thumbnailUrl: 'https://telegra.ph/file/5a177278036dd3966b6b2.jpg', 
+thumbnailUrl: 'https://qu.ax/EQTd.jp', 
 sourceUrl: 'https://dashboard.infinitywa.xyz'}}},
 { quoted: fkontak})
 }
