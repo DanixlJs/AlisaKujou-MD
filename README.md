@@ -1,6 +1,6 @@
 ## 🤍 Alisa Kujou - MD
 
-<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="200" height="200">
+<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="400" height="400">
 
 *Bienvenido al Repositorio oficial de Alisa, si te agrada el Bot puedes darme una estrellita 🌟🤍*
 
