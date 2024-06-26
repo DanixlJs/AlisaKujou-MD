@@ -12,5 +12,5 @@ let handler = async (m, {conn, text}) => {
         console.log(e)
 }
 }
-handler = ['tiktokvid', 'tts', 'ttv']
+handler.command = ['tiktokvid', 'tts', 'ttv']
 export default handler
