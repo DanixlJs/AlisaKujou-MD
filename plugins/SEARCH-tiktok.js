@@ -12,3 +12,4 @@ let handler = async (m, {conn, text}) => {
         console.log(e)
 }
 handler = ['tiktokvid', 'tts', 'ttv']
+export default handler
