@@ -7,7 +7,7 @@ const handler = async (m, {conn, text, usedPrefix, command, groupMetadata}) => {
   if (text.length > 1000) return m.reply(`✧ El límite del reporte es de 1000 caracteres.`);
   const teks = `❀ *REPORTE RECIBIDO*\n\n✰ *Usuario ⪼* @${m.sender.replace('@s.whatsapp.net', '').trim()}\n◈ *Mensaje ⪼* ${text}\n◈ *Grupo ⪼* ${groupMetadata.subject}\n◈ *ID ⪼* ${groupMetadata.id}\n\n➤ *INFO BOT*\n✰ *Nombre ⪼* ${global.botname}\n◈ *Versión ⪼* ${global.vs}`;
 conn.reply('595983799436@s.whatsapp.net', teks, m, { mentions: [m.sender]} );
-conn.reply('120363284046748076@g.us', teks, m, { mentions: [m.sender]} );
+conn.reply('120363292970479309@g.us', teks, m, { mentions: [m.sender]} );
   conn.reply(m.chat, '❀ El reporte se envió correctamente a los Moderadores, de ser necesario recibirá una respuesta.', m, fake, );
   user.reportime = new Date * 1;
 };
