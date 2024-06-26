@@ -13,8 +13,7 @@ const getDiskSpace = () => {
         const stdout = execSync('df -h | grep -E "^/dev/root|^/dev/sda1"').toString();
         const [ , size, used, available, usePercent ] = stdout.split(/\s+/);
         return { size, used, available, usePercent };
-    } catch (error) {
-        console.error('✧ Error al obtener el espacio en disco:', error);
+    } catch {
         return null;
     }
 };
@@ -39,7 +38,7 @@ const handler = async (m, { conn, usedPrefix }) => {
 ◈ *Prefijo ⪼* [ ${usedPrefix} ]
 ◈ *Moneda ⪼* ${global.botcoins}
 ◈ *Tipo ⪼* ${sbot}
-◈ *Bot Uso ⪼* Publico
+◈ *Bot Uso ⪼* Público
 ◈ *Sub-Bots ⪼* ${global.totalUsers || '0'}
 ◈ *Comandos ejecutados ⪼* ${global.botcommandcount}
 ◈ *Chats Privados ⪼* ${chats.length}
@@ -56,18 +55,18 @@ const handler = async (m, { conn, usedPrefix }) => {
 ◈ *RAM Usada ⪼* ${formatBytes(usedMem)}
 
 ✰ *Uso de Memoria Nodejs:* 
-→ RSS: ${formatBytes(nodeUsage.rss)}
-→ Heap Total: ${formatBytes(nodeUsage.heapTotal)}
-→ Heap Usado: ${formatBytes(nodeUsage.heapUsed)}
-→ Externa: ${formatBytes(nodeUsage.external)}
-→ Arreglos: ${formatBytes(nodeUsage.arrayBuffers)}
+/`/`/`→ Rss: ${formatBytes(nodeUsage.rss)}
+→ heapTotal: ${formatBytes(nodeUsage.heapTotal)}
+→ heapUsed: ${formatBytes(nodeUsage.heapUsed)}
+→ external: ${formatBytes(nodeUsage.external)}
+→ arrayBuffers: ${formatBytes(nodeUsage.arrayBuffers)}/`/`/`
 ${diskSpace ? `
 
 ✰ *Espacio en Disco:*
 → Tamaño Total: ${diskSpace.size}
 → Usado: ${diskSpace.used}
 → Disponible: ${diskSpace.available}
-→ Porcentaje de Uso: ${diskSpace.usePercent}` : 'Error.'}`;
+→ Porcentaje de Uso: ${diskSpace.usePercent}` : ''}`;
     await conn.reply(m.chat, message.trim(), m, fake, );
 };
 handler.help = ['info', 'status', 'infobot'];
