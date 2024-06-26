@@ -4,7 +4,7 @@ const handler = async (m, { conn, text, usedPrefix, groupMetadata }) => {
 	if (new Date - user.suggestime < 300000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para enviar otra sugerencia.`)
 	if (!text) return m.reply('✧ Ingresa la sugerencia que quieras enviar a los Moderadores.')
 	if (text.length < 5) return m.reply('✧ Tu sugerencia es demasiado corta, minimo 5 carácteres.')
-	conn.reply('120363284046748076@g.us', `❀ *SUGERENCIA RECIBIDA*\n\n✰ *Usuario ⪼* @${m.sender.replace('@s.whatsapp.net', '').trim()}\n◈ *Sugerencia ⪼* ${text}\n◈ *Grupo ⪼* ${groupMetadata.subject}\n◈ *ID ⪼* ${groupMetadata.id}`, m, { mentions: [m.sender]} )
+	conn.reply('120363292970479309@g.us', `❀ *SUGERENCIA RECIBIDA*\n\n✰ *Usuario ⪼* @${m.sender.replace('@s.whatsapp.net', '').trim()}\n◈ *Sugerencia ⪼* ${text}\n◈ *Grupo ⪼* ${groupMetadata.subject}\n◈ *ID ⪼* ${groupMetadata.id}`, m, { mentions: [m.sender]} )
 	conn.reply(m.chat, '❀ Tu sugerencia se envió con éxito a los Moderadores.', m, fake, )
 	user.suggestime = new Date * 1
 }
