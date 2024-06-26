@@ -152,7 +152,7 @@ const defaultMenu = { before: `
   const gif = await response.buffer()
   conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', m, fake,)
   m.react('🤍')
-  await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
+  await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: estilo })
   } catch (e) {
     console.log(e)
     conn.reply(m.chat, '❀ Ocurrió un error inesperado.', m)
