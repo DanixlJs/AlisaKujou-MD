@@ -42,7 +42,7 @@ Pues te presento a *FlarexCloud*, un hosting de calidad con servidores dedicados
 ✰ *Game Panel:* https://gamepanel.flarex.cloud
 
 ✰ *Discord:* https://discord.flarex.cloud
-✰ *Comunidad:* https://chat.whatsapp.com/K25DOitoKoQJZLUJhjOK1h
+✰ *Grupo:* https://whatsapp.flarex.cloud
 
 > *Únete a está comunidad y disfruta de un servicio de calidad :D*`
 await conn.sendMessage(m.chat, { text: txt,
