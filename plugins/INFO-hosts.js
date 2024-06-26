@@ -25,7 +25,7 @@ body: `✅ HOSTING DE CALIDAD ✅`,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://qu.ax/EQTd.jpg', 
 sourceUrl: 'https://dashboard.infinitywa.xyz'}}})
-conn.reply(m.chat, host, txt m, fake, )
+m.reply(m.chat, host, txt)
 }
 handler.tags =['info'] 
 handler.help = ['infinity', 'host', 'hosting'] 
