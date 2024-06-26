@@ -1,6 +1,6 @@
 ## 𝐀𝐋𝐘𝐀 𝐒𝐀𝐍 - 𝐌𝐃
 
-<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="500" height="500">
+<img src="https://telegra.ph/file/31ac18648a2b90736492a.jpg" width="300" height="500">
 
 *Bienvenido al Repositorio Oficial de Alya, si te agrada el Bot puedes darme una estrellita 🌟🤍*
 
