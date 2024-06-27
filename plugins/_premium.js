@@ -1,4 +1,4 @@
-const handler = (m) => m;
+/*const handler = (m) => m;
 export async function all(m) {
   for (const user of Object.values(global.db.data.users)) {
     if (user.premiumTime != 0 && user.premium) {
@@ -12,4 +12,4 @@ export async function all(m) {
       }
     }
   }
-}
+}*/
