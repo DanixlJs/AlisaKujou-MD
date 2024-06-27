@@ -2,6 +2,12 @@ import Scraper from '@SumiFX/Scraper'
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 if (!text) return conn.reply(m.chat, '✧ Ingresa el nombre de la canción que quieras descargar.', m)
 try {
+conn.reply(m.chat, `> ⏱️ Cargando espere un momento...`, m, {
+contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
+title: botname,
+body: `😸 Espere!, xD`,
+previewType: 0, thumbnail: icons,
+sourceUrl: channel }}})
 let res = await Scraper.ytsearch(text)
 let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp3(res[0].url)
 if (size.includes('GB') || size.replace(' MB', '') > 100) { return await m.reply('✧ El archivo supera los 100 MB, se canceló la descarga.')}
