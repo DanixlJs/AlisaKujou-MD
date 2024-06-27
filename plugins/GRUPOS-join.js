@@ -19,7 +19,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command, isROwner }) =
             await conn.groupAcceptInvite(inviteCode);
             await conn.reply(m.chat, `❀ ${global.botname} se ha unido al grupo correctamente.`, m);
         } else {
-            const GroupId = '120363284046748076@g.us';
+            const GroupId = '120363292970479309@g.us';
             const displayName = await conn.getName(m.sender);
             let msg = `❀ *INVITACIÓN A GRUPO*\n✰ *Usuario ⪼* @${m.sender.replace('@s.whatsapp.net', '').trim()}\n◈ *Grupo ⪼* ${groupName}\n◈ *Participantes ⪼* ${participantCount}\n ◈ *Link:*\n> [${link}]`
             await conn.reply(GroupId, msg, m, { mentions: [m.sender]} );
