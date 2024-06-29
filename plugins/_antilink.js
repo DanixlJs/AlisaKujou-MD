@@ -6,8 +6,8 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
  }
  if (!m.isGroup) return !1;
 
- let chat = global.db?.data?.chats?.[m.chat];
- let bot = global.db?.data?.settings?.[this.user.jid] || {};
+ let chat = global.db.data.chats.[m.chat];
+ let bot = global.db.data.settings?.[this.user.jid] || {};
 
  if (!chat || bot) return;
 
