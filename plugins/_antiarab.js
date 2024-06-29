@@ -3,7 +3,7 @@ handler.before = async function(m, {conn, isAdmin, isBotAdmin, isOwner, isROwner
   if (!m.isGroup) return !1;
   const chat = global.db.data.chats[m.chat];
   const bot = global.db.data.settings[conn.user.jid] || {};
-  if (isBotAdmin && chat.antiArab2 && !isAdmin && !isOwner && !isROwner) {
+  if (isBotAdmin && chat.antiArab && !isAdmin && !isOwner && !isROwner) {
     if (m.sender.startsWith('212' || '212')) {
       m.reply(`✧ En este grupo no se permiten números con el Prefijo *212* por lo que serás eliminado.`)
       const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
