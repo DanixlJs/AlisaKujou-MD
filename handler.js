@@ -343,7 +343,6 @@ typeof plugin.command === 'string' ?
 plugin.command === command :
 false;
 if (!isAccept) {
-if (!isAccept) this.reply(m.chat, `El comando *${command}* no es válido.\nUse */menu* para ver mis comandos.`, m);
 continue;
 }
 global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1;
