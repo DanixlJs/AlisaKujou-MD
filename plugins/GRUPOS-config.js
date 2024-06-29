@@ -3,13 +3,13 @@ const handler = async (m, {conn, args, usedPrefix, command, isAdmin, isOwner, is
 	let bot = global.db.data.settings[conn.user.jid];
 	if (command === 'open') {
 		if (!isAdmin) return m.react('❌');
-		if (!isbotAdmin) return m.react('❌');
+		if (!isBotAdmin) return m.react('❌');
 	await conn.groupSettingUpdate(m.chat, 'not_announcement');
 	m.react('✅');
 	}
 	if (command === 'close') {
 		if (!isAdmin) return m.react('❌');
-		if (!isbotAdmin) return m.react('❌');
+		if (!isBotAdmin) return m.react('❌');
 	await conn.groupSettingUpdate(m.chat, 'announcement');
 	m.react('✅');
 	}
