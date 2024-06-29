@@ -407,7 +407,7 @@ if (plugin.mods && !isMods) {
 fail('mods', m, this);
 continue;
 }
-if (plugin.premium && !isPrems) { 
+if (plugin.premium && !isPrems && !isROwner) { 
 fail('premium', m, this);
 continue;
 }
@@ -417,15 +417,15 @@ continue;
 } else if (plugin.botAdmin && !isBotAdmin) { 
 fail('botAdmin', m, this);
 continue;
-} else if (plugin.admin && !isAdmin) { 
+} else if (plugin.admin && !isAdmin && !isROwner) { 
 fail('admin', m, this);
 continue;
 }
-if (plugin.private && m.isGroup) { 
+if (plugin.private && m.isGroup && !isROwner) { 
 fail('private', m, this);
 continue;
 }
-if (plugin.registrado == true && _user.registrado == false) { 
+if (plugin.registrado == true && _user.registrado == false && !isROwner) { 
 fail('unreg', m, this);
 continue;
 }
