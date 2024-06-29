@@ -271,7 +271,6 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.yellow('╭───────────────────╼\n│❀ Escanea el código para conectarte.\n╰───────────────────╼'));
 }}
 if (connection == 'open') {
-await conn.groupAcceptInvite('Kbj38zCqOvqH9KM5bRH1Hb')
 console.log(chalk.bold.cyan('╭───────────────────╼\n│❀ Conección Exitosa al WhatsApp.\n╰───────────────────╼'))
 }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
