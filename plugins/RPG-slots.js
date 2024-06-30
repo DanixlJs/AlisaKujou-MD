@@ -20,10 +20,18 @@ return { message: '❀ ¡ GANASTE !', winnings: bet * 3 };
 };
 const handler = async (m, { conn, args }) => {
     const bet = parseInt(args[0]);
-    if (isNaN(bet) || bet < 10) {
-        await conn.reply(m.chat, '✧ Ingresa la cantidad de Diamantes que quieras apostar.', m);
+	if (!bet) {
+	await conn.reply(m.chat, '✧ Ingresa una cantidad para apostar.', m, )
+		return;
+	}
+ if (isNaN(bet)) {
+    await conn.reply(m.chat, '✧ Ingresa una cantidad válida de Diamantes.', m);
         return;
     }
+	if (beta < 10) {
+	await conn.reply(m.chat, '✧ Lo mínimo para apostar son 10 Diamantes', m,)
+		return:
+	}
     const userDiamonds = global.db.data.users[m.sender].diamantes;
     if (userDiamonds < bet) {
         await conn.reply(m.chat, `✧ No tienes *${bet}* Diamante(s) para apostar, Solo tienes *${userDiamonds}* Diamante(s).`, m);
