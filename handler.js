@@ -184,6 +184,8 @@ if (!('botcoins' in settings)) settings.botcoins = 'AlyaCoins';
 if (!('botwm' in settings)) settings.botwm = 'Alisa Kujou - MD';
 if (!('autobio' in settings)) settings.autobio = false;
 if (!('self' in settings)) settings.self = false;
+if (!('pconly' in settings)) settings.pconly = false;
+if (!('gconly' in settings)) settings.gconly = false;
 if (!('autoread' in settings)) settings.autoread = false;
 if (!('antiCall' in settings)) settings.antiCall = true;
 if (!('antiPrivate' in settings)) settings.antiPrivate = false;
@@ -198,6 +200,8 @@ botcoins: 'AlyaCoins',
 botwm: 'Alisa Kujou - MD',
 autobio: false,
 self: false,
+pconly: false,
+gconly: false,
 autoread: false,
 antiCall: true,
 antiPrivate: false,
@@ -208,7 +212,7 @@ botcommandCount: 0,
 };
 }
 } catch (e) {
-console.error(e);
+console.error("[ ✧ ] ERROR:\n", e);
 }
 if (opts['nyimak']) {
 return;
