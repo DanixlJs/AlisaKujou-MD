@@ -1,9 +1,7 @@
 let linkRegex = /\b((https?:\/\/|www\.)?[\w-]+\.[\w-]+(?:\.[\w-]+)*(\/[\w\.\-\/]*)?)\b/i;
 
 export async function before(m, { isAdmin, isBotAdmin, text }) {
-    if (m.isBaileys && m.fromMe) {
-        return true;
-    }
+    if (m.isBaileys && m.fromMe) return true;
     if (!m.isGroup) return false;
 
     const chat = global.db.data.chats[m.chat];
@@ -20,7 +18,7 @@ export async function before(m, { isAdmin, isBotAdmin, text }) {
         }
         
         if (isAdmin) return;
-        if (isBotAdmin) return;
+        if (!isBotAdmin) return;
 
         await this.sendMessage(m.chat, { text: `✧ Se detectó un Link qué contiene *https*, procedo a eliminarlo.`, mentions: [m.sender] }, { quoted: m });
         
