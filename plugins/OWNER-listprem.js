@@ -4,7 +4,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     if (premiumUsers.length === 0) {
         return m.reply('✧ No hay usuarios premium.');
     }
-    let message = `❀ *USUARIOS PREMIUMS*\n✰ *Total ⪼* ${premiumUsers.lenght}\n`;
+    let message = `❀ *USUARIOS PREMIUMS*\n✰ *Total ⪼* ${premiumUsers.length}\n`;
     for (let user of premiumUsers) {
         message += `> → @${user.split('@')[0]}\n`;
     }
