@@ -1,27 +1,21 @@
-import MessageType from '@whiskeysockets/baileys';
-const pajak = 0;
-const handler = async (m, {conn, text}) => {
-  let who;
-  if (m.isGroup) who = m.mentionedJid[0];
-  else who = m.chat;
-  if (!who) return m.reply('✧ Etiqueta a un Usuario.');
-  const txt = text.replace('@' + who.split`@`[0], '').trim();
-  if (!txt) throw '✧ Ingrese una cantidad.';
-  if (isNaN(txt)) return m.reply('✧ Solo se permiten números.');
-  const xp = parseInt(txt);
-  let experiencia = xp;
-  const pjk = Math.ceil(xp * pajak);
-  experiencia += pjk;
-  if (experiencia < 100) return m.reply('✧ El mínimo es 100.');
-  const users = global.db.data.users;
-  users[who].experiencia += xp;
-  let nametag = conn.getName(who)
-  m.reply(`❀ Se han añadido *${xp}* de experiencia a *${nametag}*`);
+const handler = async (m, { conn, text, usedPrefix, command, args }) => {
+    if (args.length < 2) {
+        return m.reply(`✧ Etiqueta a un usuario.`);
+    }
+    let user = m.mentionedJid && m.mentionedJid[0];
+    if (!user) {
+        return m.reply(`✧ Etiqueta a un usuario.`);
+    }
+    let amount = parseInt(args[1]);
+    if (isNaN(amount)) {
+        return m.reply(`✧ Ingresa una cantidad.`);
+    }
+    global.db.data.users[user].experiencia = (global.db.data.users[user].experiencia || 0) + amount;
+    conn.reply(m.chat, `❀ Se han añadido *${amount}* de experiencia al usuario ${user.replace('@s.whatsapp.net', '').trim()}`, m, { mentions: [user]} );
 };
-handler.help = ['setexp <@tag>', 'addexp <@tag>'];
-handler.command = ['setexp', 'addexp'];
-handler.register = true;
-handler.group = true;
-handler.rowner = true;
-handler.tags = ['owner'];
+handler.command = ["addexp", "setexp"];
+handler.help = ["addexp <@tag> <cantidad>"];
+handler.tags = ["owner"];
+handler.owner = true;
+handler.registrado = true;
 export default handler;
