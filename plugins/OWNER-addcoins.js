@@ -13,8 +13,9 @@ const handler = async (m, { conn, text, usedPrefix, command, args }) => {
     global.db.data.users[user].dinero = (global.db.data.users[user].dinero || 0) + amount;
     conn.reply(m.chat, `❀ Se han añadido *${amount}* ${global.botcoins} al usuario ${user.replace('@s.whatsapp.net', '').trim()}`, m, { mentions: [user]} );
 };
-handler.command = ["addcoins"];
+handler.command = ["addcoins", "setcoins"];
 handler.help = ["addcoins <@tag> <cantidad>"];
-handler.rowner = true;
+handler.tags = ["owner"];
+handler.owner = true;
 handler.registrado = true;
 export default handler;
