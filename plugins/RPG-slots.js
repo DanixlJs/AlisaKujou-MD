@@ -26,8 +26,7 @@ const handler = async (m, { conn, args }) => {
     }
     const userDiamonds = global.db.data.users[m.sender].diamantes;
     if (userDiamonds < bet) {
-        await conn.reply(m.chat, `✧ No tienes *${bet}* Diamante(s) para apostar, Solo tienes *&
-${userDiamonds}* Diamante(s).`, m);
+        await conn.reply(m.chat, `✧ No tienes *${bet}* Diamante(s) para apostar, Solo tienes *${userDiamonds}* Diamante(s).`, m);
         return;
     }
     global.db.data.users[m.sender].diamantes -= bet;
