@@ -2,7 +2,6 @@ import Scraper from '@SumiFX/Scraper'
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 if (!text) return conn.reply(m.chat, '✧ Ingresa el nombre de la canción que quieras descargar.', m)
 try {
-conn.reply(m.chat, `❀ Realizando búsqueda.`, m, fake)
 let res = await Scraper.ytsearch(text)
 let { title, size, quality, thumbnail, dl_url } = await Scraper.ytmp3(res[0].url)
 if (size.includes('GB') || size.replace(' MB', '') > 100) { return await m.reply('✧ El archivo supera los 100 MB, se canceló la descarga.')}
