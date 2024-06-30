@@ -3,7 +3,7 @@ import { watchFile, unwatchFile } from 'fs';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 import fs from 'fs'; 
-import moment from 'moment-timezone';
+//import moment from 'moment-timezone';
 
 global.botnumber = "";
 global.confirmCode = "";
@@ -32,8 +32,8 @@ global.patreon = 'https://patreon.com/DanixlJs';
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y';
 
 // GLOBAL - DATOS
-global.botdate = `${moment.tz('America/Asuncion').format('DD/MM/YY')}`;
-global.bottime = `${moment.tz('America/Asuncion').format('HH:mm:ss')}`;
+//global.botdate = `${moment.tz('America/Asuncion').format('DD/MM/YY')}`;
+//global.bottime = `${moment.tz('America/Asuncion').format('HH:mm:ss')}`;
 
 // PREFIJO 
 global.prefix = new RegExp('^[/.#!]');
