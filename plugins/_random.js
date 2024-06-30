@@ -1,4 +1,4 @@
-import fs from 'fs';
+/*import fs from 'fs';
 const handler = (m) => m;
 handler.all = async function(m) {
 
@@ -24,4 +24,4 @@ conn.reply(m.chat, `*comes* 😹`, m, fake, )
 }
 return !0;
 };
-export default handler;
+export default handler;*/
