@@ -106,9 +106,9 @@ let phoneNumber = global.botnumber
 const methodCodeQR = process.argv.includes("qr")
 const methodCode = !!phoneNumber || process.argv.includes("code")
 const MethodMobile = process.argv.includes("mobile")
-const colores = chalk.bgMagenta.white
-const opcionQR = chalk.bold.green
-const opcionTexto = chalk.bold.cyan
+const colores = chalk.bgCyan.black
+const opcionQR = chalk.green.bold
+const opcionCode = chalk.yellow.bold
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (texto) => new Promise((resolver) => rl.question(texto, resolver))
 let opcion
@@ -117,18 +117,18 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
 do {
-opcion = await question(colores('❀ OPCIONES DE CONECCIÓN:\n') + opcionQR('1- Con código QR\n') + opcionTexto('2- Con código de 8 dígitos\n\n'))
+opcion = await question(colores('❀ OPCIONES DE CONECCIÓN:\n✰ Elija una de las siguientes opciones.') + opcionQR('1- Con código QR\n') + opcionCode('2- Con código de 8 dígitos\n\n'))
 if (!/^[1-2]$/.test(opcion)) {
 console.log('✧ Por favor, seleccione solo 1 o 2.\n')
 }} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${authFile}/creds.json`))
 }
 const filterStrings = [
-"Q2xvc2luZyBzdGFsZSBvcGVu", // "Closing stable open"
-"Q2xvc2luZyBvcGVuIHNlc3Npb24=", // "Closing open session"
-"RmFpbGVkIHRvIGRlY3J5cHQ=", // "Failed to decrypt"
-"U2Vzc2lvbiBlcnJvcg==", // "Session error"
-"RXJyb3I6IEJhZCBNQUM=", // "Error: Bad MAC" 
-"RGVjcnlwdGVkIG1lc3NhZ2U=" // "Decrypted message" 
+"Q2xvc2luZyBzdGFsZSBvcGVu", 
+"Q2xvc2luZyBvcGVuIHNlc3Npb24=", 
+"RmFpbGVkIHRvIGRlY3J5cHQ=", 
+"U2Vzc2lvbiBlcnJvcg==", 
+"RXJyb3I6IEJhZCBNQUM=", 
+"RGVjcnlwdGVkIG1lc3NhZ2U="
 ]
 console.info = () => {} 
 console.debug = () => {} 
@@ -137,7 +137,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['AlisaKujouMD', 'Safari', '2.0.0'] : methodCodeQR ? ['AlisaKujouMD', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '110.0.5585.95'],
+browser: opcion == '1' ? ['❀ Alya San - MD ❀', 'Safari', '2.0.0'] : methodCodeQR ? ['❀ Alya San - MD ❀', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '110.0.5585.95'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -250,10 +250,10 @@ if (err) throw err;
 if (stats.isFile() && stats.mtimeMs < oneHourAgo && file !== 'creds.json') { 
 unlinkSync(filePath, err => {  
 if (err) throw err
-console.log(chalk.bold.green(`❀ Archivo ${file} borrado con éxito`))
+console.log(chalk.bold.green(`❀ Archivo "${file}" borrado con éxito`))
 })
 } else { 
-console.log(chalk.bold.red(`✧ Archivo ${file} no borrado` + err))
+console.log(chalk.bold.red(`✧ Archivo "${file}" no borrado` + err))
 } }) }) }) })
 }
 async function connectionUpdate(update) {
@@ -268,7 +268,7 @@ global.timestamp.connect = new Date;
 if (global.db.data == null) loadDatabase();
 if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
 if (opcion == '1' || methodCodeQR) {
-console.log(chalk.yellow('╭───────────────────╼\n│❀ Escanea el código para conectarte.\n╰───────────────────╼'));
+console.log(chalk.yellow.bold('╭───────────────────╼\n│❀ Escanea el código para conectarte.\n╰───────────────────╼'));
 }}
 if (connection == 'open') {
 console.log(chalk.bold.cyan('╭───────────────────╼\n│❀ Conección Exitosa al WhatsApp.\n╰───────────────────╼'))
@@ -280,7 +280,7 @@ console.log(chalk.bold.redBright(`✧ Conexión reemplazada, por favor espere un
 process.send('reset')}
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
-conn.logger.error(`✧ Sesión incorrecta, por favor elimina la carpeta ${global.authFile} y escanea nuevamente.`);
+conn.logger.error(`✧ Sesión incorrecta, por favor elimina la carpeta "${global.authFile}" y escanea nuevamente.`);
 } else if (reason === DisconnectReason.connectionClosed) {
 conn.logger.warn(`✧ Conexión cerrada, reconectando.`);
 await global.reloadHandler(true).catch(console.error);
@@ -310,7 +310,7 @@ try {
 const Handler = await import(`./handler.js?update=${Date.now()}`).catch(console.error);
 if (Object.keys(Handler || {}).length) handler = Handler;
 } catch (e) {
-console.error(e);
+console.error("[ ✧ ] ERROR:\n", e);
 }
 if (restatConn) {
 const oldChats = global.conn.chats;
@@ -444,22 +444,18 @@ Object.freeze(global.support);
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return;
 const a = await clearTmp();
-console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 180000);
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return;
 await purgeSession();
-console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 1000 * 60 * 60);
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return;
 await purgeSessionSB();
-console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 1000 * 60 * 60);
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return;
 await purgeOldFiles();
-console.log(chalk.greenBright(`\n╭───────────────────╼\n│❀ Archivo no necesario eliminado.\n╰───────────────────╼`));
 }, 180000)
 _quickTest()
 .then()
