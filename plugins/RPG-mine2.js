@@ -6,7 +6,7 @@ const handler = async (m, {conn}) => {
     let msg = `❀ Realizaste tu turno en la mina y lograste minar la cantidad de *${user.premium ? d2 : d}* Diamante(s)`;
     const time = user.minetime2 + 600000;
     if (new Date - user.minetime2 < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar Diamantes.`)
-    conn.reply(m.chat, msg, m, fake,);
+    conn.reply(m.chat, msg, m,);
     user.diamantes += user.premium ? d2 : d;
     user.minetime2 = new Date() * 1
 };
