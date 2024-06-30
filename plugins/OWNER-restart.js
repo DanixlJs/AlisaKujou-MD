@@ -11,9 +11,9 @@ await conn.sendMessage(m.chat, {text: `❀ Reiniciando.`, edit: key});
     process.send('reset')
   } else m.reply('✧ Ocurrió un error inesperado.')
 }
-handler.help = ['restart', 'reiniciar']
+handler.help = ['restart', 'reload']
 handler.tags = ['owner']
-handler.command = ['restart','reiniciar'] 
+handler.command = ['restart','reload'] 
 handler.rowner = true
 export default handler
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
