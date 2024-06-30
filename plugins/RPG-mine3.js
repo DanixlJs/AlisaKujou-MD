@@ -6,7 +6,7 @@ const handler = async (m, {conn}) => {
     let msg = `❀ En hora buena, minaste la cantidad de *${user.premium ? dinero2 : dinero}* ${global.botcoins}`;
     const time = user.minetime3 + 600000;
     if (new Date - user.minetime3 < 600000) return m.reply(`✧ Espera *${msToTime(time - new Date())}* para volver a minar ${global.botcoins}`)
-    conn.reply(m.chat, msg, m, fake,);
+    conn.reply(m.chat, msg, m,);
     user.dinero += user.premium ? dinero2 : dinero;
     user.minetime3 = new Date() * 1
 };
