@@ -20,7 +20,7 @@ export async function before(m, { isAdmin, isBotAdmin }) {
 
         if (!isBotAdmin) return;
 
-        await conn.reply(m.chat, `✧ ${m.sender.replace('@s.whatsapp.net', '').trim()} será eliminado del grupo por enviar un Link de WhatsApp.`, m);
+        await conn.reply(m.chat, `✧ @${m.sender.replace('@s.whatsapp.net', '').trim()} será eliminado del grupo por enviar un Link de WhatsApp.`, m, { mentions: [m.sender]} );
 
         if (isBotAdmin) {
             await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet } });
