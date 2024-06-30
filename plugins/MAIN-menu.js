@@ -150,10 +150,8 @@ const defaultMenu = { before: `
   global.vid = rlink
   const response = await fetch(vid)
   const gif = await response.buffer()
-  //conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', m, fake,)
-await conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', fkontak, { contextInfo:{ forwardingScore: 2022, isForwarded: true, externalAdReply: {title: botname, body: dev, sourceUrl: fakeLink, thumbnail: icons }}})
+  //await conn.reply(m.chat, '╭──────────────────\n│ *𝐂ARGANDO 𝐌ENU (ʘᴗʘ✿)*\n├──────────────────\n│\n│ ᦗ Espere un momento ᦗ\n╰──────────────────', fkontak,)
   m.react('🤍')
- // await conn.sendMessage(m.chat, { video: gif, caption: text.trim(), gifPlayback: true, mentions: [m.sender] }, "MessageVideo", { mimetype: "gif", quoted: m })
 await conn.sendMessage(m.chat, { video: gif, gifPlayback: true, caption: text.trim(), mentions: [m.sender], contextInfo: {
 mentionedJid: await conn.parseMention(text),
 isForwarded: true,
@@ -164,7 +162,7 @@ newsletterName: botname,
 serverMessageId: -1
 }}}, { quoted: fkontak })
   } catch (e) {
-    console.log(e)
+    console.log("[ ✧ ] ERROR:\n", e)
     conn.reply(m.chat, '❀ Ocurrió un error inesperado.', m)
   }
 }
