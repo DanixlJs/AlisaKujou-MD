@@ -6,8 +6,8 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
  }
  if (!m.isGroup) return !1;
 
- let chat = global.db.data.chats.[m.chat];
- let bot = global.db.data.settings?.[this.user.jid] || {};
+ let chat = global.db.data.chats[m.chat];
+ let bot = global.db.data.settings[this.user.jid] || {};
 
  if (!chat || bot) return;
 
@@ -18,7 +18,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
    const linkThisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`;
   if (m.text.includes(linkThisGroup)) return !0;
   }
-  await conn.reply(m.chat, `❀ 『${m.sender.replace('@s.whatsapp.net', '').trim()}』 será eliminado del grupo por enviar un Link de WhatsApp.`, null, { mentions [m.sender] });
+  await conn.reply(m.chat, `❀ 『${m.sender.replace('@s.whatsapp.net', '').trim()}』 será eliminado del grupo por enviar un Link de WhatsApp.`, null, { mentions: [m.sender] });
 
   if (isBotAdmin && chat.antiLink) {
    await conn.sendMessage(m.chat, { delete: m.key });
