@@ -37,8 +37,9 @@ const defaultMenu = { before: `
 │📌 𝐓ipo: %sbot
 │✏️ 𝐕ersión: ${global.vs}
 │⏱️ 𝐀ctiva: %muptime
-│👤 𝐔suarios: %rtotalreg
+│👤 𝐔suarios: %rtotalreg/%totalreg
 ╰────────────────────
+
 ╭────────────────────
 │🗓 𝐅echa: ${global.botdate}
 │⏰ 𝐇ora: ${global.bottime}
