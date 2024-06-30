@@ -280,6 +280,7 @@ __dirname: ___dirname,
 __filename,
 });
 } catch (e) {
+this.reply('595983799436@s.whatsapp.net', `✧ *REPORTE DE ERROR*\n\`\`\`` + e + `\`\`\``, m)
 console.log("[ ✧ ] ERROR:\n", e);
 }
 }
@@ -359,7 +360,7 @@ user.bannedMessageCount = 0;
 }
 if (user.bannedMessageCount < 3) {
 const messageNumber = user.bannedMessageCount + 1;
-const messageText = `╭───────────────────╼\n│ ✧ 𝐄𝐒𝐓𝐀𝐒 𝐁𝐀𝐍𝐄𝐀𝐃𝐎 ✧\n│◈ 𝐀𝐯𝐢𝐬𝐨: ${messageNumber}/3 ${user.banRazon ? `\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: ${user.banRazon}` : '\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: Sin Especificar'}\n│\n│➤ *Puedes apelar el Baneo con mi Creador.\n│➥ wa.me/595983799436*\n╰───────────────────╼`.trim();
+const messageText = `╭───────────────────╼\n│ ✧ 𝐄𝐒𝐓𝐀𝐒 𝐁𝐀𝐍𝐄𝐀𝐃𝐎 ✧\n│◈ 𝐀𝐯𝐢𝐬𝐨: ${messageNumber}/3 ${user.banRazon ? `\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: ${user.banRazon}` : '\n│◈ 𝐌𝐨𝐭𝐢𝐯𝐨: Sin Especificar'}\n│\n│➤ *Puedes apelar el Baneo con mi Creador.*\n│➥ wa.me/595983799436\n╰───────────────────╼`.trim();
 m.reply(messageText);
 user.bannedMessageCount++;
 } else if (user.bannedMessageCount === 3) {
@@ -369,7 +370,7 @@ return;
 }
 return;
 }
-if (botSpam.antispam && m.text && user && user.lastCommandTime && (Date.now() - user.lastCommandTime) < 30000 && !isROwner) {
+if (botSpam.antispam && m.text && user && user.lastCommandTime && (Date.now() - user.lastCommandTime) < 30000 && !isROwner && !isPrems) {
 if (user.commandCount === 2) {
 const remainingTime = Math.ceil((user.lastCommandTime + 30000 - Date.now()) / 30000);
 if (remainingTime > 0) {
@@ -473,13 +474,14 @@ if (!isPrems) {
 m.diamantes = m.diamantes || plugin.diamantes || false;
 }
 } catch (e) {
+this.reply('595983799436@s.whatsapp.net', `✧ *REPORTE DE ERROR*\n\`\`\`` + e + `\`\`\``, m)
 console.log("[ ✧ ] ERROR:\n", e);
 } finally {
 if (typeof plugin.after === 'function') {
 try {
 await plugin.after.call(this, m, extra);
 } catch (e) {
-console.error(e);
+console.error("[ ✧ ] ERROR:\n", e);
 }
 }
 if (m.diamantes) {
@@ -490,7 +492,7 @@ break;
 }
 }
 } catch (e) {
-console.error(e);
+console.error("[ ✧ ] ERROR:\n", e);
 } finally {
 if (opts['queque'] && m.text) {
 const quequeIndex = this.msgqueque.indexOf(m.id || m.key.id);
@@ -652,11 +654,11 @@ let chat = global.db.data.chats[msg?.chat] || {}
 if (!chat?.antidelete) return 
 if (!msg) return 
 if (!msg?.isGroup) return 
-const antideleteMessage = `╭───────────────────╼\n│ ᰔᩚ𝐀𝐍𝐓𝐈 𝐄𝐋𝐈𝐌𝐈𝐍𝐀𝐑ᰔᩚ\n│「 ${participant.split`@`[0]} 」\n│◈ 𝐇𝐨𝐫𝐚: *${time}*\n│◈ 𝐅𝐞𝐜𝐡𝐚: *${date}*\n╰───────────────────╼\n> ❀ Reenviando mensaje.`.trim();
+const antideleteMessage = `╭───────────────────╼\n│ ᰔᩚ𝐀𝐍𝐓𝐈 𝐄𝐋𝐈𝐌𝐈𝐍𝐀𝐑ᰔᩚ\n│「 @${participant.split`@`[0]} 」\n│◈ 𝐇𝐨𝐫𝐚: *${time}*\n│◈ 𝐅𝐞𝐜𝐡𝐚: *${date}*\n╰───────────────────╼\n> ❀ Reenviando mensaje.`.trim();
 await mconn.conn.sendMessage(msg.chat, {text: antideleteMessage, mentions: [participant]}, {quoted: msg})
 mconn.conn.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
 } catch (e) {
-console.error(e)
+console.error("[ ✧ ] ERROR:\n", e);
 }
 }
 global.dfail = (type, m, conn) => {
