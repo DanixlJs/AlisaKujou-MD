@@ -86,7 +86,8 @@ const defaultMenu = { before: `
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.db.data.users).length
-    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registrado == true).length
+    let users = global.db.data.users;
+    let rtotalreg = Object.keys(users).filter(user => users[user].registrado);
     let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
       return {
         help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
