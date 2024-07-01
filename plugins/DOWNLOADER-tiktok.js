@@ -2,17 +2,11 @@ import fg from 'api-dylux';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import {tiktok} from '@xct007/frieren-scraper';
-import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import {tiktokdl} from '@bochilteam/scraper';
 const CFROSAPI = global.APIs.CFROSAPI;
 const handler = async (m, {conn, text, args, usedPrefix, command}) => {
   if (!text) return m.reply(`✧ Ingresa el Link del video que quieras descargar.`);
   if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) return m.reply(`✧ Ingresa un Link válido.`);
-  const texto = `❀ Procesando, espere un momento.`;
-  try {
-    const aa = {quoted: m, userJid: conn.user.jid};
-    const prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: texto, contextInfo: {externalAdReply: {title: global.wm, body: global.dev, thumbnail: global.icons, sourceUrl: global.fakeLink}, mentionedJid: [m.sender]}}}, aa);
-    await conn.relayMessage(m.chat, prep.message, {messageId: prep.key.id, mentions: [m.sender]});
     const dataFn = await conn.getFile(`${CFROSAPI}/api/tiktokv2?url=${args[0]}`);
     const desc1n = `❀ Aquí tiene su video.`;
     await conn.sendMessage(m.chat, {video: dataFn.data, caption: desc1n}, {quoted: m});
@@ -37,7 +31,8 @@ const handler = async (m, {conn, text, args, usedPrefix, command}) => {
           const url = video.no_watermark2 || video.no_watermark || 'https://tikcdn.net' + video.no_watermark_raw || video.no_watermark_hd;
           const cap = `❀ Aquí tiene su video.`;
           await conn.sendMessage(m.chat, {video: {url: url}, caption: cap}, {quoted: m});
-        } catch {
+        } catch (e){
+          console.log(e)
           m.reply(`✧ Ocurrió un error inesperado.`);
           }
         }
@@ -50,10 +45,9 @@ handler.registrado = true;
 handler.help = ['tt <link>', 'tiktok <link>'];
 handler.group = true;
 handler.tags = ['downloader'];
-handler.diamantes = 2;
 export default handler;
 async function tiktokdlF(url) {
-  if (!/tiktok/.test(url)) return `✧ Ingresa el Link del video que quieras descargar.`;
+  if (!/tiktok/.test(url)) return m.reply(`✧ Ingresa el Link del video que quieras descargar.`);
   const gettoken = await axios.get('https://tikdown.org/id');
   const $ = cheerio.load(gettoken.data);
   const token = $('#download-form > input[type=hidden]:nth-child(2)').attr( 'value' );
