@@ -19,7 +19,9 @@ try {
 let gpt = await fetch(`https://delirius-api-oficial.vercel.app/api/chatgpt?q=${text}`)
 let res = await gpt.json()
 await m.reply(res.data) 
-} catch{
+} catch (e){
+m.reply('✧ Ocurrió un error inesperado.')
+console.log(e)
 }}}
 handler.help = ['chatgpt <texto>', 'ia <texto>']
 handler.tags = ['ai']
