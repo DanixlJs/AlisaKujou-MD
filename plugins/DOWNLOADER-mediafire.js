@@ -28,7 +28,8 @@ const handler = async (m, {conn, args, usedPrefix, command }) => {
 > Descargando su archivo.`.trim();
       await m.reply(caption);
       await conn.sendFile(m.chat, link, name, '', m, null, {mimetype: mime, asDocument: true});
-    } catch {
+    } catch (e){
+      console.log(e);
       await m.reply('✧ Ocurrió un error inesperado.');
     }
   }
