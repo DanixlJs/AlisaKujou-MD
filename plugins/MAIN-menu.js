@@ -169,8 +169,8 @@ newsletterName: global.botname,
 serverMessageId: -1
 }}}, { quoted: fkontak })
   } catch (e) {
-    console.log("[ ✧ ] ERROR:\n", e)
-    conn.reply(m.chat, '❀ Ocurrió un error inesperado.', m)
+    console.log(e)
+    m.reply('❀ Ocurrió un error inesperado.')
   }
 }
 handler.help = ['menu']
