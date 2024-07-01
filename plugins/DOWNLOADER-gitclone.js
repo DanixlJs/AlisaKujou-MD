@@ -22,8 +22,9 @@ let handler = async (m, { args, usedPrefix, command }) => {
     let type = zipResponse.headers.get('content-type')
 await conn.sendFile(m.chat, await zipResponse.buffer(), filename, null, m)
 await m.react('✅')
-  } catch {
-await m.react('✖️')
+  } catch (e){
+m.reply('✧ Ocurrió un error inesperado.')
+console.log(e)
   }
 }
 handler.help = ['gitclone <enlace>']
