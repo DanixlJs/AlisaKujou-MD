@@ -12,7 +12,7 @@ const handler = async (m, _2, msg, pickRandom, isOwner ) => {
   let _return;
   const name = conn.getName(m.sender);
   let _syntax = '';
-  const _text = (^/=/.test(usedPrefix) ? 'return ' : '') + noPrefix;
+  const _text = (/^=/.test(usedPrefix) ? 'return ' : '') + noPrefix;
   const old = m.experiencia * 1;
   try {
     let i = 15;
@@ -36,6 +36,7 @@ handler.help = ['>', '=>'];
 handler.tags = ['advanced'];
 handler.customPrefix = /=?>|~/;
 handler.command = /(?:)/i;
+handler.disabled = true;
 export default handler;
 class CustomArray extends Array {
   constructor(...args) {
