@@ -2,8 +2,7 @@
 import { watchFile, unwatchFile } from 'fs';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
-import fs from 'fs'; 
-//import moment from 'moment-timezone';
+import fs from 'fs';
 
 global.botnumber = "";
 global.confirmCode = "";
@@ -19,8 +18,8 @@ global.contactos = [
 
 // GLOBAL - OTROS
 global.suittag = ['595973755967']
-global.prems = []
-global.mods = ['5491157436824']
+global.prems = ['5215536599708']
+global.mods = ['5491157436824', '5215536599708']
 
 // GLOBAL - IMG
 global.img = fs.readFileSync('./logo.jpg');
@@ -30,10 +29,6 @@ global.md = 'https://github.com/DanixlJs/AlisaKujou-MD';
 global.gp = 'https://chat.whatsapp.com/Kbj38zCqOvqH9KM5bRH1Hb';
 global.patreon = 'https://patreon.com/DanixlJs';
 global.channel = 'https://whatsapp.com/channel/0029Vaa4kxh4dTnEJ0pwVr1y';
-
-// GLOBAL - DATOS
-//global.botdate = `${moment.tz('America/Asuncion').format('DD/MM/YY')}`;
-//global.bottime = `${moment.tz('America/Asuncion').format('HH:mm:ss')}`;
 
 // PREFIJO 
 global.prefix = new RegExp('^[/.#!]');
