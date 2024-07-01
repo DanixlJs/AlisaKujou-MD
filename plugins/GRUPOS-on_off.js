@@ -32,12 +32,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     conn.sendMessage(m.chat, { text: `❀ La opción *${option}* ha sido desactivada.` }, { quoted: m });
   }
 };
-
 handler.help = ['on <opción>', 'off <opción>'];
 handler.tags = ['grupo'];
 handler.command = ['on', 'enable', 'off', 'disable'];
 handler.registrado = true;
 handler.group = true;
 handler.admin = true;
-
 export default handler;
