@@ -24,7 +24,7 @@ const handler = async (m, {conn, args, __dirname, usedPrefix, command}) => {
       const media = await q.download(true);
       exec(`ffmpeg -i ${media} ${set} ${filename}`, async (err, stderr, stdout) => {
         await unlinkSync(media);
-        if (err) await `✧ Ocurrió un error inesperado.`;
+        if (err) await m.reply(`✧ Ocurrió un error inesperado.`);
         const buff = await readFileSync(filename);
         conn.sendFile(m.chat, buff, ran, null, m, true, {
           type: 'audioMessage',
@@ -33,7 +33,8 @@ const handler = async (m, {conn, args, __dirname, usedPrefix, command}) => {
       });
     } else m.reply(`✧ Responda a un Audio con *${usedPrefix + command}*`);
   } catch (e) {
-    m.reply(e);
+    m.reply('✧ Ocurrió un error inesperado.');
+    console.log(e);
   }
 };
 handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'];
