@@ -17,7 +17,7 @@ global.contactos = [
 ["595983799436", '👑𝗢𝘄𝗻𝗲𝗿(DanixlJs)', 1]]
 
 // GLOBAL - OTROS
-global.suittag = ['595973755967']
+global.suittag = ['5217203190618']
 global.prems = ['5215536599708']
 global.mods = ['5491157436824', '5215536599708']
 
