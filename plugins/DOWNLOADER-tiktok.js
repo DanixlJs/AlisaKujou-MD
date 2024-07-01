@@ -7,6 +7,7 @@ const CFROSAPI = global.APIs.CFROSAPI;
 const handler = async (m, {conn, text, args, usedPrefix, command}) => {
   if (!text) return m.reply(`✧ Ingresa el Link del video que quieras descargar.`);
   if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) return m.reply(`✧ Ingresa un Link válido.`);
+    try {
     const dataFn = await conn.getFile(`${CFROSAPI}/api/tiktokv2?url=${args[0]}`);
     const desc1n = `❀ Aquí tiene su video.`;
     await conn.sendMessage(m.chat, {video: dataFn.data, caption: desc1n}, {quoted: m});
