@@ -1,8 +1,8 @@
 import gplay from "google-play-scraper";
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return m.reply(`✧ Ingrese un texto para realizar la búsqueda, Ejemplo:\n> *${usedPrefix + command} Minecraft*`);
+  if (!text) return m.reply(`✧ Ingrese un texto para realizar la búsqueda.`);
   let res = await gplay.search({ term: text });
-  if (!res.length) return m.reply(`✧ Ingresa un texto para realizar la búsqueda, Ejemplo:\n> *${usedPrefix + command} Minecraft*`);
+  if (!res.length) return m.reply(`✧ Ingresa un texto para realizar la búsqueda.`);
   let opt = {
     contextInfo: {
       externalAdReply: {
@@ -13,7 +13,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       },
     },
   };
-  await console.log(res);
   res = res.map(
     (v) =>
       `❀ *RESULTADOS DE* ${text}
