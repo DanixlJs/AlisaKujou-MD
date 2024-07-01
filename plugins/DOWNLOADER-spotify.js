@@ -65,7 +65,7 @@ return response.data;
 return text;
 }}
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) conn.reply(m.chat, `✧ Ingresa un texto para realizar la busqueda.`, m)
+if (!text) return m.reply(`✧ Ingresa un texto para realizar la busqueda.`)
 try {
 let songInfo = await spotifyxv(text)
 if (!songInfo.length) return m.reply(`✧ No hubo resultados en la busqueda.`)
