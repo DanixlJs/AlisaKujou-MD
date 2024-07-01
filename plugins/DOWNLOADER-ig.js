@@ -11,6 +11,5 @@ await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: '❀ Aqui tien
 handler.help = ['ig <enlace>']
 handler.tags = ['downloader']
 handler.command = ['ig', 'instagram']
-handler.registrado = true 
-handler.diamantes = 1
+handler.registrado = true
 export default handler
