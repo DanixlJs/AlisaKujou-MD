@@ -63,4 +63,5 @@ isForwarded: false,
 handler.tags =['info'] 
 handler.help = ['infinity', 'flarex'] 
 handler.command = ['infinity', 'flarex']
+handler.registrado = true
 export default handler
