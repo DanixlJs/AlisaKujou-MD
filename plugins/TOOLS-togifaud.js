@@ -13,7 +13,7 @@ let mime = (q.msg || q).mimetype || ''
 if (!/(mp4)/.test(mime)) return conn.reply(m.chat, `😃 Te Faltó El Video.`, m, fake)
 await m.react(rwait)
 let media = await q.download()
-let listo = '${global.botname}'
+let listo = `${global.botname}`
 conn.sendMessage(m.chat, { video: media, gifPlayback: true, caption: listo }, { quoted: m })
 await m.react(done)
 }
