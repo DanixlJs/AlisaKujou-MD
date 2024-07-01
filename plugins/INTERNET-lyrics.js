@@ -3,7 +3,7 @@ import {getTracks} from '@green-code/music-track-data';
 import {googleImage} from '@bochilteam/scraper';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
   const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : '';
-  if (!teks) return m.reply(`✧ Ingrese un texto para realizar la búsqueda.\n> *${usedPrefix + command} <texto>*`);
+  if (!teks) return m.reply(`✧ Ingrese un texto para realizar la búsqueda.`);
   try {
     const result = await getTracks(teks);
     const lyrics = await find_lyrics(`${result[0].artist} ${result[0].title}`);
@@ -23,8 +23,9 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
     const textoLetra = `❀ *Título ⪼* ${result[0].title || ''}\n◈ *Autor ⪼* ${result[0].artist || ''}\n◈ *Letra ⪼* ${lyrics || ''}\n`;
     await conn.sendMessage(m.chat, {image: {url: img}, caption: textoLetra}, {quoted: m});
     await conn.sendMessage(m.chat, {audio: {url: result[0].preview}, fileName: `${result[0].artist} ${result[0].title}.mp3`, mimetype: 'audio/mp4'}, {quoted: m});
-  } catch {
-    m.reply(`✧ Ocurrió un error inesperado.`);
+  } catch (e){
+   m.reply('✧ Ocurrió un error inesperado.');
+   console.log(e);
   }
 };
 handler.help = ['lyrics', 'letra'];
