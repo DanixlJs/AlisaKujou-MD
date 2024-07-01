@@ -2,7 +2,7 @@ import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
 const handler = async (m, {conn, text, command, args, usedPrefix, isOwner}) => {
   if (!global.db.data.chats[m.chat].simi) return m.reply('✧ Simi ha sido desactivado en este grupo.');
-  if (!text) return conn.reply(m.chat, `✧ Ingresa un texto para empezar a hablar con ${global.botname}`, m, fake, )
+  if (!text) return conn.reply(m.chat, `✧ Ingresa un texto para empezar a hablar con ${global.botname}`, m,)
   try {
     const api = await fetch('https://api.simsimi.net/v2/?text=' + text + '&lc=es');
     const resSimi = await api.json();
@@ -20,7 +20,8 @@ const handler = async (m, {conn, text, command, args, usedPrefix, isOwner}) => {
       const reis2 = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=es&dt=t&q=' + res.cnt);
       const resu2 = await reis2.json();
       conn.reply(m.chat, resu2[0][0][0], m, fake, )
-    } catch {
+    } catch (e){
+      console.log(e);
       await m.reply(`✧ Ocurrió un error inesperado.`);
     }
   }
