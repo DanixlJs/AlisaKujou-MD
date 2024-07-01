@@ -24,7 +24,5 @@ await m.reply(res.data)
 handler.help = ['chatgpt <texto>', 'ia <texto>']
 handler.tags = ['ai']
 handler.registrado = true
-handler.diamantes = 1
 handler.command = ['ia', 'chatgpt']
-
 export default handler
