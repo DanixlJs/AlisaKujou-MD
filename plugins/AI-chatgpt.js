@@ -7,7 +7,7 @@ const openaiii = new OpenAIApi(configuration);
 const handler = async (m, {conn, text, usedPrefix, command, isOwner}) => {
 if (!global.db.data.settings[conn.user.jid].modoia && !isOwner) return m.reply('✧ Los comandos de *AI*  fueron desactivados por mi Creador.')
 if (usedPrefix == 'a' || usedPrefix == 'A') return
-if (!text) return conn.reply(m.chat, `✧ Ingrese una petición para que la AI lo responda, Ejemplo:\n> *${usedPrefix + command} Código de una Calculadora en .js*`, m, fake, )   
+if (!text) return conn.reply(m.chat, `✧ Ingrese una petición para que la AI lo responda, Ejemplo:\n> *${usedPrefix + command} Código de una Calculadora en .js*`, m,)   
 try {
 await m.reply('❀ Procesando, espere un momento.')
 conn.sendPresenceUpdate('composing', m.chat)
